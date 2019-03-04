@@ -65,8 +65,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="enums\AccessoryType.cs" />
+    <Compile Include="enums\FishBirthType.cs" />
     <Compile Include="enums\FishFeederType.cs" />
-    <Compile Include="enums\PurchaseOptions.cs" />
+    <Compile Include="enums\FishSocialTemperament.cs" />
+    <Compile Include="enums\FishTemperament.cs" />
+    <Compile Include="enums\PurchaseLocations.cs" />
     <Compile Include="enums\PurchaseType.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -74,8 +77,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="models\fishSpeciesModels\Catfish.cs" />
+    <Compile Include="models\fishSpeciesModels\Hatchetfish.cs" />
+    <Compile Include="models\fishSpeciesModels\CoryDora.cs" />
+    <Compile Include="models\fishSpeciesModels\Headstander.cs" />
+    <Compile Include="models\fishSpeciesModels\Lobster.cs" />
+    <Compile Include="models\fishSpeciesModels\Pencilfish.cs" />
+    <Compile Include="models\fishSpeciesModels\Pleco.cs" />
+    <Compile Include="models\fishSpeciesModels\Tetra.cs" />
+    <Compile Include="models\FishTank.cs" />
     <Compile Include="models\LiveFish.cs" />
     <Compile Include="models\TankAccessory.cs" />
+    <Compile Include="models\Tank\TankTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

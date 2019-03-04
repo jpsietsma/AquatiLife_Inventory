@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AquatiLife_Inventory.PurchaseOptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace AquatiLife_Inventory.models
         /// <summary>
         /// Cost of the accessory in double
         /// </summary>
-        public double PurchaseCost { get; set; }
+        public double PurchasePrice { get; set; }
 
         /// <summary>
         /// Date the accessory was purchased
@@ -41,7 +42,13 @@ namespace AquatiLife_Inventory.models
         /// <summary>
         /// Store or location where accessory was purchased
         /// </summary>
-        public string PurchaseLocation { get; set; }
+        public Locations PurchaseLocation { get; set; }
+
+        /// <summary>
+        /// Name of the person who purchased the fish, usually self unless gifted.
+        /// </summary>
+        public string Purchaser { get; set; } = "Jimmy Sietsma";
+
 
         /// <summary>
         /// Base class for a new accessory for a tank which includes plants, ornaments, decorations, leds, fish, filter, heater, air pump, bubble decorations, gravel, food, and chemicals
@@ -49,11 +56,13 @@ namespace AquatiLife_Inventory.models
         /// <param name="accessoryName">Name of the accessory as displayed to the user</param>
         /// <param name="accessoryCost">Cost of the accessory when purchased in $USD</param>
         /// <param name="accessoryPurchaseDate">Date of the purchase</param>
-        public TankAccessory(string accessoryName, double accessoryCost, DateTime accessoryPurchaseDate)
+        /// <param name="accesoryPurchaser">Name of the person who purchased accessory</param>
+        public TankAccessory(string accessoryName, double accessoryCost, DateTime accessoryPurchaseDate, string accesoryPurchaser = "Jimmy Sietsma")
         {
             DisplayName = accessoryName;
-            PurchaseCost = accessoryCost;
+            PurchasePrice = accessoryCost;
             PurchaseDate = accessoryPurchaseDate;
+            Purchaser = accesoryPurchaser;
         }
 
         /// <summary>
@@ -67,7 +76,7 @@ namespace AquatiLife_Inventory.models
         {
             DisplayName = accessoryName;
             TankID = accessoryTankID;
-            PurchaseCost = accessoryCost;
+            PurchasePrice = accessoryCost;
             PurchaseDate = accessoryPurchaseDate;
         }
 
@@ -78,10 +87,10 @@ namespace AquatiLife_Inventory.models
         /// <param name="accessoryCost">Cost of the accessory when purchased in $USD</param>
         /// <param name="accessoryPurchaseDate">Date of the purchase</param>
         /// <param name="accessoryPurchaseLocation">Store location where accessory was purchased</param>
-        public TankAccessory(string accessoryName, double accessoryCost, DateTime accessoryPurchaseDate, string accessoryPurchaseLocation)
+        public TankAccessory(string accessoryName, double accessoryCost, DateTime accessoryPurchaseDate, Locations accessoryPurchaseLocation)
         {
             DisplayName = accessoryName;
-            PurchaseCost = accessoryCost;
+            PurchasePrice = accessoryCost;
             PurchaseDate = accessoryPurchaseDate;
             PurchaseLocation = accessoryPurchaseLocation;
         }
@@ -94,13 +103,14 @@ namespace AquatiLife_Inventory.models
         /// <param name="accessoryCost">Cost of the accessory when purchased in $USD</param>
         /// <param name="accessoryPurchaseDate">Date of the purchase</param>
         /// <param name="accessoryPurchaseLocation">Store location where accessory was purchased</param>
-        public TankAccessory(string accessoryName, int accessoryTankID, double accessoryCost, DateTime accessoryPurchaseDate, string accessoryPurchaseLocation)
+        public TankAccessory(string accessoryName, int accessoryTankID, double accessoryCost, DateTime accessoryPurchaseDate, Locations accessoryPurchaseLocation)
         {
             DisplayName = accessoryName;
             TankID = accessoryTankID;
-            PurchaseCost = accessoryCost;
+            PurchasePrice = accessoryCost;
             PurchaseDate = accessoryPurchaseDate;
             PurchaseLocation = accessoryPurchaseLocation;
         }
+
     }
 }
