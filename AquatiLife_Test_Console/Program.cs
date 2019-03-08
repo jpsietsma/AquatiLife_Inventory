@@ -1,5 +1,5 @@
 ﻿using AquatiLife_Inventory.FishSpeciesModels;
-using AquatiLife_Inventory.models;
+using AquatiLife_Inventory.ModelBaseClasses;
 using AquatiLife_Inventory.PurchaseOptions;
 using System;
 using System.Collections.Generic;
@@ -52,11 +52,11 @@ namespace AquatiLife_Test_Console
             Console.WriteLine("\t Fish Inventory: ");
             Console.WriteLine("\t --------------------------------------");
 
-            foreach (LiveFish tankFish in tank.TankFishInventory)
+            foreach (ILiveFish tankFish in tank.TankFishInventory)
             {
                 Console.WriteLine("\t\t" + tankFish.CommonName + " (" + tankFish.ScientificName + ")");
                 Console.WriteLine("\t\t ---------------------------------");
-                Console.WriteLine("\t\t - Fish Name: " + tankFish.DisplayName);
+                Console.WriteLine("\t\t - Fish Name: " + tankFish.Name);
                 Console.WriteLine("\t\t - Primary Color: " + tankFish.PrimaryColor.ToString());
                 Console.WriteLine("\t\t - Secondary Color: " + tankFish.SecondaryColor.ToString());
                 Console.WriteLine("\t\t - Purchased At: " + tankFish.PurchaseLocation);

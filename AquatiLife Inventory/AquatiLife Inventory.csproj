@@ -86,7 +86,10 @@
     <Compile Include="models\FishSpeciesModels\Pencilfish.cs" />
     <Compile Include="models\FishSpeciesModels\Pleco.cs" />
     <Compile Include="models\FishSpeciesModels\Tetra.cs" />
+    <Compile Include="models\AccessoryModels\AquaticPlant.cs" />
     <Compile Include="models\ModelBaseClasses\FishTank.cs" />
+    <Compile Include="models\ModelBaseClasses\ILiveFish.cs" />
+    <Compile Include="models\ModelBaseClasses\ITankAccessory.cs" />
     <Compile Include="models\ModelBaseClasses\LiveFish.cs" />
     <Compile Include="models\ModelBaseClasses\TankAccessory.cs" />
     <Compile Include="models\ModelBaseClasses\TankTest.cs" />

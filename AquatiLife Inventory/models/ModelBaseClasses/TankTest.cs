@@ -1,5 +1,4 @@
-﻿using AquatiLife_Inventory.models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +19,42 @@ namespace AquatiLife_Inventory.ModelBaseClasses
         /// <summary>
         /// Date when the test took place
         /// </summary>
-        public DateTime TestDate { get; set; }
+        public DateTime TestTimestamp { get; set; }
+
+        /// <summary>
+        /// pH level of the water in double int form
+        /// </summary>
+        public double pHLevel { get; set; }
+
+        /// <summary>
+        /// Temperature of the water at the time of the test
+        /// </summary>
+        public double WaterTemperature { get; set; }
+
+        /// <summary>
+        /// Level of Nitrates in the water
+        /// </summary>
+        public double NitrateLevel { get; set; }
+
+        /// <summary>
+        /// Level of Nitrites in the water
+        /// </summary>
+        public double NitriteLevel { get; set; }
+
+        /// <summary>
+        /// General Hardness level of the water
+        /// </summary>
+        public double GeneralHardness { get; set; }
+
+        /// <summary>
+        /// Carbonate Hardness level of the water
+        /// </summary>
+        public double CarbonateHardness { get; set; }
+
+        /// <summary>
+        /// ID of the tank we're testing
+        /// </summary>
+        public FishTank TankID { get; set; }
 
         /// <summary>
         /// Is this a bi-weekly normal maintenance test?
@@ -46,12 +80,12 @@ namespace AquatiLife_Inventory.ModelBaseClasses
         /// <param name="tank">Tank which we're running the test on</param>
         /// <param name="isWaterChanged">boolean representing if there is water being changed</param>
         /// <param name="waterChangeQty">nullable double representing the amount, if any, of water being changed in gallons</param>
-        public TankTest(bool isBiWeeklyTest, string testReason, DateTime testDate, TankAccessory tank, bool isWaterChanged = false, double? waterChangeQty = 0.00)
+        public TankTest(bool isBiWeeklyTest, string testReason, DateTime testDate, FishTank tank, bool isWaterChanged = false, double? waterChangeQty = 0.00)
         {
             if (isBiWeeklyTest)
             {
                 TestDescription = "Bi-Weekly normal maintenance - 50% Water";
-                TestDate = testDate;
+                TestTimestamp = testDate;
                 IsBiweeklyTest = isBiWeeklyTest;
                 IsWaterChanged = true;
                 WaterChangeQuantity = 10.00;
@@ -59,7 +93,7 @@ namespace AquatiLife_Inventory.ModelBaseClasses
             else
             {
                 TestDescription = testReason;
-                TestDate = testDate;
+                TestTimestamp = testDate;
                 IsBiweeklyTest = false;
                 IsWaterChanged = isWaterChanged;
                 WaterChangeQuantity = waterChangeQty;
@@ -70,10 +104,27 @@ namespace AquatiLife_Inventory.ModelBaseClasses
         /// <summary>
         /// Represents a tank test performed
         /// </summary>
-        /// <param name="testDate">Date the test was performed, defaults to now</param>
-        public TankTest(DateTime? testDate)
+        /// <param name="tank">Id of the tank we're testing</param>
+        /// <param name="testDate">Date the tank test was performed</param>
+        public TankTest(FishTank tank, DateTime? testDate)
         {
-            TestDate = DateTime.Now;
+            TestTimestamp = DateTime.Now;
+            TankID = tank;
+        }
+
+        /// <summary>
+        /// Check whether the pH levels are safe for the fish currently in the tank
+        /// </summary>
+        /// <param name="phMeasuredLevel">double int measurement of the pH level in the tank water</param>
+        /// <returns>true if safe levels, false if levels are unsafe</returns>
+        public bool phTestLevel(int phMeasuredLevel)
+        {
+            if (phMeasuredLevel >= 8 || phMeasuredLevel <= 5)
+            {
+                return false;
+            }
+
+            return true;
         }
 
     }
