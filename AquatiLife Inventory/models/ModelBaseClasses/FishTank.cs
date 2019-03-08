@@ -1,5 +1,4 @@
 ﻿using AquatiLife_Inventory.AccessoryOptions;
-using AquatiLife_Inventory.HistoryModels;
 using AquatiLife_Inventory.PurchaseOptions;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AquatiLife_Inventory.models
+namespace AquatiLife_Inventory.ModelBaseClasses
 {
     /// <summary>
     /// Represents a fish tank

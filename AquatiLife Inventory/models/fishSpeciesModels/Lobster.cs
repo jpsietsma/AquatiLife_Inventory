@@ -1,4 +1,4 @@
-﻿using AquatiLife_Inventory.models;
+﻿using AquatiLife_Inventory.ModelBaseClasses;
 using AquatiLife_Inventory.PurchaseOptions;
 using System;
 using System.Collections.Generic;
@@ -23,12 +23,15 @@ namespace AquatiLife_Inventory.FishSpeciesModels
         /// <param name="purchasedAt">PurchaseOptions.Location location where lobster was purchased</param>
         public Lobster(string displayName, double fishCost, DateTime time, Locations purchasedAt) : base(displayName, fishCost, DateTime.Now, purchasedAt)
         {
-            DisplayName = displayName;
+            Name = displayName;
             PurchasePrice = fishCost;
             PurchaseDate = time;
             PurchaseLocation = purchasedAt;
             CommonName = "Lobster";
             ScientificName = "Procambarus clarkii";
+            FishMinPH = 6.5;
+            FishMaxPH = 7.2;
+
         }
     }
 }

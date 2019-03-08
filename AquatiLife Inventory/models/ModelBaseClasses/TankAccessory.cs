@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AquatiLife_Inventory.models
+namespace AquatiLife_Inventory.ModelBaseClasses
 {
 
     /// <summary>

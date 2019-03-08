@@ -68,6 +68,7 @@
     <Compile Include="enums\FishBirthType.cs" />
     <Compile Include="enums\FishFeederType.cs" />
     <Compile Include="enums\FishSocialTemperament.cs" />
+    <Compile Include="enums\FishSpecies\FishCategory.cs" />
     <Compile Include="enums\FishTemperament.cs" />
     <Compile Include="enums\PurchaseLocations.cs" />
     <Compile Include="enums\PurchaseType.cs" />
@@ -77,18 +78,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\fishSpeciesModels\Catfish.cs" />
-    <Compile Include="models\fishSpeciesModels\Hatchetfish.cs" />
-    <Compile Include="models\fishSpeciesModels\CoryDora.cs" />
-    <Compile Include="models\fishSpeciesModels\Headstander.cs" />
-    <Compile Include="models\fishSpeciesModels\Lobster.cs" />
-    <Compile Include="models\fishSpeciesModels\Pencilfish.cs" />
-    <Compile Include="models\fishSpeciesModels\Pleco.cs" />
-    <Compile Include="models\fishSpeciesModels\Tetra.cs" />
-    <Compile Include="models\FishTank.cs" />
-    <Compile Include="models\LiveFish.cs" />
-    <Compile Include="models\TankAccessory.cs" />
-    <Compile Include="models\Tank\TankTest.cs" />
+    <Compile Include="models\FishSpeciesModels\Catfish.cs" />
+    <Compile Include="models\FishSpeciesModels\Hatchetfish.cs" />
+    <Compile Include="models\FishSpeciesModels\CoryDora.cs" />
+    <Compile Include="models\FishSpeciesModels\Headstander.cs" />
+    <Compile Include="models\FishSpeciesModels\Lobster.cs" />
+    <Compile Include="models\FishSpeciesModels\Pencilfish.cs" />
+    <Compile Include="models\FishSpeciesModels\Pleco.cs" />
+    <Compile Include="models\FishSpeciesModels\Tetra.cs" />
+    <Compile Include="models\ModelBaseClasses\FishTank.cs" />
+    <Compile Include="models\ModelBaseClasses\LiveFish.cs" />
+    <Compile Include="models\ModelBaseClasses\TankAccessory.cs" />
+    <Compile Include="models\ModelBaseClasses\TankTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

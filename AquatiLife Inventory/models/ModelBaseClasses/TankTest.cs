@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AquatiLife_Inventory.HistoryModels
+namespace AquatiLife_Inventory.ModelBaseClasses
 {
     /// <summary>
     /// Describes the results of testing a fish tank for various conditions

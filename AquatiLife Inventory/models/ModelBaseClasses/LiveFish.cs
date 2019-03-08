@@ -8,20 +8,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace AquatiLife_Inventory.models
+namespace AquatiLife_Inventory.ModelBaseClasses
 {
 
     /// <summary>
     /// Represents a live fish
     /// </summary>
-    public class LiveFish : TankAccessory
+    public class LiveFish
     {
         /// <summary>
         /// Represents the type of object, "LiveFish" has an "AccessoryType" of "Fish"
         /// </summary>
         public AccessoryType EntityType { get; set; } = AccessoryType.Fish;
 
+        #region Purchase Properties...
+
+        /// <summary>
+        /// Cost of the fish when purchased
+        /// </summary>
+        public double? PurchasePrice { get; set; }
+
+        /// <summary>
+        /// Refers to the data the fish was purchased from a store and added to a tank
+        /// </summary>
+        public DateTime PurchaseDate { get; set; }
+
+        /// <summary>
+        /// Store where fish was purchased
+        /// </summary>
+        public Locations PurchaseLocation { get; set; }
+
+
+
+        #endregion
+
         #region Fish Descriptive Properties...
+
+        /// <summary>
+        /// Pet Fish's Friendly Name
+        /// </summary>
+        public string Name { get; set; }
 
             /// <summary>
             /// Represents how big the fish can grow (centimeters)
@@ -135,18 +161,37 @@ namespace AquatiLife_Inventory.models
         #endregion
 
         /// <summary>
+        /// Instantiate a new live fish base class object
+        /// </summary>
+        public LiveFish()
+        {
+
+        }
+
+        /// <summary>
         /// Instantiate a new fish object
         /// </summary>
         /// <param name="displayName">Name displayed to the user</param>
-        /// <param name="accessoryCost">Cost of the fish when purchased</param>
+        /// <param name="fishCost">Cost of the fish when purchased</param>
         /// <param name="purchaseDate">Date of the purchase of the fish</param>
         /// <param name="purchaseLocation">Location where the fish was purchased</param>
-        public LiveFish(string displayName, double accessoryCost, DateTime purchaseDate, Locations purchaseLocation) :base(displayName, accessoryCost, purchaseDate, purchaseLocation)
+        public LiveFish(string displayName, double fishCost, DateTime purchaseDate, Locations purchaseLocation)
         {
-            DisplayName = displayName;
-            PurchasePrice = accessoryCost;
+            Name = displayName;
+            PurchasePrice = fishCost;
             PurchaseDate = purchaseDate;
             PurchaseLocation = purchaseLocation;
+        }
+
+        /// <summary>
+        /// Instantiate a new fish object
+        /// </summary>
+        /// <param name="displayName">Name displayed to the user</param>
+        /// <param name="purchaseDate">Date of the purchase of the fish</param>
+        public LiveFish(string displayName, DateTime purchaseDate)
+        {
+            Name = displayName;
+            PurchaseDate = purchaseDate;
         }
 
     }
