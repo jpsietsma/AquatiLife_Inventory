@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AquaModClasses.Authentication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AquatiLife_Inventory
+namespace AquatiLife_Inventory.Screens
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserProfileDashboard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserProfileDashboard : Window
     {
-        public MainWindow()
+        public UserProfileDashboard()
         {
             InitializeComponent();
         }

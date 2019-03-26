@@ -1,0 +1,42 @@
+﻿<Window x:Class="AquatiLife_Inventory.Screens.AddFish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AquatiLife_Inventory.Screens"
+        mc:Ignorable="d"
+        Title="Add New Fish" Height="450" Width="800">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+            <MenuItem Header="File">
+                <MenuItem x:Name="FileLoginItem" Header="Log In" />
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Settings" />
+            <MenuItem Header="Reports" />
+            <MenuItem Header="Care Guides" />
+            <MenuItem Header="Accessory Gallery" />
+            <MenuItem Header="My Tanks" />
+            <MenuItem Header="My Fish" />
+            <MenuItem x:Name="MyAccountMenu" Header="My Account">
+                <MenuItem Header="My Profile" />
+                <MenuItem Header="Login Details" />
+                <MenuItem Header="My Preferences" />
+                <MenuItem Header="Email Preferences" />
+            </MenuItem>
+        </Menu>
+    </Grid>
+    
+</Window>

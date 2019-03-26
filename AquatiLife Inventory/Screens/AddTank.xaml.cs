@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AquatiLife_Inventory
+namespace AquatiLife_Inventory.Screens
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddTank.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddTank : Window
     {
-        public MainWindow()
+        public AddTank()
         {
             InitializeComponent();
         }

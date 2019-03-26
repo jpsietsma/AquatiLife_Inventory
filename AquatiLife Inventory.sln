@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquatiLife Inventory", "AquatiLife Inventory\AquatiLife Inventory.csproj", "{E8BF9BEA-4DAE-42C8-A736-30B922FF15AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "AquatiLife_Test_Console\TestConsole.csproj", "{CD569509-9E63-429C-8429-47BA6684B2A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquatiLife_Test_Console", "AquatiLife_Test_Console\AquatiLife_Test_Console.csproj", "{CD569509-9E63-429C-8429-47BA6684B2A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquatiLife_Inventory_DataAccess", "AquatiLife_Inventory_DataAccess\AquatiLife_Inventory_DataAccess.csproj", "{EE946CA7-007A-4FEE-8F82-29A7B005A24E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquaModClasses", "AquaModClasses\AquaModClasses.csproj", "{C66BF672-30D8-4B8D-B567-7C3B2D99CD0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFP_AquatiLife_Inventory_UI", "WFP_AquatiLife_Inventory_UI\WFP_AquatiLife_Inventory_UI.csproj", "{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E8BF9BEA-4DAE-42C8-A736-30B922FF15AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8BF9BEA-4DAE-42C8-A736-30B922FF15AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8BF9BEA-4DAE-42C8-A736-30B922FF15AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8BF9BEA-4DAE-42C8-A736-30B922FF15AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD569509-9E63-429C-8429-47BA6684B2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD569509-9E63-429C-8429-47BA6684B2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD569509-9E63-429C-8429-47BA6684B2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD569509-9E63-429C-8429-47BA6684B2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE946CA7-007A-4FEE-8F82-29A7B005A24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE946CA7-007A-4FEE-8F82-29A7B005A24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE946CA7-007A-4FEE-8F82-29A7B005A24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE946CA7-007A-4FEE-8F82-29A7B005A24E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C66BF672-30D8-4B8D-B567-7C3B2D99CD0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C66BF672-30D8-4B8D-B567-7C3B2D99CD0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C66BF672-30D8-4B8D-B567-7C3B2D99CD0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C66BF672-30D8-4B8D-B567-7C3B2D99CD0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
