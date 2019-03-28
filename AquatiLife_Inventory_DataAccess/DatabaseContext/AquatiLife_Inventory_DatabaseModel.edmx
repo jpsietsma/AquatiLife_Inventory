@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AquatiLife_Inventory_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FishTypes">
+          <Key>
+            <PropertyRef Name="pk_FishTypeID" />
+          </Key>
+          <Property Name="pk_FishTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FishTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FishTypeImagePath" Type="nvarchar" MaxLength="100" />
+          <Property Name="FishFeederType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FishBirthingType" Type="nvarchar" MaxLength="50" />
+          <Property Name="FishMinTankSize" Type="int" />
+          <Property Name="FishAgressionLevel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FishTerritorialLevel" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseLocations">
+          <Key>
+            <PropertyRef Name="pk_PurchaseLocationID" />
+          </Key>
+          <Property Name="pk_PurchaseLocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressStreet" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressState" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressZip" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Purchases">
+          <Key>
+            <PropertyRef Name="pk_PurchaseID" />
+          </Key>
+          <Property Name="pk_PurchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="fk_PurchaseLocation" Type="int" Nullable="false" />
+          <Property Name="fk_PurchaseType" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="float" Nullable="false" />
+          <Property Name="fk_UserFish" Type="int" />
+          <Property Name="fk_UserTank" Type="int" />
+        </EntityType>
+        <EntityType Name="PurchaseTypes">
+          <Key>
+            <PropertyRef Name="pk_PurchaseTypeID" />
+          </Key>
+          <Property Name="pk_PurchaseTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFish">
+          <Key>
+            <PropertyRef Name="pk_UserFishID" />
+          </Key>
+          <Property Name="pk_UserFishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_FishTypeID" Type="int" Nullable="false" />
+          <Property Name="fk_OwnerID" Type="int" Nullable="false" />
+          <Property Name="fk_TankID" Type="int" Nullable="false" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="PurchasePrice" Type="float" />
+          <Property Name="IsAlive" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="fk_PurchaseLocation" Type="int" />
+          <Property Name="FishNotes" Type="text" />
+        </EntityType>
+        <EntityType Name="UserLoginSessions">
+          <Key>
+            <PropertyRef Name="pk_SessionID" />
+          </Key>
+          <Property Name="pk_SessionID" Type="int" Nullable="false" />
+          <Property Name="fk_UserID" Type="int" Nullable="false" />
+          <Property Name="SessionBegin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SessionPermission" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SessionEnd" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="pk_UserID" />
+          </Key>
+          <Property Name="pk_UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTanks">
+          <Key>
+            <PropertyRef Name="pk_UserTankID" />
+          </Key>
+          <Property Name="pk_UserTankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_TankOwner" Type="int" Nullable="false" />
+          <Property Name="TankSize" Type="int" Nullable="false" />
+          <Property Name="TankHeight" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TankWidth" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TankWaterType" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.GetFishTypes_vw' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GetFishTypes_vw">
+          <Key>
+            <PropertyRef Name="FishTypeName" />
+          </Key>
+          <Property Name="FishTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Purchases_PurchaseLocations">
+          <End Role="PurchaseLocations" Type="Self.PurchaseLocations" Multiplicity="1" />
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseLocations">
+              <PropertyRef Name="pk_PurchaseLocationID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_PurchaseLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_PurchaseTypes">
+          <End Role="PurchaseTypes" Type="Self.PurchaseTypes" Multiplicity="1" />
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseTypes">
+              <PropertyRef Name="pk_PurchaseTypeID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_PurchaseType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_UserFish">
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="0..1" />
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserFish">
+              <PropertyRef Name="pk_UserFishID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_UserFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_UserTanks">
+          <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="0..1" />
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTanks">
+              <PropertyRef Name="pk_UserTankID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_UserTank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_FishTypes">
+          <End Role="FishTypes" Type="Self.FishTypes" Multiplicity="1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishTypes">
+              <PropertyRef Name="pk_FishTypeID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_FishTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_PurchaseLocations">
+          <End Role="PurchaseLocations" Type="Self.PurchaseLocations" Multiplicity="0..1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseLocations">
+              <PropertyRef Name="pk_PurchaseLocationID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_PurchaseLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_UserTanks">
+          <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTanks">
+              <PropertyRef Name="pk_UserTankID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_TankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLoginSessions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserLoginSessions" Type="Self.UserLoginSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="UserLoginSessions">
+              <PropertyRef Name="fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTanks_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="UserTanks">
+              <PropertyRef Name="fk_TankOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AquatiLife_Inventory_DatabaseModelStoreContainer">
+          <EntitySet Name="FishTypes" EntityType="Self.FishTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseLocations" EntityType="Self.PurchaseLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseTypes" EntityType="Self.PurchaseTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserFish" EntityType="Self.UserFish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLoginSessions" EntityType="Self.UserLoginSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTanks" EntityType="Self.UserTanks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GetFishTypes_vw" EntityType="Self.GetFishTypes_vw" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetFishTypes_vw].[FishTypeName] AS [FishTypeName]
+    FROM [dbo].[GetFishTypes_vw] AS [GetFishTypes_vw]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Purchases_PurchaseLocations" Association="Self.FK_Purchases_PurchaseLocations">
+            <End Role="PurchaseLocations" EntitySet="PurchaseLocations" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_PurchaseTypes" Association="Self.FK_Purchases_PurchaseTypes">
+            <End Role="PurchaseTypes" EntitySet="PurchaseTypes" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_UserFish" Association="Self.FK_Purchases_UserFish">
+            <End Role="UserFish" EntitySet="UserFish" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_UserTanks" Association="Self.FK_Purchases_UserTanks">
+            <End Role="UserTanks" EntitySet="UserTanks" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_FishTypes" Association="Self.FK_UserFish_FishTypes">
+            <End Role="FishTypes" EntitySet="FishTypes" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_PurchaseLocations" Association="Self.FK_UserFish_PurchaseLocations">
+            <End Role="PurchaseLocations" EntitySet="PurchaseLocations" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_Users" Association="Self.FK_UserFish_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_UserTanks" Association="Self.FK_UserFish_UserTanks">
+            <End Role="UserTanks" EntitySet="UserTanks" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLoginSessions_Users" Association="Self.FK_UserLoginSessions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLoginSessions" EntitySet="UserLoginSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTanks_Users" Association="Self.FK_UserTanks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTanks" EntitySet="UserTanks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AquatiLife_Inventory_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FishType">
+          <Key>
+            <PropertyRef Name="pk_FishTypeID" />
+          </Key>
+          <Property Name="pk_FishTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FishTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FishTypeImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FishFeederType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FishBirthingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FishMinTankSize" Type="Int32" />
+          <Property Name="FishAgressionLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FishTerritorialLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_FishTypes" FromRole="FishTypes" ToRole="UserFish" />
+        </EntityType>
+        <EntityType Name="PurchaseLocation">
+          <Key>
+            <PropertyRef Name="pk_PurchaseLocationID" />
+          </Key>
+          <Property Name="pk_PurchaseLocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_PurchaseLocations" FromRole="PurchaseLocations" ToRole="Purchases" />
+          <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_PurchaseLocations" FromRole="PurchaseLocations" ToRole="UserFish" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="pk_PurchaseID" />
+          </Key>
+          <Property Name="pk_PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="fk_PurchaseLocation" Type="Int32" Nullable="false" />
+          <Property Name="fk_PurchaseType" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="fk_UserFish" Type="Int32" />
+          <Property Name="fk_UserTank" Type="Int32" />
+          <NavigationProperty Name="PurchaseLocation" Relationship="Self.FK_Purchases_PurchaseLocations" FromRole="Purchases" ToRole="PurchaseLocations" />
+          <NavigationProperty Name="PurchaseType" Relationship="Self.FK_Purchases_PurchaseTypes" FromRole="Purchases" ToRole="PurchaseTypes" />
+          <NavigationProperty Name="UserFish" Relationship="Self.FK_Purchases_UserFish" FromRole="Purchases" ToRole="UserFish" />
+          <NavigationProperty Name="UserTank" Relationship="Self.FK_Purchases_UserTanks" FromRole="Purchases" ToRole="UserTanks" />
+        </EntityType>
+        <EntityType Name="PurchaseType">
+          <Key>
+            <PropertyRef Name="pk_PurchaseTypeID" />
+          </Key>
+          <Property Name="pk_PurchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_PurchaseTypes" FromRole="PurchaseTypes" ToRole="Purchases" />
+        </EntityType>
+        <EntityType Name="UserFish">
+          <Key>
+            <PropertyRef Name="pk_UserFishID" />
+          </Key>
+          <Property Name="pk_UserFishID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_FishTypeID" Type="Int32" Nullable="false" />
+          <Property Name="fk_OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="fk_TankID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchasePrice" Type="Double" />
+          <Property Name="IsAlive" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fk_PurchaseLocation" Type="Int32" />
+          <Property Name="FishNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FishType" Relationship="Self.FK_UserFish_FishTypes" FromRole="UserFish" ToRole="FishTypes" />
+          <NavigationProperty Name="PurchaseLocation" Relationship="Self.FK_UserFish_PurchaseLocations" FromRole="UserFish" ToRole="PurchaseLocations" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_UserFish" FromRole="UserFish" ToRole="Purchases" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserFish_Users" FromRole="UserFish" ToRole="Users" />
+          <NavigationProperty Name="UserTank" Relationship="Self.FK_UserFish_UserTanks" FromRole="UserFish" ToRole="UserTanks" />
+        </EntityType>
+        <EntityType Name="UserLoginSession">
+          <Key>
+            <PropertyRef Name="pk_SessionID" />
+          </Key>
+          <Property Name="pk_SessionID" Type="Int32" Nullable="false" />
+          <Property Name="fk_UserID" Type="Int32" Nullable="false" />
+          <Property Name="SessionBegin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SessionPermission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SessionEnd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserLoginSessions_Users" FromRole="UserLoginSessions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="pk_UserID" />
+          </Key>
+          <Property Name="pk_UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_Users" FromRole="Users" ToRole="UserFish" />
+          <NavigationProperty Name="UserLoginSessions" Relationship="Self.FK_UserLoginSessions_Users" FromRole="Users" ToRole="UserLoginSessions" />
+          <NavigationProperty Name="UserTanks" Relationship="Self.FK_UserTanks_Users" FromRole="Users" ToRole="UserTanks" />
+        </EntityType>
+        <EntityType Name="UserTank">
+          <Key>
+            <PropertyRef Name="pk_UserTankID" />
+          </Key>
+          <Property Name="pk_UserTankID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_TankOwner" Type="Int32" Nullable="false" />
+          <Property Name="TankSize" Type="Int32" Nullable="false" />
+          <Property Name="TankHeight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TankWidth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TankWaterType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_UserTanks" FromRole="UserTanks" ToRole="Purchases" />
+          <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_UserTanks" FromRole="UserTanks" ToRole="UserFish" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserTanks_Users" FromRole="UserTanks" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="GetFishTypes_vw">
+          <Key>
+            <PropertyRef Name="FishTypeName" />
+          </Key>
+          <Property Name="FishTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserFish_FishTypes">
+          <End Role="FishTypes" Type="Self.FishType" Multiplicity="1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishTypes">
+              <PropertyRef Name="pk_FishTypeID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_FishTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_PurchaseLocations">
+          <End Role="PurchaseLocations" Type="Self.PurchaseLocation" Multiplicity="1" />
+          <End Role="Purchases" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseLocations">
+              <PropertyRef Name="pk_PurchaseLocationID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_PurchaseLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_PurchaseLocations">
+          <End Role="PurchaseLocations" Type="Self.PurchaseLocation" Multiplicity="0..1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseLocations">
+              <PropertyRef Name="pk_PurchaseLocationID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_PurchaseLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_PurchaseTypes">
+          <End Role="PurchaseTypes" Type="Self.PurchaseType" Multiplicity="1" />
+          <End Role="Purchases" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseTypes">
+              <PropertyRef Name="pk_PurchaseTypeID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_PurchaseType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_UserFish">
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="0..1" />
+          <End Role="Purchases" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserFish">
+              <PropertyRef Name="pk_UserFishID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_UserFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_UserTanks">
+          <End Role="UserTanks" Type="Self.UserTank" Multiplicity="0..1" />
+          <End Role="Purchases" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTanks">
+              <PropertyRef Name="pk_UserTankID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_UserTank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_UserTanks">
+          <End Role="UserTanks" Type="Self.UserTank" Multiplicity="1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTanks">
+              <PropertyRef Name="pk_UserTankID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_TankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLoginSessions_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserLoginSessions" Type="Self.UserLoginSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="UserLoginSessions">
+              <PropertyRef Name="fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTanks_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserTanks" Type="Self.UserTank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="UserTanks">
+              <PropertyRef Name="fk_TankOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FishTypes" EntityType="Self.FishType" />
+          <EntitySet Name="PurchaseLocations" EntityType="Self.PurchaseLocation" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="PurchaseTypes" EntityType="Self.PurchaseType" />
+          <EntitySet Name="UserFish" EntityType="Self.UserFish" />
+          <EntitySet Name="UserLoginSessions" EntityType="Self.UserLoginSession" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTanks" EntityType="Self.UserTank" />
+          <EntitySet Name="GetFishTypes_vw" EntityType="Self.GetFishTypes_vw" />
+          <AssociationSet Name="FK_UserFish_FishTypes" Association="Self.FK_UserFish_FishTypes">
+            <End Role="FishTypes" EntitySet="FishTypes" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_PurchaseLocations" Association="Self.FK_Purchases_PurchaseLocations">
+            <End Role="PurchaseLocations" EntitySet="PurchaseLocations" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_PurchaseLocations" Association="Self.FK_UserFish_PurchaseLocations">
+            <End Role="PurchaseLocations" EntitySet="PurchaseLocations" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_PurchaseTypes" Association="Self.FK_Purchases_PurchaseTypes">
+            <End Role="PurchaseTypes" EntitySet="PurchaseTypes" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_UserFish" Association="Self.FK_Purchases_UserFish">
+            <End Role="UserFish" EntitySet="UserFish" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_UserTanks" Association="Self.FK_Purchases_UserTanks">
+            <End Role="UserTanks" EntitySet="UserTanks" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_Users" Association="Self.FK_UserFish_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_UserTanks" Association="Self.FK_UserFish_UserTanks">
+            <End Role="UserTanks" EntitySet="UserTanks" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLoginSessions_Users" Association="Self.FK_UserLoginSessions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLoginSessions" EntitySet="UserLoginSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTanks_Users" Association="Self.FK_UserTanks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTanks" EntitySet="UserTanks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AquatiLife_Inventory_DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="FishTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.FishType">
+              <MappingFragment StoreEntitySet="FishTypes">
+                <ScalarProperty Name="pk_FishTypeID" ColumnName="pk_FishTypeID" />
+                <ScalarProperty Name="FishTypeName" ColumnName="FishTypeName" />
+                <ScalarProperty Name="FishTypeImagePath" ColumnName="FishTypeImagePath" />
+                <ScalarProperty Name="FishFeederType" ColumnName="FishFeederType" />
+                <ScalarProperty Name="FishBirthingType" ColumnName="FishBirthingType" />
+                <ScalarProperty Name="FishMinTankSize" ColumnName="FishMinTankSize" />
+                <ScalarProperty Name="FishAgressionLevel" ColumnName="FishAgressionLevel" />
+                <ScalarProperty Name="FishTerritorialLevel" ColumnName="FishTerritorialLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseLocations">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.PurchaseLocation">
+              <MappingFragment StoreEntitySet="PurchaseLocations">
+                <ScalarProperty Name="pk_PurchaseLocationID" ColumnName="pk_PurchaseLocationID" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
+                <ScalarProperty Name="AddressCity" ColumnName="AddressCity" />
+                <ScalarProperty Name="AddressState" ColumnName="AddressState" />
+                <ScalarProperty Name="AddressZip" ColumnName="AddressZip" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchases">
+                <ScalarProperty Name="pk_PurchaseID" ColumnName="pk_PurchaseID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="fk_PurchaseLocation" ColumnName="fk_PurchaseLocation" />
+                <ScalarProperty Name="fk_PurchaseType" ColumnName="fk_PurchaseType" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="fk_UserFish" ColumnName="fk_UserFish" />
+                <ScalarProperty Name="fk_UserTank" ColumnName="fk_UserTank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.PurchaseType">
+              <MappingFragment StoreEntitySet="PurchaseTypes">
+                <ScalarProperty Name="pk_PurchaseTypeID" ColumnName="pk_PurchaseTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFish">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.UserFish">
+              <MappingFragment StoreEntitySet="UserFish">
+                <ScalarProperty Name="pk_UserFishID" ColumnName="pk_UserFishID" />
+                <ScalarProperty Name="fk_FishTypeID" ColumnName="fk_FishTypeID" />
+                <ScalarProperty Name="fk_OwnerID" ColumnName="fk_OwnerID" />
+                <ScalarProperty Name="fk_TankID" ColumnName="fk_TankID" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="IsAlive" ColumnName="IsAlive" />
+                <ScalarProperty Name="fk_PurchaseLocation" ColumnName="fk_PurchaseLocation" />
+                <ScalarProperty Name="FishNotes" ColumnName="FishNotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLoginSessions">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.UserLoginSession">
+              <MappingFragment StoreEntitySet="UserLoginSessions">
+                <ScalarProperty Name="pk_SessionID" ColumnName="pk_SessionID" />
+                <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
+                <ScalarProperty Name="SessionBegin" ColumnName="SessionBegin" />
+                <ScalarProperty Name="SessionPermission" ColumnName="SessionPermission" />
+                <ScalarProperty Name="SessionEnd" ColumnName="SessionEnd" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="pk_UserID" ColumnName="pk_UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTanks">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.UserTank">
+              <MappingFragment StoreEntitySet="UserTanks">
+                <ScalarProperty Name="pk_UserTankID" ColumnName="pk_UserTankID" />
+                <ScalarProperty Name="fk_TankOwner" ColumnName="fk_TankOwner" />
+                <ScalarProperty Name="TankSize" ColumnName="TankSize" />
+                <ScalarProperty Name="TankHeight" ColumnName="TankHeight" />
+                <ScalarProperty Name="TankWidth" ColumnName="TankWidth" />
+                <ScalarProperty Name="TankWaterType" ColumnName="TankWaterType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetFishTypes_vw">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseModel.GetFishTypes_vw">
+              <MappingFragment StoreEntitySet="GetFishTypes_vw">
+                <ScalarProperty Name="FishTypeName" ColumnName="FishTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
