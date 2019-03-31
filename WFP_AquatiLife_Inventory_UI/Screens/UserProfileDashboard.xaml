@@ -8,8 +8,8 @@
         Title="UserProfileDashboard" Height="450" Width="800">
     <Grid>
         <TextBlock Text=" UserName: " Padding="200,0,0,0" />
-        <TextBlock Text="{ Binding UserName }" Padding="275, 0, 0, 0" />
+        <TextBlock x:Name="UserNameText" Padding="275, 0, 0, 0" />
         <TextBlock Text="Permission: " Padding="200,25,0,0" />
-        <TextBlock Text="{ Binding PermissionLevels }" Padding="275, 25, 0, 0" />
+        <TextBlock x:Name="UserPermissionText" Padding="275, 25, 0, 0" />
     </Grid>
 </Window>

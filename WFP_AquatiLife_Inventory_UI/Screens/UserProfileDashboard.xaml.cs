@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AquatiLife_Inventory_DataAccess.Authentication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
     /// </summary>
     public partial class UserProfileDashboard : Window
     {
-        public UserProfileDashboard()
+        public UserProfileDashboard(AuthenticatedUserSession _session)
         {
             InitializeComponent();
+
+            UserNameText.Text = _session.UserName;
+            UserPermissionText.Text = _session.PermissionLevels;
+
         }
     }
 }

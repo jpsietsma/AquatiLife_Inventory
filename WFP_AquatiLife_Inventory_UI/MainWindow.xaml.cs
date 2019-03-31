@@ -22,19 +22,43 @@ namespace WFP_AquatiLife_Inventory_UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public AuthenticatedUserSession _userSession { get; set; } = null;
-        UserLogin _login = new UserLogin();
+        AuthenticatedUserSession _userSession;
+        UserLogin _login;
+        DashboardWindow _dash;
 
+        /// <summary>
+        /// Show Login window if user is not logged in or session is not active
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
-            this.Visibility = Visibility.Hidden;
 
-            if (_userSession == null)
-            {                
-                _login.Visibility = Visibility.Visible;
-                _login.Title = "User Login";
-            }
+            _login = new UserLogin();
+            _login.Visibility = Visibility.Visible;
+            _login.Title = "User Login";
+            _login.Focus();
+
+            this.Close();
+
         }
+
+        /// <summary>
+        /// Show Dashboard window if user is logged and session is active
+        /// </summary>
+        /// <param name="_session">User Session</param>
+        public MainWindow(AuthenticatedUserSession _session)
+        {
+            InitializeComponent();            
+
+            _userSession = _session;
+
+            _dash = new DashboardWindow(_userSession);
+                _dash.Visibility = Visibility.Visible;
+                _dash.Focus();
+
+            this.Close();
+
+        }
+
     }
 }

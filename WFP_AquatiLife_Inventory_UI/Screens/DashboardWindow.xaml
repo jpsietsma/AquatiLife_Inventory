@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI"
         mc:Ignorable="d"
-        Title="AquatiLife Fish Inventory Management | User: { Binding UserName }" Height="450" Width="800">
+        Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

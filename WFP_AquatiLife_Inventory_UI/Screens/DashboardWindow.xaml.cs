@@ -22,62 +22,70 @@ namespace WFP_AquatiLife_Inventory_UI
     /// </summary>
     public partial class DashboardWindow : Window
     {
-        public AddTank tankWindow { get; set; } = new AddTank();
-        public AddFish fishWindow { get; set; } = new AddFish();
-        public UserLogin loginWindow { get; set; } = new UserLogin();
-        public UserProfileDashboard profileWindow { get; set; } = new UserProfileDashboard();
+        public AddTank tankWindow { get; set; }
+        public AddFish fishWindow { get; set; }
+        public UserLogin loginWindow { get; set; }
+        public UserProfileDashboard profileWindow { get; set; }
+        public AuthenticatedUserSession _userSession { get; set; }
 
+        /// <summary>
+        /// Open a new dashboard session with the current authenticated user
+        /// </summary>
+        /// <param name="_session"></param>
         public DashboardWindow(AuthenticatedUserSession _session)
         {
-            //InitializeComponent();
-            DataContext = _session;
+            InitializeComponent();
+            _userSession = _session;
 
-            this.Closed += DashboardWindow_Closed;
+            this.Title = $@"AquatiLife Fish Inventory Management | Logged in as: { _session.UserName }";
 
-            if(_session == null)
-            {
-                loginWindow.Visibility = Visibility.Visible;
-                loginWindow.Topmost = true;
-                loginWindow.Focus();
-
-                if (loginWindow._session != null)
-                {
-                    _session = loginWindow._session;                    
-                    this.Visibility = Visibility.Visible;
-                    this.Activate();
-                    InitializeComponent();
-
-                    loginWindow.Close();
-                }
-            }            
+            this.Closed += DashboardWindow_Closed;            
 
         }
 
-        //Shut down the application when DashboardWindow is closed
+        /// <summary>
+        /// Shut down the application when the dashboard window is closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DashboardWindow_Closed(object sender, EventArgs e)
         {
             App.Current.Shutdown();
         }
 
-        //Open AddTank window when menu item clicked
+        /// <summary>
+        /// Open the Add Tank window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click_AddTank(object sender, RoutedEventArgs e)
         {
-            
+                tankWindow = new AddTank();
                 tankWindow.Visibility = Visibility.Visible;
                 tankWindow.Focus();
                         
         }
 
-        //Open AddFish window when menu item clicked
+        /// <summary>
+        /// Open the add fish window 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click_AddFish(object sender, RoutedEventArgs e)
-        {            
-                fishWindow.Visibility = Visibility.Visible;
-                fishWindow.Focus();
+        {
+            fishWindow = new AddFish();    
+            fishWindow.Visibility = Visibility.Visible;
+            fishWindow.Focus();
         }
 
-        //Open MyProfile window when menu item is clicked
+        /// <summary>
+        /// Open the profile dashboard for the current authenticated session
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click_MyProfile(object sender, RoutedEventArgs e)
         {
+            profileWindow = new UserProfileDashboard(_userSession);
             profileWindow.Visibility = Visibility.Visible;
             profileWindow.Focus();            
         }

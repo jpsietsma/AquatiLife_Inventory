@@ -33,8 +33,11 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
 
             if (UserLoginAccess.CheckUserPass(UserName.Text, Password.Password))
             {
-                _session = new AuthenticatedUserSession(UserName.Text);
-                this.Visibility = Visibility.Hidden;              
+                _session = new AuthenticatedUserSession(UserName.Text);                
+
+                MainWindow _main = new MainWindow(_session);
+
+                this.Close();
             }
             else
             {
