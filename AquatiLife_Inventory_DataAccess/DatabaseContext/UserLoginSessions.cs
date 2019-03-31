@@ -14,11 +14,12 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class UserLoginSessions
     {
-        public int pk_SessionID { get; set; }
+        public string pk_SessionID { get; set; }
         public int fk_UserID { get; set; }
         public string SessionBegin { get; set; }
         public string SessionPermission { get; set; }
         public string SessionEnd { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual Users Users { get; set; }
     }

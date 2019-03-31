@@ -8,7 +8,7 @@ namespace AquaModClasses.Authentication
 {
     public class UserSession
     {
-        public int SessionID { get; set; }
+        public string SessionID { get; set; }
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string PermissionLevels { get; set; }

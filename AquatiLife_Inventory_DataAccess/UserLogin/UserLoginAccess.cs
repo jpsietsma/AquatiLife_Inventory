@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AquaModClasses.BaseClassModels;
 using AquatiLife_Inventory_DataAccess.Authentication;
+using AquatiLife_Inventory_DataAccess.enums;
 
 namespace AquatiLife_Inventory_DataAccess.DatabaseContext
 {
@@ -65,12 +66,44 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         }
 
 
-        public static void LogUserSession(AuthenticatedUserSession _session)
+        public static void LogUserSession(AuthenticatedUserSession _session, LogType _type)
         {
-            using (DatabaseEntities dbconn = new DatabaseEntities())
+            string sql = string.Empty;
+
+            switch (_type)
             {
-                dbconn.UserLoginSessions.Add(_session._UserSessionRecord);
+                case LogType.LOGIN:
+                {
+
+                    sql = $@"INSERT INTO UserLoginSessions (pk_SessionID, fk_UserID, SessionBegin, SessionPermission, SessionEnd, IsActive) VALUES ('{ _session.SessionID }', '{ _session.UserID }', '{_session.SessionBegin }', '{ _session.PermissionLevels }', '{ _session.SessionEnd }', '{ _session.IsActive }')";
+                    break;
+                }
+                    
+                case LogType.LOGOUT:
+                {
+                    sql = $@"UPDATE UserLoginSessions SET SessionEnd = '{ _session.SessionEnd }', IsActive = '{ _session.IsActive }' WHERE pk_SessionID = '{ _session.SessionID }' ";
+                    break;
+                }
+                   
+
             }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(GetConnectionString()))
+                {
+                    conn.Open();
+
+                    SqlCommand query = new SqlCommand(sql, conn);
+
+                    query.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
         
     }

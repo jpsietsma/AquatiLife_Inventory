@@ -1,5 +1,6 @@
 ﻿using AquaModClasses.Authentication;
 using AquatiLife_Inventory_DataAccess.DatabaseContext;
+using AquatiLife_Inventory_DataAccess.enums;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,16 +23,26 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
             {
                 Users _data = dbconn.Users.Where(x => x.UserName == user).First();
 
-                SessionID = GetHashCode();
+                SessionID = GenerateSessionID();
                 UserID = _data.pk_UserID;
                 UserName = _data.UserName;
                 PermissionLevels = _data.UserRole;
                 SessionBegin = DateTime.Now.ToString();
+                SessionEnd = "NULL";
                 IsActive = true;
 
                 _UserSessionRecord = GetUserLoginSession();
 
             }
+        }
+
+        /// <summary>
+        /// Generate new unique id based on session begin time and new GUID
+        /// </summary>
+        /// <returns></returns>
+        private string GenerateSessionID()
+        {
+            return Guid.NewGuid().ToString(SessionBegin);
         }
 
         /// <summary>
@@ -67,6 +78,17 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
             permissionList.Sort();
 
             return permissionList;
+        }
+
+        /// <summary>
+        /// Log the user out and record the session to the database
+        /// </summary>
+        public void LogOut()
+        {
+            this.SessionEnd = DateTime.Now.ToString();
+            this.IsActive = false;
+
+            UserLoginAccess.LogUserSession(this, LogType.LOGOUT);
         }
 
     }

@@ -12,29 +12,26 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFish
+    public partial class PurchaseLocations
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserFish()
+        public PurchaseLocations()
         {
             this.Purchases = new HashSet<Purchases>();
+            this.UserFish = new HashSet<UserFish>();
         }
     
-        public int pk_UserFishID { get; set; }
-        public int fk_FishTypeID { get; set; }
-        public int fk_OwnerID { get; set; }
-        public int fk_TankID { get; set; }
-        public Nullable<System.DateTime> PurchaseDate { get; set; }
-        public Nullable<double> PurchasePrice { get; set; }
-        public string IsAlive { get; set; }
-        public Nullable<int> fk_PurchaseLocation { get; set; }
-        public string FishNotes { get; set; }
+        public int pk_PurchaseLocationID { get; set; }
+        public string StoreName { get; set; }
+        public string AddressStreet { get; set; }
+        public string AddressCity { get; set; }
+        public string AddressState { get; set; }
+        public string AddressZip { get; set; }
+        public string PhoneNumber { get; set; }
     
-        public virtual FishTypes FishTypes { get; set; }
-        public virtual PurchaseLocations PurchaseLocations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchases> Purchases { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual UserTanks UserTanks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserFish> UserFish { get; set; }
     }
 }

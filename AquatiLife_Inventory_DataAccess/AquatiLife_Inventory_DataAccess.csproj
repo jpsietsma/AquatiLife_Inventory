@@ -69,51 +69,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AuthenticatedUserSession.cs" />
-    <Compile Include="DatabaseContext\AquatiLife_Inventory_Database.Context.cs">
+    <Compile Include="DatabaseContext\AquatiLife_Inventory_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AquatiLife_Inventory_Database.Context.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\AquatiLife_Inventory_Database.cs">
+    <Compile Include="DatabaseContext\AquatiLife_Inventory_DB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AquatiLife_Inventory_Database.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\AquatiLife_Inventory_Database.Designer.cs">
+    <Compile Include="DatabaseContext\AquatiLife_Inventory_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AquatiLife_Inventory_Database.edmx</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.edmx</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\FishTypes.cs">
-      <DependentUpon>AquatiLife_Inventory_Database.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\GetFishTypes_vw.cs">
-      <DependentUpon>AquatiLife_Inventory_Database.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\PurchaseLocations.cs">
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\Purchases.cs">
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\PurchaseTypes.cs">
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserFish.cs">
-      <DependentUpon>AquatiLife_Inventory_Database.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserLoginSessions.cs">
-      <DependentUpon>AquatiLife_Inventory_Database.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\Users.cs">
-      <DependentUpon>AquatiLife_Inventory_Database.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserTanks.cs">
-      <DependentUpon>AquatiLife_Inventory_Database.tt</DependentUpon>
+      <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="enums\LogType.cs" />
     <Compile Include="UserLogin\UserLoginAccess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DatabaseContext\AquatiLife_Inventory_Database.edmx">
+    <EntityDeploy Include="DatabaseContext\AquatiLife_Inventory_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AquatiLife_Inventory_Database.Designer.cs</LastGenOutput>
+      <LastGenOutput>AquatiLife_Inventory_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DatabaseContext\AquatiLife_Inventory_Database.edmx.diagram">
-      <DependentUpon>AquatiLife_Inventory_Database.edmx</DependentUpon>
+    <None Include="DatabaseContext\AquatiLife_Inventory_DB.edmx.diagram">
+      <DependentUpon>AquatiLife_Inventory_DB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -142,15 +152,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseContext\AquatiLife_Inventory_Database.Context.tt">
+    <Content Include="DatabaseContext\AquatiLife_Inventory_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AquatiLife_Inventory_Database.edmx</DependentUpon>
-      <LastGenOutput>AquatiLife_Inventory_Database.Context.cs</LastGenOutput>
+      <DependentUpon>AquatiLife_Inventory_DB.edmx</DependentUpon>
+      <LastGenOutput>AquatiLife_Inventory_DB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DatabaseContext\AquatiLife_Inventory_Database.tt">
+    <Content Include="DatabaseContext\AquatiLife_Inventory_DB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AquatiLife_Inventory_Database.edmx</DependentUpon>
-      <LastGenOutput>AquatiLife_Inventory_Database.cs</LastGenOutput>
+      <DependentUpon>AquatiLife_Inventory_DB.edmx</DependentUpon>
+      <LastGenOutput>AquatiLife_Inventory_DB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

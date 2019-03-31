@@ -86,10 +86,24 @@ namespace WFP_AquatiLife_Inventory_UI
         private void MenuItem_Click_MyProfile(object sender, RoutedEventArgs e)
         {
             profileWindow = new UserProfileDashboard(_userSession);
-            profileWindow.Visibility = Visibility.Visible;
-            profileWindow.Focus();            
+                profileWindow.Visibility = Visibility.Visible;
+                profileWindow.Focus();            
         }
 
+        /// <summary>
+        /// Log user out when clicking on file > logout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
+        {
+            this._userSession.LogOut();
 
+            MainWindow _main = new MainWindow(this._userSession);
+                _main.Visibility = Visibility.Visible;
+                _main.Focus();
+
+            this.Close();
+        }
     }
 }

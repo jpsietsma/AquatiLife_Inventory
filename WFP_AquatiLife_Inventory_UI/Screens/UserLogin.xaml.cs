@@ -1,5 +1,6 @@
 ﻿using AquatiLife_Inventory_DataAccess.Authentication;
 using AquatiLife_Inventory_DataAccess.DatabaseContext;
+using AquatiLife_Inventory_DataAccess.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,9 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
 
             if (UserLoginAccess.CheckUserPass(UserName.Text, Password.Password))
             {
-                _session = new AuthenticatedUserSession(UserName.Text);                
+                _session = new AuthenticatedUserSession(UserName.Text);
+
+                UserLoginAccess.LogUserSession(_session, LogType.LOGIN);
 
                 MainWindow _main = new MainWindow(_session);
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b96b542a251f477f9f1c767199df6791" Name="Diagram1">
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.FishTypes" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.PurchaseLocations" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.Purchases" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.PurchaseTypes" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.UserFish" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.UserLoginSessions" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.Users" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.UserTanks" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseModel.GetFishTypes_vw" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_UserFish_FishTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_Purchases_PurchaseLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_UserFish_PurchaseLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_Purchases_PurchaseTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_Purchases_UserFish" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_Purchases_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_UserFish_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_UserFish_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_UserLoginSessions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseModel.FK_UserTanks_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

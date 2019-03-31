@@ -17,16 +17,19 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserTanks()
         {
+            this.Purchases = new HashSet<Purchases>();
             this.UserFish = new HashSet<UserFish>();
         }
     
-        public int pk_TankID { get; set; }
+        public int pk_UserTankID { get; set; }
         public int fk_TankOwner { get; set; }
         public int TankSize { get; set; }
         public string TankHeight { get; set; }
         public string TankWidth { get; set; }
         public string TankWaterType { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Purchases> Purchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFish> UserFish { get; set; }
         public virtual Users Users { get; set; }

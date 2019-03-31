@@ -16,7 +16,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     public partial class DatabaseEntities : DbContext
     {
         public DatabaseEntities()
-            : base("name=DBEntities")
+            : base("name=DatabaseEntities")
         {
         }
     
@@ -26,6 +26,9 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         }
     
         public virtual DbSet<FishTypes> FishTypes { get; set; }
+        public virtual DbSet<PurchaseLocations> PurchaseLocations { get; set; }
+        public virtual DbSet<Purchases> Purchases { get; set; }
+        public virtual DbSet<PurchaseTypes> PurchaseTypes { get; set; }
         public virtual DbSet<UserFish> UserFish { get; set; }
         public virtual DbSet<UserLoginSessions> UserLoginSessions { get; set; }
         public virtual DbSet<Users> Users { get; set; }

@@ -48,16 +48,28 @@ namespace WFP_AquatiLife_Inventory_UI
         /// <param name="_session">User Session</param>
         public MainWindow(AuthenticatedUserSession _session)
         {
-            InitializeComponent();            
+            if (_session.IsActive)
+            {
+                InitializeComponent();
+                _userSession = _session;
 
-            _userSession = _session;
-
-            _dash = new DashboardWindow(_userSession);
+                _dash = new DashboardWindow(_userSession);
                 _dash.Visibility = Visibility.Visible;
                 _dash.Focus();
 
-            this.Close();
+                this.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                InitializeComponent();
+ 
+                _login = new UserLogin();
+                _login.Visibility = Visibility.Visible;
+                _login.Title = "User Login";
+                _login.Focus();
 
+                this.Visibility = Visibility.Hidden;
+            }          
         }
 
     }
