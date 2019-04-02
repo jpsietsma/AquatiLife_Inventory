@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AquatiLife_Inventory_DataAccess.Authentication;
+using Hardcodet.Wpf.TaskbarNotification;
+using System.Drawing;
 
 namespace WFP_AquatiLife_Inventory_UI
 {
@@ -28,6 +30,7 @@ namespace WFP_AquatiLife_Inventory_UI
         public UserLogin loginWindow { get; set; }
         public UserProfileDashboard profileWindow { get; set; }
         public AuthenticatedUserSession _userSession { get; set; }
+        public TaskbarIcon _trayIcon { get; set; }
 
         /// <summary>
         /// Open a new dashboard session with the current authenticated user
@@ -36,6 +39,11 @@ namespace WFP_AquatiLife_Inventory_UI
         public DashboardWindow(AuthenticatedUserSession _session)
         {
             InitializeComponent();
+
+            _trayIcon = new TaskbarIcon();
+            //_trayIcon.IconSource = Image.SourceProperty;
+            _trayIcon.ToolTipText = "AquatiLife Fish Inventory";
+
             _userSession = _session;
 
             this.Title = $@"AquatiLife Fish Inventory Management | Logged in as: { _session.UserName }";
