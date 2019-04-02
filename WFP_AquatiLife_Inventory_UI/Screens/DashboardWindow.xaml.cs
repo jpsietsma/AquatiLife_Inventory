@@ -17,6 +17,7 @@ using AquatiLife_Inventory_DataAccess.Authentication;
 
 namespace WFP_AquatiLife_Inventory_UI
 {
+
     /// <summary>
     /// Interaction logic for DashboardWindow.xaml
     /// </summary>
@@ -50,6 +51,7 @@ namespace WFP_AquatiLife_Inventory_UI
         /// <param name="e"></param>
         private void DashboardWindow_Closed(object sender, EventArgs e)
         {
+            this._userSession.LogOut();
             App.Current.Shutdown();
         }
 
@@ -60,8 +62,8 @@ namespace WFP_AquatiLife_Inventory_UI
         /// <param name="e"></param>
         private void MenuItem_Click_AddTank(object sender, RoutedEventArgs e)
         {
-                tankWindow = new AddTank();
-                tankWindow.Visibility = Visibility.Visible;
+                tankWindow = new AddTank(_userSession);
+                tankWindow.Activate();
                 tankWindow.Focus();
                         
         }
@@ -73,8 +75,8 @@ namespace WFP_AquatiLife_Inventory_UI
         /// <param name="e"></param>
         private void MenuItem_Click_AddFish(object sender, RoutedEventArgs e)
         {
-            fishWindow = new AddFish();    
-            fishWindow.Visibility = Visibility.Visible;
+            fishWindow = new AddFish(_userSession);    
+            fishWindow.Activate();
             fishWindow.Focus();
         }
 
@@ -86,7 +88,7 @@ namespace WFP_AquatiLife_Inventory_UI
         private void MenuItem_Click_MyProfile(object sender, RoutedEventArgs e)
         {
             profileWindow = new UserProfileDashboard(_userSession);
-                profileWindow.Visibility = Visibility.Visible;
+                profileWindow.Activate();
                 profileWindow.Focus();            
         }
 
@@ -97,13 +99,25 @@ namespace WFP_AquatiLife_Inventory_UI
         /// <param name="e"></param>
         private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
         {
+
+            this.Visibility = Visibility.Hidden;
             this._userSession.LogOut();
 
-            MainWindow _main = new MainWindow(this._userSession);
-                _main.Visibility = Visibility.Visible;
+            MainWindow _main = new MainWindow();
+                _main.Activate();
+                _main.Topmost = true;
                 _main.Focus();
+        }
 
-            this.Close();
+        /// <summary>
+        /// Exits application when clicking File > Exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click_Exit(object sender, RoutedEventArgs e)
+        {
+            _userSession.LogOut();
+            App.Current.Shutdown();
         }
     }
 }

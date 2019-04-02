@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AquatiLife_Inventory_DataAccess.Authentication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
     /// </summary>
     public partial class AddFish : Window
     {
-        public AddFish()
+        public AddFish(AuthenticatedUserSession _session)
         {
             InitializeComponent();
         }

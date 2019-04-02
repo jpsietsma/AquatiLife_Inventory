@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AquatiLife_Inventory_DataAccess.Authentication;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,23 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
     /// </summary>
     public partial class AddTank : Window
     {
-        public AddTank()
+        public AddTank(AuthenticatedUserSession _session)
         {
             InitializeComponent();
+
+            TextBox _TankNameTxt = TankNameTxt;
+            ComboBox _selectTankType = SelectTankType;
+
+        }
+
+        /// <summary>
+        /// Add new tank to database for user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddNewTank_ButtonClicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
