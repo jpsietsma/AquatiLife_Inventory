@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AquaModClasses.PurchaseOptions
 {
-
+    
     /// <summary>
     /// Represents the stores where fish were purchased from, or if was a gift
     /// </summary>

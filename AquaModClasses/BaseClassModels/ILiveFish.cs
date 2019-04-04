@@ -20,7 +20,7 @@ namespace AquaModClasses.BaseClassModels
         bool IsAlive { get; set; }
         string Name { get; set; }
         Color PrimaryColor { get; set; }
-        DateTime PurchaseDate { get; set; }
+        DateTime? PurchaseDate { get; set; }
         Locations PurchaseLocation { get; set; }
         double? PurchasePrice { get; set; }
         string ScientificName { get; set; }

@@ -9,10 +9,11 @@
 
 namespace AquatiLife_Inventory_DataAccess.DatabaseContext
 {
+    using AquaModClasses.BaseClassModels;
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFish
+    public partial class UserFish : ILiveFish
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserFish()

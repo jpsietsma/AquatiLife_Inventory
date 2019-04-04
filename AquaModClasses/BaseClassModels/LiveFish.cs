@@ -31,7 +31,7 @@ namespace AquaModClasses.BaseClassModels
             /// <summary>
             /// Refers to the data the fish was purchased from a store and added to a tank
             /// </summary>
-            public DateTime PurchaseDate { get; set; }
+            public DateTime? PurchaseDate { get; set; }
 
             /// <summary>
             /// Store where fish was purchased

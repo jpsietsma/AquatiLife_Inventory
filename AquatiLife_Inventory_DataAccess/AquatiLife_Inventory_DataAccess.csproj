@@ -112,6 +112,7 @@
       <DependentUpon>AquatiLife_Inventory_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="enums\LogType.cs" />
+    <Compile Include="Fish\FishExt.cs" />
     <Compile Include="UserLogin\UserLoginAccess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
