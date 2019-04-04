@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
         Height="450" Width="800">
     <Grid>
@@ -18,7 +19,9 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+        <tb:TaskbarIcon IconSource="/Images/blue_fish_icon.ico" x:Name="AQ_Tray_Icon"/>
+
+    <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
             <MenuItem Header="File">
                 <MenuItem x:Name="FileLogoutItem" Click="MenuItem_Click_LogOut" Header="Log Out" />
                 <MenuItem Header="Exit" Click="MenuItem_Click_Exit" />

@@ -39,10 +39,12 @@ namespace WFP_AquatiLife_Inventory_UI
         public DashboardWindow(AuthenticatedUserSession _session)
         {
             InitializeComponent();
+            _trayIcon = AQ_Tray_Icon;
 
-            _trayIcon = new TaskbarIcon();
-            //_trayIcon.IconSource = Image.SourceProperty;
-            _trayIcon.ToolTipText = "AquatiLife Fish Inventory";
+            TextBox _tray_tbpopup = new TextBox();
+            _tray_tbpopup.Text = "Hello Popup!";
+
+            _trayIcon.TrayPopup = _tray_tbpopup;
 
             _userSession = _session;
 
@@ -71,7 +73,7 @@ namespace WFP_AquatiLife_Inventory_UI
         private void MenuItem_Click_AddTank(object sender, RoutedEventArgs e)
         {
                 tankWindow = new AddTank(_userSession);
-                tankWindow.Activate();
+                tankWindow.Show();
                 tankWindow.Focus();
                         
         }
@@ -84,7 +86,7 @@ namespace WFP_AquatiLife_Inventory_UI
         private void MenuItem_Click_AddFish(object sender, RoutedEventArgs e)
         {
             fishWindow = new AddFish(_userSession);    
-            fishWindow.Activate();
+            fishWindow.Show();
             fishWindow.Focus();
         }
 
@@ -96,7 +98,7 @@ namespace WFP_AquatiLife_Inventory_UI
         private void MenuItem_Click_MyProfile(object sender, RoutedEventArgs e)
         {
             profileWindow = new UserProfileDashboard(_userSession);
-                profileWindow.Activate();
+                profileWindow.Show();
                 profileWindow.Focus();            
         }
 

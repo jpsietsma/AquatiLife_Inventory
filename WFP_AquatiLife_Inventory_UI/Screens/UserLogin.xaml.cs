@@ -27,6 +27,18 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
         public UserLogin()
         {            
             InitializeComponent();
+
+            this.Closed += UserLogin_Closed;
+        }
+
+        /// <summary>
+        /// Shut down the app when the user closes the login screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserLogin_Closed(object sender, EventArgs e)
+        {
+            App.Current.Shutdown();
         }
 
         private void LoginSubmit_Click(object sender, RoutedEventArgs e)
@@ -40,7 +52,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
 
                 MainWindow _main = new MainWindow(_session);
 
-                this.Close();
+                this.Hide();
             }
             else
             {
