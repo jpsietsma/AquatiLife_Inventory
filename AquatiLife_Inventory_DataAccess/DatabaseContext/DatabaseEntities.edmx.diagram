@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3993a4a55386483f86ffc9c7c718e6a7" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseEntities.AnimalTypes" Width="1.5" PointX="15" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.ContactInfo" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.FishCareGuides" Width="1.5" PointX="12.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.FishTankTypes" Width="1.5" PointX="12" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.FishTypes" Width="1.5" PointX="15" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.MedicalRecords" Width="1.5" PointX="12" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Purchases" Width="1.5" PointX="17.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.PurchaseTypes" Width="1.5" PointX="15" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.StoreHolidaySchedules" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Stores" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.StoreWeeklySchedules" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserFish" Width="1.5" PointX="15" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserLoginSessions" Width="1.5" PointX="12" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserProfiles" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Users" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserTanks" Width="1.5" PointX="12" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.WaterTypes" Width="1.5" PointX="9.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Get_AllFishTypeOverview" Width="1.5" PointX="2.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseEntities.FK_AnimalTypes_FishCareGuides" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_ContactInfo_Stores" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_ContactInfo_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserProfiles_ContactInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_FishCareGuides" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTankTypes_WaterType" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_WaterTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_MedicalRecords_UserFish" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_MedicalRecords_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Purchases_PurchaseTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Purchases_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Purchases_UserFish" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Purchases_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Stores_StoreHolidaySchedules" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Stores_StoreWeeklySchedules" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFish_FishTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFish_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFish_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserLoginSessions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Users_UserProfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTanks_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTanks_WaterType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

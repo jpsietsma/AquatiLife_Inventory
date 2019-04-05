@@ -12,15 +12,15 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class UserLoginSessions
+    public partial class MedicalRecords
     {
-        public string pk_SessionID { get; set; }
+        public int pk_MedRecordID { get; set; }
+        public System.DateTime RecordDate { get; set; }
+        public int fk_FishID { get; set; }
+        public string Description { get; set; }
         public int fk_UserID { get; set; }
-        public DateTime SessionBegin { get; set; }
-        public string SessionPermission { get; set; }
-        public DateTime? SessionEnd { get; set; }
-        public bool IsActive { get; set; }
     
+        public virtual UserFish UserFish { get; set; }
         public virtual Users Users { get; set; }
     }
 }

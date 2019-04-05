@@ -12,27 +12,22 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class UserTanks
+    public partial class FishCareGuides
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserTanks()
+        public FishCareGuides()
         {
-            this.Purchases = new HashSet<Purchases>();
-            this.UserFish = new HashSet<UserFish>();
+            this.AnimalTypes = new HashSet<AnimalTypes>();
+            this.FishTypes = new HashSet<FishTypes>();
         }
     
-        public int pk_UserTankID { get; set; }
-        public int fk_TankOwner { get; set; }
-        public int TankSize { get; set; }
-        public string TankHeight { get; set; }
-        public string TankWidth { get; set; }
-        public int fk_TankWaterType { get; set; }
+        public int pk_CareGuideID { get; set; }
+        public string filepath { get; set; }
+        public int fk_AnimalType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchases> Purchases { get; set; }
+        public virtual ICollection<AnimalTypes> AnimalTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual WaterTypes WaterTypes { get; set; }
+        public virtual ICollection<FishTypes> FishTypes { get; set; }
     }
 }

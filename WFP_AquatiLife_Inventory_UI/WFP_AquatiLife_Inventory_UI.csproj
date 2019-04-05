@@ -166,5 +166,8 @@
   <ItemGroup>
     <Resource Include="images\blue_fish_icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

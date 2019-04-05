@@ -9,15 +9,15 @@
 
 namespace AquatiLife_Inventory_DataAccess.DatabaseContext
 {
-    using AquaModClasses.BaseClassModels;
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFish : ILiveFish
+    public partial class UserFish
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserFish()
         {
+            this.MedicalRecords = new HashSet<MedicalRecords>();
             this.Purchases = new HashSet<Purchases>();
         }
     
@@ -30,11 +30,24 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string IsAlive { get; set; }
         public Nullable<int> fk_PurchaseLocation { get; set; }
         public string FishNotes { get; set; }
+        public string ScientificName { get; set; }
+        public Nullable<double> Size { get; set; }
+        public string FriendlyName { get; set; }
+        public Nullable<int> SocialLevel { get; set; }
+        public Nullable<double> FishMinPH { get; set; }
+        public Nullable<double> FishMaxPH { get; set; }
+        public Nullable<double> FishMinTemp { get; set; }
+        public Nullable<double> FishMaxTemp { get; set; }
+        public Nullable<int> FeederType { get; set; }
+        public string CommonName { get; set; }
+        public Nullable<int> BirthingMethod { get; set; }
+        public Nullable<int> AgressionLevel { get; set; }
     
-        public virtual FishTypes FishTypes { get; set; }
-        public virtual PurchaseLocations PurchaseLocations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MedicalRecords> MedicalRecords { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchases> Purchases { get; set; }
+        public virtual WaterTypes WaterTypes { get; set; }
         public virtual Users Users { get; set; }
         public virtual UserTanks UserTanks { get; set; }
     }

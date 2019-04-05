@@ -12,27 +12,27 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class UserTanks
+    public partial class Stores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserTanks()
+        public Stores()
         {
+            this.ContactInfo = new HashSet<ContactInfo>();
             this.Purchases = new HashSet<Purchases>();
-            this.UserFish = new HashSet<UserFish>();
         }
     
-        public int pk_UserTankID { get; set; }
-        public int fk_TankOwner { get; set; }
-        public int TankSize { get; set; }
-        public string TankHeight { get; set; }
-        public string TankWidth { get; set; }
-        public int fk_TankWaterType { get; set; }
+        public int pk_StoreID { get; set; }
+        public string StoreName { get; set; }
+        public Nullable<int> fk_ContactInfo { get; set; }
+        public Nullable<int> fk_StoreWeeklySchedule { get; set; }
+        public Nullable<int> fk_StoreHolidaySchedule { get; set; }
+        public string CanOrderOnline { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchases> Purchases { get; set; }
+        public virtual ICollection<ContactInfo> ContactInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual WaterTypes WaterTypes { get; set; }
+        public virtual ICollection<Purchases> Purchases { get; set; }
+        public virtual StoreHolidaySchedules StoreHolidaySchedules { get; set; }
+        public virtual StoreWeeklySchedules StoreWeeklySchedules { get; set; }
     }
 }

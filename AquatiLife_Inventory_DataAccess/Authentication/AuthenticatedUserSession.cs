@@ -27,8 +27,8 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
                 UserID = _data.pk_UserID;
                 UserName = _data.UserName;
                 PermissionLevels = _data.UserRole;
-                SessionBegin = DateTime.Now.ToString();
-                SessionEnd = "NULL";
+                SessionBegin = DateTime.Now;
+                SessionEnd = null;
                 IsActive = true;
 
                 _UserSessionRecord = GetUserLoginSession();
@@ -42,7 +42,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
         /// <returns></returns>
         private string GenerateSessionID()
         {
-            return Guid.NewGuid().ToString(SessionBegin);
+            return Guid.NewGuid().ToString(SessionBegin.ToString());
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
         /// </summary>
         public void LogOut()
         {
-            this.SessionEnd = DateTime.Now.ToString();
+            this.SessionEnd = DateTime.Now;
             this.IsActive = false;
 
             UserLoginAccess.LogUserSession(this, LogType.LOGOUT);

@@ -14,7 +14,7 @@ namespace AquaModClasses.BaseClassModels
     /// <summary>
     /// Represents a live fish
     /// </summary>
-    public class LiveFish : ILiveFish
+    public class LiveFish
     {
         /// <summary>
         /// Represents the type of object, "LiveFish" has an "AccessoryType" of "Fish"

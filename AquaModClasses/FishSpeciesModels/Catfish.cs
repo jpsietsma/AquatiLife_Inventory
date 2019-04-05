@@ -12,10 +12,13 @@ namespace AquaModClasses.FishSpeciesModels
     /// </summary>
     public class Catfish : LiveFish
     {
+        /// <summary>
+        /// Create new instance of a Live Catfish
+        /// </summary>
         public Catfish()
         {
             ScientificName = "";
-            CommonName = "";
+            CommonName = "Catfish";
         }
     }
 }

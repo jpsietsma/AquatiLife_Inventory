@@ -12,8 +12,14 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class GetFishTypes_vw
+    public partial class UserProfiles
     {
-        public string FishTypeName { get; set; }
+        public int pk_ProfileID { get; set; }
+        public int fk_userID { get; set; }
+        public Nullable<int> fk_ContactInfo { get; set; }
+        public string HasMobileAccess { get; set; }
+    
+        public virtual ContactInfo ContactInfo { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

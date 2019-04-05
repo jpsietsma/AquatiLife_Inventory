@@ -18,14 +18,14 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string ItemName { get; set; }
         public string Date { get; set; }
         public int Quantity { get; set; }
-        public int fk_PurchaseLocation { get; set; }
+        public int fk_StoreID { get; set; }
         public int fk_PurchaseType { get; set; }
         public double Cost { get; set; }
         public Nullable<int> fk_UserFish { get; set; }
         public Nullable<int> fk_UserTank { get; set; }
     
-        public virtual PurchaseLocations PurchaseLocations { get; set; }
         public virtual PurchaseTypes PurchaseTypes { get; set; }
+        public virtual Stores Stores { get; set; }
         public virtual UserFish UserFish { get; set; }
         public virtual UserTanks UserTanks { get; set; }
     }

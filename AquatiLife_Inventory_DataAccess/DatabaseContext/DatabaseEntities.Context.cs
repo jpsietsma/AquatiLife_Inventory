@@ -12,6 +12,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DatabaseEntities : DbContext
     {
@@ -25,14 +27,32 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AnimalTypes> AnimalTypes { get; set; }
+        public virtual DbSet<ContactInfo> ContactInfo { get; set; }
+        public virtual DbSet<FishCareGuides> FishCareGuides { get; set; }
+        public virtual DbSet<FishTankTypes> FishTankTypes { get; set; }
         public virtual DbSet<FishTypes> FishTypes { get; set; }
-        public virtual DbSet<PurchaseLocations> PurchaseLocations { get; set; }
+        public virtual DbSet<MedicalRecords> MedicalRecords { get; set; }
         public virtual DbSet<Purchases> Purchases { get; set; }
         public virtual DbSet<PurchaseTypes> PurchaseTypes { get; set; }
+        public virtual DbSet<StoreHolidaySchedules> StoreHolidaySchedules { get; set; }
+        public virtual DbSet<Stores> Stores { get; set; }
+        public virtual DbSet<StoreWeeklySchedules> StoreWeeklySchedules { get; set; }
         public virtual DbSet<UserFish> UserFish { get; set; }
         public virtual DbSet<UserLoginSessions> UserLoginSessions { get; set; }
+        public virtual DbSet<UserProfiles> UserProfiles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UserTanks> UserTanks { get; set; }
-        public virtual DbSet<GetFishTypes_vw> GetFishTypes_vw { get; set; }
+        public virtual DbSet<WaterTypes> WaterTypes { get; set; }
+        public virtual DbSet<Get_AllFishTypeOverview> Get_AllFishTypeOverview { get; set; }
+    
+        public virtual ObjectResult<GetActiveLoginSessions_Result> GetActiveLoginSessions(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActiveLoginSessions_Result>("GetActiveLoginSessions", userIDParameter);
+        }
     }
 }

@@ -12,33 +12,27 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class WaterTypes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public WaterTypes()
         {
-            this.ContactInfo = new HashSet<ContactInfo>();
-            this.MedicalRecords = new HashSet<MedicalRecords>();
+            this.FishTankTypes = new HashSet<FishTankTypes>();
+            this.FishTypes = new HashSet<FishTypes>();
             this.UserFish = new HashSet<UserFish>();
-            this.UserLoginSessions = new HashSet<UserLoginSessions>();
             this.UserTanks = new HashSet<UserTanks>();
         }
     
-        public int pk_UserID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string EmailAddress { get; set; }
-        public string UserRole { get; set; }
+        public int pk_WaterTypeID { get; set; }
+        public string WaterTypeName { get; set; }
+        public string WaterTypeSpecialTags { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContactInfo> ContactInfo { get; set; }
+        public virtual ICollection<FishTankTypes> FishTankTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MedicalRecords> MedicalRecords { get; set; }
+        public virtual ICollection<FishTypes> FishTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFish> UserFish { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserLoginSessions> UserLoginSessions { get; set; }
-        public virtual UserProfiles UserProfiles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTanks> UserTanks { get; set; }
     }

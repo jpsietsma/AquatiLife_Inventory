@@ -10,6 +10,7 @@ using System.Windows.Media;
 using AquatiLife_Inventory_DataAccess.DatabaseContext;
 using System.Data.SqlClient;
 using AquatiLife_Inventory_DataAccess.Authentication;
+using AquaModClasses.Authentication;
 
 namespace AquatiLife_Test_Console
 {
@@ -79,9 +80,14 @@ namespace AquatiLife_Test_Console
 
             //Console.WriteLine(UserLoginAccess.CheckUserPass("jpsietsma", @"A!12@lop^6"));
 
-            AuthenticatedUserSession _session = new AuthenticatedUserSession("jpsietsma");
-            List<string> perms = _session.GetUserPermissions();
-                
+            //AuthenticatedUserSession _session = new AuthenticatedUserSession("jpsietsma");
+            //List<string> perms = _session.GetUserPermissions();
+
+            UserSession _test = new UserSession() { SessionBegin = DateTime.Now.Subtract(new TimeSpan(0, 2, 45, 0)) };
+            var testtest = _test.ToString();
+            Console.WriteLine("Timespan:" +_test.GetSessionTimespan().ToString());
+            Console.WriteLine("Length: " + _test.GetSessionLength());
+            Console.WriteLine("RoundedMethod: " + _test);
             Console.ReadLine();
 
         }

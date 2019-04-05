@@ -12,15 +12,14 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class UserLoginSessions
+    public partial class FishTankTypes
     {
-        public string pk_SessionID { get; set; }
-        public int fk_UserID { get; set; }
-        public DateTime SessionBegin { get; set; }
-        public string SessionPermission { get; set; }
-        public DateTime? SessionEnd { get; set; }
-        public bool IsActive { get; set; }
+        public int pk_TankTypeID { get; set; }
+        public string TypeName { get; set; }
+        public int fk_WaterType { get; set; }
+        public string TankSpecialTags { get; set; }
+        public string TankShape { get; set; }
     
-        public virtual Users Users { get; set; }
+        public virtual WaterTypes WaterTypes { get; set; }
     }
 }

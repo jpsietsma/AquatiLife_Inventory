@@ -11,14 +11,14 @@ namespace AquatiLife_Inventory_DataAccess.Fish
 {
     public static class FishExt
     { 
-        public static List<ILiveFish> GetUserFish()
+        public static List<LiveFish> GetUserFish()
         {
-            List<ILiveFish> finalList = new List<ILiveFish>();
+            List<LiveFish> finalList = new List<LiveFish>();
 
             using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var _data = conn.UserFish.Where(x => x.IsAlive == "True").ToList();
-                List<PurchaseLocations> _locations = conn.PurchaseLocations.ToList();
+                List<Stores> _locations = conn.Stores.ToList();
                 //List<Locations> _locationOptions = Locations.CREATURE_COMFORTS;
 
                 foreach (UserFish _item in _data)
@@ -29,8 +29,7 @@ namespace AquatiLife_Inventory_DataAccess.Fish
                                                     , BirthingMethod = AquaModClasses.FishProperties.FishBirthType.OTHER
                                                     , IsAlive = isAlive
                                                     , PurchaseDate = _item.PurchaseDate
-                                                    , PurchasePrice = _item.PurchasePrice
-                                                    , PurchaseLocation = _item.PurchaseLocations.StoreName.sel});
+                                                    , PurchasePrice = _item.PurchasePrice });
                 }
             }
 

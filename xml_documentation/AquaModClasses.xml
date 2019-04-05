@@ -4,6 +4,65 @@
         <name>AquaModClasses</name>
     </assembly>
     <members>
+        <member name="T:AquaModClasses.Authentication.UserSession">
+            <summary>
+            Represents a logged in user session
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.SessionID">
+            <summary>
+            Unique ID to identify the session in the database
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.UserID">
+            <summary>
+            UserID of the account logged into the session
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.UserName">
+            <summary>
+            UserName of the account logged into the session
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.PermissionLevels">
+            <summary>
+            UserAccessLevel permissions for the session
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.IsActive">
+            <summary>
+            Indicates if the session is active
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.SessionBegin">
+            <summary>
+            DateTime of the beginning of the session
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.SessionEnd">
+            <summary>
+            DateTime of the end of the session
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.Authentication.UserSession.SessionLength">
+            <summary>
+            Readable string representation of the session length
+            </summary>
+        </member>
+        <member name="M:AquaModClasses.Authentication.UserSession.GetSessionLength(System.Boolean)">
+            <summary>
+            Return the length of time of the session in a readable string
+            </summary>
+            <returns>string readable length of the session</returns>
+        </member>
+        <member name="M:AquaModClasses.Authentication.UserSession.GetSessionTimespan">
+            <summary>
+            Get Timespan representing the length of the user login session
+            </summary>
+            <returns>
+            timespan object representing the length of the user login session, null if session is still active
+            </returns>
+        </member>
         <member name="T:AquaModClasses.BaseClassModels.AppConfigurationInfo">
             <summary>
             Used to retrieve information from the app.config file
@@ -143,6 +202,46 @@
             <param name="purchaseDate">DateTime representing date of purchase</param>
             <param name="purchaseLocation">PurchaseLocation representing the place purchased</param>
             <param name="tankSize">double representing capacity of the tank in gallons</param>
+        </member>
+        <member name="T:AquaModClasses.BaseClassModels.ITankAccessory">
+            <summary>
+            Tank Accessory Interface
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.BaseClassModels.ITankAccessory.AccessoryID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.BaseClassModels.ITankAccessory.DisplayName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.BaseClassModels.ITankAccessory.PurchaseDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.BaseClassModels.ITankAccessory.PurchaseLocation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.BaseClassModels.ITankAccessory.PurchasePrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.BaseClassModels.ITankAccessory.Purchaser">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AquaModClasses.BaseClassModels.ITankAccessory.TankID">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:AquaModClasses.BaseClassModels.LiveFish">
             <summary>
@@ -581,9 +680,39 @@
             Fish was gifted from someone for a birthday or holiday
             </summary>
         </member>
+        <member name="T:AquaModClasses.ext.UserExt">
+            <summary>
+            Extension class to help support and add additional functionality to processing UserSession data
+            </summary>
+        </member>
+        <member name="M:AquaModClasses.ext.UserExt.ConvertSessionTimespan(AquaModClasses.Authentication.UserSession,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+            <summary>
+            Convert Session TimeSpan into absolute values for total days, hours, minutes, and seconds of the timespan
+            </summary>
+            <param name="_userSession">Session to use when evaluating session timespan</param>
+            <param name="RoundedSeconds">final seconds of total timestamp</param>
+            <param name="RoundedMinutes">final minutes of total timestamp</param>
+            <param name="RoundedHours">final hours of total timestamp</param>
+            <param name="RoundedDays">final days of total timestamp</param>
+        </member>
         <member name="T:AquaModClasses.FishSpeciesModels.Catfish">
             <summary>
             Freshwater Catfish - 
+            </summary>
+        </member>
+        <member name="M:AquaModClasses.FishSpeciesModels.Catfish.#ctor">
+            <summary>
+            Create new instance of a Live Catfish
+            </summary>
+        </member>
+        <member name="T:AquaModClasses.FishSpeciesModels.CoryDora">
+            <summary>
+            Create new instance of the Live Fish type CoryDora
+            </summary>
+        </member>
+        <member name="T:AquaModClasses.FishSpeciesModels.Headstander">
+            <summary>
+            Creates a new instance of a Live Fish type of HeadStander
             </summary>
         </member>
         <member name="T:AquaModClasses.FishSpeciesModels.Lobster">
@@ -599,6 +728,11 @@
             <param name="fishCost">Cost of the lobster</param>
             <param name="time">DateTime the lobster was purchased</param>
             <param name="purchasedAt">PurchaseOptions.Location location where lobster was purchased</param>
+        </member>
+        <member name="T:AquaModClasses.FishSpeciesModels.Pencilfish">
+            <summary>
+            Creates a new instance of a Live Fish type Pencilfish
+            </summary>
         </member>
         <member name="T:AquaModClasses.FishSpeciesModels.Tetra">
             <summary>

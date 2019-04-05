@@ -12,15 +12,16 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class UserLoginSessions
+    public partial class Get_AllFishTypeOverview
     {
-        public string pk_SessionID { get; set; }
-        public int fk_UserID { get; set; }
-        public DateTime SessionBegin { get; set; }
-        public string SessionPermission { get; set; }
-        public DateTime? SessionEnd { get; set; }
-        public bool IsActive { get; set; }
-    
-        public virtual Users Users { get; set; }
+        public string FishTypeName { get; set; }
+        public string FishTypeImagePath { get; set; }
+        public string FishFeederType { get; set; }
+        public string FishBirthingType { get; set; }
+        public Nullable<int> FishMinTankSize { get; set; }
+        public string FishAgressionLevel { get; set; }
+        public string FishTerritorialLevel { get; set; }
+        public string WaterTypeName { get; set; }
+        public string WaterTypeSpecialTags { get; set; }
     }
 }

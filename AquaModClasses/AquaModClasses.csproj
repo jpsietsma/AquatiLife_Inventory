@@ -48,7 +48,6 @@
     <Compile Include="Configuration\AppConfigurationInfo.cs" />
     <Compile Include="BaseClassModels\AquaticPlant.cs" />
     <Compile Include="BaseClassModels\FishTank.cs" />
-    <Compile Include="BaseClassModels\ILiveFish.cs" />
     <Compile Include="BaseClassModels\ITankAccessory.cs" />
     <Compile Include="BaseClassModels\LiveFish.cs" />
     <Compile Include="BaseClassModels\TankAccessory.cs" />
@@ -60,6 +59,7 @@
     <Compile Include="enums\FishTemperament.cs" />
     <Compile Include="enums\PurchaseLocations.cs" />
     <Compile Include="enums\PurchaseType.cs" />
+    <Compile Include="ext\UserExt.cs" />
     <Compile Include="FishSpeciesModels\Catfish.cs" />
     <Compile Include="FishSpeciesModels\CoryDora.cs" />
     <Compile Include="FishSpeciesModels\Hatchetfish.cs" />

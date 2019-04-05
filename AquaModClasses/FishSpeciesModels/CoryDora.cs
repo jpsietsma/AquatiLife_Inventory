@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AquaModClasses.FishSpeciesModels
 {
+    /// <summary>
+    /// Create new instance of the Live Fish type CoryDora
+    /// </summary>
     public class CoryDora : LiveFish
     {
         
