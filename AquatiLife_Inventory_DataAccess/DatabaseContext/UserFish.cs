@@ -43,11 +43,11 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public Nullable<int> BirthingMethod { get; set; }
         public Nullable<int> AgressionLevel { get; set; }
     
+        public virtual List_WaterTypes List_WaterTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicalRecords> MedicalRecords { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchases> Purchases { get; set; }
-        public virtual WaterTypes WaterTypes { get; set; }
         public virtual Users Users { get; set; }
         public virtual UserTanks UserTanks { get; set; }
     }

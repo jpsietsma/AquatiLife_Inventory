@@ -1,6 +1,7 @@
-﻿using AquaModClasses.Authentication;
-using AquatiLife_Inventory_DataAccess.DatabaseContext;
+﻿using AquatiLife_Inventory_DataAccess.DatabaseContext;
 using AquatiLife_Inventory_DataAccess.enums;
+using AquatiLife_Inventory_DataAccess.ext;
+using AquatiLife_Inventory_DataAccess.ViewModels.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AquatiLife_Inventory_DataAccess.Authentication
 {
@@ -17,21 +19,28 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
         public UserLoginSessions _UserSessionRecord { get; set; }
 
         public AuthenticatedUserSession(string user)
-        {         
-
+        {       
             using (DatabaseEntities dbconn = new DatabaseEntities())
             {
-                Users _data = dbconn.Users.Where(x => x.UserName == user).First();
+                try
+                {
+                    Users _data = dbconn.Users.Where(x => x.UserName == user).First();
 
-                SessionID = GenerateSessionID();
-                UserID = _data.pk_UserID;
-                UserName = _data.UserName;
-                PermissionLevels = _data.UserRole;
-                SessionBegin = DateTime.Now;
-                SessionEnd = null;
-                IsActive = true;
+                    SessionID = GenerateSessionID();
+                    UserID = _data.pk_UserID;
+                    UserName = _data.UserName;
+                    PermissionLevels = _data.UserRole;
+                    SessionBegin = DateTime.Now;
+                    SessionEnd = null;
+                    IsActive = true;
 
-                _UserSessionRecord = GetUserLoginSession();
+                    _UserSessionRecord = GetUserLoginSession();
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxResult err = new MessageBoxResult();
+                        err = MessageBox.Show(ex.Message);
+                }
 
             }
         }
@@ -42,7 +51,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
         /// <returns></returns>
         private string GenerateSessionID()
         {
-            return Guid.NewGuid().ToString(SessionBegin.ToString());
+            return Guid.NewGuid().ToString("N");
         }
 
         /// <summary>
@@ -54,7 +63,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
 
             _session.fk_UserID = UserID;
             _session.pk_SessionID = SessionID;
-            _session.SessionBegin = SessionBegin;
+            _session.SessionBegin = SessionBegin.ToString();
             _session.SessionPermission = PermissionLevels;
 
             return _session;

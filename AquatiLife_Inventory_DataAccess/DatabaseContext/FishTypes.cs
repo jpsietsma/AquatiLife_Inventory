@@ -9,12 +9,17 @@
 
 namespace AquatiLife_Inventory_DataAccess.DatabaseContext
 {
-    using AquaModClasses.BaseClassModels;
     using System;
     using System.Collections.Generic;
     
-    public partial class FishTypes
+    public partial class FishTypes : IFishTypes
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FishTypes()
+        {
+            this.FishTypeDiseaseAffection = new HashSet<FishTypeDiseaseAffection>();
+        }
+    
         public int pk_FishTypeID { get; set; }
         public string FishTypeName { get; set; }
         public string FishTypeImagePath { get; set; }
@@ -27,6 +32,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public Nullable<int> fk_CareGuideID { get; set; }
     
         public virtual FishCareGuides FishCareGuides { get; set; }
-        public virtual WaterTypes WaterTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FishTypeDiseaseAffection> FishTypeDiseaseAffection { get; set; }
+        public virtual List_WaterTypes List_WaterTypes { get; set; }
     }
 }

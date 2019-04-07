@@ -22,8 +22,9 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         }
     
         public int pk_CareGuideID { get; set; }
-        public string filepath { get; set; }
-        public int fk_AnimalType { get; set; }
+        public string DocumentPath { get; set; }
+        public Nullable<int> fk_AnimalType { get; set; }
+        public Nullable<int> fk_FishType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnimalTypes> AnimalTypes { get; set; }

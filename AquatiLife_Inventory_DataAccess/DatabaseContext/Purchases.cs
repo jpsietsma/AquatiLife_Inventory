@@ -24,7 +24,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public Nullable<int> fk_UserFish { get; set; }
         public Nullable<int> fk_UserTank { get; set; }
     
-        public virtual PurchaseTypes PurchaseTypes { get; set; }
+        public virtual List_PurchaseTypes List_PurchaseTypes { get; set; }
         public virtual Stores Stores { get; set; }
         public virtual UserFish UserFish { get; set; }
         public virtual UserTanks UserTanks { get; set; }

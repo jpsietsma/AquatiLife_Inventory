@@ -54,10 +54,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -69,10 +71,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AuthenticatedUserSession.cs" />
+    <Compile Include="Configuration\AppConfigurationInfo.cs" />
     <Compile Include="DatabaseContext\AnimalTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\Business_Customers.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\Business_List_VendorTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\Business_Vendors.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\ContactInfo.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\C_List_TankTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\DatabaseEntities.Context.cs">
@@ -90,10 +105,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\Errorlogs.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\FishCareGuides.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\FishTankTypes.cs">
+    <Compile Include="DatabaseContext\FishTypeDiseaseAffection.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\FishTypes.cs">
@@ -105,13 +123,26 @@
     <Compile Include="DatabaseContext\Get_AllFishTypeOverview.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\IFishTypes.cs" />
+    <Compile Include="DatabaseContext\List_ErrorSeverityLevels.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_ErrorTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_FishSicknessTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_PurchaseTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_WaterTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\MedicalRecords.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\Purchases.cs">
-      <DependentUpon>DatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseContext\PurchaseTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\StoreHolidaySchedules.cs">
@@ -138,14 +169,33 @@
     <Compile Include="DatabaseContext\UserTanks.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\WaterTypes.cs">
-      <DependentUpon>DatabaseEntities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="enums\AccessoryType.cs" />
+    <Compile Include="enums\FishBirthType.cs" />
+    <Compile Include="enums\FishFeederType.cs" />
+    <Compile Include="enums\FishSocialTemperament.cs" />
+    <Compile Include="enums\FishTemperament.cs" />
     <Compile Include="enums\LogType.cs" />
-    <Compile Include="ext\FishExt.cs" />
-    <Compile Include="UserLogin\UserLoginAccess.cs" />
+    <Compile Include="enums\PurchaseLocations.cs" />
+    <Compile Include="enums\PurchaseType.cs" />
+    <Compile Include="ext\UserExt.cs" />
+    <Compile Include="ext\UserLoginAccess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Authentication\UserSession.cs" />
+    <Compile Include="ViewModels\BaseClasses\Plants\AquaticPlant.cs" />
+    <Compile Include="ViewModels\BaseClasses\Tank\FishTank.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\Catfish.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\CoryDora.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\Hatchetfish.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\Headstander.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\Lobster.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\Pencilfish.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\Pleco.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\Tetra.cs" />
+    <Compile Include="ViewModels\BaseClasses\Tank\ITankAccessory.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\LiveFish.cs" />
+    <Compile Include="ViewModels\BaseClasses\Accessories\TankAccessory.cs" />
+    <Compile Include="ViewModels\BaseClasses\Misc\TankTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -172,12 +222,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AquaModClasses\AquaModClasses.csproj">
-      <Project>{C66BF672-30D8-4B8D-B567-7C3B2D99CD0B}</Project>
-      <Name>AquaModClasses</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

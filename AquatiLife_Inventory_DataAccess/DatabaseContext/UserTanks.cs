@@ -28,11 +28,11 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string TankWidth { get; set; }
         public int fk_TankWaterType { get; set; }
     
+        public virtual List_WaterTypes List_WaterTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchases> Purchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFish> UserFish { get; set; }
         public virtual Users Users { get; set; }
-        public virtual WaterTypes WaterTypes { get; set; }
     }
 }

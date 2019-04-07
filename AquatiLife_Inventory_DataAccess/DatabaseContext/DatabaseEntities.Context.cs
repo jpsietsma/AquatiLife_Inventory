@@ -27,14 +27,21 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C_List_TankTypes> C_List_TankTypes { get; set; }
         public virtual DbSet<AnimalTypes> AnimalTypes { get; set; }
+        public virtual DbSet<Business_Customers> Business_Customers { get; set; }
+        public virtual DbSet<Business_List_VendorTypes> Business_List_VendorTypes { get; set; }
         public virtual DbSet<ContactInfo> ContactInfo { get; set; }
         public virtual DbSet<FishCareGuides> FishCareGuides { get; set; }
-        public virtual DbSet<FishTankTypes> FishTankTypes { get; set; }
+        public virtual DbSet<FishTypeDiseaseAffection> FishTypeDiseaseAffection { get; set; }
         public virtual DbSet<FishTypes> FishTypes { get; set; }
+        public virtual DbSet<List_ErrorSeverityLevels> List_ErrorSeverityLevels { get; set; }
+        public virtual DbSet<List_ErrorTypes> List_ErrorTypes { get; set; }
+        public virtual DbSet<List_FishSicknessTypes> List_FishSicknessTypes { get; set; }
+        public virtual DbSet<List_PurchaseTypes> List_PurchaseTypes { get; set; }
+        public virtual DbSet<List_WaterTypes> List_WaterTypes { get; set; }
         public virtual DbSet<MedicalRecords> MedicalRecords { get; set; }
         public virtual DbSet<Purchases> Purchases { get; set; }
-        public virtual DbSet<PurchaseTypes> PurchaseTypes { get; set; }
         public virtual DbSet<StoreHolidaySchedules> StoreHolidaySchedules { get; set; }
         public virtual DbSet<Stores> Stores { get; set; }
         public virtual DbSet<StoreWeeklySchedules> StoreWeeklySchedules { get; set; }
@@ -43,7 +50,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<UserProfiles> UserProfiles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UserTanks> UserTanks { get; set; }
-        public virtual DbSet<WaterTypes> WaterTypes { get; set; }
+        public virtual DbSet<Business_Vendors> Business_Vendors { get; set; }
+        public virtual DbSet<Errorlogs> Errorlogs { get; set; }
         public virtual DbSet<Get_AllFishTypeOverview> Get_AllFishTypeOverview { get; set; }
     
         public virtual ObjectResult<GetActiveLoginSessions_Result> GetActiveLoginSessions(Nullable<int> userID)

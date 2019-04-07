@@ -59,10 +59,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AquaModClasses\AquaModClasses.csproj">
-      <Project>{c66bf672-30d8-4b8d-b567-7c3b2d99cd0b}</Project>
-      <Name>AquaModClasses</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AquatiLife_Inventory_DataAccess\AquatiLife_Inventory_DataAccess.csproj">
       <Project>{ee946ca7-007a-4fee-8f82-29a7b005a24e}</Project>
       <Name>AquatiLife_Inventory_DataAccess</Name>

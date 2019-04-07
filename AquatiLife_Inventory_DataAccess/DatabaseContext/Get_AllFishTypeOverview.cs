@@ -23,5 +23,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string FishTerritorialLevel { get; set; }
         public string WaterTypeName { get; set; }
         public string WaterTypeSpecialTags { get; set; }
+        public int pk_FishTypeID { get; set; }
     }
 }

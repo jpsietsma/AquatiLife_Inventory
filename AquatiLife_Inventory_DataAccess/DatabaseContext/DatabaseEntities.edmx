@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AquatiLife_Inventory_DatabaseEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name=":List_TankTypes">
+          <Key>
+            <PropertyRef Name="pk_TankTypeID" />
+          </Key>
+          <Property Name="pk_TankTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="fk_WaterType" Type="int" Nullable="false" />
+          <Property Name="TankSpecialTags" Type="nvarchar" MaxLength="255" />
+          <Property Name="TankShape" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="AnimalTypes">
           <Key>
             <PropertyRef Name="pk_AnimalTypeID" />
@@ -12,6 +22,34 @@
           <Property Name="pk_AnimalTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fk_FishCareGuideID" Type="int" />
           <Property Name="AnimalTypeName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Business_Customers">
+          <Key>
+            <PropertyRef Name="pk_CustomerID" />
+          </Key>
+          <Property Name="pk_CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fk_ContactInfo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Business_List_VendorTypes">
+          <Key>
+            <PropertyRef Name="pk_VendorTypeID" />
+          </Key>
+          <Property Name="pk_VendorTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorType" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Business_Vendors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Business_Vendors">
+          <Key>
+            <PropertyRef Name="pk_VendorID" />
+            <PropertyRef Name="VendorName" />
+          </Key>
+          <Property Name="pk_VendorID" Type="int" Nullable="false" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="fk_ContactInfo" Type="int" />
+          <Property Name="fk_VendorType" Type="int" />
         </EntityType>
         <EntityType Name="ContactInfo">
           <Key>
@@ -28,23 +66,42 @@
           <Property Name="Website" Type="nvarchar" MaxLength="255" />
           <Property Name="fk_UserID" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Errorlogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Errorlogs">
+          <Key>
+            <PropertyRef Name="pk_errorID" />
+            <PropertyRef Name="fk_ErrorType" />
+            <PropertyRef Name="ErrorDate" />
+            <PropertyRef Name="ErrorTitle" />
+            <PropertyRef Name="ErrorDetails" />
+          </Key>
+          <Property Name="pk_errorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_ErrorType" Type="int" Nullable="false" />
+          <Property Name="ErrorDate" Type="datetime" Nullable="false" />
+          <Property Name="fk_errorUser" Type="int" />
+          <Property Name="ErrorTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ErrorDetails" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ErrorSourceScreen" Type="nvarchar" MaxLength="150" />
+          <Property Name="ErrorSourceAction" Type="nvarchar" MaxLength="150" />
+          <Property Name="ErrorRecommendedResolution" Type="text" />
+        </EntityType>
         <EntityType Name="FishCareGuides">
           <Key>
             <PropertyRef Name="pk_CareGuideID" />
           </Key>
           <Property Name="pk_CareGuideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="filepath" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="fk_AnimalType" Type="int" Nullable="false" />
+          <Property Name="DocumentPath" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="fk_AnimalType" Type="int" />
+          <Property Name="fk_FishType" Type="int" />
         </EntityType>
-        <EntityType Name="FishTankTypes">
+        <EntityType Name="FishTypeDiseaseAffection">
           <Key>
-            <PropertyRef Name="pk_TankTypeID" />
+            <PropertyRef Name="pk_AffectedTypesID" />
           </Key>
-          <Property Name="pk_TankTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TypeName" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="fk_WaterType" Type="int" Nullable="false" />
-          <Property Name="TankSpecialTags" Type="nvarchar" MaxLength="255" />
-          <Property Name="TankShape" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pk_AffectedTypesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_SicknessID" Type="int" Nullable="false" />
+          <Property Name="fk_FishTypeID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FishTypes">
           <Key>
@@ -60,6 +117,51 @@
           <Property Name="FishTerritorialLevel" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fk_WaterType" Type="int" Nullable="false" />
           <Property Name="fk_CareGuideID" Type="int" />
+        </EntityType>
+        <EntityType Name="List_ErrorSeverityLevels">
+          <Key>
+            <PropertyRef Name="pk_SeverityID" />
+          </Key>
+          <Property Name="pk_SeverityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeverityLevelText" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SeverityLevelNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="List_ErrorTypes">
+          <Key>
+            <PropertyRef Name="pk_ErrorTypeID" />
+          </Key>
+          <Property Name="pk_ErrorTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorTypeDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fk_ErrorSeverity" Type="int" Nullable="false" />
+          <Property Name="fk_ErrorWaterType" Type="int" />
+          <Property Name="ErrorTypeCategory" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="List_FishSicknessTypes">
+          <Key>
+            <PropertyRef Name="pk_FishSicknesses" />
+          </Key>
+          <Property Name="pk_FishSicknesses" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SicknessName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsFatal" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Symptoms" Type="text" />
+          <Property Name="CareNeeded" Type="text" />
+          <Property Name="RecoveryTime" Type="text" />
+          <Property Name="fk_AffectedTypes" Type="int" />
+        </EntityType>
+        <EntityType Name="List_PurchaseTypes">
+          <Key>
+            <PropertyRef Name="pk_PurchaseTypeID" />
+          </Key>
+          <Property Name="pk_PurchaseTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseTypeDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="List_WaterTypes">
+          <Key>
+            <PropertyRef Name="pk_WaterTypeID" />
+          </Key>
+          <Property Name="pk_WaterTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WaterTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WaterTypeSpecialTags" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="MedicalRecords">
           <Key>
@@ -84,13 +186,6 @@
           <Property Name="Cost" Type="float" Nullable="false" />
           <Property Name="fk_UserFish" Type="int" />
           <Property Name="fk_UserTank" Type="int" />
-        </EntityType>
-        <EntityType Name="PurchaseTypes">
-          <Key>
-            <PropertyRef Name="pk_PurchaseTypeID" />
-          </Key>
-          <Property Name="pk_PurchaseTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="StoreHolidaySchedules">
           <Key>
@@ -181,6 +276,7 @@
           <Property Name="SessionPermission" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SessionEnd" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="SessionDuration" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="UserProfiles">
           <Key>
@@ -212,14 +308,6 @@
           <Property Name="TankWidth" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="fk_TankWaterType" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="WaterTypes">
-          <Key>
-            <PropertyRef Name="pk_WaterTypeID" />
-          </Key>
-          <Property Name="pk_WaterTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="WaterTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="WaterTypeSpecialTags" Type="nvarchar" MaxLength="255" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeOverview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Get_AllFishTypeOverview">
@@ -228,6 +316,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <PropertyRef Name="FishFeederType" />
             <PropertyRef Name="FishAgressionLevel" />
             <PropertyRef Name="FishTerritorialLevel" />
+            <PropertyRef Name="pk_FishTypeID" />
           </Key>
           <Property Name="FishTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FishTypeImagePath" Type="nvarchar" MaxLength="100" />
@@ -238,6 +327,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="FishTerritorialLevel" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="WaterTypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="WaterTypeSpecialTags" Type="nvarchar" MaxLength="255" />
+          <Property Name="pk_FishTypeID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_AnimalTypes_FishCareGuides">
           <End Role="FishCareGuides" Type="Self.FishCareGuides" Multiplicity="0..1" />
@@ -248,6 +338,48 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Principal>
             <Dependent Role="AnimalTypes">
               <PropertyRef Name="fk_FishCareGuideID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Customers_ContactInfo">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Business_Customers" Type="Self.Business_Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="pk_AddressID" />
+            </Principal>
+            <Dependent Role="Business_Customers">
+              <PropertyRef Name="fk_ContactInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Vendors_Business_List_VendorTypes">
+          <End Role="Business_List_VendorTypes" Type="Self.Business_List_VendorTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Business_Vendors" Type="Self.Business_Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business_List_VendorTypes">
+              <PropertyRef Name="pk_VendorTypeID" />
+            </Principal>
+            <Dependent Role="Business_Vendors">
+              <PropertyRef Name="fk_VendorType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Vendors_ContactInfo">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Business_Vendors" Type="Self.Business_Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="pk_AddressID" />
+            </Principal>
+            <Dependent Role="Business_Vendors">
+              <PropertyRef Name="fk_ContactInfo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -275,15 +407,39 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FishTankTypes_WaterType">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
-          <End Role="FishTankTypes" Type="Self.FishTankTypes" Multiplicity="*" />
+        <Association Name="FK_Errorlogs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Errorlogs" Type="Self.Errorlogs" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WaterTypes">
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="Errorlogs">
+              <PropertyRef Name="fk_errorUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FishTankTypes_WaterType">
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
+          <End Role=":List_TankTypes" Type="Self.:List_TankTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_WaterTypes">
               <PropertyRef Name="pk_WaterTypeID" />
             </Principal>
-            <Dependent Role="FishTankTypes">
+            <Dependent Role=":List_TankTypes">
               <PropertyRef Name="fk_WaterType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FishTypeDiseaseAffection_FishTypes">
+          <End Role="FishTypes" Type="Self.FishTypes" Multiplicity="1" />
+          <End Role="FishTypeDiseaseAffection" Type="Self.FishTypeDiseaseAffection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishTypes">
+              <PropertyRef Name="pk_FishTypeID" />
+            </Principal>
+            <Dependent Role="FishTypeDiseaseAffection">
+              <PropertyRef Name="fk_FishTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -300,14 +456,38 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FishTypes_WaterTypes">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
           <End Role="FishTypes" Type="Self.FishTypes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WaterTypes">
+            <Principal Role="List_WaterTypes">
               <PropertyRef Name="pk_WaterTypeID" />
             </Principal>
             <Dependent Role="FishTypes">
               <PropertyRef Name="fk_WaterType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_ErrorTypes_List_WaterTypes">
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="0..1" />
+          <End Role="List_ErrorTypes" Type="Self.List_ErrorTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_WaterTypes">
+              <PropertyRef Name="pk_WaterTypeID" />
+            </Principal>
+            <Dependent Role="List_ErrorTypes">
+              <PropertyRef Name="fk_ErrorWaterType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_FishSicknessTypes_FishTypeDiseaseAffection">
+          <End Role="FishTypeDiseaseAffection" Type="Self.FishTypeDiseaseAffection" Multiplicity="0..1" />
+          <End Role="List_FishSicknessTypes" Type="Self.List_FishSicknessTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishTypeDiseaseAffection">
+              <PropertyRef Name="pk_AffectedTypesID" />
+            </Principal>
+            <Dependent Role="List_FishSicknessTypes">
+              <PropertyRef Name="fk_AffectedTypes" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -336,10 +516,10 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Purchases_PurchaseTypes">
-          <End Role="PurchaseTypes" Type="Self.PurchaseTypes" Multiplicity="1" />
+          <End Role="List_PurchaseTypes" Type="Self.List_PurchaseTypes" Multiplicity="1" />
           <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PurchaseTypes">
+            <Principal Role="List_PurchaseTypes">
               <PropertyRef Name="pk_PurchaseTypeID" />
             </Principal>
             <Dependent Role="Purchases">
@@ -412,10 +592,10 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserFish_FishTypes">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
           <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WaterTypes">
+            <Principal Role="List_WaterTypes">
               <PropertyRef Name="pk_WaterTypeID" />
             </Principal>
             <Dependent Role="UserFish">
@@ -496,10 +676,10 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserTanks_WaterType">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
           <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WaterTypes">
+            <Principal Role="List_WaterTypes">
               <PropertyRef Name="pk_WaterTypeID" />
             </Principal>
             <Dependent Role="UserTanks">
@@ -510,15 +690,22 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
         <Function Name="GetActiveLoginSessions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="DatabaseEntitiesStoreContainer">
+        <EntityContainer Name="AquatiLife_Inventory_DatabaseEntitiesStoreContainer">
+          <EntitySet Name=":List_TankTypes" EntityType="Self.:List_TankTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnimalTypes" EntityType="Self.AnimalTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Business_Customers" EntityType="Self.Business_Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Business_List_VendorTypes" EntityType="Self.Business_List_VendorTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactInfo" EntityType="Self.ContactInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FishCareGuides" EntityType="Self.FishCareGuides" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FishTankTypes" EntityType="Self.FishTankTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FishTypeDiseaseAffection" EntityType="Self.FishTypeDiseaseAffection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FishTypes" EntityType="Self.FishTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List_ErrorSeverityLevels" EntityType="Self.List_ErrorSeverityLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List_ErrorTypes" EntityType="Self.List_ErrorTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List_FishSicknessTypes" EntityType="Self.List_FishSicknessTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List_PurchaseTypes" EntityType="Self.List_PurchaseTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List_WaterTypes" EntityType="Self.List_WaterTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicalRecords" EntityType="Self.MedicalRecords" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchases" EntityType="Self.Purchases" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PurchaseTypes" EntityType="Self.PurchaseTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreHolidaySchedules" EntityType="Self.StoreHolidaySchedules" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stores" EntityType="Self.Stores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreWeeklySchedules" EntityType="Self.StoreWeeklySchedules" Schema="dbo" store:Type="Tables" />
@@ -527,7 +714,27 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTanks" EntityType="Self.UserTanks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WaterTypes" EntityType="Self.WaterTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Business_Vendors" EntityType="Self.Business_Vendors" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Business_Vendors].[pk_VendorID] AS [pk_VendorID], 
+    [Business_Vendors].[VendorName] AS [VendorName], 
+    [Business_Vendors].[fk_ContactInfo] AS [fk_ContactInfo], 
+    [Business_Vendors].[fk_VendorType] AS [fk_VendorType]
+    FROM [dbo].[Business_Vendors] AS [Business_Vendors]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Errorlogs" EntityType="Self.Errorlogs" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Errorlogs].[pk_errorID] AS [pk_errorID], 
+    [Errorlogs].[fk_ErrorType] AS [fk_ErrorType], 
+    [Errorlogs].[ErrorDate] AS [ErrorDate], 
+    [Errorlogs].[fk_errorUser] AS [fk_errorUser], 
+    [Errorlogs].[ErrorTitle] AS [ErrorTitle], 
+    [Errorlogs].[ErrorDetails] AS [ErrorDetails], 
+    [Errorlogs].[ErrorSourceScreen] AS [ErrorSourceScreen], 
+    [Errorlogs].[ErrorSourceAction] AS [ErrorSourceAction], 
+    [Errorlogs].[ErrorRecommendedResolution] AS [ErrorRecommendedResolution]
+    FROM [dbo].[Errorlogs] AS [Errorlogs]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Get_AllFishTypeOverview" EntityType="Self.Get_AllFishTypeOverview" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Get_AllFishTypeOverview].[FishTypeName] AS [FishTypeName], 
@@ -538,12 +745,25 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
     [Get_AllFishTypeOverview].[FishAgressionLevel] AS [FishAgressionLevel], 
     [Get_AllFishTypeOverview].[FishTerritorialLevel] AS [FishTerritorialLevel], 
     [Get_AllFishTypeOverview].[WaterTypeName] AS [WaterTypeName], 
-    [Get_AllFishTypeOverview].[WaterTypeSpecialTags] AS [WaterTypeSpecialTags]
+    [Get_AllFishTypeOverview].[WaterTypeSpecialTags] AS [WaterTypeSpecialTags], 
+    [Get_AllFishTypeOverview].[pk_FishTypeID] AS [pk_FishTypeID]
     FROM [dbo].[Get_AllFishTypeOverview] AS [Get_AllFishTypeOverview]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_AnimalTypes_FishCareGuides" Association="Self.FK_AnimalTypes_FishCareGuides">
             <End Role="FishCareGuides" EntitySet="FishCareGuides" />
             <End Role="AnimalTypes" EntitySet="AnimalTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Customers_ContactInfo" Association="Self.FK_Business_Customers_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Business_Customers" EntitySet="Business_Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Vendors_Business_List_VendorTypes" Association="Self.FK_Business_Vendors_Business_List_VendorTypes">
+            <End Role="Business_List_VendorTypes" EntitySet="Business_List_VendorTypes" />
+            <End Role="Business_Vendors" EntitySet="Business_Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Vendors_ContactInfo" Association="Self.FK_Business_Vendors_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Business_Vendors" EntitySet="Business_Vendors" />
           </AssociationSet>
           <AssociationSet Name="FK_ContactInfo_Stores" Association="Self.FK_ContactInfo_Stores">
             <End Role="Stores" EntitySet="Stores" />
@@ -553,17 +773,33 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <End Role="Users" EntitySet="Users" />
             <End Role="ContactInfo" EntitySet="ContactInfo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Errorlogs_Users" Association="Self.FK_Errorlogs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Errorlogs" EntitySet="Errorlogs" />
+          </AssociationSet>
           <AssociationSet Name="FK_FishTankTypes_WaterType" Association="Self.FK_FishTankTypes_WaterType">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
-            <End Role="FishTankTypes" EntitySet="FishTankTypes" />
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
+            <End Role=":List_TankTypes" EntitySet=":List_TankTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FishTypeDiseaseAffection_FishTypes" Association="Self.FK_FishTypeDiseaseAffection_FishTypes">
+            <End Role="FishTypes" EntitySet="FishTypes" />
+            <End Role="FishTypeDiseaseAffection" EntitySet="FishTypeDiseaseAffection" />
           </AssociationSet>
           <AssociationSet Name="FK_FishTypes_FishCareGuides" Association="Self.FK_FishTypes_FishCareGuides">
             <End Role="FishCareGuides" EntitySet="FishCareGuides" />
             <End Role="FishTypes" EntitySet="FishTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_FishTypes_WaterTypes" Association="Self.FK_FishTypes_WaterTypes">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
             <End Role="FishTypes" EntitySet="FishTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_ErrorTypes_List_WaterTypes" Association="Self.FK_List_ErrorTypes_List_WaterTypes">
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
+            <End Role="List_ErrorTypes" EntitySet="List_ErrorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_FishSicknessTypes_FishTypeDiseaseAffection" Association="Self.FK_List_FishSicknessTypes_FishTypeDiseaseAffection">
+            <End Role="FishTypeDiseaseAffection" EntitySet="FishTypeDiseaseAffection" />
+            <End Role="List_FishSicknessTypes" EntitySet="List_FishSicknessTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_MedicalRecords_UserFish" Association="Self.FK_MedicalRecords_UserFish">
             <End Role="UserFish" EntitySet="UserFish" />
@@ -574,7 +810,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <End Role="MedicalRecords" EntitySet="MedicalRecords" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchases_PurchaseTypes" Association="Self.FK_Purchases_PurchaseTypes">
-            <End Role="PurchaseTypes" EntitySet="PurchaseTypes" />
+            <End Role="List_PurchaseTypes" EntitySet="List_PurchaseTypes" />
             <End Role="Purchases" EntitySet="Purchases" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchases_Store" Association="Self.FK_Purchases_Store">
@@ -598,7 +834,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <End Role="Stores" EntitySet="Stores" />
           </AssociationSet>
           <AssociationSet Name="FK_UserFish_FishTypes" Association="Self.FK_UserFish_FishTypes">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
             <End Role="UserFish" EntitySet="UserFish" />
           </AssociationSet>
           <AssociationSet Name="FK_UserFish_Users" Association="Self.FK_UserFish_Users">
@@ -626,7 +862,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <End Role="UserTanks" EntitySet="UserTanks" />
           </AssociationSet>
           <AssociationSet Name="FK_UserTanks_WaterType" Association="Self.FK_UserTanks_WaterType">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
             <End Role="UserTanks" EntitySet="UserTanks" />
           </AssociationSet>
         </EntityContainer>
@@ -634,7 +870,18 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DatabaseEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AquatiLife_Inventory_DatabaseEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_List_TankTypes">
+          <Key>
+            <PropertyRef Name="pk_TankTypeID" />
+          </Key>
+          <Property Name="pk_TankTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fk_WaterType" Type="Int32" Nullable="false" />
+          <Property Name="TankSpecialTags" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TankShape" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="List_WaterTypes" Relationship="Self.FK_FishTankTypes_WaterType" FromRole="C_List_TankTypes" ToRole="List_WaterTypes" />
+        </EntityType>
         <EntityType Name="AnimalTypes">
           <Key>
             <PropertyRef Name="pk_AnimalTypeID" />
@@ -643,6 +890,24 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="fk_FishCareGuideID" Type="Int32" />
           <Property Name="AnimalTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FishCareGuides" Relationship="Self.FK_AnimalTypes_FishCareGuides" FromRole="AnimalTypes" ToRole="FishCareGuides" />
+        </EntityType>
+        <EntityType Name="Business_Customers">
+          <Key>
+            <PropertyRef Name="pk_CustomerID" />
+          </Key>
+          <Property Name="pk_CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fk_ContactInfo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContactInfo" Relationship="Self.FK_Business_Customers_ContactInfo" FromRole="Business_Customers" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="Business_List_VendorTypes">
+          <Key>
+            <PropertyRef Name="pk_VendorTypeID" />
+          </Key>
+          <Property Name="pk_VendorTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Business_Vendors" Relationship="Self.FK_Business_Vendors_Business_List_VendorTypes" FromRole="Business_List_VendorTypes" ToRole="Business_Vendors" />
         </EntityType>
         <EntityType Name="ContactInfo">
           <Key>
@@ -658,6 +923,8 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="fk_UserID" Type="Int32" />
+          <NavigationProperty Name="Business_Customers" Relationship="Self.FK_Business_Customers_ContactInfo" FromRole="ContactInfo" ToRole="Business_Customers" />
+          <NavigationProperty Name="Business_Vendors" Relationship="Self.FK_Business_Vendors_ContactInfo" FromRole="ContactInfo" ToRole="Business_Vendors" />
           <NavigationProperty Name="Stores" Relationship="Self.FK_ContactInfo_Stores" FromRole="ContactInfo" ToRole="Stores" />
           <NavigationProperty Name="Users" Relationship="Self.FK_ContactInfo_Users" FromRole="ContactInfo" ToRole="Users" />
           <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfiles_ContactInfo" FromRole="ContactInfo" ToRole="UserProfiles" />
@@ -667,21 +934,21 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <PropertyRef Name="pk_CareGuideID" />
           </Key>
           <Property Name="pk_CareGuideID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="filepath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="fk_AnimalType" Type="Int32" Nullable="false" />
+          <Property Name="DocumentPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fk_AnimalType" Type="Int32" />
+          <Property Name="fk_FishType" Type="Int32" />
           <NavigationProperty Name="AnimalTypes" Relationship="Self.FK_AnimalTypes_FishCareGuides" FromRole="FishCareGuides" ToRole="AnimalTypes" />
           <NavigationProperty Name="FishTypes" Relationship="Self.FK_FishTypes_FishCareGuides" FromRole="FishCareGuides" ToRole="FishTypes" />
         </EntityType>
-        <EntityType Name="FishTankTypes">
+        <EntityType Name="FishTypeDiseaseAffection">
           <Key>
-            <PropertyRef Name="pk_TankTypeID" />
+            <PropertyRef Name="pk_AffectedTypesID" />
           </Key>
-          <Property Name="pk_TankTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="fk_WaterType" Type="Int32" Nullable="false" />
-          <Property Name="TankSpecialTags" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TankShape" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="WaterTypes" Relationship="Self.FK_FishTankTypes_WaterType" FromRole="FishTankTypes" ToRole="WaterTypes" />
+          <Property Name="pk_AffectedTypesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_SicknessID" Type="Int32" Nullable="false" />
+          <Property Name="fk_FishTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FishTypes" Relationship="Self.FK_FishTypeDiseaseAffection_FishTypes" FromRole="FishTypeDiseaseAffection" ToRole="FishTypes" />
+          <NavigationProperty Name="List_FishSicknessTypes" Relationship="Self.FK_List_FishSicknessTypes_FishTypeDiseaseAffection" FromRole="FishTypeDiseaseAffection" ToRole="List_FishSicknessTypes" />
         </EntityType>
         <EntityType Name="FishTypes">
           <Key>
@@ -698,7 +965,61 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="fk_WaterType" Type="Int32" Nullable="false" />
           <Property Name="fk_CareGuideID" Type="Int32" />
           <NavigationProperty Name="FishCareGuides" Relationship="Self.FK_FishTypes_FishCareGuides" FromRole="FishTypes" ToRole="FishCareGuides" />
-          <NavigationProperty Name="WaterTypes" Relationship="Self.FK_FishTypes_WaterTypes" FromRole="FishTypes" ToRole="WaterTypes" />
+          <NavigationProperty Name="FishTypeDiseaseAffection" Relationship="Self.FK_FishTypeDiseaseAffection_FishTypes" FromRole="FishTypes" ToRole="FishTypeDiseaseAffection" />
+          <NavigationProperty Name="List_WaterTypes" Relationship="Self.FK_FishTypes_WaterTypes" FromRole="FishTypes" ToRole="List_WaterTypes" />
+        </EntityType>
+        <EntityType Name="List_ErrorSeverityLevels">
+          <Key>
+            <PropertyRef Name="pk_SeverityID" />
+          </Key>
+          <Property Name="pk_SeverityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeverityLevelText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SeverityLevelNum" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="List_ErrorTypes">
+          <Key>
+            <PropertyRef Name="pk_ErrorTypeID" />
+          </Key>
+          <Property Name="pk_ErrorTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorTypeDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fk_ErrorSeverity" Type="Int32" Nullable="false" />
+          <Property Name="fk_ErrorWaterType" Type="Int32" />
+          <Property Name="ErrorTypeCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="List_WaterTypes" Relationship="Self.FK_List_ErrorTypes_List_WaterTypes" FromRole="List_ErrorTypes" ToRole="List_WaterTypes" />
+        </EntityType>
+        <EntityType Name="List_FishSicknessTypes">
+          <Key>
+            <PropertyRef Name="pk_FishSicknesses" />
+          </Key>
+          <Property Name="pk_FishSicknesses" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SicknessName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsFatal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Symptoms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CareNeeded" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RecoveryTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fk_AffectedTypes" Type="Int32" />
+          <NavigationProperty Name="FishTypeDiseaseAffection" Relationship="Self.FK_List_FishSicknessTypes_FishTypeDiseaseAffection" FromRole="List_FishSicknessTypes" ToRole="FishTypeDiseaseAffection" />
+        </EntityType>
+        <EntityType Name="List_PurchaseTypes">
+          <Key>
+            <PropertyRef Name="pk_PurchaseTypeID" />
+          </Key>
+          <Property Name="pk_PurchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseTypeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_PurchaseTypes" FromRole="List_PurchaseTypes" ToRole="Purchases" />
+        </EntityType>
+        <EntityType Name="List_WaterTypes">
+          <Key>
+            <PropertyRef Name="pk_WaterTypeID" />
+          </Key>
+          <Property Name="pk_WaterTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WaterTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WaterTypeSpecialTags" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="C_List_TankTypes" Relationship="Self.FK_FishTankTypes_WaterType" FromRole="List_WaterTypes" ToRole="C_List_TankTypes" />
+          <NavigationProperty Name="FishTypes" Relationship="Self.FK_FishTypes_WaterTypes" FromRole="List_WaterTypes" ToRole="FishTypes" />
+          <NavigationProperty Name="List_ErrorTypes" Relationship="Self.FK_List_ErrorTypes_List_WaterTypes" FromRole="List_WaterTypes" ToRole="List_ErrorTypes" />
+          <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_FishTypes" FromRole="List_WaterTypes" ToRole="UserFish" />
+          <NavigationProperty Name="UserTanks" Relationship="Self.FK_UserTanks_WaterType" FromRole="List_WaterTypes" ToRole="UserTanks" />
         </EntityType>
         <EntityType Name="MedicalRecords">
           <Key>
@@ -725,18 +1046,10 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="Cost" Type="Double" Nullable="false" />
           <Property Name="fk_UserFish" Type="Int32" />
           <Property Name="fk_UserTank" Type="Int32" />
-          <NavigationProperty Name="PurchaseTypes" Relationship="Self.FK_Purchases_PurchaseTypes" FromRole="Purchases" ToRole="PurchaseTypes" />
+          <NavigationProperty Name="List_PurchaseTypes" Relationship="Self.FK_Purchases_PurchaseTypes" FromRole="Purchases" ToRole="List_PurchaseTypes" />
           <NavigationProperty Name="Stores" Relationship="Self.FK_Purchases_Store" FromRole="Purchases" ToRole="Stores" />
           <NavigationProperty Name="UserFish" Relationship="Self.FK_Purchases_UserFish" FromRole="Purchases" ToRole="UserFish" />
           <NavigationProperty Name="UserTanks" Relationship="Self.FK_Purchases_UserTanks" FromRole="Purchases" ToRole="UserTanks" />
-        </EntityType>
-        <EntityType Name="PurchaseTypes">
-          <Key>
-            <PropertyRef Name="pk_PurchaseTypeID" />
-          </Key>
-          <Property Name="pk_PurchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_PurchaseTypes" FromRole="PurchaseTypes" ToRole="Purchases" />
         </EntityType>
         <EntityType Name="StoreHolidaySchedules">
           <Key>
@@ -822,9 +1135,9 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BirthingMethod" Type="Int32" />
           <Property Name="AgressionLevel" Type="Int32" />
+          <NavigationProperty Name="List_WaterTypes" Relationship="Self.FK_UserFish_FishTypes" FromRole="UserFish" ToRole="List_WaterTypes" />
           <NavigationProperty Name="MedicalRecords" Relationship="Self.FK_MedicalRecords_UserFish" FromRole="UserFish" ToRole="MedicalRecords" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_UserFish" FromRole="UserFish" ToRole="Purchases" />
-          <NavigationProperty Name="WaterTypes" Relationship="Self.FK_UserFish_FishTypes" FromRole="UserFish" ToRole="WaterTypes" />
           <NavigationProperty Name="Users" Relationship="Self.FK_UserFish_Users" FromRole="UserFish" ToRole="Users" />
           <NavigationProperty Name="UserTanks" Relationship="Self.FK_UserFish_UserTanks" FromRole="UserFish" ToRole="UserTanks" />
         </EntityType>
@@ -838,6 +1151,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="SessionPermission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SessionEnd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="SessionDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="Self.FK_UserLoginSessions_Users" FromRole="UserLoginSessions" ToRole="Users" />
         </EntityType>
         <EntityType Name="UserProfiles">
@@ -865,6 +1179,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_Users" FromRole="Users" ToRole="UserFish" />
           <NavigationProperty Name="UserLoginSessions" Relationship="Self.FK_UserLoginSessions_Users" FromRole="Users" ToRole="UserLoginSessions" />
           <NavigationProperty Name="UserProfiles" Relationship="Self.FK_Users_UserProfiles" FromRole="Users" ToRole="UserProfiles" />
+          <NavigationProperty Name="Errorlogs" Relationship="Self.FK_Errorlogs_Users" FromRole="Users" ToRole="Errorlogs" />
           <NavigationProperty Name="UserTanks" Relationship="Self.FK_UserTanks_Users" FromRole="Users" ToRole="UserTanks" />
         </EntityType>
         <EntityType Name="UserTanks">
@@ -877,22 +1192,41 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="TankHeight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TankWidth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fk_TankWaterType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="List_WaterTypes" Relationship="Self.FK_UserTanks_WaterType" FromRole="UserTanks" ToRole="List_WaterTypes" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchases_UserTanks" FromRole="UserTanks" ToRole="Purchases" />
           <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_UserTanks" FromRole="UserTanks" ToRole="UserFish" />
           <NavigationProperty Name="Users" Relationship="Self.FK_UserTanks_Users" FromRole="UserTanks" ToRole="Users" />
-          <NavigationProperty Name="WaterTypes" Relationship="Self.FK_UserTanks_WaterType" FromRole="UserTanks" ToRole="WaterTypes" />
         </EntityType>
-        <EntityType Name="WaterTypes">
+        <EntityType Name="Business_Vendors">
           <Key>
-            <PropertyRef Name="pk_WaterTypeID" />
+            <PropertyRef Name="pk_VendorID" />
+            <PropertyRef Name="VendorName" />
           </Key>
-          <Property Name="pk_WaterTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WaterTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="WaterTypeSpecialTags" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="FishTankTypes" Relationship="Self.FK_FishTankTypes_WaterType" FromRole="WaterTypes" ToRole="FishTankTypes" />
-          <NavigationProperty Name="FishTypes" Relationship="Self.FK_FishTypes_WaterTypes" FromRole="WaterTypes" ToRole="FishTypes" />
-          <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_FishTypes" FromRole="WaterTypes" ToRole="UserFish" />
-          <NavigationProperty Name="UserTanks" Relationship="Self.FK_UserTanks_WaterType" FromRole="WaterTypes" ToRole="UserTanks" />
+          <Property Name="pk_VendorID" Type="Int32" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fk_ContactInfo" Type="Int32" />
+          <Property Name="fk_VendorType" Type="Int32" />
+          <NavigationProperty Name="Business_List_VendorTypes" Relationship="Self.FK_Business_Vendors_Business_List_VendorTypes" FromRole="Business_Vendors" ToRole="Business_List_VendorTypes" />
+          <NavigationProperty Name="ContactInfo" Relationship="Self.FK_Business_Vendors_ContactInfo" FromRole="Business_Vendors" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="Errorlogs">
+          <Key>
+            <PropertyRef Name="pk_errorID" />
+            <PropertyRef Name="fk_ErrorType" />
+            <PropertyRef Name="ErrorDate" />
+            <PropertyRef Name="ErrorTitle" />
+            <PropertyRef Name="ErrorDetails" />
+          </Key>
+          <Property Name="pk_errorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_ErrorType" Type="Int32" Nullable="false" />
+          <Property Name="ErrorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fk_errorUser" Type="Int32" />
+          <Property Name="ErrorTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ErrorDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ErrorSourceScreen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorSourceAction" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorRecommendedResolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Errorlogs_Users" FromRole="Errorlogs" ToRole="Users" />
         </EntityType>
         <EntityType Name="Get_AllFishTypeOverview">
           <Key>
@@ -900,6 +1234,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <PropertyRef Name="FishFeederType" />
             <PropertyRef Name="FishAgressionLevel" />
             <PropertyRef Name="FishTerritorialLevel" />
+            <PropertyRef Name="pk_FishTypeID" />
           </Key>
           <Property Name="FishTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FishTypeImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -910,7 +1245,20 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Name="FishTerritorialLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="WaterTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="WaterTypeSpecialTags" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pk_FishTypeID" Type="Int32" Nullable="false" />
         </EntityType>
+        <Association Name="FK_FishTankTypes_WaterType">
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
+          <End Role="C_List_TankTypes" Type="Self.C_List_TankTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_WaterTypes">
+              <PropertyRef Name="pk_WaterTypeID" />
+            </Principal>
+            <Dependent Role="C_List_TankTypes">
+              <PropertyRef Name="fk_WaterType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AnimalTypes_FishCareGuides">
           <End Role="FishCareGuides" Type="Self.FishCareGuides" Multiplicity="0..1" />
           <End Role="AnimalTypes" Type="Self.AnimalTypes" Multiplicity="*" />
@@ -920,6 +1268,48 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Principal>
             <Dependent Role="AnimalTypes">
               <PropertyRef Name="fk_FishCareGuideID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Customers_ContactInfo">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Business_Customers" Type="Self.Business_Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="pk_AddressID" />
+            </Principal>
+            <Dependent Role="Business_Customers">
+              <PropertyRef Name="fk_ContactInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Vendors_Business_List_VendorTypes">
+          <End Role="Business_List_VendorTypes" Type="Self.Business_List_VendorTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Business_Vendors" Type="Self.Business_Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business_List_VendorTypes">
+              <PropertyRef Name="pk_VendorTypeID" />
+            </Principal>
+            <Dependent Role="Business_Vendors">
+              <PropertyRef Name="fk_VendorType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Vendors_ContactInfo">
+          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Business_Vendors" Type="Self.Business_Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="pk_AddressID" />
+            </Principal>
+            <Dependent Role="Business_Vendors">
+              <PropertyRef Name="fk_ContactInfo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -971,27 +1361,87 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FishTankTypes_WaterType">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
-          <End Role="FishTankTypes" Type="Self.FishTankTypes" Multiplicity="*" />
+        <Association Name="FK_FishTypeDiseaseAffection_FishTypes">
+          <End Role="FishTypes" Type="Self.FishTypes" Multiplicity="1" />
+          <End Role="FishTypeDiseaseAffection" Type="Self.FishTypeDiseaseAffection" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WaterTypes">
-              <PropertyRef Name="pk_WaterTypeID" />
+            <Principal Role="FishTypes">
+              <PropertyRef Name="pk_FishTypeID" />
             </Principal>
-            <Dependent Role="FishTankTypes">
-              <PropertyRef Name="fk_WaterType" />
+            <Dependent Role="FishTypeDiseaseAffection">
+              <PropertyRef Name="fk_FishTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_FishSicknessTypes_FishTypeDiseaseAffection">
+          <End Role="FishTypeDiseaseAffection" Type="Self.FishTypeDiseaseAffection" Multiplicity="0..1" />
+          <End Role="List_FishSicknessTypes" Type="Self.List_FishSicknessTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishTypeDiseaseAffection">
+              <PropertyRef Name="pk_AffectedTypesID" />
+            </Principal>
+            <Dependent Role="List_FishSicknessTypes">
+              <PropertyRef Name="fk_AffectedTypes" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FishTypes_WaterTypes">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
           <End Role="FishTypes" Type="Self.FishTypes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WaterTypes">
+            <Principal Role="List_WaterTypes">
               <PropertyRef Name="pk_WaterTypeID" />
             </Principal>
             <Dependent Role="FishTypes">
               <PropertyRef Name="fk_WaterType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_ErrorTypes_List_WaterTypes">
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="0..1" />
+          <End Role="List_ErrorTypes" Type="Self.List_ErrorTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_WaterTypes">
+              <PropertyRef Name="pk_WaterTypeID" />
+            </Principal>
+            <Dependent Role="List_ErrorTypes">
+              <PropertyRef Name="fk_ErrorWaterType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchases_PurchaseTypes">
+          <End Role="List_PurchaseTypes" Type="Self.List_PurchaseTypes" Multiplicity="1" />
+          <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_PurchaseTypes">
+              <PropertyRef Name="pk_PurchaseTypeID" />
+            </Principal>
+            <Dependent Role="Purchases">
+              <PropertyRef Name="fk_PurchaseType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFish_FishTypes">
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
+          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_WaterTypes">
+              <PropertyRef Name="pk_WaterTypeID" />
+            </Principal>
+            <Dependent Role="UserFish">
+              <PropertyRef Name="fk_FishTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTanks_WaterType">
+          <End Role="List_WaterTypes" Type="Self.List_WaterTypes" Multiplicity="1" />
+          <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="List_WaterTypes">
+              <PropertyRef Name="pk_WaterTypeID" />
+            </Principal>
+            <Dependent Role="UserTanks">
+              <PropertyRef Name="fk_TankWaterType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1016,18 +1466,6 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Principal>
             <Dependent Role="MedicalRecords">
               <PropertyRef Name="fk_UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Purchases_PurchaseTypes">
-          <End Role="PurchaseTypes" Type="Self.PurchaseTypes" Multiplicity="1" />
-          <End Role="Purchases" Type="Self.Purchases" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PurchaseTypes">
-              <PropertyRef Name="pk_PurchaseTypeID" />
-            </Principal>
-            <Dependent Role="Purchases">
-              <PropertyRef Name="fk_PurchaseType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1095,18 +1533,6 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserFish_FishTypes">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
-          <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaterTypes">
-              <PropertyRef Name="pk_WaterTypeID" />
-            </Principal>
-            <Dependent Role="UserFish">
-              <PropertyRef Name="fk_FishTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserFish_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserFish" Type="Self.UserFish" Multiplicity="*" />
@@ -1155,6 +1581,18 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Errorlogs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Errorlogs" Type="Self.Errorlogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="pk_UserID" />
+            </Principal>
+            <Dependent Role="Errorlogs">
+              <PropertyRef Name="fk_errorUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserTanks_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="*" />
@@ -1167,27 +1605,22 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserTanks_WaterType">
-          <End Role="WaterTypes" Type="Self.WaterTypes" Multiplicity="1" />
-          <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaterTypes">
-              <PropertyRef Name="pk_WaterTypeID" />
-            </Principal>
-            <Dependent Role="UserTanks">
-              <PropertyRef Name="fk_TankWaterType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_List_TankTypes" EntityType="Self.C_List_TankTypes" />
           <EntitySet Name="AnimalTypes" EntityType="Self.AnimalTypes" />
+          <EntitySet Name="Business_Customers" EntityType="Self.Business_Customers" />
+          <EntitySet Name="Business_List_VendorTypes" EntityType="Self.Business_List_VendorTypes" />
           <EntitySet Name="ContactInfo" EntityType="Self.ContactInfo" />
           <EntitySet Name="FishCareGuides" EntityType="Self.FishCareGuides" />
-          <EntitySet Name="FishTankTypes" EntityType="Self.FishTankTypes" />
+          <EntitySet Name="FishTypeDiseaseAffection" EntityType="Self.FishTypeDiseaseAffection" />
           <EntitySet Name="FishTypes" EntityType="Self.FishTypes" />
+          <EntitySet Name="List_ErrorSeverityLevels" EntityType="Self.List_ErrorSeverityLevels" />
+          <EntitySet Name="List_ErrorTypes" EntityType="Self.List_ErrorTypes" />
+          <EntitySet Name="List_FishSicknessTypes" EntityType="Self.List_FishSicknessTypes" />
+          <EntitySet Name="List_PurchaseTypes" EntityType="Self.List_PurchaseTypes" />
+          <EntitySet Name="List_WaterTypes" EntityType="Self.List_WaterTypes" />
           <EntitySet Name="MedicalRecords" EntityType="Self.MedicalRecords" />
           <EntitySet Name="Purchases" EntityType="Self.Purchases" />
-          <EntitySet Name="PurchaseTypes" EntityType="Self.PurchaseTypes" />
           <EntitySet Name="StoreHolidaySchedules" EntityType="Self.StoreHolidaySchedules" />
           <EntitySet Name="Stores" EntityType="Self.Stores" />
           <EntitySet Name="StoreWeeklySchedules" EntityType="Self.StoreWeeklySchedules" />
@@ -1196,11 +1629,28 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="UserTanks" EntityType="Self.UserTanks" />
-          <EntitySet Name="WaterTypes" EntityType="Self.WaterTypes" />
+          <EntitySet Name="Business_Vendors" EntityType="Self.Business_Vendors" />
+          <EntitySet Name="Errorlogs" EntityType="Self.Errorlogs" />
           <EntitySet Name="Get_AllFishTypeOverview" EntityType="Self.Get_AllFishTypeOverview" />
+          <AssociationSet Name="FK_FishTankTypes_WaterType" Association="Self.FK_FishTankTypes_WaterType">
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
+            <End Role="C_List_TankTypes" EntitySet="C_List_TankTypes" />
+          </AssociationSet>
           <AssociationSet Name="FK_AnimalTypes_FishCareGuides" Association="Self.FK_AnimalTypes_FishCareGuides">
             <End Role="FishCareGuides" EntitySet="FishCareGuides" />
             <End Role="AnimalTypes" EntitySet="AnimalTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Customers_ContactInfo" Association="Self.FK_Business_Customers_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Business_Customers" EntitySet="Business_Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Vendors_Business_List_VendorTypes" Association="Self.FK_Business_Vendors_Business_List_VendorTypes">
+            <End Role="Business_List_VendorTypes" EntitySet="Business_List_VendorTypes" />
+            <End Role="Business_Vendors" EntitySet="Business_Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Vendors_ContactInfo" Association="Self.FK_Business_Vendors_ContactInfo">
+            <End Role="ContactInfo" EntitySet="ContactInfo" />
+            <End Role="Business_Vendors" EntitySet="Business_Vendors" />
           </AssociationSet>
           <AssociationSet Name="FK_ContactInfo_Stores" Association="Self.FK_ContactInfo_Stores">
             <End Role="Stores" EntitySet="Stores" />
@@ -1218,13 +1668,33 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <End Role="FishCareGuides" EntitySet="FishCareGuides" />
             <End Role="FishTypes" EntitySet="FishTypes" />
           </AssociationSet>
-          <AssociationSet Name="FK_FishTankTypes_WaterType" Association="Self.FK_FishTankTypes_WaterType">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
-            <End Role="FishTankTypes" EntitySet="FishTankTypes" />
+          <AssociationSet Name="FK_FishTypeDiseaseAffection_FishTypes" Association="Self.FK_FishTypeDiseaseAffection_FishTypes">
+            <End Role="FishTypes" EntitySet="FishTypes" />
+            <End Role="FishTypeDiseaseAffection" EntitySet="FishTypeDiseaseAffection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_FishSicknessTypes_FishTypeDiseaseAffection" Association="Self.FK_List_FishSicknessTypes_FishTypeDiseaseAffection">
+            <End Role="FishTypeDiseaseAffection" EntitySet="FishTypeDiseaseAffection" />
+            <End Role="List_FishSicknessTypes" EntitySet="List_FishSicknessTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_FishTypes_WaterTypes" Association="Self.FK_FishTypes_WaterTypes">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
             <End Role="FishTypes" EntitySet="FishTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_ErrorTypes_List_WaterTypes" Association="Self.FK_List_ErrorTypes_List_WaterTypes">
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
+            <End Role="List_ErrorTypes" EntitySet="List_ErrorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchases_PurchaseTypes" Association="Self.FK_Purchases_PurchaseTypes">
+            <End Role="List_PurchaseTypes" EntitySet="List_PurchaseTypes" />
+            <End Role="Purchases" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFish_FishTypes" Association="Self.FK_UserFish_FishTypes">
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
+            <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTanks_WaterType" Association="Self.FK_UserTanks_WaterType">
+            <End Role="List_WaterTypes" EntitySet="List_WaterTypes" />
+            <End Role="UserTanks" EntitySet="UserTanks" />
           </AssociationSet>
           <AssociationSet Name="FK_MedicalRecords_UserFish" Association="Self.FK_MedicalRecords_UserFish">
             <End Role="UserFish" EntitySet="UserFish" />
@@ -1233,10 +1703,6 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <AssociationSet Name="FK_MedicalRecords_Users" Association="Self.FK_MedicalRecords_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="MedicalRecords" EntitySet="MedicalRecords" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Purchases_PurchaseTypes" Association="Self.FK_Purchases_PurchaseTypes">
-            <End Role="PurchaseTypes" EntitySet="PurchaseTypes" />
-            <End Role="Purchases" EntitySet="Purchases" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchases_Store" Association="Self.FK_Purchases_Store">
             <End Role="Stores" EntitySet="Stores" />
@@ -1258,10 +1724,6 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <End Role="StoreWeeklySchedules" EntitySet="StoreWeeklySchedules" />
             <End Role="Stores" EntitySet="Stores" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserFish_FishTypes" Association="Self.FK_UserFish_FishTypes">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
-            <End Role="UserFish" EntitySet="UserFish" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserFish_Users" Association="Self.FK_UserFish_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserFish" EntitySet="UserFish" />
@@ -1278,15 +1740,15 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             <End Role="UserProfiles" EntitySet="UserProfiles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_Errorlogs_Users" Association="Self.FK_Errorlogs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Errorlogs" EntitySet="Errorlogs" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserTanks_Users" Association="Self.FK_UserTanks_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserTanks" EntitySet="UserTanks" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserTanks_WaterType" Association="Self.FK_UserTanks_WaterType">
-            <End Role="WaterTypes" EntitySet="WaterTypes" />
-            <End Role="UserTanks" EntitySet="UserTanks" />
-          </AssociationSet>
-          <FunctionImport Name="GetActiveLoginSessions" ReturnType="Collection(DatabaseEntities.GetActiveLoginSessions_Result)">
+          <FunctionImport Name="GetActiveLoginSessions" ReturnType="Collection(AquatiLife_Inventory_DatabaseEntities.GetActiveLoginSessions_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -1297,15 +1759,27 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
           <Property Type="String" Name="SessionPermission" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="SessionEnd" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="SessionDuration" Nullable="true" MaxLength="200" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseEntitiesStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="AquatiLife_Inventory_DatabaseEntitiesStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C_List_TankTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.C_List_TankTypes">
+              <MappingFragment StoreEntitySet=":List_TankTypes">
+                <ScalarProperty Name="pk_TankTypeID" ColumnName="pk_TankTypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="fk_WaterType" ColumnName="fk_WaterType" />
+                <ScalarProperty Name="TankSpecialTags" ColumnName="TankSpecialTags" />
+                <ScalarProperty Name="TankShape" ColumnName="TankShape" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AnimalTypes">
-            <EntityTypeMapping TypeName="DatabaseEntities.AnimalTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.AnimalTypes">
               <MappingFragment StoreEntitySet="AnimalTypes">
                 <ScalarProperty Name="pk_AnimalTypeID" ColumnName="pk_AnimalTypeID" />
                 <ScalarProperty Name="fk_FishCareGuideID" ColumnName="fk_FishCareGuideID" />
@@ -1313,8 +1787,26 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Business_Customers">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Business_Customers">
+              <MappingFragment StoreEntitySet="Business_Customers">
+                <ScalarProperty Name="pk_CustomerID" ColumnName="pk_CustomerID" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="fk_ContactInfo" ColumnName="fk_ContactInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Business_List_VendorTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Business_List_VendorTypes">
+              <MappingFragment StoreEntitySet="Business_List_VendorTypes">
+                <ScalarProperty Name="pk_VendorTypeID" ColumnName="pk_VendorTypeID" />
+                <ScalarProperty Name="VendorType" ColumnName="VendorType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ContactInfo">
-            <EntityTypeMapping TypeName="DatabaseEntities.ContactInfo">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.ContactInfo">
               <MappingFragment StoreEntitySet="ContactInfo">
                 <ScalarProperty Name="pk_AddressID" ColumnName="pk_AddressID" />
                 <ScalarProperty Name="fk_StoreID" ColumnName="fk_StoreID" />
@@ -1330,27 +1822,26 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FishCareGuides">
-            <EntityTypeMapping TypeName="DatabaseEntities.FishCareGuides">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.FishCareGuides">
               <MappingFragment StoreEntitySet="FishCareGuides">
                 <ScalarProperty Name="pk_CareGuideID" ColumnName="pk_CareGuideID" />
-                <ScalarProperty Name="filepath" ColumnName="filepath" />
+                <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
                 <ScalarProperty Name="fk_AnimalType" ColumnName="fk_AnimalType" />
+                <ScalarProperty Name="fk_FishType" ColumnName="fk_FishType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FishTankTypes">
-            <EntityTypeMapping TypeName="DatabaseEntities.FishTankTypes">
-              <MappingFragment StoreEntitySet="FishTankTypes">
-                <ScalarProperty Name="pk_TankTypeID" ColumnName="pk_TankTypeID" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="fk_WaterType" ColumnName="fk_WaterType" />
-                <ScalarProperty Name="TankSpecialTags" ColumnName="TankSpecialTags" />
-                <ScalarProperty Name="TankShape" ColumnName="TankShape" />
+          <EntitySetMapping Name="FishTypeDiseaseAffection">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.FishTypeDiseaseAffection">
+              <MappingFragment StoreEntitySet="FishTypeDiseaseAffection">
+                <ScalarProperty Name="pk_AffectedTypesID" ColumnName="pk_AffectedTypesID" />
+                <ScalarProperty Name="fk_SicknessID" ColumnName="fk_SicknessID" />
+                <ScalarProperty Name="fk_FishTypeID" ColumnName="fk_FishTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FishTypes">
-            <EntityTypeMapping TypeName="DatabaseEntities.FishTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.FishTypes">
               <MappingFragment StoreEntitySet="FishTypes">
                 <ScalarProperty Name="pk_FishTypeID" ColumnName="pk_FishTypeID" />
                 <ScalarProperty Name="FishTypeName" ColumnName="FishTypeName" />
@@ -1365,8 +1856,58 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="List_ErrorSeverityLevels">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.List_ErrorSeverityLevels">
+              <MappingFragment StoreEntitySet="List_ErrorSeverityLevels">
+                <ScalarProperty Name="pk_SeverityID" ColumnName="pk_SeverityID" />
+                <ScalarProperty Name="SeverityLevelText" ColumnName="SeverityLevelText" />
+                <ScalarProperty Name="SeverityLevelNum" ColumnName="SeverityLevelNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List_ErrorTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.List_ErrorTypes">
+              <MappingFragment StoreEntitySet="List_ErrorTypes">
+                <ScalarProperty Name="pk_ErrorTypeID" ColumnName="pk_ErrorTypeID" />
+                <ScalarProperty Name="ErrorTypeDescription" ColumnName="ErrorTypeDescription" />
+                <ScalarProperty Name="fk_ErrorSeverity" ColumnName="fk_ErrorSeverity" />
+                <ScalarProperty Name="fk_ErrorWaterType" ColumnName="fk_ErrorWaterType" />
+                <ScalarProperty Name="ErrorTypeCategory" ColumnName="ErrorTypeCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List_FishSicknessTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.List_FishSicknessTypes">
+              <MappingFragment StoreEntitySet="List_FishSicknessTypes">
+                <ScalarProperty Name="pk_FishSicknesses" ColumnName="pk_FishSicknesses" />
+                <ScalarProperty Name="SicknessName" ColumnName="SicknessName" />
+                <ScalarProperty Name="IsFatal" ColumnName="IsFatal" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+                <ScalarProperty Name="CareNeeded" ColumnName="CareNeeded" />
+                <ScalarProperty Name="RecoveryTime" ColumnName="RecoveryTime" />
+                <ScalarProperty Name="fk_AffectedTypes" ColumnName="fk_AffectedTypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List_PurchaseTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.List_PurchaseTypes">
+              <MappingFragment StoreEntitySet="List_PurchaseTypes">
+                <ScalarProperty Name="pk_PurchaseTypeID" ColumnName="pk_PurchaseTypeID" />
+                <ScalarProperty Name="PurchaseTypeDescription" ColumnName="PurchaseTypeDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List_WaterTypes">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.List_WaterTypes">
+              <MappingFragment StoreEntitySet="List_WaterTypes">
+                <ScalarProperty Name="pk_WaterTypeID" ColumnName="pk_WaterTypeID" />
+                <ScalarProperty Name="WaterTypeName" ColumnName="WaterTypeName" />
+                <ScalarProperty Name="WaterTypeSpecialTags" ColumnName="WaterTypeSpecialTags" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MedicalRecords">
-            <EntityTypeMapping TypeName="DatabaseEntities.MedicalRecords">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.MedicalRecords">
               <MappingFragment StoreEntitySet="MedicalRecords">
                 <ScalarProperty Name="pk_MedRecordID" ColumnName="pk_MedRecordID" />
                 <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
@@ -1377,7 +1918,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Purchases">
-            <EntityTypeMapping TypeName="DatabaseEntities.Purchases">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Purchases">
               <MappingFragment StoreEntitySet="Purchases">
                 <ScalarProperty Name="pk_PurchaseID" ColumnName="pk_PurchaseID" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
@@ -1391,16 +1932,8 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseTypes">
-            <EntityTypeMapping TypeName="DatabaseEntities.PurchaseTypes">
-              <MappingFragment StoreEntitySet="PurchaseTypes">
-                <ScalarProperty Name="pk_PurchaseTypeID" ColumnName="pk_PurchaseTypeID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="StoreHolidaySchedules">
-            <EntityTypeMapping TypeName="DatabaseEntities.StoreHolidaySchedules">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.StoreHolidaySchedules">
               <MappingFragment StoreEntitySet="StoreHolidaySchedules">
                 <ScalarProperty Name="pk_StoreHolidayScheduleID" ColumnName="pk_StoreHolidayScheduleID" />
                 <ScalarProperty Name="NewYearsEve" ColumnName="NewYearsEve" />
@@ -1422,7 +1955,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stores">
-            <EntityTypeMapping TypeName="DatabaseEntities.Stores">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Stores">
               <MappingFragment StoreEntitySet="Stores">
                 <ScalarProperty Name="pk_StoreID" ColumnName="pk_StoreID" />
                 <ScalarProperty Name="StoreName" ColumnName="StoreName" />
@@ -1434,7 +1967,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StoreWeeklySchedules">
-            <EntityTypeMapping TypeName="DatabaseEntities.StoreWeeklySchedules">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.StoreWeeklySchedules">
               <MappingFragment StoreEntitySet="StoreWeeklySchedules">
                 <ScalarProperty Name="pk_WeeklyScheduleID" ColumnName="pk_WeeklyScheduleID" />
                 <ScalarProperty Name="fk_StoreID" ColumnName="fk_StoreID" />
@@ -1456,7 +1989,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserFish">
-            <EntityTypeMapping TypeName="DatabaseEntities.UserFish">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.UserFish">
               <MappingFragment StoreEntitySet="UserFish">
                 <ScalarProperty Name="pk_UserFishID" ColumnName="pk_UserFishID" />
                 <ScalarProperty Name="fk_FishTypeID" ColumnName="fk_FishTypeID" />
@@ -1483,7 +2016,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserLoginSessions">
-            <EntityTypeMapping TypeName="DatabaseEntities.UserLoginSessions">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.UserLoginSessions">
               <MappingFragment StoreEntitySet="UserLoginSessions">
                 <ScalarProperty Name="pk_SessionID" ColumnName="pk_SessionID" />
                 <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
@@ -1491,11 +2024,12 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
                 <ScalarProperty Name="SessionPermission" ColumnName="SessionPermission" />
                 <ScalarProperty Name="SessionEnd" ColumnName="SessionEnd" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SessionDuration" ColumnName="SessionDuration" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserProfiles">
-            <EntityTypeMapping TypeName="DatabaseEntities.UserProfiles">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.UserProfiles">
               <MappingFragment StoreEntitySet="UserProfiles">
                 <ScalarProperty Name="pk_ProfileID" ColumnName="pk_ProfileID" />
                 <ScalarProperty Name="fk_userID" ColumnName="fk_userID" />
@@ -1505,7 +2039,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="DatabaseEntities.Users">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="pk_UserID" ColumnName="pk_UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -1516,7 +2050,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTanks">
-            <EntityTypeMapping TypeName="DatabaseEntities.UserTanks">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.UserTanks">
               <MappingFragment StoreEntitySet="UserTanks">
                 <ScalarProperty Name="pk_UserTankID" ColumnName="pk_UserTankID" />
                 <ScalarProperty Name="fk_TankOwner" ColumnName="fk_TankOwner" />
@@ -1527,17 +2061,33 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WaterTypes">
-            <EntityTypeMapping TypeName="DatabaseEntities.WaterTypes">
-              <MappingFragment StoreEntitySet="WaterTypes">
-                <ScalarProperty Name="pk_WaterTypeID" ColumnName="pk_WaterTypeID" />
-                <ScalarProperty Name="WaterTypeName" ColumnName="WaterTypeName" />
-                <ScalarProperty Name="WaterTypeSpecialTags" ColumnName="WaterTypeSpecialTags" />
+          <EntitySetMapping Name="Business_Vendors">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Business_Vendors">
+              <MappingFragment StoreEntitySet="Business_Vendors">
+                <ScalarProperty Name="pk_VendorID" ColumnName="pk_VendorID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="fk_ContactInfo" ColumnName="fk_ContactInfo" />
+                <ScalarProperty Name="fk_VendorType" ColumnName="fk_VendorType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Errorlogs">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Errorlogs">
+              <MappingFragment StoreEntitySet="Errorlogs">
+                <ScalarProperty Name="pk_errorID" ColumnName="pk_errorID" />
+                <ScalarProperty Name="fk_ErrorType" ColumnName="fk_ErrorType" />
+                <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+                <ScalarProperty Name="fk_errorUser" ColumnName="fk_errorUser" />
+                <ScalarProperty Name="ErrorTitle" ColumnName="ErrorTitle" />
+                <ScalarProperty Name="ErrorDetails" ColumnName="ErrorDetails" />
+                <ScalarProperty Name="ErrorSourceScreen" ColumnName="ErrorSourceScreen" />
+                <ScalarProperty Name="ErrorSourceAction" ColumnName="ErrorSourceAction" />
+                <ScalarProperty Name="ErrorRecommendedResolution" ColumnName="ErrorRecommendedResolution" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Get_AllFishTypeOverview">
-            <EntityTypeMapping TypeName="DatabaseEntities.Get_AllFishTypeOverview">
+            <EntityTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.Get_AllFishTypeOverview">
               <MappingFragment StoreEntitySet="Get_AllFishTypeOverview">
                 <ScalarProperty Name="FishTypeName" ColumnName="FishTypeName" />
                 <ScalarProperty Name="FishTypeImagePath" ColumnName="FishTypeImagePath" />
@@ -1548,18 +2098,20 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Get_AllFishTypeO
                 <ScalarProperty Name="FishTerritorialLevel" ColumnName="FishTerritorialLevel" />
                 <ScalarProperty Name="WaterTypeName" ColumnName="WaterTypeName" />
                 <ScalarProperty Name="WaterTypeSpecialTags" ColumnName="WaterTypeSpecialTags" />
+                <ScalarProperty Name="pk_FishTypeID" ColumnName="pk_FishTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetActiveLoginSessions" FunctionName="DatabaseEntities.Store.GetActiveLoginSessions">
+          <FunctionImportMapping FunctionImportName="GetActiveLoginSessions" FunctionName="AquatiLife_Inventory_DatabaseEntities.Store.GetActiveLoginSessions">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DatabaseEntities.GetActiveLoginSessions_Result">
+              <ComplexTypeMapping TypeName="AquatiLife_Inventory_DatabaseEntities.GetActiveLoginSessions_Result">
                 <ScalarProperty Name="pk_SessionID" ColumnName="pk_SessionID" />
                 <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
                 <ScalarProperty Name="SessionBegin" ColumnName="SessionBegin" />
                 <ScalarProperty Name="SessionPermission" ColumnName="SessionPermission" />
                 <ScalarProperty Name="SessionEnd" ColumnName="SessionEnd" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SessionDuration" ColumnName="SessionDuration" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

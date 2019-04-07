@@ -142,10 +142,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AquaModClasses\AquaModClasses.csproj">
-      <Project>{C66BF672-30D8-4B8D-B567-7C3B2D99CD0B}</Project>
-      <Name>AquaModClasses</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AquatiLife_Inventory_DataAccess\AquatiLife_Inventory_DataAccess.csproj">
       <Project>{EE946CA7-007A-4FEE-8F82-29A7B005A24E}</Project>
       <Name>AquatiLife_Inventory_DataAccess</Name>

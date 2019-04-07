@@ -16,10 +16,11 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     {
         public string pk_SessionID { get; set; }
         public int fk_UserID { get; set; }
-        public DateTime SessionBegin { get; set; }
+        public string SessionBegin { get; set; }
         public string SessionPermission { get; set; }
-        public DateTime? SessionEnd { get; set; }
+        public string SessionEnd { get; set; }
         public bool IsActive { get; set; }
+        public string SessionDuration { get; set; }
     
         public virtual Users Users { get; set; }
     }

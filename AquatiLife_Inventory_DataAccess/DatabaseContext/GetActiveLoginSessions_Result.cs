@@ -19,5 +19,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string SessionPermission { get; set; }
         public string SessionEnd { get; set; }
         public bool IsActive { get; set; }
+        public string SessionDuration { get; set; }
     }
 }
