@@ -21,7 +21,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         }
     
         public int pk_WeeklyScheduleID { get; set; }
-        public int fk_StoreID { get; set; }
         public string IsOpenMonday { get; set; }
         public string IsOpenTuesday { get; set; }
         public string IsOpenWednesday { get; set; }

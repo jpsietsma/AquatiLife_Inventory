@@ -69,6 +69,9 @@
     <Compile Include="Screens\AddFish.xaml.cs">
       <DependentUpon>AddFish.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\AddPlant.xaml.cs">
+      <DependentUpon>AddPlant.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\AddTank.xaml.cs">
       <DependentUpon>AddTank.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
     <Page Include="Screens\AddFish.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Screens\AddPlant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\AddTank.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -17,9 +17,9 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public List_WaterTypes()
         {
-            this.C_List_TankTypes = new HashSet<C_List_TankTypes>();
             this.FishTypes = new HashSet<FishTypes>();
             this.List_ErrorTypes = new HashSet<List_ErrorTypes>();
+            this.List_FishFamilyTypes = new HashSet<List_FishFamilyTypes>();
             this.UserFish = new HashSet<UserFish>();
             this.UserTanks = new HashSet<UserTanks>();
         }
@@ -29,11 +29,11 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string WaterTypeSpecialTags { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<C_List_TankTypes> C_List_TankTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FishTypes> FishTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<List_ErrorTypes> List_ErrorTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<List_FishFamilyTypes> List_FishFamilyTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFish> UserFish { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

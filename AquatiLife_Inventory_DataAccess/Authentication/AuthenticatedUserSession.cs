@@ -20,7 +20,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
 
         public AuthenticatedUserSession(string user)
         {       
-            using (DatabaseEntities dbconn = new DatabaseEntities())
+            using (Entities dbconn = new Entities())
             {
                 try
                 {

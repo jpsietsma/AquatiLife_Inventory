@@ -17,8 +17,10 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserTanks()
         {
-            this.Purchases = new HashSet<Purchases>();
             this.UserFish = new HashSet<UserFish>();
+            this.UserLivePlants = new HashSet<UserLivePlants>();
+            this.UserTankTemperatureLogs = new HashSet<UserTankTemperatureLogs>();
+            this.UserTankTests = new HashSet<UserTankTests>();
         }
     
         public int pk_UserTankID { get; set; }
@@ -27,12 +29,18 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string TankHeight { get; set; }
         public string TankWidth { get; set; }
         public int fk_TankWaterType { get; set; }
+        public int fk_TankType { get; set; }
     
+        public virtual List_TankTypes List_TankTypes { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchases> Purchases { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFish> UserFish { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserLivePlants> UserLivePlants { get; set; }
         public virtual Users Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserTankTemperatureLogs> UserTankTemperatureLogs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserTankTests> UserTankTests { get; set; }
     }
 }

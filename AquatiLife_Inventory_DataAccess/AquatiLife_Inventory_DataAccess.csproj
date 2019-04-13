@@ -72,9 +72,6 @@
   <ItemGroup>
     <Compile Include="Authentication\AuthenticatedUserSession.cs" />
     <Compile Include="Configuration\AppConfigurationInfo.cs" />
-    <Compile Include="DatabaseContext\AnimalTypes.cs">
-      <DependentUpon>DatabaseEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseContext\Business_Customers.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -85,9 +82,6 @@
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\ContactInfo.cs">
-      <DependentUpon>DatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseContext\C_List_TankTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\DatabaseEntities.Context.cs">
@@ -117,32 +111,63 @@
     <Compile Include="DatabaseContext\FishTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\GetActiveLoginSessions_Result.cs">
-      <DependentUpon>DatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseContext\Get_AllFishTypeOverview.cs">
-      <DependentUpon>DatabaseEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseContext\IFishTypes.cs" />
+    <Compile Include="DatabaseContext\ILivePlantType.cs" />
+    <Compile Include="DatabaseContext\List_ActionTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_AnimalTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_ErrorCategories.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\List_ErrorSeverityLevels.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_ErrorTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\List_FishAgressionLevels.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_FishBirthingTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_FishFamilyTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_FishFeedingTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\List_FishSicknessTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\List_PurchaseTypes.cs">
+    <Compile Include="DatabaseContext\List_FishTerritorialLevels.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_PlantSizeClasses.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_PurchaseCategories.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_SupplyTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_TankLightingLevels.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_TankTestTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_TankTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_WaterTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\MedicalRecords.cs">
-      <DependentUpon>DatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseContext\Purchases.cs">
+    <Compile Include="DatabaseContext\LivePlantTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\StoreHolidaySchedules.cs">
@@ -154,19 +179,55 @@
     <Compile Include="DatabaseContext\StoreWeeklySchedules.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\UserActionLogs.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\UserFish.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\UserFishMedicalRecords.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\UserLivePlants.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserLoginSessions.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\UserNotifications.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\UserProfiles.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\UserPurchases.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\Users.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserTanks.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\UserTankTemperatureLogs.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\UserTankTests.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_FishDictionary.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_PlantDictionary.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_UserFish.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_UserSessions.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_UserTanks.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="enums\AccessoryType.cs" />
@@ -177,12 +238,22 @@
     <Compile Include="enums\LogType.cs" />
     <Compile Include="enums\PurchaseLocations.cs" />
     <Compile Include="enums\PurchaseType.cs" />
+    <Compile Include="ExceptionClasses\IncompatibleCommunityException.cs" />
+    <Compile Include="ExceptionClasses\IncompatibleWaterTypeException.cs" />
+    <Compile Include="ExceptionClasses\InvalidUsernamePasswordException.cs" />
+    <Compile Include="ExceptionClasses\UnknownFishTypeException.cs" />
+    <Compile Include="ext\CareSheetExt.cs" />
+    <Compile Include="ext\FishExt.cs" />
+    <Compile Include="ext\LivePlantExt.cs" />
     <Compile Include="ext\UserExt.cs" />
     <Compile Include="ext\UserLoginAccess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Authentication\UserSession.cs" />
-    <Compile Include="ViewModels\BaseClasses\Plants\AquaticPlant.cs" />
+    <Compile Include="ViewModels\BaseClasses\Documents\CareSheetDictionary.cs" />
+    <Compile Include="ViewModels\BaseClasses\Documents\FishCareSheet.cs" />
+    <Compile Include="ViewModels\BaseClasses\Fish\ILiveFish.cs" />
+    <Compile Include="ViewModels\BaseClasses\Plants\AquaticPlantInfo.cs" />
     <Compile Include="ViewModels\BaseClasses\Tank\FishTank.cs" />
     <Compile Include="ViewModels\BaseClasses\Fish\Catfish.cs" />
     <Compile Include="ViewModels\BaseClasses\Fish\CoryDora.cs" />
@@ -196,6 +267,7 @@
     <Compile Include="ViewModels\BaseClasses\Fish\LiveFish.cs" />
     <Compile Include="ViewModels\BaseClasses\Accessories\TankAccessory.cs" />
     <Compile Include="ViewModels\BaseClasses\Misc\TankTest.cs" />
+    <Compile Include="ViewModels\DictionaryEntryViewModels\FreshwaterFish.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -206,10 +278,70 @@
     <None Include="DatabaseContext\DatabaseEntities.edmx.diagram">
       <DependentUpon>DatabaseEntities.edmx</DependentUpon>
     </None>
+    <None Include="Documentation\CareSheets\caresheet-algae-eater.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-anemone.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-angels-and-discus.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-live-plants.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-arowana.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-betta.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-boxfish-and-cowfish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-brackish-water-fish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-butterfly-fish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-cardinalfish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-catfish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-cichlid-family.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-clowns-and-damsels.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-fang-blenny.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-filefish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-foxface-and-rabbitfish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-crab.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-crustacean.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-eel.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-livebearers.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-puffers.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-seahors-and-pipefish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-shark.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-freshwater-snails.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-glofish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-goldfish-and-koi.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-gourami-and-paradise-fish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-hard-coral.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-hermit-crab.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-lionfish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-live-rock-and-live-sand.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-mandarin-goby.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-marine-crustacean.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-mollusk.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-plecostomus.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-rainbow-fish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-saltwater-eel.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-saltwater-invertebrate.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-saltwater-soft-coral.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-saltwater-tang-and-surgeon-fish.pdf" />
     <None Include="packages.config" />
+    <None Include="Documentation\UserGuides\About-Aquarium-Water-Quality.pdf" />
+    <None Include="Documentation\UserGuides\About-Betta-Fish.pdf" />
+    <None Include="Documentation\UserGuides\About-Freshwater-Community.pdf" />
+    <None Include="Documentation\UserGuides\About-Freshwater-Semi-Aggressive.pdf" />
+    <None Include="Documentation\UserGuides\About-Large-Marine-Fish.pdf" />
+    <None Include="Documentation\UserGuides\About-Nitrogen-Cycle.pdf" />
+    <None Include="Documentation\UserGuides\About-Small-Marine-Fish.pdf" />
+    <None Include="Documentation\UserGuides\Aquatic-Life-Acclimation.pdf" />
+    <None Include="Documentation\UserGuides\Aquatic-Life-Safety.pdf" />
+    <None Include="Documentation\UserGuides\Setting-Up-Freshwater-Aquarium.pdf" />
+    <None Include="Documentation\UserGuides\Setting-Up-Saltwater-Aquarium.pdf" />
+    <None Include="Documentation\UserGuides\Setup-Guide-Freshwater.pdf" />
+    <None Include="Documentation\UserGuides\Setup-Guide-Saltwater.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\coral\" />
+    <Folder Include="images\crabs\" />
+    <Folder Include="images\fish\" />
+    <Folder Include="images\live rock\" />
+    <Folder Include="images\lobsters\" />
+    <Folder Include="images\shrimp\" />
+    <Folder Include="images\snails\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -237,6 +369,14 @@
       <DependentUpon>DatabaseEntities.edmx</DependentUpon>
       <LastGenOutput>DatabaseEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="images\plants\AmazonSword.jpg" />
+    <Content Include="images\plants\Anubias.jpg" />
+    <Content Include="images\plants\Cryptocoryne.jpg" />
+    <Content Include="images\plants\HornWort.jpg" />
+    <Content Include="images\plants\JavaFern.jpg" />
+    <Content Include="images\plants\JavaMoss.jpg" />
+    <Content Include="images\plants\NarrowLeaf.jpg" />
+    <Content Include="images\plants\Wisteria.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

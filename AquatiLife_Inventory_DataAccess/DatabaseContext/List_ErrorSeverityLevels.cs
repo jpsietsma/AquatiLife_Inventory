@@ -14,8 +14,17 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class List_ErrorSeverityLevels
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public List_ErrorSeverityLevels()
+        {
+            this.UserNotifications = new HashSet<UserNotifications>();
+        }
+    
         public int pk_SeverityID { get; set; }
         public string SeverityLevelText { get; set; }
         public int SeverityLevelNum { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserNotifications> UserNotifications { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses
     /// <summary>
     /// Represents a live fish
     /// </summary>
-    public class LiveFish : FishTypes
+    public class LiveFish : FishTypes, ILiveFish
     {
         /// <summary>
         /// Represents the type of object, "LiveFish" has an "AccessoryType" of "Fish"

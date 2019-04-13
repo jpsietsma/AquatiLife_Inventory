@@ -17,7 +17,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FishCareGuides()
         {
-            this.AnimalTypes = new HashSet<AnimalTypes>();
+            this.List_AnimalTypes = new HashSet<List_AnimalTypes>();
             this.FishTypes = new HashSet<FishTypes>();
         }
     
@@ -27,7 +27,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public Nullable<int> fk_FishType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AnimalTypes> AnimalTypes { get; set; }
+        public virtual ICollection<List_AnimalTypes> List_AnimalTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FishTypes> FishTypes { get; set; }
     }

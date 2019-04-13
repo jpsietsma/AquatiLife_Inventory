@@ -15,10 +15,10 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class DatabaseEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public DatabaseEntities()
-            : base("name=DatabaseEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -27,40 +27,123 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C_List_TankTypes> C_List_TankTypes { get; set; }
-        public virtual DbSet<AnimalTypes> AnimalTypes { get; set; }
         public virtual DbSet<Business_Customers> Business_Customers { get; set; }
         public virtual DbSet<Business_List_VendorTypes> Business_List_VendorTypes { get; set; }
         public virtual DbSet<ContactInfo> ContactInfo { get; set; }
         public virtual DbSet<FishCareGuides> FishCareGuides { get; set; }
         public virtual DbSet<FishTypeDiseaseAffection> FishTypeDiseaseAffection { get; set; }
         public virtual DbSet<FishTypes> FishTypes { get; set; }
+        public virtual DbSet<List_ActionTypes> List_ActionTypes { get; set; }
+        public virtual DbSet<List_AnimalTypes> List_AnimalTypes { get; set; }
+        public virtual DbSet<List_ErrorCategories> List_ErrorCategories { get; set; }
         public virtual DbSet<List_ErrorSeverityLevels> List_ErrorSeverityLevels { get; set; }
         public virtual DbSet<List_ErrorTypes> List_ErrorTypes { get; set; }
+        public virtual DbSet<List_FishAgressionLevels> List_FishAgressionLevels { get; set; }
+        public virtual DbSet<List_FishBirthingTypes> List_FishBirthingTypes { get; set; }
+        public virtual DbSet<List_FishFamilyTypes> List_FishFamilyTypes { get; set; }
+        public virtual DbSet<List_FishFeedingTypes> List_FishFeedingTypes { get; set; }
         public virtual DbSet<List_FishSicknessTypes> List_FishSicknessTypes { get; set; }
-        public virtual DbSet<List_PurchaseTypes> List_PurchaseTypes { get; set; }
+        public virtual DbSet<List_FishTerritorialLevels> List_FishTerritorialLevels { get; set; }
+        public virtual DbSet<List_PlantSizeClasses> List_PlantSizeClasses { get; set; }
+        public virtual DbSet<List_PurchaseCategories> List_PurchaseCategories { get; set; }
+        public virtual DbSet<List_SupplyTypes> List_SupplyTypes { get; set; }
+        public virtual DbSet<List_TankLightingLevels> List_TankLightingLevels { get; set; }
+        public virtual DbSet<List_TankTestTypes> List_TankTestTypes { get; set; }
+        public virtual DbSet<List_TankTypes> List_TankTypes { get; set; }
         public virtual DbSet<List_WaterTypes> List_WaterTypes { get; set; }
-        public virtual DbSet<MedicalRecords> MedicalRecords { get; set; }
-        public virtual DbSet<Purchases> Purchases { get; set; }
+        public virtual DbSet<LivePlantTypes> LivePlantTypes { get; set; }
         public virtual DbSet<StoreHolidaySchedules> StoreHolidaySchedules { get; set; }
         public virtual DbSet<Stores> Stores { get; set; }
         public virtual DbSet<StoreWeeklySchedules> StoreWeeklySchedules { get; set; }
+        public virtual DbSet<UserActionLogs> UserActionLogs { get; set; }
         public virtual DbSet<UserFish> UserFish { get; set; }
+        public virtual DbSet<UserFishMedicalRecords> UserFishMedicalRecords { get; set; }
+        public virtual DbSet<UserLivePlants> UserLivePlants { get; set; }
         public virtual DbSet<UserLoginSessions> UserLoginSessions { get; set; }
+        public virtual DbSet<UserNotifications> UserNotifications { get; set; }
         public virtual DbSet<UserProfiles> UserProfiles { get; set; }
+        public virtual DbSet<UserPurchases> UserPurchases { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UserTanks> UserTanks { get; set; }
+        public virtual DbSet<UserTankTemperatureLogs> UserTankTemperatureLogs { get; set; }
+        public virtual DbSet<UserTankTests> UserTankTests { get; set; }
         public virtual DbSet<Business_Vendors> Business_Vendors { get; set; }
         public virtual DbSet<Errorlogs> Errorlogs { get; set; }
-        public virtual DbSet<Get_AllFishTypeOverview> Get_AllFishTypeOverview { get; set; }
+        public virtual DbSet<vw_FishDictionary> vw_FishDictionary { get; set; }
+        public virtual DbSet<vw_PlantDictionary> vw_PlantDictionary { get; set; }
+        public virtual DbSet<vw_UserFish> vw_UserFish { get; set; }
+        public virtual DbSet<vw_UserSessions> vw_UserSessions { get; set; }
+        public virtual DbSet<vw_UserTanks> vw_UserTanks { get; set; }
     
-        public virtual ObjectResult<GetActiveLoginSessions_Result> GetActiveLoginSessions(Nullable<int> userID)
+        public virtual int Add_User(string userName, string password, string emailAddress, string userRole)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            var userRoleParameter = userRole != null ?
+                new ObjectParameter("UserRole", userRole) :
+                new ObjectParameter("UserRole", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_User", userNameParameter, passwordParameter, emailAddressParameter, userRoleParameter);
+        }
+    
+        public virtual int Add_UserPlant(Nullable<int> userID, Nullable<int> tankID, Nullable<int> purchaseID, Nullable<int> plantType)
         {
             var userIDParameter = userID.HasValue ?
                 new ObjectParameter("UserID", userID) :
                 new ObjectParameter("UserID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActiveLoginSessions_Result>("GetActiveLoginSessions", userIDParameter);
+            var tankIDParameter = tankID.HasValue ?
+                new ObjectParameter("TankID", tankID) :
+                new ObjectParameter("TankID", typeof(int));
+    
+            var purchaseIDParameter = purchaseID.HasValue ?
+                new ObjectParameter("PurchaseID", purchaseID) :
+                new ObjectParameter("PurchaseID", typeof(int));
+    
+            var plantTypeParameter = plantType.HasValue ?
+                new ObjectParameter("PlantType", plantType) :
+                new ObjectParameter("PlantType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserPlant", userIDParameter, tankIDParameter, purchaseIDParameter, plantTypeParameter);
+        }
+    
+        public virtual int Add_UserTank(Nullable<int> tankOwnerID, Nullable<int> tankSize, Nullable<decimal> tankHeight, Nullable<decimal> tankWidth, Nullable<int> waterType, Nullable<int> tankType)
+        {
+            var tankOwnerIDParameter = tankOwnerID.HasValue ?
+                new ObjectParameter("TankOwnerID", tankOwnerID) :
+                new ObjectParameter("TankOwnerID", typeof(int));
+    
+            var tankSizeParameter = tankSize.HasValue ?
+                new ObjectParameter("TankSize", tankSize) :
+                new ObjectParameter("TankSize", typeof(int));
+    
+            var tankHeightParameter = tankHeight.HasValue ?
+                new ObjectParameter("TankHeight", tankHeight) :
+                new ObjectParameter("TankHeight", typeof(decimal));
+    
+            var tankWidthParameter = tankWidth.HasValue ?
+                new ObjectParameter("TankWidth", tankWidth) :
+                new ObjectParameter("TankWidth", typeof(decimal));
+    
+            var waterTypeParameter = waterType.HasValue ?
+                new ObjectParameter("WaterType", waterType) :
+                new ObjectParameter("WaterType", typeof(int));
+    
+            var tankTypeParameter = tankType.HasValue ?
+                new ObjectParameter("TankType", tankType) :
+                new ObjectParameter("TankType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserTank", tankOwnerIDParameter, tankSizeParameter, tankHeightParameter, tankWidthParameter, waterTypeParameter, tankTypeParameter);
         }
     }
 }

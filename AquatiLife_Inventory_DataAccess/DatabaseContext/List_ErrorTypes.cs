@@ -14,12 +14,21 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class List_ErrorTypes
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public List_ErrorTypes()
+        {
+            this.UserNotifications = new HashSet<UserNotifications>();
+        }
+    
         public int pk_ErrorTypeID { get; set; }
         public string ErrorTypeDescription { get; set; }
         public int fk_ErrorSeverity { get; set; }
         public Nullable<int> fk_ErrorWaterType { get; set; }
-        public string ErrorTypeCategory { get; set; }
+        public int fk_ErrorCategory { get; set; }
     
+        public virtual List_ErrorCategories List_ErrorCategories { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserNotifications> UserNotifications { get; set; }
     }
 }

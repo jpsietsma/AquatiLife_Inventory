@@ -12,7 +12,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class FishTypes : IFishTypes
+    public partial class FishTypes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FishTypes()
@@ -21,19 +21,25 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         }
     
         public int pk_FishTypeID { get; set; }
-        public string FishTypeName { get; set; }
+        public string TypeName { get; set; }
+        public int fk_FishFamily { get; set; }
         public string FishTypeImagePath { get; set; }
-        public string FishFeederType { get; set; }
-        public string FishBirthingType { get; set; }
+        public int fk_FishFeederType { get; set; }
+        public int fk_BirthingType { get; set; }
         public Nullable<int> FishMinTankSize { get; set; }
-        public string FishAgressionLevel { get; set; }
-        public string FishTerritorialLevel { get; set; }
+        public int fk_FishAgressionLevel { get; set; }
+        public int fk_FishTerritorialLevel { get; set; }
         public int fk_WaterType { get; set; }
         public Nullable<int> fk_CareGuideID { get; set; }
     
         public virtual FishCareGuides FishCareGuides { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FishTypeDiseaseAffection> FishTypeDiseaseAffection { get; set; }
+        public virtual List_FishAgressionLevels List_FishAgressionLevels { get; set; }
+        public virtual List_FishFamilyTypes List_FishFamilyTypes { get; set; }
+        public virtual List_FishFeedingTypes List_FishFeedingTypes { get; set; }
+        public virtual List_FishTerritorialLevels List_FishTerritorialLevels { get; set; }
+        public virtual List_FishFamilyTypes List_FishFamilyTypes1 { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }
     }
 }

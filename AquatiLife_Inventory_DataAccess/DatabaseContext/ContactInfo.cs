@@ -17,7 +17,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ContactInfo()
         {
-            this.Business_Customers = new HashSet<Business_Customers>();
             this.Business_Vendors = new HashSet<Business_Vendors>();
             this.UserProfiles = new HashSet<UserProfiles>();
         }
@@ -33,8 +32,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string Website { get; set; }
         public Nullable<int> fk_UserID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Business_Customers> Business_Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Business_Vendors> Business_Vendors { get; set; }
         public virtual Stores Stores { get; set; }

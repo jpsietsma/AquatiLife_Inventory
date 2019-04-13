@@ -18,9 +18,13 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public Users()
         {
             this.ContactInfo = new HashSet<ContactInfo>();
-            this.MedicalRecords = new HashSet<MedicalRecords>();
+            this.UserActionLogs = new HashSet<UserActionLogs>();
             this.UserFish = new HashSet<UserFish>();
+            this.UserFishMedicalRecords = new HashSet<UserFishMedicalRecords>();
+            this.UserLivePlants = new HashSet<UserLivePlants>();
             this.UserLoginSessions = new HashSet<UserLoginSessions>();
+            this.UserNotifications = new HashSet<UserNotifications>();
+            this.UserPurchases = new HashSet<UserPurchases>();
             this.Errorlogs = new HashSet<Errorlogs>();
             this.UserTanks = new HashSet<UserTanks>();
         }
@@ -30,16 +34,25 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string Password { get; set; }
         public string EmailAddress { get; set; }
         public string UserRole { get; set; }
+        public Nullable<int> fk_ProfileID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContactInfo> ContactInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MedicalRecords> MedicalRecords { get; set; }
+        public virtual ICollection<UserActionLogs> UserActionLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFish> UserFish { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserFishMedicalRecords> UserFishMedicalRecords { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserLivePlants> UserLivePlants { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLoginSessions> UserLoginSessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserNotifications> UserNotifications { get; set; }
         public virtual UserProfiles UserProfiles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPurchases> UserPurchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Errorlogs> Errorlogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using AquatiLife_Inventory_DataAccess.ViewModels.Authentication;
+using System.IO;
+using AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses.Documents;
+using AquatiLife_Inventory_DataAccess.ext;
+using AquatiLife_Inventory_DataAccess.ExceptionClasses;
+using AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses;
 
 namespace AquatiLife_Test_Console
 {
@@ -77,11 +82,74 @@ namespace AquatiLife_Test_Console
             //AuthenticatedUserSession _session = new AuthenticatedUserSession("jpsietsma");
             //List<string> perms = _session.GetUserPermissions();
 
-            UserSession _test = new UserSession() { SessionBegin = DateTime.Now.Subtract(new TimeSpan(0, 2, 45, 0)) };
-            var testtest = _test.ToString();
-            Console.WriteLine("Length: " + _test.GetSessionLength());
-            Console.ReadLine();
+            //UserSession _test = new UserSession() { SessionBegin = DateTime.Now.Subtract(new TimeSpan(0, 2, 45, 0)) };
+            //var testtest = _test.ToString();
+            //Console.WriteLine("Length: " + _test.GetSessionLength());
+            //Console.ReadLine();
 
+            //Dictionary<string, string> GetMasterCaresheetList()
+            //{
+            //    Dictionary<string, string> _final = new Dictionary<string, string>();
+
+            //    DirectoryInfo _caresheetsDir = new DirectoryInfo(@"C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\AquatiLife_Inventory_DataAccess\Documentation\CareSheets\");
+            //    DirectoryInfo _userguidesDir = new DirectoryInfo(@"C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\AquatiLife_Inventory_DataAccess\Documentation\UserGuides\");
+
+            //    foreach (var _file in _caresheetsDir.GetFiles().ToList())
+            //    {
+            //        string _FishName = _file.Name.Remove(0, 9).Replace(".pdf", "").Replace("-", " ");
+
+            //        _final.Add(_FishName, _file.FullName);
+            //    }
+
+            //    return _final;
+            //}
+
+            //var dict = CareSheetExt.GetMasterCaresheetDictionary();
+            //string fish = "algae eater";
+
+            //var caresheets = new CareSheetDictionary();
+
+            //if (dict.ContainsKey(fish))
+            //{                
+            //    Console.WriteLine(dict[fish]);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Fish Type not found in dictionary");
+            //}
+
+            //FishCareSheet _algaeEater = new FishCareSheet(fish, @"C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\AquatiLife_Inventory_DataAccess\Documentation\CareSheets\caresheet-algae-eater.pdf");
+
+            //if (_algaeEater.Exists())
+            //{
+                //_algaeEater.SaveAsPDF();
+
+                //throw new UnknownFishTypeException();
+
+                //throw new IncompatibleCommunityException();
+                //throw new IncompatibleWaterTypeException();
+                //throw new InvalidUsernamePasswordException();
+            //}
+
+            //Console.ReadLine();
+
+            //AquaticPlantInfo plantInfo = new AquaticPlantInfo();
+
+            //var p = LivePlantExt.GetPlantDictionary();
+
+            //foreach (var item in p)
+            //{
+            //    Console.WriteLine($@"Plant Name: {item.Key}");
+
+            //    foreach (var _prop in item.Value)
+            //    {
+            //        Console.WriteLine($"\t -{ _prop.Key }: { _prop.Value }");
+            //    }
+
+            //    Console.WriteLine();
+            //}
+
+            Console.ReadLine();
         }
     }
 }

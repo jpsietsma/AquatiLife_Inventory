@@ -1,0 +1,67 @@
+﻿<Window x:Class="WFP_AquatiLife_Inventory_UI.Screens.AddPlant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
+        mc:Ignorable="d"
+        Title="AddPlant" Height="650" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="4" x:Name="txtPlantTypeName" TextAlignment="Center" Text="Add New Aquatic Plant" FontSize="25" FontWeight="Bold"/>
+        <Image x:Name="PlantImage" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" />
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="Plant Type: " FontWeight="Light" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ComboBox Grid.Row="2" Grid.Column="3" x:Name="ddlPlantType" SelectionChanged="DdlPlantType_SelectionChanged" Height="35" Width="200" />
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="Add To Tank: " FontWeight="Light" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <ComboBox Grid.Row="3" Grid.Column="3" x:Name="ddlUserTank" Height="35" Width="200" />
+        <TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" FontWeight="Bold" Text="Important Plant Care Information" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="21"/>
+        <Grid x:Name="gridMoreInfo" Grid.ColumnSpan="2" Grid.RowSpan="4" Grid.Row="5" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Temperature Range: " Grid.Row="0" Grid.Column="0" FontSize="20" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtTempRange"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Preferred Lighting: " Grid.Row="1" Grid.Column="0" FontSize="20" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="txtLighting"  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Is Plant Floatable? " Grid.Row="2" Grid.Column="0" FontSize="20" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="txtFloatable"  Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Size Class: " Grid.Row="3" Grid.Column="0" FontSize="20" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="txtSizeClass"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Max Height (inches): " Grid.Row="4" Grid.Column="0" FontSize="20" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="txtMaxHeight"  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Plant Requires Fertilizer: " Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>

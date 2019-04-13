@@ -43,6 +43,7 @@
                 <MenuItem Header="Customer Lookup"></MenuItem>
             </MenuItem>
             <MenuItem Header="Accessories &amp; Supplies">
+                <MenuItem Header="Add New Plant" Click="MenuItem_Click_AddPlant"></MenuItem>
                 <MenuItem Header="Decoration Inventory"></MenuItem>
                 <MenuItem Header="Supply Inventory"></MenuItem>
                 <MenuItem Header="Accessory Inventory"></MenuItem>

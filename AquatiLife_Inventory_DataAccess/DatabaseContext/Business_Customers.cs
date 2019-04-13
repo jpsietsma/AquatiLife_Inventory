@@ -17,8 +17,10 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public int pk_CustomerID { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
-        public int fk_ContactInfo { get; set; }
+        public Nullable<int> fk_StoreID { get; set; }
+        public Nullable<int> fk_UserProfileID { get; set; }
     
-        public virtual ContactInfo ContactInfo { get; set; }
+        public virtual Stores Stores { get; set; }
+        public virtual UserProfiles UserProfiles { get; set; }
     }
 }
