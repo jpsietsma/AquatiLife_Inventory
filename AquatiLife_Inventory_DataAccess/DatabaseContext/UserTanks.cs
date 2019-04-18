@@ -30,6 +30,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string TankWidth { get; set; }
         public int fk_TankWaterType { get; set; }
         public int fk_TankType { get; set; }
+        public string TankDisplayName { get; set; }
     
         public virtual List_TankTypes List_TankTypes { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }

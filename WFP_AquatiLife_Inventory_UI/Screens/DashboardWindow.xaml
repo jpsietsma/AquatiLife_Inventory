@@ -47,12 +47,11 @@
                 <MenuItem Header="Decoration Inventory"></MenuItem>
                 <MenuItem Header="Supply Inventory"></MenuItem>
                 <MenuItem Header="Accessory Inventory"></MenuItem>
+                <MenuItem Header="Add Purchase" Click="MenuItem_Click_AddPurchase"></MenuItem>
             </MenuItem>
             <MenuItem x:Name="MyAccountMenu" Header="My Account">
                 <MenuItem Header="My Profile" Click="MenuItem_Click_MyProfile" />
-                <MenuItem Header="Login Details" />
-                <MenuItem Header="My Preferences" />
-                <MenuItem Header="Email Preferences" />
+                <MenuItem Header="Preferences" />
             </MenuItem>
         </Menu>
     </Grid>

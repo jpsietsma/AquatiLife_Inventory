@@ -31,31 +31,6 @@ namespace AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses
         public double TankSize { get; set; }
 
         /// <summary>
-        /// Potential Hydrogen (pH) - Measures level of relative acidity to other substances based on the amount of hydrogen
-        /// </summary>
-        public double pHLevel { get; set; }
-
-        /// <summary>
-        /// Nitrite - Measures levels of Ammonia in water, toxic to fish in large amounts
-        /// </summary>
-        public double NitriteLevel { get; set; }
-
-        /// <summary>
-        /// Nitrate - Measures levels of Ammonia in water
-        /// </summary>
-        public double NitrateLevel { get; set; }
-
-        /// <summary>
-        /// Carbonate Hardness - Measures Alkalinity - Combination of measures of Carbonate and Bicarbonate.  Helps to stabalize pH.
-        /// </summary>
-        public double CarbonateHardnessLevel { get; set; }
-
-        /// <summary>
-        /// General Hardness - Overall measure of the concentration of calcium, magnesium, and other ions in water.  Measured in degree where 1 = 17.9mg/l.
-        /// </summary>
-        public double GeneralHardnessLevel { get; set; }
-
-        /// <summary>
         /// Represents a list of Tank tests that have been performed
         /// </summary>
         public List<TankTest> TestHistory { get; set; } = new List<TankTest>();

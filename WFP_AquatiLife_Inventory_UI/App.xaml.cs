@@ -1,10 +1,13 @@
-﻿using System;
+﻿using AquatiLife_Inventory_DataAccess.DatabaseContext;
+using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WFP_AquatiLife_Inventory_UI.ViewModels;
 
 namespace WFP_AquatiLife_Inventory_UI
 {
@@ -13,5 +16,6 @@ namespace WFP_AquatiLife_Inventory_UI
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

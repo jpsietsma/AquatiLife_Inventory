@@ -74,6 +74,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<vw_UserFish> vw_UserFish { get; set; }
         public virtual DbSet<vw_UserSessions> vw_UserSessions { get; set; }
         public virtual DbSet<vw_UserTanks> vw_UserTanks { get; set; }
+        public virtual DbSet<List_LivePlantDiseases> List_LivePlantDiseases { get; set; }
     
         public virtual int Add_User(string userName, string password, string emailAddress, string userRole)
         {

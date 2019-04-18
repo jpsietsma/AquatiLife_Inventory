@@ -1,17 +1,15 @@
-﻿using AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses;
+﻿using AquatiLife_Inventory_DataAccess.Authentication;
+using AquatiLife_Inventory_DataAccess.ext;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using WFP_AquatiLife_Inventory_UI.PopulateUI;
 
 namespace WFP_AquatiLife_Inventory_UI.Screens
 {
@@ -20,24 +18,45 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
     /// </summary>
     public partial class AddPlant : Window
     {
-        private string _plantType = string.Empty;
 
-        public AddPlant()
+        public AddPlant(AuthenticatedUserSession _session)
         {
-            ComboBox ddlPlantType = FindName("ddlPlantType") as ComboBox;
-            ddlPlantType.Items.Insert(0, new { Text = "-- Select Plant Type --", Value = "" });
             InitializeComponent();
+
+            ddlPlantType.PopulateUI_DDL_PlantTypes();
+            ddlUserTank.PopulateUI_DDL_UserTanks(_session);
+
         }
 
         private void DdlPlantType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(ddlPlantType.SelectedValue.ToString()))
+            if (ddlPlantType.SelectedIndex != 0)
             {
-
+                this.DataContext = 
+                PlantCareGrid.Visibility = Visibility.Visible;                
+                                
+                cbxNeedsFertilizer.IsChecked = true;
+                cbxFloatable.IsChecked = true;                                  
+                txtTempMin.Text = "70";
+                txtTempMax.Text = "90";
+                txtIdealTemp.Text = "75";
+                txtLighting.Text = "";
+                txtSizeClass.Text = "";
+                txtMaxHeight.Text = "";
             }
             else
             {
-                gridMoreInfo.Visibility = Visibility.Hidden;
+                TankCheckGrid.Visibility = Visibility.Hidden;
+                PlantCareGrid.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void DdlUserTank_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ddlUserTank.SelectedIndex != 0)
+            {
+                TankCheckGrid.Visibility = Visibility.Visible;
+                PF_compatabilityWaterType.Text = UserTankExt.RunCompatabilityTest_WaterType(Convert.ToInt32(ddlUserTank.SelectedValue), ddlPlantType.SelectedValue.ToString()).ToString();
             }
         }
     }

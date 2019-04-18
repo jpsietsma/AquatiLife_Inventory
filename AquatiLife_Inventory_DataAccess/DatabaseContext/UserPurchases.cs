@@ -27,6 +27,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public Nullable<int> fk_PurchaseCategory { get; set; }
         public double Cost { get; set; }
         public int fk_UserID { get; set; }
+        public string Description { get; set; }
     
         public virtual List_PurchaseCategories List_PurchaseCategories { get; set; }
         public virtual Stores Stores { get; set; }

@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -48,6 +51,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,6 +78,9 @@
     <Compile Include="Screens\AddPlant.xaml.cs">
       <DependentUpon>AddPlant.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\AddPurchase.xaml.cs">
+      <DependentUpon>AddPurchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\AddTank.xaml.cs">
       <DependentUpon>AddTank.xaml</DependentUpon>
     </Compile>
@@ -84,6 +93,7 @@
     <Compile Include="Screens\UserProfileDashboard.xaml.cs">
       <DependentUpon>UserProfileDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\PlantDictionaryEntryViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,6 +111,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Screens\AddPlant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\AddPurchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,8 +183,9 @@
   <ItemGroup>
     <Resource Include="images\blue_fish_icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Resource Include="images\default-plant-image-tumbleweed.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

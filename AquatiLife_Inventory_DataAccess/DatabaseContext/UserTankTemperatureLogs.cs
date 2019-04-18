@@ -22,5 +22,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public Nullable<int> fk_TestID { get; set; }
     
         public virtual UserTanks UserTanks { get; set; }
+        public virtual UserTankTests UserTankTests { get; set; }
     }
 }

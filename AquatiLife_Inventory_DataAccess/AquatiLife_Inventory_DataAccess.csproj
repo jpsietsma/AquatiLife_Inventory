@@ -54,6 +54,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -68,6 +69,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AuthenticatedUserSession.cs" />
@@ -144,6 +146,9 @@
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_FishTerritorialLevels.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_LivePlantDiseases.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_PlantSizeClasses.cs">
@@ -245,8 +250,11 @@
     <Compile Include="ext\CareSheetExt.cs" />
     <Compile Include="ext\FishExt.cs" />
     <Compile Include="ext\LivePlantExt.cs" />
+    <Compile Include="ext\UIControlExt.cs" />
     <Compile Include="ext\UserExt.cs" />
     <Compile Include="ext\UserLoginAccess.cs" />
+    <Compile Include="ext\UserTankExt.cs" />
+    <Compile Include="PopulateUI\PopulateUI_Controls_DDL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Authentication\UserSession.cs" />
@@ -263,10 +271,12 @@
     <Compile Include="ViewModels\BaseClasses\Fish\Pencilfish.cs" />
     <Compile Include="ViewModels\BaseClasses\Fish\Pleco.cs" />
     <Compile Include="ViewModels\BaseClasses\Fish\Tetra.cs" />
+    <Compile Include="ViewModels\BaseClasses\Tank\FishTankTest.cs" />
     <Compile Include="ViewModels\BaseClasses\Tank\ITankAccessory.cs" />
     <Compile Include="ViewModels\BaseClasses\Fish\LiveFish.cs" />
     <Compile Include="ViewModels\BaseClasses\Accessories\TankAccessory.cs" />
     <Compile Include="ViewModels\BaseClasses\Misc\TankTest.cs" />
+    <Compile Include="ViewModels\BaseClasses\Tank\WaterTest.cs" />
     <Compile Include="ViewModels\DictionaryEntryViewModels\FreshwaterFish.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -278,60 +288,166 @@
     <None Include="DatabaseContext\DatabaseEntities.edmx.diagram">
       <DependentUpon>DatabaseEntities.edmx</DependentUpon>
     </None>
-    <None Include="Documentation\CareSheets\caresheet-algae-eater.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-anemone.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-angels-and-discus.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-live-plants.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-arowana.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-betta.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-boxfish-and-cowfish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-brackish-water-fish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-butterfly-fish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-cardinalfish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-catfish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-cichlid-family.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-clowns-and-damsels.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-fang-blenny.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-filefish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-foxface-and-rabbitfish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-crab.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-crustacean.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-eel.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-livebearers.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-puffers.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-seahors-and-pipefish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-shark.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-freshwater-snails.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-glofish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-goldfish-and-koi.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-gourami-and-paradise-fish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-hard-coral.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-hermit-crab.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-lionfish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-live-rock-and-live-sand.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-mandarin-goby.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-marine-crustacean.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-mollusk.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-plecostomus.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-rainbow-fish.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-saltwater-eel.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-saltwater-invertebrate.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-saltwater-soft-coral.pdf" />
-    <None Include="Documentation\CareSheets\caresheet-saltwater-tang-and-surgeon-fish.pdf" />
+    <None Include="Documentation\CareSheets\caresheet-algae-eater.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-anemone.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-angels-and-discus.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-live-plants.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-arowana.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-betta.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-boxfish-and-cowfish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-brackish-water-fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-butterfly-fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-cardinalfish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-catfish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-cichlid-family.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-clowns-and-damsels.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-fang-blenny.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-filefish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-foxface-and-rabbitfish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-crab.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-crustacean.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-eel.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-livebearers.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-puffers.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-seahors-and-pipefish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-shark.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-freshwater-snails.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-glofish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-goldfish-and-koi.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-gourami-and-paradise-fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-hard-coral.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-hermit-crab.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-lionfish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-live-rock-and-live-sand.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-mandarin-goby.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-marine-crustacean.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-mollusk.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-plecostomus.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-rainbow-fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-saltwater-eel.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-saltwater-invertebrate.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-saltwater-soft-coral.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\CareSheets\caresheet-saltwater-tang-and-surgeon-fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
-    <None Include="Documentation\UserGuides\About-Aquarium-Water-Quality.pdf" />
-    <None Include="Documentation\UserGuides\About-Betta-Fish.pdf" />
-    <None Include="Documentation\UserGuides\About-Freshwater-Community.pdf" />
-    <None Include="Documentation\UserGuides\About-Freshwater-Semi-Aggressive.pdf" />
-    <None Include="Documentation\UserGuides\About-Large-Marine-Fish.pdf" />
-    <None Include="Documentation\UserGuides\About-Nitrogen-Cycle.pdf" />
-    <None Include="Documentation\UserGuides\About-Small-Marine-Fish.pdf" />
-    <None Include="Documentation\UserGuides\Aquatic-Life-Acclimation.pdf" />
-    <None Include="Documentation\UserGuides\Aquatic-Life-Safety.pdf" />
-    <None Include="Documentation\UserGuides\Setting-Up-Freshwater-Aquarium.pdf" />
-    <None Include="Documentation\UserGuides\Setting-Up-Saltwater-Aquarium.pdf" />
-    <None Include="Documentation\UserGuides\Setup-Guide-Freshwater.pdf" />
-    <None Include="Documentation\UserGuides\Setup-Guide-Saltwater.pdf" />
+    <None Include="Documentation\UserGuides\About-Aquarium-Water-Quality.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\About-Betta-Fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\About-Freshwater-Community.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\About-Freshwater-Semi-Aggressive.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\About-Large-Marine-Fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\About-Nitrogen-Cycle.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\About-Small-Marine-Fish.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\Aquatic-Life-Acclimation.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\Aquatic-Life-Safety.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\Setting-Up-Freshwater-Aquarium.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\Setting-Up-Saltwater-Aquarium.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\Setup-Guide-Freshwater.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\UserGuides\Setup-Guide-Saltwater.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,14 +485,30 @@
       <DependentUpon>DatabaseEntities.edmx</DependentUpon>
       <LastGenOutput>DatabaseEntities.cs</LastGenOutput>
     </Content>
-    <Content Include="images\plants\AmazonSword.jpg" />
-    <Content Include="images\plants\Anubias.jpg" />
-    <Content Include="images\plants\Cryptocoryne.jpg" />
-    <Content Include="images\plants\HornWort.jpg" />
-    <Content Include="images\plants\JavaFern.jpg" />
-    <Content Include="images\plants\JavaMoss.jpg" />
-    <Content Include="images\plants\NarrowLeaf.jpg" />
-    <Content Include="images\plants\Wisteria.jpg" />
+    <Content Include="images\plants\AmazonSword.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\plants\Anubias.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\plants\Cryptocoryne.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\plants\HornWort.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\plants\JavaFern.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\plants\JavaMoss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\plants\NarrowLeaf.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\plants\Wisteria.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

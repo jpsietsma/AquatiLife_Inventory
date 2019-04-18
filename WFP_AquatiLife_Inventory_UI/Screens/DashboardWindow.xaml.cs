@@ -32,6 +32,7 @@ namespace WFP_AquatiLife_Inventory_UI
         public AuthenticatedUserSession _userSession { get; set; }
         public TaskbarIcon _trayIcon { get; set; }
         public AddPlant addPlantWindow { get; set; }
+        public AddPurchase addPurchaseWindow { get; set; }
 
         /// <summary>
         /// Open a new dashboard session with the current authenticated user
@@ -120,8 +121,6 @@ namespace WFP_AquatiLife_Inventory_UI
                 _main.Focus();
         }
 
-
-
         /// <summary>
         /// Exits application when clicking File > Exit
         /// </summary>
@@ -140,8 +139,16 @@ namespace WFP_AquatiLife_Inventory_UI
         /// <param name="e"></param>
         private void MenuItem_Click_AddPlant(object sender, RoutedEventArgs e)
         {
-            addPlantWindow = new AddPlant();
-            addPlantWindow.Activate();
+            addPlantWindow = new AddPlant(_userSession);
+            addPlantWindow.Show();
+            addPlantWindow.Focus();
+        }
+
+        private void MenuItem_Click_AddPurchase(object sender, RoutedEventArgs e)
+        {
+            addPurchaseWindow = new AddPurchase(_userSession);
+            addPurchaseWindow.Show();
+            addPurchaseWindow.Focus();
         }
     }
 }

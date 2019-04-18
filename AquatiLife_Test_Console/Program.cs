@@ -122,32 +122,32 @@ namespace AquatiLife_Test_Console
 
             //if (_algaeEater.Exists())
             //{
-                //_algaeEater.SaveAsPDF();
+            //_algaeEater.SaveAsPDF();
 
-                //throw new UnknownFishTypeException();
+            //throw new UnknownFishTypeException();
 
-                //throw new IncompatibleCommunityException();
-                //throw new IncompatibleWaterTypeException();
-                //throw new InvalidUsernamePasswordException();
+            //throw new IncompatibleCommunityException();
+            //throw new IncompatibleWaterTypeException();
+            //throw new InvalidUsernamePasswordException();
             //}
 
             //Console.ReadLine();
 
             //AquaticPlantInfo plantInfo = new AquaticPlantInfo();
 
-            //var p = LivePlantExt.GetPlantDictionary();
+            var p = LivePlantExt.GetPlantDictionary();
 
-            //foreach (var item in p)
-            //{
-            //    Console.WriteLine($@"Plant Name: {item.Key}");
+            foreach (var item in p)
+            {
+                Console.WriteLine($@"Plant Name: {item.Key}");
 
-            //    foreach (var _prop in item.Value)
-            //    {
-            //        Console.WriteLine($"\t -{ _prop.Key }: { _prop.Value }");
-            //    }
+                foreach (var _prop in item.Value)
+                {
+                    Console.WriteLine($"\t -{ _prop.Key }: { _prop.Value }");
+                }
 
-            //    Console.WriteLine();
-            //}
+                Console.WriteLine();
+            }
 
             Console.ReadLine();
         }

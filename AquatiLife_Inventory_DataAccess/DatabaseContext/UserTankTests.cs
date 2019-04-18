@@ -14,13 +14,26 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class UserTankTests
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserTankTests()
+        {
+            this.UserTankTemperatureLogs = new HashSet<UserTankTemperatureLogs>();
+        }
+    
         public int pk_TestID { get; set; }
         public System.DateTime TestDate { get; set; }
         public int fk_UserTank { get; set; }
         public int fk_TestType { get; set; }
         public string ActionsTaken { get; set; }
+        public Nullable<double> NitriteLevel { get; set; }
+        public Nullable<double> NitrateLevel { get; set; }
+        public Nullable<double> gHLevel { get; set; }
+        public Nullable<double> cHLevel { get; set; }
+        public Nullable<double> pHLevel { get; set; }
     
         public virtual List_TankTestTypes List_TankTestTypes { get; set; }
         public virtual UserTanks UserTanks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserTankTemperatureLogs> UserTankTemperatureLogs { get; set; }
     }
 }

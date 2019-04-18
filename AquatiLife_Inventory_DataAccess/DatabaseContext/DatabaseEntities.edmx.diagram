@@ -110,6 +110,8 @@
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_UserTanks_Users" ManuallyRouted="false" />
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_TankTemperatureLogs_UserTankTemperatureLogs" ManuallyRouted="false" />
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_UserTankTests_UserTanks" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_LivePlantDiseases" Width="1.5" PointX="3.375" PointY="7.75" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_TankTemperatureLogs_UserTankTests" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
