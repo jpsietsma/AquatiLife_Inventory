@@ -20,7 +20,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             this.Business_Customers = new HashSet<Business_Customers>();
             this.ContactInfo = new HashSet<ContactInfo>();
             this.UserFish = new HashSet<UserFish>();
-            this.UserPurchases = new HashSet<UserPurchases>();
         }
     
         public int pk_StoreID { get; set; }
@@ -38,7 +37,5 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual StoreWeeklySchedules StoreWeeklySchedules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFish> UserFish { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserPurchases> UserPurchases { get; set; }
     }
 }

@@ -4,16 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-        Title="UserLogin" Height="450" Width="300">
+        Title="UserLogin" Height="500" Width="350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="60" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="75" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="45" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,13 +24,13 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Image Source="C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\AquatiLife Inventory\images\LoginHeader.jpg" Height="100" Width="100" Grid.Column="1" Grid.ColumnSpan="2" />
-        <TextBlock Text="AquatiLife Fish Management" FontSize="18" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
-        <TextBlock Text="Username: " FontStyle="Italic" FontSize="13" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBox x:Name="UserName" Grid.Row="2" Grid.Column="2" Height="25" Width="120" />
-        <TextBlock Text="Password: " FontStyle="Italic" FontSize="13" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <PasswordBox x:Name="Password" Grid.Row="3" Grid.Column="2" Height="25" Width="120" />
-        <Button x:Name="LoginSubmit" Height="25" Width="75" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LoginSubmit_Click" IsDefault="True">
-            Log In
-        </Button>
+        <telerik:RadToolTip Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="LawnGreen" Visibility="Visible" />
+        <TextBlock x:Name="_BannerMessage" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Center" Height="30" FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBlock Text="AquatiLife Management" FontSize="24" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
+        <TextBlock Text="Username: " FontWeight="DemiBold" FontSize="18" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="right" />
+        <TextBox x:Name="UserName" Grid.Row="3" Grid.Column="2" Height="25" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+        <TextBlock Text="Password: " FontWeight="DemiBold" FontSize="18" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" />
+        <telerik:RadPasswordBox x:Name="Password" Grid.Row="4" Grid.Column="2" Height="25" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <telerik:RadButton x:Name="LoginSubmit" Height="35" Width="80" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LoginSubmit_Click" IsDefault="True" FontSize="15">Log In</telerik:RadButton>
     </Grid>
 </Window>

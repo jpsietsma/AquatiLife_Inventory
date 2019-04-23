@@ -26,7 +26,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
             InitializeComponent();
 
             TextBox _TankNameTxt = TankNameTxt;
-            ComboBox _selectTankType = SelectTankType;
+            ComboBox _selectTankType = ddlWaterType;
 
         }
 
@@ -37,7 +37,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
         /// <param name="e"></param>
         private void AddNewTank_ButtonClicked(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Tank add button clicked!");
         }
     }
 }

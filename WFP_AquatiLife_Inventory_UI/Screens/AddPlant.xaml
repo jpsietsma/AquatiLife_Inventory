@@ -34,18 +34,19 @@
             <ColumnDefinition Width="25" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" TextAlignment="Center" Text="Add New Aquatic Plant" FontSize="25" FontWeight="Bold"/>
-        <Image x:Name="PlantImage" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Source="C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\WFP_AquatiLife_Inventory_UI\images\default-plant-image-tumbleweed.jpg" />
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="Plant Type: " FontWeight="Light" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <ComboBox ItemsSource="{Binding Source={ StaticResource _plantDictionaryVW}}" Grid.Row="2" Grid.Column="3" x:Name="ddlPlantType" HorizontalContentAlignment="Center" SelectionChanged="DdlPlantType_SelectionChanged" Height="35" Width="200" />
-        <TextBlock Grid.Row="3" Grid.Column="2" Text="User Tank: " FontWeight="Light" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <ComboBox Grid.Row="3" Grid.Column="3" x:Name="ddlUserTank" Height="35" Width="200" HorizontalContentAlignment="Center" SelectionChanged="DdlUserTank_SelectionChanged"/>        
+        <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" TextAlignment="Center" Text="Add Plant to Tank" FontSize="25" FontWeight="Bold" />
+        <TextBlock x:Name="txtTypeName" Grid.Column="1" Grid.Row="1" />
+        
+        <Image x:Name="PlantImage" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" />
+        
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="Plant Name: " FontSize="20" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox Grid.Row="2" Grid.Column="3" x:Name="ddlPlantType" Height="30" Width="150" HorizontalContentAlignment="Center" SelectionChanged="DdlPlantType_SelectionChanged" />
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="User Tank: " FontWeight="DemiBold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <ComboBox Grid.Row="3" Grid.Column="3" x:Name="ddlUserTank" Height="30" Width="150" HorizontalContentAlignment="Center" SelectionChanged="DdlUserTank_SelectionChanged"/>        
         
         <!-- Plant Care Information grid -->
-            <Grid x:Name="PlantCareGrid" Grid.ColumnSpan="2" Grid.RowSpan="4" Grid.Row="5" Grid.Column="3">
+            <Grid x:Name="PlantCareGrid" Grid.ColumnSpan="1" Grid.RowSpan="4" Grid.Row="5" Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -59,29 +60,26 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontWeight="Bold" Text="Plant Care Information" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="21"/>
 
-                <TextBlock Text="Temp Range: " Grid.Row="1" Grid.Column="0" Padding="25 0 0 0" FontSize="20" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtTempMin" IsEnabled="False" Text="{Binding MinTemp}"  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1" Width="30" Height="25" HorizontalAlignment="Right" Margin="0 0 10 0" />
-                <TextBlock Text=" - " Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtTempMax" IsEnabled="False" Text="{Binding MaxTemp}"  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1" Width="30" Height="25" HorizontalAlignment="Left" Margin="10 0 0 0" />
-                <TextBlock Text="Ideal Temp: " Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="right" VerticalAlignment="Center" FontSize="18"/>
-                <TextBox x:Name="txtIdealTemp" IsEnabled="False" Text="{Binding IdealTemp}" Grid.Row="2" Grid.Column="2" Width="30" Height="25" HorizontalAlignment="Right" Margin="0 0 10 0" BorderBrush="Black" BorderThickness="1" />
-                <TextBlock Text=" °F" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" />
-                <TextBlock Text="Preferred Lighting: " Grid.Row="3" Grid.Column="0" FontSize="18" Grid.ColumnSpan="2" Padding="25 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                <TextBox IsEnabled="False" x:Name="txtLighting"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"/>
-                <TextBlock Text="Is Floatable? " Grid.Row="4" Grid.Column="0" FontSize="18" Grid.ColumnSpan="2" Padding="25 0 0 0" HorizontalAlignment="right" VerticalAlignment="Center" />
-                <CheckBox IsEnabled="False" x:Name="cbxFloatable"  Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock Text="Size Class: " Grid.Row="5" Grid.Column="0" FontSize="18" Grid.ColumnSpan="2" HorizontalAlignment="right" VerticalAlignment="Center" />
-                <TextBox IsEnabled="False" x:Name="txtSizeClass"  Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"/>
-                <TextBlock Text="Max Height (in): " Grid.Row="6" Grid.Column="0" FontSize="18" Grid.ColumnSpan="2" HorizontalAlignment="right" VerticalAlignment="Center" />
-                <TextBox IsEnabled="False" x:Name="txtMaxHeight"  Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
-                <TextBlock Text="Need Fertilizer? " Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" HorizontalAlignment="right" VerticalAlignment="Center" />
-                <CheckBox x:Name="cbxNeedsFertilizer" IsEnabled="False" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Text="Plant Care Information" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="21"/>
+                <TextBlock Text="Temp Range: " Grid.Row="1" Grid.Column="0" Padding="25 0 0 0" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="txtTempRange" Grid.Row="1" Grid.Column="1" FontSize="16" Margin="0 0 15 0" />
+                <TextBlock Text="Ideal Temp: " Grid.Row="2" Grid.Column="0" HorizontalAlignment="right" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="18"/>
+                    <TextBlock x:Name="txtIdealTemp" Grid.Row="2" Grid.Column="2" Width="30" Margin="0 0 10 0" />
+                <TextBlock Text="Tank Lighting: " Grid.Row="3" Grid.Column="0" FontSize="18" FontWeight="DemiBold" Padding="25 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                    <TextBlock x:Name="txtLighting"  Grid.Row="3" Grid.Column="2" />
+                <TextBlock Text="Is Floatable? " Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="DemiBold" Padding="25 0 0 0" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <CheckBox  x:Name="cbxFloatable" Grid.Row="4" Grid.Column="2" />
+                <TextBlock Text="Size Class: " Grid.Row="5" Grid.Column="0" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <TextBlock x:Name="txtSizeClass"  Grid.Row="5" Grid.Column="2" />
+                <TextBlock Text="Max Height: " Grid.Row="6" Grid.Column="0" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <TextBlock x:Name="txtMaxHeight"  Grid.Row="6" Grid.Column="2" />
+                <TextBlock Text="Require Fertilizer " Grid.Row="7" Grid.Column="0" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <CheckBox x:Name="cbxNeedsFertilizer" Grid.Row="7" Grid.Column="2" />
             </Grid>
 
             <!-- Tank Compatability Check grid -->
-        <Grid x:Name="TankCheckGrid" Grid.RowSpan="4" Grid.Row="5" Grid.Column="1">
+        <Grid x:Name="TankCheckGrid" Grid.RowSpan="4" Grid.Row="5" Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -101,21 +99,27 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontWeight="Bold" Text="Tank Compatability Results" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="21"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Water Type: " FontSize="18" HorizontalAlignment="right" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Water Type: " FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
                 <TextBlock x:Name="compatabilityWaterType" Text="- no defined water -" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                <TextBlock x:Name="PF_compatabilityWaterType" Text="F" Grid.Column="4" Grid.Row="1" FontStyle="Italic" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Gallon Size: " FontSize="18" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <Image x:Name="PF_compatabilityWaterType" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Gallon Size: " FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
                 <TextBlock x:Name="compatabilityGallonSize" Text="- no defined tank size -" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock x:Name="PF_compatabilityGallonSize" Text="F" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" />
-            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Lighting Type: " FontSize="18" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <Image x:Name="PF_compatabilityGallonSize" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Lighting Type: " FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
                 <TextBlock x:Name="compatabilityLightingType" Text="- no defined lighting -" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock x:Name="PF_compatabilityLightingType" Text="F" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" />
-            <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Substrate Type: " FontSize="18" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <Image x:Name="PF_compatabilityLightingType" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Substrate Type: " FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
                 <TextBlock x:Name="compatabilitySubstrate" Text="- no defined substrate -" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock x:Name="PF_compatabilitySubstrate" Text="F" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" />
-            <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Water Temp: " FontSize="18" HorizontalAlignment="right" VerticalAlignment="Center" />
+                    <Image x:Name="PF_compatabilitySubstrate" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Water Temp: " FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
                 <TextBlock x:Name="compatabilityTemperature" Text="- no recorded temps -" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock x:Name="PF_compatabilityTemperature" Text="F" Grid.Column="4" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" />
+                    <Image x:Name="PF_compatabilityTemperature" Grid.Column="4" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="Tank pH Levels: " FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
+                <TextBlock x:Name="CompatabilitypH" Text="- no recorded pH -" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Image x:Name="PF_compatabilityWaterpH" Grid.Column="4" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Button x:Name="AssignNewPlant" Grid.Column="1" Grid.Row="7" Width="60" Height="25" IsEnabled="False" Click="AssignNewPlant_Click_AddPlant">Add Plant</Button>
+            <Button x:Name="FailureDetails" Grid.Column="2" Grid.Row="7" Width="60" Height="25" Click="FailureDetails_Click">Details</Button>
+            <Button x:Name="RunCompatabilityTest" Grid.Column="3" Grid.Row="7" Width="60" Height="25" Click="RunTest_Click">Run Test</Button>
         </Grid>
         
     </Grid>

@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
         Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -21,38 +22,42 @@
         </Grid.ColumnDefinitions>
         <tb:TaskbarIcon IconSource="/Images/blue_fish_icon.ico" x:Name="AQ_Tray_Icon"/>
 
-    <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
-            <MenuItem Header="File">
-                <MenuItem x:Name="FileLogoutItem" Click="MenuItem_Click_LogOut" Header="Log Out" />
-                <MenuItem Header="Exit" Click="MenuItem_Click_Exit" />
-            </MenuItem>
-            <MenuItem Header="Settings" />
-            <MenuItem Header="Reports" />
-            <MenuItem Header="Care Guides" />
-            <MenuItem Header="Accessory Gallery" />
-            <MenuItem Header="My Tanks">
-                <MenuItem Header="Manage Tanks" />
-                <MenuItem Header="Add New Tank" Click="MenuItem_Click_AddTank" />
-            </MenuItem>
-            <MenuItem Header="My Fish">
-                <MenuItem Header="Manage All Fish" />
-                <MenuItem Header="Add New Fish" HorizontalAlignment="Left" Width="169" Click="MenuItem_Click_AddFish" />
-            </MenuItem>
-            <MenuItem Header="Customers">
-                <MenuItem Header="Manage Customers"></MenuItem>
-                <MenuItem Header="Customer Lookup"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Accessories &amp; Supplies">
-                <MenuItem Header="Add New Plant" Click="MenuItem_Click_AddPlant"></MenuItem>
-                <MenuItem Header="Decoration Inventory"></MenuItem>
-                <MenuItem Header="Supply Inventory"></MenuItem>
-                <MenuItem Header="Accessory Inventory"></MenuItem>
-                <MenuItem Header="Add Purchase" Click="MenuItem_Click_AddPurchase"></MenuItem>
-            </MenuItem>
-            <MenuItem x:Name="MyAccountMenu" Header="My Account">
-                <MenuItem Header="My Profile" Click="MenuItem_Click_MyProfile" />
-                <MenuItem Header="Preferences" />
-            </MenuItem>
-        </Menu>
+        <telerik:RadMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+            <telerik:RadMenuItem Header="File" Padding="0 0 10 0">
+                <telerik:RadMenuItem Header="Exit" Click="MenuItem_Click_Exit" />
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="My Tanks" Padding="0 0 10 0">
+                <telerik:RadMenuItem Header="Manage Tanks" />
+                <telerik:RadMenuItem Header="Add New Tank" Click="MenuItem_Click_AddTank" />
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="My Fish" Padding="0 0 10 0">
+                <telerik:RadMenuItem Header="Manage All Fish" />
+                <telerik:RadMenuItem Header="Add New Fish" HorizontalAlignment="Left" Width="169" Click="MenuItem_Click_AddFish" />
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="Customers" Padding="0 0 10 0">
+                <telerik:RadMenuItem Header="Manage Customers"></telerik:RadMenuItem>
+                <telerik:RadMenuItem Header="Customer Lookup"></telerik:RadMenuItem>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="Purchases" Padding="0 0 10 0">
+                <telerik:RadMenuItem Header="Purchase History" Click="MenuItem_Click_AddPurchase" />
+                <telerik:RadMenuItem Header="New Purchase" Click="MenuItem_Click_AddPurchase"></telerik:RadMenuItem>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="Accessories &amp; Supplies" Padding="0 0 10 0">
+                <telerik:RadMenuItem Header="Add New Plant" Click="MenuItem_Click_AddPlant"></telerik:RadMenuItem>
+                <telerik:RadMenuItem Header="Decoration Inventory"></telerik:RadMenuItem>
+                <telerik:RadMenuItem Header="Supply Inventory"></telerik:RadMenuItem>
+                <telerik:RadMenuItem Header="Care Guides" />
+                <telerik:RadMenuItem Header="Accessory Gallery" />
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem x:Name="MyAccountMenu" Header="My Account" Margin="0 0 140 0">
+                <telerik:RadMenuItem Header="My Profile" Click="MenuItem_Click_MyProfile" />
+                <telerik:RadMenuItem Header="Preferences" />
+                <telerik:RadMenuItem x:Name="FileLogoutItem" Click="MenuItem_Click_LogOut" Header="Log Out" />
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem x:Name="ErrorNotificationsMenu" Click="NotificationsMenu_Click_NotificationsDashboard" />
+            <telerik:RadMenuItem x:Name="WarningNotificationsMenu" Click="WarningNotificationsMenu_Click" />
+        </telerik:RadMenu>
+        
+        
     </Grid>
 </Window>

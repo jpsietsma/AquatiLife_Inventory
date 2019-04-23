@@ -43,16 +43,13 @@ namespace WFP_AquatiLife_Inventory_UI
             InitializeComponent();
             _trayIcon = AQ_Tray_Icon;
 
-            TextBox _tray_tbpopup = new TextBox();
-            _tray_tbpopup.Text = "Hello Popup!";
-
-            _trayIcon.TrayPopup = _tray_tbpopup;
-
             _userSession = _session;
 
             this.Title = $@"AquatiLife Fish Inventory Management | Logged in as: { _session.UserName }";
 
-            this.Closed += DashboardWindow_Closed;            
+            this.Closed += DashboardWindow_Closed;
+
+            ErrorNotificationsMenu.Icon = new BitmapImage(new Uri("../images/Icons/MenuIcon_ErrorNotification.png", UriKind.Relative));
 
         }
 
@@ -64,32 +61,9 @@ namespace WFP_AquatiLife_Inventory_UI
         private void DashboardWindow_Closed(object sender, EventArgs e)
         {
             this._userSession.LogOut();
+            _trayIcon.Visibility = Visibility.Hidden;
+
             App.Current.Shutdown();
-        }
-
-        /// <summary>
-        /// Open the Add Tank window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MenuItem_Click_AddTank(object sender, RoutedEventArgs e)
-        {
-                tankWindow = new AddTank(_userSession);
-                tankWindow.Show();
-                tankWindow.Focus();
-                        
-        }
-
-        /// <summary>
-        /// Open the add fish window 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MenuItem_Click_AddFish(object sender, RoutedEventArgs e)
-        {
-            fishWindow = new AddFish(_userSession);    
-            fishWindow.Show();
-            fishWindow.Focus();
         }
 
         /// <summary>
@@ -104,33 +78,41 @@ namespace WFP_AquatiLife_Inventory_UI
                 profileWindow.Focus();            
         }
 
-        /// <summary>
-        /// Log user out when clicking on file > logout
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
-        {
+#region Program Commands eventhandlers
 
-            this.Visibility = Visibility.Hidden;
-            this._userSession.LogOut();
+    /// <summary>
+    /// Log user out when clicking on file > logout
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
+    {
 
-            MainWindow _main = new MainWindow();
-                _main.Activate();
-                _main.Topmost = true;
-                _main.Focus();
-        }
+        this.Visibility = Visibility.Hidden;
+        _trayIcon.Visibility = Visibility.Hidden;
 
-        /// <summary>
-        /// Exits application when clicking File > Exit
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MenuItem_Click_Exit(object sender, RoutedEventArgs e)
+        this._userSession.LogOut();
+
+        MainWindow _main = new MainWindow();
+        _main.Activate();
+        _main.Topmost = true;
+        _main.Focus();
+    }
+
+    /// <summary>
+    /// Exits application when clicking File > Exit
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void MenuItem_Click_Exit(object sender, RoutedEventArgs e)
         {
             _userSession.LogOut();
             App.Current.Shutdown();
         }
+
+#endregion
+
+#region Insert Window eventhandlers
 
         /// <summary>
         /// Open the Add New Plant subitem under Accessories menu
@@ -144,11 +126,53 @@ namespace WFP_AquatiLife_Inventory_UI
             addPlantWindow.Focus();
         }
 
+        /// <summary>
+        /// Open the Add Purchase window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click_AddPurchase(object sender, RoutedEventArgs e)
         {
             addPurchaseWindow = new AddPurchase(_userSession);
             addPurchaseWindow.Show();
             addPurchaseWindow.Focus();
+        }
+
+        /// <summary>
+        /// Open the Add Tank window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click_AddTank(object sender, RoutedEventArgs e)
+        {
+            tankWindow = new AddTank(_userSession);
+            tankWindow.Show();
+            tankWindow.Focus();
+
+        }
+
+        /// <summary>
+        /// Open the add fish window 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click_AddFish(object sender, RoutedEventArgs e)
+        {
+            fishWindow = new AddFish(_userSession);
+            fishWindow.Show();
+            fishWindow.Focus();
+        }
+
+        #endregion
+
+        private void NotificationsMenu_Click_NotificationsDashboard(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+
+        }
+
+        private void WarningNotificationsMenu_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+
         }
     }
 }

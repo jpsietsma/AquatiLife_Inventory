@@ -255,6 +255,7 @@
     <Compile Include="ext\UserLoginAccess.cs" />
     <Compile Include="ext\UserTankExt.cs" />
     <Compile Include="PopulateUI\PopulateUI_Controls_DDL.cs" />
+    <Compile Include="PopulateUI\PopulateUI_View_PlantInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Authentication\UserSession.cs" />
@@ -484,30 +485,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseEntities.edmx</DependentUpon>
       <LastGenOutput>DatabaseEntities.cs</LastGenOutput>
-    </Content>
-    <Content Include="images\plants\AmazonSword.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\plants\Anubias.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\plants\Cryptocoryne.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\plants\HornWort.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\plants\JavaFern.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\plants\JavaMoss.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\plants\NarrowLeaf.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\plants\Wisteria.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

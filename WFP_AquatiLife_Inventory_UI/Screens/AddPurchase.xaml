@@ -1,11 +1,12 @@
-﻿<Window x:Class="WFP_AquatiLife_Inventory_UI.Screens.AddPurchase"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="WFP_AquatiLife_Inventory_UI.Screens.AddPurchase"
         mc:Ignorable="d"
-        Title="New User Purchase" Height="450" Width="800">
+        Title="New User Purchase" Height="450" Width="760">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,14 +24,25 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Text="Add Purchase Details" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
-        <TextBlock Text="Product Purchased: " Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
-            <TextBox x:Name="txtDescription" Grid.Row="1" Grid.Column="3"  Height="25" Width="250" Grid.ColumnSpan="2" />
-        <TextBlock Text="Purchase Type: " Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"/>
-            <ComboBox x:Name="ddlPurchaseCategories" Grid.Row="2" Grid.Column="3" Width="100" Height="25" />
-        <TextBlock Text="Store Name: " Grid.Row="3" Grid.Column="2" HorizontalAlignment="right" VerticalAlignment="Center" FontSize="14" />
-            <ComboBox x:Name="ddlStoreName" Grid.Row="3" Grid.Column="3" Width="100" Height="25" />
-        <TextBlock Text="Quantity: " Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
-            <TextBox x:Name="txtQuantity" Grid.Row="4" Grid.Column="3"  Height="25" Width="100"/>
+        <telerik:RadToolTip Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" x:Name="_message" Height="50" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="LawnGreen" Visibility="Visible" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Text="New Purchase - Details" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" />
+        <TextBlock Text="Product Name: " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" />
+            <TextBox x:Name="txtDescription" Grid.Row="1" Grid.Column="2"  Height="35" Width="350" Grid.ColumnSpan="3" FontStyle="Italic" FontSize="16" FontWeight="SemiBold" />
+        <TextBlock Text="Purchase Type: " Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"/>
+            <ComboBox x:Name="ddlPurchaseCategories" Grid.Row="2" Grid.Column="2" Width="125" Height="25" HorizontalContentAlignment="Center" />
+        <TextBlock Text="Store Name: " Grid.Row="2" Grid.Column="3" HorizontalAlignment="right" VerticalAlignment="Center" FontSize="14" />
+            <ComboBox x:Name="ddlStoreName" Grid.Row="2" Grid.Column="4" Width="125" Height="25" HorizontalContentAlignment="Center" />
+        <TextBlock Text="Quantity: " Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+            <telerik:RadNumericUpDown x:Name="numQty" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="100"/>
+        <TextBlock Text="Purchase Price: " Grid.Row="3" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+            <telerik:RadNumericUpDown x:Name="numPrice" Grid.Row="3" Grid.Column="4"  Height="25" Width="125"/>
+        <TextBlock Text="Purchase Date: " Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+            <telerik:RadDatePicker x:Name="txtDate" Grid.Row="4" Grid.Column="2"  Height="25" Width="100"/>
+        <TextBlock Text="Purchase User: " Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+            <TextBox x:Name="txtUser" Grid.Row="4" Grid.Column="4"  Height="25" Width="100" TextAlignment="Center" />
+            <ComboBox x:Name="admin_ddlUser" Grid.Row="4" Grid.Column="4"  Height="25" Width="100" />
+        <telerik:RadButton x:Name="btnAddPurchase" Click="BtnAddPurchase_Click" Width="90" Height="25" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Content="Save Purchase"/>
+        <telerik:RadButton x:Name="btnClearForm" Click="BtnClearForm_Click" Width="90" Height="25" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" Content="Clear Form"/>
+        
     </Grid>
 </Window>

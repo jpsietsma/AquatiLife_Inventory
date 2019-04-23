@@ -44,6 +44,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<List_FishFeedingTypes> List_FishFeedingTypes { get; set; }
         public virtual DbSet<List_FishSicknessTypes> List_FishSicknessTypes { get; set; }
         public virtual DbSet<List_FishTerritorialLevels> List_FishTerritorialLevels { get; set; }
+        public virtual DbSet<List_LivePlantDiseases> List_LivePlantDiseases { get; set; }
         public virtual DbSet<List_PlantSizeClasses> List_PlantSizeClasses { get; set; }
         public virtual DbSet<List_PurchaseCategories> List_PurchaseCategories { get; set; }
         public virtual DbSet<List_SupplyTypes> List_SupplyTypes { get; set; }
@@ -74,7 +75,55 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<vw_UserFish> vw_UserFish { get; set; }
         public virtual DbSet<vw_UserSessions> vw_UserSessions { get; set; }
         public virtual DbSet<vw_UserTanks> vw_UserTanks { get; set; }
-        public virtual DbSet<List_LivePlantDiseases> List_LivePlantDiseases { get; set; }
+    
+        public virtual int Add_PlantType(string plantName, Nullable<int> lightingLevel, Nullable<bool> needsFertilizer, Nullable<bool> canFloat, Nullable<int> minTemperature, Nullable<int> maxTemperature, Nullable<int> idealTemperature, Nullable<double> maxHeight, Nullable<int> plantSizeClass, Nullable<int> purchaseCategory, string plantImage)
+        {
+            var plantNameParameter = plantName != null ?
+                new ObjectParameter("PlantName", plantName) :
+                new ObjectParameter("PlantName", typeof(string));
+    
+            var lightingLevelParameter = lightingLevel.HasValue ?
+                new ObjectParameter("LightingLevel", lightingLevel) :
+                new ObjectParameter("LightingLevel", typeof(int));
+    
+            var needsFertilizerParameter = needsFertilizer.HasValue ?
+                new ObjectParameter("NeedsFertilizer", needsFertilizer) :
+                new ObjectParameter("NeedsFertilizer", typeof(bool));
+    
+            var canFloatParameter = canFloat.HasValue ?
+                new ObjectParameter("CanFloat", canFloat) :
+                new ObjectParameter("CanFloat", typeof(bool));
+    
+            var minTemperatureParameter = minTemperature.HasValue ?
+                new ObjectParameter("MinTemperature", minTemperature) :
+                new ObjectParameter("MinTemperature", typeof(int));
+    
+            var maxTemperatureParameter = maxTemperature.HasValue ?
+                new ObjectParameter("MaxTemperature", maxTemperature) :
+                new ObjectParameter("MaxTemperature", typeof(int));
+    
+            var idealTemperatureParameter = idealTemperature.HasValue ?
+                new ObjectParameter("IdealTemperature", idealTemperature) :
+                new ObjectParameter("IdealTemperature", typeof(int));
+    
+            var maxHeightParameter = maxHeight.HasValue ?
+                new ObjectParameter("MaxHeight", maxHeight) :
+                new ObjectParameter("MaxHeight", typeof(double));
+    
+            var plantSizeClassParameter = plantSizeClass.HasValue ?
+                new ObjectParameter("PlantSizeClass", plantSizeClass) :
+                new ObjectParameter("PlantSizeClass", typeof(int));
+    
+            var purchaseCategoryParameter = purchaseCategory.HasValue ?
+                new ObjectParameter("PurchaseCategory", purchaseCategory) :
+                new ObjectParameter("PurchaseCategory", typeof(int));
+    
+            var plantImageParameter = plantImage != null ?
+                new ObjectParameter("PlantImage", plantImage) :
+                new ObjectParameter("PlantImage", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_PlantType", plantNameParameter, lightingLevelParameter, needsFertilizerParameter, canFloatParameter, minTemperatureParameter, maxTemperatureParameter, idealTemperatureParameter, maxHeightParameter, plantSizeClassParameter, purchaseCategoryParameter, plantImageParameter);
+        }
     
         public virtual int Add_User(string userName, string password, string emailAddress, string userRole)
         {
@@ -116,6 +165,39 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
                 new ObjectParameter("PlantType", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserPlant", userIDParameter, tankIDParameter, purchaseIDParameter, plantTypeParameter);
+        }
+    
+        public virtual int Add_UserPurchase(string description, Nullable<int> quantity, Nullable<decimal> cost, Nullable<System.DateTime> date, Nullable<int> storeID, Nullable<int> purchaseCategory, Nullable<int> userID)
+        {
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var costParameter = cost.HasValue ?
+                new ObjectParameter("Cost", cost) :
+                new ObjectParameter("Cost", typeof(decimal));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var storeIDParameter = storeID.HasValue ?
+                new ObjectParameter("StoreID", storeID) :
+                new ObjectParameter("StoreID", typeof(int));
+    
+            var purchaseCategoryParameter = purchaseCategory.HasValue ?
+                new ObjectParameter("PurchaseCategory", purchaseCategory) :
+                new ObjectParameter("PurchaseCategory", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserPurchase", descriptionParameter, quantityParameter, costParameter, dateParameter, storeIDParameter, purchaseCategoryParameter, userIDParameter);
         }
     
         public virtual int Add_UserTank(Nullable<int> tankOwnerID, Nullable<int> tankSize, Nullable<decimal> tankHeight, Nullable<decimal> tankWidth, Nullable<int> waterType, Nullable<int> tankType)

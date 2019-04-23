@@ -29,6 +29,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
             InitializeComponent();
 
             this.Closed += UserLogin_Closed;
+            this._BannerMessage.Text = "Please log in to continue.";
         }
 
         /// <summary>

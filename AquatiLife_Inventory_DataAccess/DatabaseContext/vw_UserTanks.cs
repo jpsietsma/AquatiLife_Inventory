@@ -25,5 +25,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string WaterTypeSpecialTags { get; set; }
         public string UserName { get; set; }
         public Nullable<int> NumFish { get; set; }
+        public string TankDisplayName { get; set; }
     }
 }

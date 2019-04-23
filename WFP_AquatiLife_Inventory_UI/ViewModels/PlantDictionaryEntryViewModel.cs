@@ -28,8 +28,23 @@ namespace WFP_AquatiLife_Inventory_UI.ViewModels
         [Display(Name = "Plant Image")]
         public new string PlantImage { get; set; }
 
-        public PlantDictionaryEntryViewModel()
+        public string TankLightingLevel { get; set; }
+
+        public string PlantSizeClass { get; set; }
+
+        public string PlantMaxSize { get; set; }
+
+        public PlantDictionaryEntryViewModel(vw_PlantDictionary _data)
         {
+            PlantName = _data.PlantType;
+            PlantIdealTemp = _data.IdealTemp.Value;
+            PlantMinTemp = _data.MinTemp;
+            PlantMaxTemp = _data.MaxTemp;
+            CanFloat = _data.Floatable;
+            PlantImage = _data.Image;
+            TankLightingLevel = _data.Lighting;
+            PlantSizeClass = _data.PlantSize;
+            PlantMaxHeight = _data.MaxInches;
 
         }
 
