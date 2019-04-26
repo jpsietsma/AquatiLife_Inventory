@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using AquatiLife_Inventory_DataAccess.Authentication;
 using Hardcodet.Wpf.TaskbarNotification;
 using System.Drawing;
+using Telerik.Windows.Controls;
+using WFP_AquatiLife_Inventory_UI.UserControls;
 
 namespace WFP_AquatiLife_Inventory_UI
 {
@@ -49,7 +51,14 @@ namespace WFP_AquatiLife_Inventory_UI
 
             this.Closed += DashboardWindow_Closed;
 
-            ErrorNotificationsMenu.Icon = new BitmapImage(new Uri("../images/Icons/MenuIcon_ErrorNotification.png", UriKind.Relative));
+            ErrorNotificationsMenuIcon.Source = new BitmapImage(new Uri("../images/UI/Icons/MenuIcon_ErrorIcon.png", UriKind.Relative));
+            WarningNotificationMenuIcon.Source = new BitmapImage(new Uri("../images/UI/Icons/MenuIcon_WarningIcon.png", UriKind.Relative));
+
+            if (_session.IsAdminUser)
+            {
+                AdministratorMenu.Visibility = Visibility.Visible;
+                ErrorNotificationsMenu.Visibility = Visibility.Visible;
+            }
 
         }
 
@@ -61,8 +70,6 @@ namespace WFP_AquatiLife_Inventory_UI
         private void DashboardWindow_Closed(object sender, EventArgs e)
         {
             this._userSession.LogOut();
-            _trayIcon.Visibility = Visibility.Hidden;
-
             App.Current.Shutdown();
         }
 
@@ -87,27 +94,35 @@ namespace WFP_AquatiLife_Inventory_UI
     /// <param name="e"></param>
     private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
     {
+        ConfirmDialog confirm = new ConfirmDialog(ConfirmDialog.DialogType.LOGOUT, _userSession);
+            confirm.Show();
 
-        this.Visibility = Visibility.Hidden;
-        _trayIcon.Visibility = Visibility.Hidden;
+        //User clicks ok button
+        if (confirm.UserChoice)
+        {
+            this._userSession.LogOut();
 
-        this._userSession.LogOut();
+        }
 
-        MainWindow _main = new MainWindow();
-        _main.Activate();
-        _main.Topmost = true;
-        _main.Focus();
     }
 
-    /// <summary>
-    /// Exits application when clicking File > Exit
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void MenuItem_Click_Exit(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Prompt user to exit application when clicking File > Exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click_Exit(object sender, RoutedEventArgs e)
         {
-            _userSession.LogOut();
-            App.Current.Shutdown();
+            ConfirmDialog _confirm = new ConfirmDialog(ConfirmDialog.DialogType.EXIT, _userSession);
+            _confirm.ShowConfirm();
+
+            //User clicks ok button
+            if (_confirm.UserChoice)
+            {
+                _userSession.LogOut();
+                App.Current.Shutdown();
+            }
+            
         }
 
 #endregion
@@ -172,6 +187,31 @@ namespace WFP_AquatiLife_Inventory_UI
 
         private void WarningNotificationsMenu_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
+
+        }
+
+        private void MenuItem_Click_LogOut(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            ConfirmDialog _confirm = new ConfirmDialog(ConfirmDialog.DialogType.LOGOUT, _userSession);
+            _confirm.ShowConfirm();
+
+            //User clicks ok button
+            if (_confirm.UserChoice)
+            {
+                this._userSession.LogOut();
+
+                this.Visibility = Visibility.Hidden;
+                this._trayIcon.Visibility = Visibility.Hidden;
+
+                UserLogin _login = new UserLogin();
+
+                loginWindow = _login;
+
+                loginWindow.Show();
+                loginWindow.Topmost = true;
+                loginWindow.Focus();
+
+            }
 
         }
     }

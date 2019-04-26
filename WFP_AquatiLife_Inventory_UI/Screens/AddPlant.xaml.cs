@@ -104,7 +104,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
                                 PF_compatabilityWaterType.Source = new BitmapImage(new Uri("../images/UI/Icons/checkmark_green.png", UriKind.Relative));
                                 //compatabilityWaterType.Background = new SolidColorBrush { Color = Color.FromRgb(0, 100, 0), Opacity = 0.10 };
 
-                             break;
+                                break;
                             }
 
                         case "F":

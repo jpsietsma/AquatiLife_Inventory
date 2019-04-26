@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
+using WFP_AquatiLife_Inventory_UI.PopulateUI;
 
 namespace WFP_AquatiLife_Inventory_UI.Screens
 {
@@ -25,8 +27,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
         {
             InitializeComponent();
 
-            TextBox _TankNameTxt = TankNameTxt;
-            ComboBox _selectTankType = ddlWaterType;
+            ddlWaterType.PopulateUI_DDL_TankWaterTypes(_session);
 
         }
 

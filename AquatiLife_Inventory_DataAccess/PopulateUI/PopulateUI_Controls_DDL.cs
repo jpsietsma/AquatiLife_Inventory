@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Telerik.Windows.Controls;
 
 namespace WFP_AquatiLife_Inventory_UI.PopulateUI
 {
@@ -16,7 +17,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// Populate combobox with plant type names
         /// </summary>
         /// <param name="_combo"></param>
-        public static void PopulateUI_DDL_PlantTypes(this ComboBox _combo)
+        public static void PopulateUI_DDL_PlantTypes(this RadComboBox _combo)
         {
             using (Entities conn = new Entities())
             {
@@ -44,7 +45,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// </summary>
         /// <param name="_combo"></param>
         /// <param name="_session"></param>
-        public static void PopulateUI_DDL_UserTanks(this ComboBox _combo, AuthenticatedUserSession _session)
+        public static void PopulateUI_DDL_UserTanks(this RadComboBox _combo, AuthenticatedUserSession _session)
         {
             using (Entities conn = new Entities())
             {
@@ -85,7 +86,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// </summary>
         /// <param name="_combo"></param>
         /// <param name="_session"></param>
-        public static void PopulateUI_DDL_PurchaseCategories(this ComboBox _combo, AuthenticatedUserSession _session)
+        public static void PopulateUI_DDL_PurchaseCategories(this RadComboBox _combo, AuthenticatedUserSession _session)
         {
 
             using (Entities conn = new Entities())
@@ -114,26 +115,22 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// </summary>
         /// <param name="_combo"></param>
         /// <param name="_session"></param>
-        public static void PopulateUI_DDL_Stores(this ComboBox _combo, AuthenticatedUserSession _session)
+        public static void PopulateUI_DDL_Stores(this RadComboBox _combo, AuthenticatedUserSession _session)
         {
+            _combo.Items.Insert(0, " - Select Store -");
+
+            if (_combo.SelectedValue == null)
+            {
+                _combo.SelectedIndex = 0;
+            }
 
             using (Entities conn = new Entities())
-            {
-                var a = conn.Stores.ToList();
-                int idx = 0;
-
-                _combo.Items.Insert(idx, " - Select Store -");
-
-                foreach (var store in a)
+            {             
+                foreach (var store in conn.Stores.ToList())
                 {
-                    idx++;
-                    _combo.Items.Insert(idx, store.StoreName);
+                    _combo.Items.Insert(store.pk_StoreID, store.StoreName);
                 }
-
-                if (_combo.SelectedValue == null)
-                {
-                    _combo.SelectedIndex = 0;
-                }
+                
             }
 
         }
@@ -143,17 +140,26 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// </summary>
         /// <param name="_combo"></param>
         /// <param name="_session"></param>
-        public static void PopulateUI_DDL_Users(this ComboBox _combo, AuthenticatedUserSession _session)
+        public static void PopulateUI_DDL_Users(this RadComboBox _combo, AuthenticatedUserSession _session)
         {
             using (Entities conn = new Entities())
             {
                 var a = conn.Users.Select(x => x.UserName).ToList();
                 int idx = 0;
 
+                _combo.Items.Insert(idx, "- Select User -");
+
                 foreach (var username in a)
                 {
                     idx++;
                     _combo.Items.Insert(idx, username);
+                }
+
+                List<string> permissons = _session.GetUserPermissions();
+
+                if (permissons.Contains("Administrator") || permissons.Contains("SuperAdmin"))
+                {
+                    _combo.IsEnabled = true;
                 }
 
                 _combo.SelectedValue = _session.UserName;
@@ -166,7 +172,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// </summary>
         /// <param name="_combo"></param>
         /// <param name="_session"></param>
-        public static void PopulateUI_DDL_TankWaterTypes (this ComboBox _combo, AuthenticatedUserSession _session)
+        public static void PopulateUI_DDL_TankWaterTypes (this RadComboBox _combo, AuthenticatedUserSession _session)
         {
             using (Entities conn = new Entities())
             {
@@ -184,8 +190,6 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
                 _combo.SelectedIndex = 0;
             }
         }
-
-
 
     }
 }

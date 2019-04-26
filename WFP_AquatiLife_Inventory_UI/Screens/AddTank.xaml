@@ -4,16 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
         Title="AQL Inventory | Add New Tank" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="150" />
-            <ColumnDefinition Width="150" />
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="175" />
+            <ColumnDefinition Width="175" />
+            <ColumnDefinition Width="175" />
+            <ColumnDefinition Width="175" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="75" />
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
@@ -25,10 +26,24 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <Button x:Name="AddNewTankBtn" Grid.Column="5" Grid.Row="0" Height="25" Width="60" Click="AddNewTank_ButtonClicked">Add Tank!</Button>
-        <TextBlock Text="Create New Tank" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="26" FontWeight="DemiBold"/>
-        <TextBlock Text="Name your Tank: " Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
-        <TextBox x:Name="TankNameTxt" Grid.Row="1" Grid.Column="3" Width="150" Height="30" FontWeight="Bold" />
-        <ComboBox x:Name="ddlWaterType" />
+        <TextBlock Text="Add New Fish Tank - Asset Details" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="26" FontWeight="DemiBold"/>
+        <TextBlock Text="Name your Tank: " Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16"/>
+            <TextBox x:Name="TankNameTxt" Grid.Row="1" Grid.Column="2" Width="150" Height="30" FontWeight="Bold" />
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Tank Water Type: " VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" />
+            <telerik:RadComboBox x:Name="ddlWaterType" Grid.Column="2" Grid.Row="2" Height="30" Width="150" />
+        <TextBlock Text="Tank Capacity (gallons): " Grid.Row="3" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <telerik:RadSlider x:Name="sldCapacityGallon" Width="300" Minimum="1" Maximum="200" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Ticks="1, 5, 10, 20, 30, 55, 75, 100, 125, 150, 175, 200" >
+                <telerik:RadSlider.TickTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding}" FontSize="8" />
+                        </Grid>
+                    </DataTemplate>
+                </telerik:RadSlider.TickTemplate>
+            </telerik:RadSlider>
+        <TextBlock Text="Tank Lighting: " Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16"/>
+            <telerik:RadComboBox x:Name="ddlTankLighting" Grid.Column="4" Grid.Row="1" Width="150" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <Button x:Name="AddNewTankBtn" Grid.Column="4" Grid.Row="5" Height="35" Width="100" Click="AddNewTank_ButtonClicked">Add Tank!</Button>
     </Grid>
 </Window>

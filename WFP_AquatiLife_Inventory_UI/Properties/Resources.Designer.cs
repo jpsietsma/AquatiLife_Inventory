@@ -59,15 +59,5 @@ namespace WFP_AquatiLife_Inventory_UI.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Black_Fish_Icon {
-            get {
-                object obj = ResourceManager.GetObject("Black_Fish_Icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

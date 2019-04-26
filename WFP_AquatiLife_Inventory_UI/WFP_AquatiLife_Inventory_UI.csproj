@@ -103,6 +103,7 @@
     <Compile Include="Screens\UserProfileDashboard.xaml.cs">
       <DependentUpon>UserProfileDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ConfirmDialog.cs" />
     <Compile Include="ViewModels\PlantDictionaryEntryViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +164,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -181,16 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\LoginHeader.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\Black_Fish_Icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\Person_Net_Water.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -231,11 +223,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\default-plant-image-tumbleweed.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\plants\AnubiasBarteri.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -264,14 +251,17 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\UI\Icons\MenuIcon_ErrorNotification.png">
+    <Resource Include="images\UI\Icons\MenuIcon_ErrorIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\UI\Icons\MenuIcon_WarningNotification.png">
+    <Resource Include="images\UI\Icons\MenuIcon_WarningIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\UI\Icons\MenuIcon_NotificationIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

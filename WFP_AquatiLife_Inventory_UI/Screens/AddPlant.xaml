@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AquatiLife_Inventory_DataAccess.DatabaseContext;assembly=AquatiLife_Inventory_DataAccess"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="AddPlant" Height="650" Width="800">
@@ -40,9 +41,9 @@
         <Image x:Name="PlantImage" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" />
         
         <TextBlock Grid.Row="2" Grid.Column="2" Text="Plant Name: " FontSize="20" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <ComboBox Grid.Row="2" Grid.Column="3" x:Name="ddlPlantType" Height="30" Width="150" HorizontalContentAlignment="Center" SelectionChanged="DdlPlantType_SelectionChanged" />
+            <telerik:RadComboBox Grid.Row="2" Grid.Column="3" x:Name="ddlPlantType" Height="30" Width="150" HorizontalContentAlignment="Center" SelectionChanged="DdlPlantType_SelectionChanged" />
         <TextBlock Grid.Row="3" Grid.Column="2" Text="User Tank: " FontWeight="DemiBold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <ComboBox Grid.Row="3" Grid.Column="3" x:Name="ddlUserTank" Height="30" Width="150" HorizontalContentAlignment="Center" SelectionChanged="DdlUserTank_SelectionChanged"/>        
+            <telerik:RadComboBox Grid.Row="3" Grid.Column="3" x:Name="ddlUserTank" Height="30" Width="150" HorizontalContentAlignment="Center" SelectionChanged="DdlUserTank_SelectionChanged"/>        
         
         <!-- Plant Care Information grid -->
             <Grid x:Name="PlantCareGrid" Grid.ColumnSpan="1" Grid.RowSpan="4" Grid.Row="5" Grid.Column="1">
@@ -117,9 +118,9 @@
             <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="Tank pH Levels: " FontSize="18" FontWeight="DemiBold" HorizontalAlignment="right" VerticalAlignment="Center" />
                 <TextBlock x:Name="CompatabilitypH" Text="- no recorded pH -" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <Image x:Name="PF_compatabilityWaterpH" Grid.Column="4" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Button x:Name="AssignNewPlant" Grid.Column="1" Grid.Row="7" Width="60" Height="25" IsEnabled="False" Click="AssignNewPlant_Click_AddPlant">Add Plant</Button>
-            <Button x:Name="FailureDetails" Grid.Column="2" Grid.Row="7" Width="60" Height="25" Click="FailureDetails_Click">Details</Button>
-            <Button x:Name="RunCompatabilityTest" Grid.Column="3" Grid.Row="7" Width="60" Height="25" Click="RunTest_Click">Run Test</Button>
+            <telerik:RadButton x:Name="AssignNewPlant" Grid.Column="1" Grid.Row="7" Width="60" Height="25" IsEnabled="False" Click="AssignNewPlant_Click_AddPlant">Add Plant</telerik:RadButton>
+            <telerik:RadButton x:Name="FailureDetails" Grid.Column="2" Grid.Row="7" Width="60" Height="25" Click="FailureDetails_Click">Details</telerik:RadButton>
+            <telerik:RadButton x:Name="RunCompatabilityTest" Grid.Column="3" Grid.Row="7" Width="60" Height="25" Click="RunTest_Click">Run Test</telerik:RadButton>
         </Grid>
         
     </Grid>

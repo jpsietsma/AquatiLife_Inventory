@@ -7,7 +7,8 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        Height="450" Width="800">
+        x:Name="dashboardWindow"
+        Height="750" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -49,13 +50,28 @@
                 <telerik:RadMenuItem Header="Care Guides" />
                 <telerik:RadMenuItem Header="Accessory Gallery" />
             </telerik:RadMenuItem>
-            <telerik:RadMenuItem x:Name="MyAccountMenu" Header="My Account" Margin="0 0 140 0">
+            <telerik:RadMenuItem x:Name="MyAccountMenu" Header="My Account" Padding="0 0 10 0">
                 <telerik:RadMenuItem Header="My Profile" Click="MenuItem_Click_MyProfile" />
                 <telerik:RadMenuItem Header="Preferences" />
                 <telerik:RadMenuItem x:Name="FileLogoutItem" Click="MenuItem_Click_LogOut" Header="Log Out" />
             </telerik:RadMenuItem>
-            <telerik:RadMenuItem x:Name="ErrorNotificationsMenu" Click="NotificationsMenu_Click_NotificationsDashboard" />
-            <telerik:RadMenuItem x:Name="WarningNotificationsMenu" Click="WarningNotificationsMenu_Click" />
+            <telerik:RadMenuItem x:Name="AdministratorMenu" Header="Administration" Margin="0 0 140 0" Visibility="Hidden">
+                <telerik:RadMenuItem Header="User Accounts">
+                    <telerik:RadMenuItem Header="Add User" />
+
+
+                </telerik:RadMenuItem>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem x:Name="ErrorNotificationsMenu" Click="NotificationsMenu_Click_NotificationsDashboard" >
+                <telerik:RadMenuItem.Icon>
+                    <Image x:Name="ErrorNotificationsMenuIcon" Width="15" Height="15"/>
+                </telerik:RadMenuItem.Icon>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem x:Name="WarningNotificationsMenu" Click="WarningNotificationsMenu_Click" >
+                <telerik:RadMenuItem.Icon>
+                    <Image x:Name="WarningNotificationMenuIcon" Width="25" Height="25"/>
+                </telerik:RadMenuItem.Icon>
+            </telerik:RadMenuItem>
         </telerik:RadMenu>
         
         

@@ -51,7 +51,29 @@ namespace AquatiLife_Inventory_DataAccess.ViewModels.Authentication
         /// Readable string representation of the session length
         /// </summary>
         public string SessionLength { get; set; }
-        
+
+        /// <summary>
+        /// Does user have administrator permissions?
+        /// </summary>
+        public bool IsAdminUser
+        {
+            get
+            {
+                bool final = false;
+
+                foreach (string permission in PermissionLevels.Split(';').ToList())
+                {
+                    if (permission.Contains("Admin"))
+                    {
+                        final = true;
+                    }
+                }
+
+                return final;
+            }
+        }
+
+
         /// <summary>
         /// Return the length of time of the session in a readable string
         /// </summary>
