@@ -35,6 +35,7 @@ namespace WFP_AquatiLife_Inventory_UI
         public TaskbarIcon _trayIcon { get; set; }
         public AddPlant addPlantWindow { get; set; }
         public AddPurchase addPurchaseWindow { get; set; }
+        public PurchaseHistory purchaseHistoryWindow { get; set; }
 
         /// <summary>
         /// Open a new dashboard session with the current authenticated user
@@ -51,7 +52,7 @@ namespace WFP_AquatiLife_Inventory_UI
 
             this.Closed += DashboardWindow_Closed;
 
-            ErrorNotificationsMenuIcon.Source = new BitmapImage(new Uri("../images/UI/Icons/MenuIcon_ErrorIcon.png", UriKind.Relative));
+            ErrorNotificationsMenuIcon.Source = new BitmapImage(new Uri("../images/UI/Icons/MenuIcon_NofiticationIcon.png", UriKind.Relative));
             WarningNotificationMenuIcon.Source = new BitmapImage(new Uri("../images/UI/Icons/MenuIcon_WarningIcon.png", UriKind.Relative));
 
             if (_session.IsAdminUser)
@@ -101,7 +102,6 @@ namespace WFP_AquatiLife_Inventory_UI
         if (confirm.UserChoice)
         {
             this._userSession.LogOut();
-
         }
 
     }
@@ -190,6 +190,11 @@ namespace WFP_AquatiLife_Inventory_UI
 
         }
 
+        /// <summary>
+        /// Logout menu item under My Account is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click_LogOut(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
             ConfirmDialog _confirm = new ConfirmDialog(ConfirmDialog.DialogType.LOGOUT, _userSession);
@@ -212,6 +217,22 @@ namespace WFP_AquatiLife_Inventory_UI
                 loginWindow.Focus();
 
             }
+
+        }
+
+        private void MenuItem_Click_PurchaseHistory(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            PurchaseHistory history = new PurchaseHistory(_userSession);
+
+            purchaseHistoryWindow = history;
+
+            purchaseHistoryWindow.ShowDialog();
+            purchaseHistoryWindow.Topmost = true;
+            purchaseHistoryWindow.Focus();
+        }
+
+        private void RadMenuItem_Click_UserDashboard(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
 
         }
     }

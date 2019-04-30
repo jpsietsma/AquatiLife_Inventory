@@ -28,7 +28,7 @@
         <TextBlock x:Name="_BannerMessage" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Center" Height="30" FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" />
         <TextBlock Text="AquatiLife Management" FontSize="24" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
         <TextBlock Text="Username: " FontWeight="DemiBold" FontSize="18" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="right" />
-        <TextBox x:Name="UserName" Grid.Row="3" Grid.Column="2" Height="25" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+        <telerik:RadWatermarkTextBox x:Name="UserName" Grid.Row="3" Grid.Column="2" Height="25" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" WatermarkContent="Enter Username"  />
         <TextBlock Text="Password: " FontWeight="DemiBold" FontSize="18" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" />
         <telerik:RadPasswordBox x:Name="Password" Grid.Row="4" Grid.Column="2" Height="25" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         <telerik:RadButton x:Name="LoginSubmit" Height="35" Width="80" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LoginSubmit_Click" IsDefault="True" FontSize="15">Log In</telerik:RadButton>

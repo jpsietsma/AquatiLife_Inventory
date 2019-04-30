@@ -97,6 +97,9 @@
     <Compile Include="Screens\DashboardWindow.xaml.cs">
       <DependentUpon>DashboardWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\PurchaseHistory.xaml.cs">
+      <DependentUpon>PurchaseHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\UserLogin.xaml.cs">
       <DependentUpon>UserLogin.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,10 @@
     <Page Include="Screens\DashboardWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Screens\PurchaseHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\UserLogin.xaml">
       <Generator>MSBuild:Compile</Generator>

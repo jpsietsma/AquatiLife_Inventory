@@ -10,16 +10,16 @@
 namespace AquatiLife_Inventory_DataAccess.DatabaseContext
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class UserTankTemperatureLogs
+    public partial class GetUserPurchases_Result
     {
-        public int pk_TempLogID { get; set; }
-        public int fk_UserTank { get; set; }
-        public double Temperature { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Notes { get; set; }
-    
-        public virtual UserTanks UserTanks { get; set; }
+        public int pk_PurchaseID { get; set; }
+        public string Date { get; set; }
+        public int Quantity { get; set; }
+        public Nullable<int> fk_StoreID { get; set; }
+        public Nullable<int> fk_PurchaseCategory { get; set; }
+        public double Cost { get; set; }
+        public int fk_UserID { get; set; }
+        public string Description { get; set; }
     }
 }

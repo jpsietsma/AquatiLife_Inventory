@@ -114,6 +114,9 @@
     <Compile Include="DatabaseContext\FishTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\GetUserPurchases_Result.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\IFishTypes.cs" />
     <Compile Include="DatabaseContext\ILivePlantType.cs" />
     <Compile Include="DatabaseContext\List_ActionTypes.cs">

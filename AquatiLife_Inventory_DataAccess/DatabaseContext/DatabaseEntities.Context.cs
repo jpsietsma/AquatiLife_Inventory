@@ -228,5 +228,18 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserTank", tankOwnerIDParameter, tankSizeParameter, tankHeightParameter, tankWidthParameter, waterTypeParameter, tankTypeParameter);
         }
+    
+        public virtual ObjectResult<GetUserPurchases_Result> GetUserPurchases(Nullable<int> userID, Nullable<int> purchaseCategory)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var purchaseCategoryParameter = purchaseCategory.HasValue ?
+                new ObjectParameter("PurchaseCategory", purchaseCategory) :
+                new ObjectParameter("PurchaseCategory", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserPurchases_Result>("GetUserPurchases", userIDParameter, purchaseCategoryParameter);
+        }
     }
 }

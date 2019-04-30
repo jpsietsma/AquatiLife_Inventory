@@ -40,7 +40,7 @@
                 <telerik:RadMenuItem Header="Customer Lookup"></telerik:RadMenuItem>
             </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="Purchases" Padding="0 0 10 0">
-                <telerik:RadMenuItem Header="Purchase History" Click="MenuItem_Click_AddPurchase" />
+                <telerik:RadMenuItem Header="Purchase History" Click="MenuItem_Click_PurchaseHistory" />
                 <telerik:RadMenuItem Header="New Purchase" Click="MenuItem_Click_AddPurchase"></telerik:RadMenuItem>
             </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="Accessories &amp; Supplies" Padding="0 0 10 0">
@@ -51,7 +51,8 @@
                 <telerik:RadMenuItem Header="Accessory Gallery" />
             </telerik:RadMenuItem>
             <telerik:RadMenuItem x:Name="MyAccountMenu" Header="My Account" Padding="0 0 10 0">
-                <telerik:RadMenuItem Header="My Profile" Click="MenuItem_Click_MyProfile" />
+                <telerik:RadMenuItem Header="User Dashboard" Click="RadMenuItem_Click_UserDashboard" />
+                <telerik:RadMenuItem Header="Edit Profile" Click="MenuItem_Click_MyProfile" />
                 <telerik:RadMenuItem Header="Preferences" />
                 <telerik:RadMenuItem x:Name="FileLogoutItem" Click="MenuItem_Click_LogOut" Header="Log Out" />
             </telerik:RadMenuItem>
