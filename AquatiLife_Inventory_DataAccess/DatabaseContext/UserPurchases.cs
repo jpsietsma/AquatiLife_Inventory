@@ -29,6 +29,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public int fk_UserID { get; set; }
         public string Description { get; set; }
     
+        public virtual Stores Stores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLivePlants> UserLivePlants { get; set; }
     }

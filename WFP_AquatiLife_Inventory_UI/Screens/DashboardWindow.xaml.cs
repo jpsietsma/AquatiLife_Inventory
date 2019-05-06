@@ -1,23 +1,15 @@
 ﻿using WFP_AquatiLife_Inventory_UI.Screens;
+using WFP_AquatiLife_Inventory_UI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AquatiLife_Inventory_DataAccess.Authentication;
 using Hardcodet.Wpf.TaskbarNotification;
-using System.Drawing;
 using Telerik.Windows.Controls;
-using WFP_AquatiLife_Inventory_UI.UserControls;
 
 namespace WFP_AquatiLife_Inventory_UI
 {
@@ -30,7 +22,7 @@ namespace WFP_AquatiLife_Inventory_UI
         public AddTank tankWindow { get; set; }
         public AddFish fishWindow { get; set; }
         public UserLogin loginWindow { get; set; }
-        public UserProfileDashboard profileWindow { get; set; }
+        public UserProfile profileWindow { get; set; }
         public AuthenticatedUserSession _userSession { get; set; }
         public TaskbarIcon _trayIcon { get; set; }
         public AddPlant addPlantWindow { get; set; }
@@ -81,9 +73,9 @@ namespace WFP_AquatiLife_Inventory_UI
         /// <param name="e"></param>
         private void MenuItem_Click_MyProfile(object sender, RoutedEventArgs e)
         {
-            profileWindow = new UserProfileDashboard(_userSession);
-                profileWindow.Show();
-                profileWindow.Focus();            
+            profileWindow = new UserProfile(_userSession);
+            profileWindow.Show();
+            profileWindow.Focus();            
         }
 
 #region Program Commands eventhandlers

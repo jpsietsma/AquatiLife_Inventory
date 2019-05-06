@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
+using WFP_AquatiLife_Inventory_UI.UserControls;
 
 namespace WFP_AquatiLife_Inventory_UI.Screens
 {
@@ -22,7 +24,15 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
     {
         public PurchaseHistory(AuthenticatedUserSession _session)
         {
+            Title = $@"{ _session.UserName } | User Purchase History";
             InitializeComponent();
+
+            RadTabControl tabControl = historyTabs;
+            RadGridView historyGrid = PurchaseHistoryGrid;
+
+            historyGrid.ItemsSource = new UserPurchaseHistoryGrid(_session).GetData();
+            historyGrid.ShowGroupPanel = false;
+
         }
     }
 }

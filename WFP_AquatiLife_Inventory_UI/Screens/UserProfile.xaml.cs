@@ -18,9 +18,9 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
     /// <summary>
     /// Interaction logic for UserProfileDashboard.xaml
     /// </summary>
-    public partial class UserProfileDashboard : Window
+    public partial class UserProfile : Window
     {
-        public UserProfileDashboard(AuthenticatedUserSession _session)
+        public UserProfile(AuthenticatedUserSession _session)
         {
             InitializeComponent();
 

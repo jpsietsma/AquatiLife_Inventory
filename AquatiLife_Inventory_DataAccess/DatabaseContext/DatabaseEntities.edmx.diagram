@@ -4,50 +4,50 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="789634a18b194adb877205344d999a9d" Name="Diagram1">
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Business_Customers" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Business_List_VendorTypes" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.ContactInfo" Width="1.5" PointX="8.25" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.FishCareGuides" Width="1.5" PointX="11.25" PointY="26.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.FishTypeDiseaseAffection" Width="1.5" PointX="23.25" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.FishTypes" Width="1.5" PointX="21" PointY="24.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ActionTypes" Width="1.5" PointX="12.75" PointY="24.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_AnimalTypes" Width="1.5" PointX="13.5" PointY="27" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ErrorCategories" Width="1.5" PointX="10.5" PointY="33.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ErrorSeverityLevels" Width="1.5" PointX="12.75" PointY="30.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ErrorTypes" Width="1.5" PointX="12.75" PointY="32.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishAgressionLevels" Width="1.5" PointX="15.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishBirthingTypes" Width="1.5" PointX="15.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishFamilyTypes" Width="1.5" PointX="15.75" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishFeedingTypes" Width="1.5" PointX="15.75" PointY="36" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishSicknessTypes" Width="1.5" PointX="25.5" PointY="26.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishTerritorialLevels" Width="1.5" PointX="15.75" PointY="38.625" IsExpanded="true" />
+      <Diagram DiagramId="393119808f2a4981b9febf8081fa92c5" Name="Diagram1">
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Business_Customers" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Business_List_VendorTypes" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.ContactInfo" Width="1.5" PointX="8.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.FishCareGuides" Width="1.5" PointX="11.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.FishTypeDiseaseAffection" Width="1.5" PointX="23.25" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.FishTypes" Width="1.5" PointX="21" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ActionTypes" Width="1.5" PointX="12.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_AnimalTypes" Width="1.5" PointX="13.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ErrorCategories" Width="1.5" PointX="10.5" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ErrorSeverityLevels" Width="1.5" PointX="12.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_ErrorTypes" Width="1.5" PointX="12.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishAgressionLevels" Width="1.5" PointX="15.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishBirthingTypes" Width="1.5" PointX="15.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishFamilyTypes" Width="1.5" PointX="15.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishFeedingTypes" Width="1.5" PointX="15.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishSicknessTypes" Width="1.5" PointX="25.5" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_FishTerritorialLevels" Width="1.5" PointX="15.75" PointY="38.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_LivePlantDiseases" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_PlantSizeClasses" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_PlantSizeClasses" Width="1.5" PointX="10.5" PointY="31.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_PurchaseCategories" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_SupplyTypes" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_TankLightingLevels" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_TankTestTypes" Width="1.5" PointX="24" PointY="23.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_TankTypes" Width="1.5" PointX="18.75" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_WaterTypes" Width="1.5" PointX="18.75" PointY="26" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.LivePlantTypes" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.StoreHolidaySchedules" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Stores" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.StoreWeeklySchedules" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserActionLogs" Width="1.5" PointX="15" PointY="20" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserFish" Width="1.5" PointX="18" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserFishMedicalRecords" Width="1.5" PointX="23.25" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserLivePlants" Width="1.5" PointX="15" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserLoginSessions" Width="1.5" PointX="15" PointY="32" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserNotifications" Width="1.5" PointX="15" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserProfiles" Width="1.5" PointX="10.5" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserPurchases" Width="1.5" PointX="12.75" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Users" Width="1.5" PointX="12.75" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserTanks" Width="1.5" PointX="21" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserTankTemperatureLogs" Width="1.5" PointX="23.25" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserTankTests" Width="1.5" PointX="26.25" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Business_Vendors" Width="1.5" PointX="10.5" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Errorlogs" Width="1.5" PointX="15" PointY="43" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_TankLightingLevels" Width="1.5" PointX="10.5" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_TankTestTypes" Width="1.5" PointX="24" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_TankTypes" Width="1.5" PointX="18.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.List_WaterTypes" Width="1.5" PointX="10.5" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.LivePlantTypes" Width="1.5" PointX="12.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.StoreHolidaySchedules" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Stores" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.StoreWeeklySchedules" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserActionLogs" Width="1.5" PointX="15" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserFish" Width="1.5" PointX="18" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserFishMedicalRecords" Width="1.5" PointX="23.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserLivePlants" Width="1.5" PointX="15" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserLoginSessions" Width="1.5" PointX="15" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserNotifications" Width="1.5" PointX="15" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserProfiles" Width="1.5" PointX="10.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserPurchases" Width="1.5" PointX="5.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Users" Width="1.5" PointX="12.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserTanks" Width="1.5" PointX="21" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserTankTemperatureLogs" Width="1.5" PointX="23.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.UserTankTests" Width="1.5" PointX="26.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Business_Vendors" Width="1.5" PointX="10.5" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.Errorlogs" Width="1.5" PointX="15" PointY="45" IsExpanded="true" />
         <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.vw_FishDictionary" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.vw_PlantDictionary" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AquatiLife_Inventory_DatabaseEntities.vw_UserFish" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
@@ -93,6 +93,7 @@
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_Stores_StoreHolidaySchedules" ManuallyRouted="false" />
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_Stores_StoreWeeklySchedules" ManuallyRouted="false" />
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_UserFish_Stores" ManuallyRouted="false" />
+        <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_UserPurchases_Stores" ManuallyRouted="false" />
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_UserActionLogs_Users" ManuallyRouted="false" />
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_MedicalRecords_UserFish" ManuallyRouted="false" />
         <AssociationConnector Association="AquatiLife_Inventory_DatabaseEntities.FK_UserFish_Users" ManuallyRouted="false" />

@@ -3,10 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
         mc:Ignorable="d"
-        Title="PurchaseHistory" Height="450" Width="800">
-    <Grid>
+        Height="750" Width="800" ResizeMode="NoResize">
+    <Window.Resources>
         
-    </Grid>
+    </Window.Resources>
+    <telerik:RadTabControl x:Name="historyTabs" Align="Justify">
+
+        <!--All Purchases tab content-->
+        <telerik:RadTabItem Header="All Purchases">
+            <telerik:RadGridView x:Name="PurchaseHistoryGrid" AutoGenerateColumns="false" ShowGroupPanel="false" ShowSearchPanel="false" >
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding pk_PurchaseID}" Header="Purchase ID" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="Product Name" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Cost}" Header="Product Cost" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="Purchase Qty" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Date}" Header="Date Purchased" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </telerik:RadTabItem>
+
+        <!--Live Animal Purchases tab content -->
+        <telerik:RadTabItem Header="Live Animals">
+            <TextBlock Text="Hello from the Live Animals Tab!" />
+        </telerik:RadTabItem>
+
+        <!--Live Plant Purchases tab Content-->
+        <telerik:RadTabItem Header="Live Plants">
+            <TextBlock Text="Hello from the Live Plants Tab!" />
+        </telerik:RadTabItem>
+
+        <!--Decoration Purchases tab content -->
+        <telerik:RadTabItem Header="Decorations">
+            <TextBlock Text="Hello From the Decorations Tab!" />
+        </telerik:RadTabItem>
+
+        <!--Supply Purchases tab content -->
+        <telerik:RadTabItem Header="Supplies">
+            <TextBlock Text="Hello From the Supplies Tab!" />
+        </telerik:RadTabItem>
+        
+        <!--Charts Overview tab content -->
+        <telerik:RadTabItem Header="Statistics">
+            <TextBlock Text="Hello from the Statistics tab!" />
+        </telerik:RadTabItem>
+
+    </telerik:RadTabControl>
 </Window>

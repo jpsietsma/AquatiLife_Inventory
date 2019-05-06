@@ -1178,6 +1178,18 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserPurchases_Stores">
+          <End Role="Stores" Type="Self.Stores" Multiplicity="0..1" />
+          <End Role="UserPurchases" Type="Self.UserPurchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="pk_StoreID" />
+            </Principal>
+            <Dependent Role="UserPurchases">
+              <PropertyRef Name="fk_StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_UserProfiles">
           <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -1650,6 +1662,10 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
             <End Role="ContactInfo" EntitySet="ContactInfo" />
             <End Role="UserProfiles" EntitySet="UserProfiles" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserPurchases_Stores" Association="Self.FK_UserPurchases_Stores">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="UserPurchases" EntitySet="UserPurchases" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_UserProfiles" Association="Self.FK_Users_UserProfiles">
             <End Role="UserProfiles" EntitySet="UserProfiles" />
             <End Role="Users" EntitySet="Users" />
@@ -2012,6 +2028,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
           <NavigationProperty Name="StoreHolidaySchedules" Relationship="Self.FK_Stores_StoreHolidaySchedules" FromRole="Stores" ToRole="StoreHolidaySchedules" />
           <NavigationProperty Name="StoreWeeklySchedules" Relationship="Self.FK_Stores_StoreWeeklySchedules" FromRole="Stores" ToRole="StoreWeeklySchedules" />
           <NavigationProperty Name="UserFish" Relationship="Self.FK_UserFish_Stores" FromRole="Stores" ToRole="UserFish" />
+          <NavigationProperty Name="UserPurchases" Relationship="Self.FK_UserPurchases_Stores" FromRole="Stores" ToRole="UserPurchases" />
         </EntityType>
         <EntityType Name="StoreWeeklySchedules">
           <Key>
@@ -2156,6 +2173,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
           <Property Name="Cost" Type="Double" Nullable="false" />
           <Property Name="fk_UserID" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Stores" Relationship="Self.FK_UserPurchases_Stores" FromRole="UserPurchases" ToRole="Stores" />
           <NavigationProperty Name="UserLivePlants" Relationship="Self.FK_UserLivePlants_UserPurchases" FromRole="UserPurchases" ToRole="UserLivePlants" />
         </EntityType>
         <EntityType Name="Users">
@@ -2857,6 +2875,18 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserPurchases_Stores">
+          <End Role="Stores" Type="Self.Stores" Multiplicity="0..1" />
+          <End Role="UserPurchases" Type="Self.UserPurchases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="pk_StoreID" />
+            </Principal>
+            <Dependent Role="UserPurchases">
+              <PropertyRef Name="fk_StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserActionLogs_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserActionLogs" Type="Self.UserActionLogs" Multiplicity="*" />
@@ -3245,6 +3275,10 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
           <AssociationSet Name="FK_UserFish_Stores" Association="Self.FK_UserFish_Stores">
             <End Role="Stores" EntitySet="Stores" />
             <End Role="UserFish" EntitySet="UserFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPurchases_Stores" Association="Self.FK_UserPurchases_Stores">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="UserPurchases" EntitySet="UserPurchases" />
           </AssociationSet>
           <AssociationSet Name="FK_UserActionLogs_Users" Association="Self.FK_UserActionLogs_Users">
             <End Role="Users" EntitySet="Users" />
