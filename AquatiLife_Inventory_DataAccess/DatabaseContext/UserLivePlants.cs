@@ -21,7 +21,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public int fk_PlantType { get; set; }
     
         public virtual LivePlantTypes LivePlantTypes { get; set; }
-        public virtual UserPurchases UserPurchases { get; set; }
         public virtual Users Users { get; set; }
         public virtual UserTanks UserTanks { get; set; }
     }

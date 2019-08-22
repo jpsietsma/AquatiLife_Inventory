@@ -14,17 +14,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class List_FishBirthingTypes
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public List_FishBirthingTypes()
-        {
-            this.UserFish = new HashSet<UserFish>();
-        }
-    
         public int pk_BirthTypeID { get; set; }
         public string BirthingType { get; set; }
         public string SpecialNotes { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
     }
 }

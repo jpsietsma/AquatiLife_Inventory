@@ -15,7 +15,7 @@ namespace AquatiLife_Inventory_DataAccess.PopulateUI
         /// <param name="plantName">Name of the plant to display</param>
         public static vw_PlantDictionary PopulateView(string plantName)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 return conn.vw_PlantDictionary.Where(x => x.PlantType == plantName).First();                
             }

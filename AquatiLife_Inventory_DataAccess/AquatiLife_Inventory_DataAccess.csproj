@@ -69,7 +69,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Windows.Controls.Input, Version=2019.1.220.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +85,9 @@
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\ContactInfo.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\CrustaceanMoltRecords.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\DatabaseEntities.Context.cs">
@@ -117,12 +120,18 @@
     <Compile Include="DatabaseContext\GetUserPurchases_Result.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\Get_TankFish_Result.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\IFishTypes.cs" />
     <Compile Include="DatabaseContext\ILivePlantType.cs" />
     <Compile Include="DatabaseContext\List_ActionTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_AnimalTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_CollectionLocations.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_ErrorCategories.cs">
@@ -140,10 +149,16 @@
     <Compile Include="DatabaseContext\List_FishBirthingTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\List_FishColors.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\List_FishFamilyTypes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_FishFeedingTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_FishSexes.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_FishSicknessTypes.cs">
@@ -153,6 +168,12 @@
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_LivePlantDiseases.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_MedicalClassifications.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\List_MedicalSubClassifications.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_PlantSizeClasses.cs">
@@ -191,7 +212,13 @@
     <Compile Include="DatabaseContext\UserActionLogs.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\UserAuthenticationRoles.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\UserFish.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\UserFishInventory.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserFishMedicalRecords.cs">
@@ -206,6 +233,9 @@
     <Compile Include="DatabaseContext\UserNotifications.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\UserPermissions.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\UserProfiles.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -216,6 +246,9 @@
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserTanks.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\UserTankSupplyInventory.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\UserTankTemperatureLogs.cs">
@@ -258,6 +291,8 @@
     <Compile Include="ext\UserExt.cs" />
     <Compile Include="ext\UserLoginAccess.cs" />
     <Compile Include="ext\UserTankExt.cs" />
+    <Compile Include="Partials\UserFish.cs" />
+    <Compile Include="Partials\UserPurchases.cs" />
     <Compile Include="PopulateUI\PopulateUI_Controls_DDL.cs" />
     <Compile Include="PopulateUI\PopulateUI_View_PlantInfo.cs" />
     <Compile Include="Program.cs" />

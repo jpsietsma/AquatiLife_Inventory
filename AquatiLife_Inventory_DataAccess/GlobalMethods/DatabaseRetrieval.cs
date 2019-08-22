@@ -20,7 +20,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         /// <returns>Users object with matching primary key</returns>
         public static Users GetUserByPK(int pk)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 return conn.Users.Where(x => x.pk_UserID == pk).First();
             }
@@ -33,9 +33,22 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         /// <returns>Users object with matching userName</returns>
         public static Users GetUserByUserName(string userName)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 return conn.Users.Where(x => x.UserName == userName).First();
+            }
+        }
+
+        /// <summary>
+        /// Get Water Type PK from Type Name
+        /// </summary>
+        /// <param name="waterType">Water Type Name to use to seach PKs</param>
+        /// <returns></returns>
+        public static int GetWaterTypeIDByName(string waterType)
+        {
+            using (DatabaseEntities conn = new DatabaseEntities())
+            {
+                return conn.List_WaterTypes.Where(x => x.WaterTypeName == waterType).Select(x => x.pk_WaterTypeID).FirstOrDefault();
             }
         }
 
@@ -48,7 +61,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         /// <returns>Entity maching provided primary key</returns>
         public static UserTanks GetTankByPK(int pk)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.UserTanks.Where(x => x.pk_UserTankID == pk);
 
@@ -70,7 +83,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         /// <returns>UserTank matching provided tank name</returns>
         public static UserTanks GetTankByName(string tankName)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.UserTanks.Where(x => x.TankDisplayName == tankName);
 
@@ -94,7 +107,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         /// <returns>UserFish matching primary key</returns>
         public static UserFish GetFishByPK(int pk)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.UserFish.Where(x => x.pk_UserFishID == pk);
 
@@ -114,11 +127,11 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         /// </summary>
         /// <param name="tankPK">primary key of tank to search Entities</param>
         /// <returns>List of UserFish in tank matching primary key</returns>
-        public static List<UserFish> GetFishByTankPK(int tankPK)
+        public static List<UserFishInventory> GetFishByTankPK(int tankPK)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
-                var a = conn.UserFish.Where(x => x.fk_TankID == tankPK);
+                var a = conn.UserFishInventory.Where(x => x.fk_UserTank == tankPK);
 
                 if (a.Count() > 0)
                 {
@@ -135,11 +148,11 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         /// Get a list of UserFish which are alive and not assigned to a tank
         /// </summary>
         /// <returns>list of unassigned user fish</returns>
-        public static List<UserFish> GetUnassignedFish()
+        public static List<UserFishInventory> GetUnassignedFish()
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
-                var a = conn.UserFish.Where(x => x.fk_TankID == 0 && x.IsAlive == "1");
+                var a = conn.UserFishInventory.Where(x => x.fk_UserTank == 0);
 
                 if (a.Count() > 0)
                 {

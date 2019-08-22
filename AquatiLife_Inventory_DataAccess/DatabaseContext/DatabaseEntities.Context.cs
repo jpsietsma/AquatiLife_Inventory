@@ -15,10 +15,10 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class DatabaseEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public DatabaseEntities()
+            : base("name=DatabaseEntities")
         {
         }
     
@@ -30,21 +30,27 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<Business_Customers> Business_Customers { get; set; }
         public virtual DbSet<Business_List_VendorTypes> Business_List_VendorTypes { get; set; }
         public virtual DbSet<ContactInfo> ContactInfo { get; set; }
+        public virtual DbSet<CrustaceanMoltRecords> CrustaceanMoltRecords { get; set; }
         public virtual DbSet<FishCareGuides> FishCareGuides { get; set; }
         public virtual DbSet<FishTypeDiseaseAffection> FishTypeDiseaseAffection { get; set; }
         public virtual DbSet<FishTypes> FishTypes { get; set; }
         public virtual DbSet<List_ActionTypes> List_ActionTypes { get; set; }
         public virtual DbSet<List_AnimalTypes> List_AnimalTypes { get; set; }
+        public virtual DbSet<List_CollectionLocations> List_CollectionLocations { get; set; }
         public virtual DbSet<List_ErrorCategories> List_ErrorCategories { get; set; }
         public virtual DbSet<List_ErrorSeverityLevels> List_ErrorSeverityLevels { get; set; }
         public virtual DbSet<List_ErrorTypes> List_ErrorTypes { get; set; }
         public virtual DbSet<List_FishAgressionLevels> List_FishAgressionLevels { get; set; }
         public virtual DbSet<List_FishBirthingTypes> List_FishBirthingTypes { get; set; }
+        public virtual DbSet<List_FishColors> List_FishColors { get; set; }
         public virtual DbSet<List_FishFamilyTypes> List_FishFamilyTypes { get; set; }
         public virtual DbSet<List_FishFeedingTypes> List_FishFeedingTypes { get; set; }
+        public virtual DbSet<List_FishSexes> List_FishSexes { get; set; }
         public virtual DbSet<List_FishSicknessTypes> List_FishSicknessTypes { get; set; }
         public virtual DbSet<List_FishTerritorialLevels> List_FishTerritorialLevels { get; set; }
         public virtual DbSet<List_LivePlantDiseases> List_LivePlantDiseases { get; set; }
+        public virtual DbSet<List_MedicalClassifications> List_MedicalClassifications { get; set; }
+        public virtual DbSet<List_MedicalSubClassifications> List_MedicalSubClassifications { get; set; }
         public virtual DbSet<List_PlantSizeClasses> List_PlantSizeClasses { get; set; }
         public virtual DbSet<List_PurchaseCategories> List_PurchaseCategories { get; set; }
         public virtual DbSet<List_SupplyTypes> List_SupplyTypes { get; set; }
@@ -57,7 +63,9 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<Stores> Stores { get; set; }
         public virtual DbSet<StoreWeeklySchedules> StoreWeeklySchedules { get; set; }
         public virtual DbSet<UserActionLogs> UserActionLogs { get; set; }
+        public virtual DbSet<UserAuthenticationRoles> UserAuthenticationRoles { get; set; }
         public virtual DbSet<UserFish> UserFish { get; set; }
+        public virtual DbSet<UserFishInventory> UserFishInventory { get; set; }
         public virtual DbSet<UserFishMedicalRecords> UserFishMedicalRecords { get; set; }
         public virtual DbSet<UserLivePlants> UserLivePlants { get; set; }
         public virtual DbSet<UserLoginSessions> UserLoginSessions { get; set; }
@@ -66,10 +74,12 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<UserPurchases> UserPurchases { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UserTanks> UserTanks { get; set; }
+        public virtual DbSet<UserTankSupplyInventory> UserTankSupplyInventory { get; set; }
         public virtual DbSet<UserTankTemperatureLogs> UserTankTemperatureLogs { get; set; }
         public virtual DbSet<UserTankTests> UserTankTests { get; set; }
         public virtual DbSet<Business_Vendors> Business_Vendors { get; set; }
         public virtual DbSet<Errorlogs> Errorlogs { get; set; }
+        public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<vw_FishDictionary> vw_FishDictionary { get; set; }
         public virtual DbSet<vw_PlantDictionary> vw_PlantDictionary { get; set; }
         public virtual DbSet<vw_UserFish> vw_UserFish { get; set; }
@@ -167,12 +177,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserPlant", userIDParameter, tankIDParameter, purchaseIDParameter, plantTypeParameter);
         }
     
-        public virtual int Add_UserPurchase(string description, Nullable<int> quantity, Nullable<decimal> cost, Nullable<System.DateTime> date, Nullable<int> storeID, Nullable<int> purchaseCategory, Nullable<int> userID)
+        public virtual int Add_UserPurchase(Nullable<int> quantity, Nullable<decimal> cost, Nullable<System.DateTime> date, Nullable<int> storeID, Nullable<int> purchaseCategory, Nullable<int> userID, string description, Nullable<int> userTank, Nullable<int> fishType, Nullable<int> livePlantType)
         {
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
             var quantityParameter = quantity.HasValue ?
                 new ObjectParameter("Quantity", quantity) :
                 new ObjectParameter("Quantity", typeof(int));
@@ -197,7 +203,23 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
                 new ObjectParameter("UserID", userID) :
                 new ObjectParameter("UserID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserPurchase", descriptionParameter, quantityParameter, costParameter, dateParameter, storeIDParameter, purchaseCategoryParameter, userIDParameter);
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userTankParameter = userTank.HasValue ?
+                new ObjectParameter("UserTank", userTank) :
+                new ObjectParameter("UserTank", typeof(int));
+    
+            var fishTypeParameter = fishType.HasValue ?
+                new ObjectParameter("FishType", fishType) :
+                new ObjectParameter("FishType", typeof(int));
+    
+            var livePlantTypeParameter = livePlantType.HasValue ?
+                new ObjectParameter("LivePlantType", livePlantType) :
+                new ObjectParameter("LivePlantType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserPurchase", quantityParameter, costParameter, dateParameter, storeIDParameter, purchaseCategoryParameter, userIDParameter, descriptionParameter, userTankParameter, fishTypeParameter, livePlantTypeParameter);
         }
     
         public virtual int Add_UserTank(Nullable<int> tankOwnerID, Nullable<int> tankSize, Nullable<decimal> tankHeight, Nullable<decimal> tankWidth, Nullable<int> waterType, Nullable<int> tankType)
@@ -229,6 +251,15 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserTank", tankOwnerIDParameter, tankSizeParameter, tankHeightParameter, tankWidthParameter, waterTypeParameter, tankTypeParameter);
         }
     
+        public virtual ObjectResult<Get_TankFish_Result> Get_TankFish(Nullable<int> tankID)
+        {
+            var tankIDParameter = tankID.HasValue ?
+                new ObjectParameter("TankID", tankID) :
+                new ObjectParameter("TankID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_TankFish_Result>("Get_TankFish", tankIDParameter);
+        }
+    
         public virtual ObjectResult<GetUserPurchases_Result> GetUserPurchases(Nullable<int> userID, Nullable<int> purchaseCategory)
         {
             var userIDParameter = userID.HasValue ?
@@ -240,6 +271,31 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
                 new ObjectParameter("PurchaseCategory", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserPurchases_Result>("GetUserPurchases", userIDParameter, purchaseCategoryParameter);
+        }
+    
+        public virtual int RecordFishDeath(Nullable<int> fishID, Nullable<System.DateTime> timeOfDeath, string description, Nullable<int> classification, Nullable<int> subClassification)
+        {
+            var fishIDParameter = fishID.HasValue ?
+                new ObjectParameter("FishID", fishID) :
+                new ObjectParameter("FishID", typeof(int));
+    
+            var timeOfDeathParameter = timeOfDeath.HasValue ?
+                new ObjectParameter("TimeOfDeath", timeOfDeath) :
+                new ObjectParameter("TimeOfDeath", typeof(System.DateTime));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var classificationParameter = classification.HasValue ?
+                new ObjectParameter("Classification", classification) :
+                new ObjectParameter("Classification", typeof(int));
+    
+            var subClassificationParameter = subClassification.HasValue ?
+                new ObjectParameter("SubClassification", subClassification) :
+                new ObjectParameter("SubClassification", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RecordFishDeath", fishIDParameter, timeOfDeathParameter, descriptionParameter, classificationParameter, subClassificationParameter);
         }
     }
 }

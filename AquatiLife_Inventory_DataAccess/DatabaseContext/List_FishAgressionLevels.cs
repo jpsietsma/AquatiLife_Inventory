@@ -18,7 +18,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public List_FishAgressionLevels()
         {
             this.FishTypes = new HashSet<FishTypes>();
-            this.UserFish = new HashSet<UserFish>();
         }
     
         public int pk_AgressionLevelID { get; set; }
@@ -26,7 +25,5 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FishTypes> FishTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
     }
 }

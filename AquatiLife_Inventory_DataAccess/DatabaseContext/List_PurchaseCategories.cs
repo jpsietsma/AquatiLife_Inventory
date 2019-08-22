@@ -18,6 +18,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public List_PurchaseCategories()
         {
             this.List_SupplyTypes = new HashSet<List_SupplyTypes>();
+            this.UserPurchases = new HashSet<UserPurchases>();
         }
     
         public int pk_PurchaseTypeID { get; set; }
@@ -25,5 +26,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<List_SupplyTypes> List_SupplyTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPurchases> UserPurchases { get; set; }
     }
 }

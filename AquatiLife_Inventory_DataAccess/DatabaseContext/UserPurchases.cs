@@ -17,7 +17,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserPurchases()
         {
-            this.UserLivePlants = new HashSet<UserLivePlants>();
+            this.UserFishInventory = new HashSet<UserFishInventory>();
+            this.UserTankSupplyInventory = new HashSet<UserTankSupplyInventory>();
         }
     
         public int pk_PurchaseID { get; set; }
@@ -25,12 +26,15 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public int Quantity { get; set; }
         public Nullable<int> fk_StoreID { get; set; }
         public Nullable<int> fk_PurchaseCategory { get; set; }
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
         public int fk_UserID { get; set; }
         public string Description { get; set; }
     
+        public virtual List_PurchaseCategories List_PurchaseCategories { get; set; }
         public virtual Stores Stores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserLivePlants> UserLivePlants { get; set; }
+        public virtual ICollection<UserFishInventory> UserFishInventory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserTankSupplyInventory> UserTankSupplyInventory { get; set; }
     }
 }

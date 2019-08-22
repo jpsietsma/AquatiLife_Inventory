@@ -1,20 +1,9 @@
-﻿using AquatiLife_Inventory_DataAccess.Authentication;
-using AquatiLife_Inventory_DataAccess.DatabaseContext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Telerik.Windows.Controls;
 using WFP_AquatiLife_Inventory_UI.PopulateUI;
+using AquatiLife_Inventory_DataAccess.Authentication;
+using AquatiLife_Inventory_DataAccess.DatabaseContext;
 
 namespace WFP_AquatiLife_Inventory_UI.Screens
 {
@@ -31,11 +20,12 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
             ddlStoreName.PopulateUI_DDL_Stores(_session);
 
             ddlPurchaseUser.PopulateUI_DDL_Users(_session);
+            ddlPurchaseUser.SelectedValue = _session.UserName;
 
             numQty.ValueFormat = ValueFormat.Numeric;
             numQty.Value = 1;
             numPrice.ValueFormat = ValueFormat.Currency;
-            numQty.Value = 0;
+            numPrice.Value = 0.00;
 
         }
 
@@ -46,50 +36,40 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
         /// <param name="e"></param>
         private void BtnAddPurchase_Click(object sender, RoutedEventArgs e)
         {
-            UserPurchases purchase = new UserPurchases();
+            using (UserPurchases purchase = new UserPurchases())
+            {
                 purchase.Description = txtDescription.Text;
-                purchase.Cost = Convert.ToDouble(numPrice.Value);
+                purchase.Cost = Convert.ToDecimal(numPrice.Value.GetValueOrDefault());
                 purchase.Date = txtDate.DateTimeText;
                 purchase.Quantity = Convert.ToInt32(numQty.Value);
                 purchase.fk_PurchaseCategory = ddlPurchaseCategories.SelectedIndex;
                 purchase.fk_StoreID = ddlStoreName.SelectedIndex;
                 purchase.fk_UserID = ddlPurchaseUser.SelectedIndex;
 
-            try
-            {
-                using (Entities conn = new Entities())
+                try
                 {
-                    conn.UserPurchases.Add(purchase);
-                    conn.SaveChanges();
+                    using (DatabaseEntities conn = new DatabaseEntities())
+                    {
+                        conn.UserPurchases.Add(purchase);
+                        conn.SaveChanges();
+                    }
+
+                    RadWindow.Alert($@"Purchase record for { purchase.Description } added successfully!");
                 }
-
-                RadWindow.Alert($@"Purchase record for { purchase.Description } added successfully!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            //reset description, price, quantity, and purchase category after successful insert
-            //leave store, date, user just incase user wants to enter more from the same days purchase
-            txtDescription.Text = null;
-            numPrice.Value = 0.00;
-            numQty.Value = 1;
-            ddlPurchaseCategories.SelectedIndex = 0;
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }              
         }
 
-        /// <summary>
-        /// Occurs when user clicks on clear form button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnClearForm_Click(object sender, RoutedEventArgs e)
         {
             this.txtDescription.Text = null;
             this.numPrice.Value = 0.00;
             this.numQty.Value = 1.00;
             this.ddlStoreName.SelectedIndex = 0;
+            this.txtDate = null;
         }
 
         private void NumQtyPrice_Changed(object sender, RadRangeBaseValueChangedEventArgs e)

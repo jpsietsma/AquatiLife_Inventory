@@ -7,29 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Telerik.Windows.Controls;
+using WFP_AquatiLife_Inventory_UI.ViewModels;
 
 namespace WFP_AquatiLife_Inventory_UI.UserControls
 {
     public class UserPurchaseHistoryGrid : RadGridView
     {
-        private ObservableCollection<UserPurchases> _data { get; set; } = new ObservableCollection<UserPurchases>();
+        public AuthenticatedUserSession _userSession { get; set; }
 
         public UserPurchaseHistoryGrid(AuthenticatedUserSession _session)
         {
-            using (Entities conn = new Entities())
+            _userSession = _session;
+            ItemsSource = GetData();
+
+            Height = 400;
+            Width = 400;
+            
+        }
+
+
+        private List<UserPurchases> GetData()
+        {
+            List<UserPurchases> _data = new List<UserPurchases>();
+
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
-                var a = conn.GetUserPurchases(_session.UserID, 0).ToList();
+                var a = conn.GetUserPurchases(_userSession.UserID, 0).ToList();
 
                 foreach (var item in a)
                 {
-                    _data.Add(new UserPurchases { pk_PurchaseID = item.pk_PurchaseID, Description = item.Description, Cost = item.Cost, Date = item.Date, Quantity = item.Quantity, fk_StoreID = item.fk_StoreID, fk_PurchaseCategory = item.fk_PurchaseCategory });
+                    _data.Add(new UserPurchaseViewModel(item));
                 }
             }
-        }
 
-        public ObservableCollection<UserPurchases> GetData()
-        {
             return _data;
         }
+        
     }
 }

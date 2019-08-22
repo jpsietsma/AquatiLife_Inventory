@@ -15,7 +15,7 @@ namespace AquatiLife_Inventory_DataAccess.ext
         {
             List<List_FishSicknessTypes> _final = new List<List_FishSicknessTypes>();
 
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 List<List_FishSicknessTypes> a = conn.List_FishSicknessTypes.Where(x => x.fk_AffectedTypes.ToString().Contains(fishPK.ToString())).ToList();
 
@@ -32,9 +32,9 @@ namespace AquatiLife_Inventory_DataAccess.ext
         {
                 List<List_FishSicknessTypes> _final = new List<List_FishSicknessTypes>();
 
-                using (Entities conn = new Entities())
+                using (DatabaseEntities conn = new DatabaseEntities())
                 {
-                    List<List_FishSicknessTypes> a = conn.List_FishSicknessTypes.Where(x => x.fk_AffectedTypes.ToString().Contains(_fish.fk_FishTypeID.ToString())).ToList();
+                    List<List_FishSicknessTypes> a = conn.List_FishSicknessTypes.Where(x => x.fk_AffectedTypes.ToString().Contains(_fish.pk_UserFishID.ToString())).ToList();
 
                     if (a.Count() > 0)
                     {
@@ -52,7 +52,7 @@ namespace AquatiLife_Inventory_DataAccess.ext
         /// <returns>string path to the image file</returns>
         public static string GetFishImagePath (this IFishTypes _fish)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 return conn.FishTypes.Where(x => x.pk_FishTypeID == _fish.pk_FishTypeID).First().FishTypeImagePath;
             }

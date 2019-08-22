@@ -15,7 +15,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     public partial class UserTankTests
     {
         public int pk_TestID { get; set; }
-        public System.DateTime TestDate { get; set; }
+        public Nullable<System.DateTime> TestDate { get; set; }
         public int fk_UserTank { get; set; }
         public int fk_TestType { get; set; }
         public Nullable<double> NitriteLevel { get; set; }

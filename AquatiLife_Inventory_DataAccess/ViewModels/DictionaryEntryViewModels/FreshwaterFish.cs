@@ -12,43 +12,43 @@ namespace AquatiLife_Inventory_DataAccess.ViewModels.DictionaryEntryViewModels
 {
     public class FreshwaterFish : LiveFish, IFishTypes
     {
-        public List_FishAgressionLevels AgressionLevel { get; set; }
-        public List_FishBirthingTypes BirthingMethod { get; set; }
-        public string CommonName { get; set; }
-        public AccessoryType EntityType { get; set; }
-        public List_FishFeedingTypes FeederType { get; set; }
+        public new List_FishAgressionLevels AgressionLevel { get; set; }
+        public new List_FishBirthingTypes BirthingMethod { get; set; }
+        public new string CommonName { get; set; }
+        public new AccessoryType EntityType { get; set; }
+        public new List_FishFeedingTypes FeederType { get; set; }
         public List_FishFamilyTypes FishFamily { get; set; }
-        public double FishMaxPH { get; set; }
-        public int FishMaxTemp { get; set; }
-        public double FishMinPH { get; set; }
-        public int FishMinTemp { get; set; }
-        public bool IsAlive { get; set; }
-        public string Name { get; set; }
+        public new double FishMaxPH { get; set; }
+        public new int FishMaxTemp { get; set; }
+        public new double FishMinPH { get; set; }
+        public new int FishMinTemp { get; set; }
+        public new bool IsAlive { get; set; }
+        public new string Name { get; set; }
         public UserPurchases PurchaseTransaction { get; set; }
-        public string ScientificName { get; set; }
-        public double? Size { get; set; }
-        public List_FishTerritorialLevels SocialLevel { get; set; }
+        public new string ScientificName { get; set; }
+        public new double? Size { get; set; }
+        public new List_FishTerritorialLevels SocialLevel { get; set; }
         public List<List_FishSicknessTypes> PotentialSickness { get; set; }
 
         private int FishType { get; set; }
 
-        public FreshwaterFish(UserFish _parent)
+        public FreshwaterFish(FreshwaterFish _parent)
         {
             CommonName = _parent.CommonName;
-            AgressionLevel = _parent.List_FishAgressionLevels;
-            BirthingMethod = _parent.List_FishBirthingTypes;
+            AgressionLevel = _parent.AgressionLevel;
+            BirthingMethod = _parent.BirthingMethod;
             FishFamily = _parent.List_FishFamilyTypes;
             EntityType = AccessoryType.Fish;
             FeederType = _parent.List_FishFeedingTypes;
-            FishMaxPH = _parent.FishMaxPH.Value;
-            FishMinPH = _parent.FishMinPH.Value;
-            FishMaxTemp = Convert.ToInt32(_parent.FishMaxTemp.Value);
-            FishMinTemp = Convert.ToInt32(_parent.FishMinTemp.Value);
+            FishMaxPH = _parent.FishMaxPH;
+            FishMinPH = _parent.FishMinPH;
+            FishMaxTemp = Convert.ToInt32(_parent.FishMaxTemp);
+            FishMinTemp = Convert.ToInt32(_parent.FishMinTemp);
             IsAlive = Convert.ToBoolean(_parent.IsAlive);
-            Name = _parent.FriendlyName;
+            Name = _parent.Name;
             ScientificName = _parent.ScientificName;
-            Size = _parent.SizeLength.Value;
-            FishType = _parent.fk_FishTypeID;
+            Size = _parent.Size;
+            FishType = _parent.FishType;
 
             PotentialSickness = GetSicknessPossibilities();
         }
@@ -66,7 +66,7 @@ namespace AquatiLife_Inventory_DataAccess.ViewModels.DictionaryEntryViewModels
         {
             List<List_FishSicknessTypes> _final = new List<List_FishSicknessTypes>();
 
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 List<List_FishSicknessTypes> a = conn.List_FishSicknessTypes.Where(x => x.fk_AffectedTypes.ToString().Contains(FishType.ToString())).ToList();
 

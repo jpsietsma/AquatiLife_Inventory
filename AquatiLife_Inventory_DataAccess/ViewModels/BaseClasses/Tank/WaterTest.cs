@@ -53,7 +53,7 @@ namespace AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses.Tank
 
         public override void RecordResults(FishTankTest _results)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.UserTankTests.Add(new UserTankTests { ActionsTaken = "Water Tested, Water Changed 80%", TestDate = _results.TestDate, fk_UserTank = _results.UserTank, fk_TestType = 2 });
 

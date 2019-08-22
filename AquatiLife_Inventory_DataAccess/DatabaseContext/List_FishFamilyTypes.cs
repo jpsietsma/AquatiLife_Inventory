@@ -19,7 +19,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         {
             this.FishTypes = new HashSet<FishTypes>();
             this.FishTypes1 = new HashSet<FishTypes>();
-            this.UserFish = new HashSet<UserFish>();
         }
     
         public int pk_FamilyID { get; set; }
@@ -33,7 +32,5 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual ICollection<FishTypes> FishTypes1 { get; set; }
         public virtual List_AnimalTypes List_AnimalTypes { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
     }
 }

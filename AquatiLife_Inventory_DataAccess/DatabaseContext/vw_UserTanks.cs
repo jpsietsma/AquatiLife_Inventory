@@ -14,17 +14,14 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class vw_UserTanks
     {
-        public int Tank_ID { get; set; }
+        public int pk_UserTankID { get; set; }
+        public string UserName { get; set; }
         public int TankSize { get; set; }
         public string TankHeight { get; set; }
         public string TankWidth { get; set; }
-        public string TypeName { get; set; }
-        public string TankSpecialTags { get; set; }
-        public string TankShape { get; set; }
-        public string WaterTypeName { get; set; }
-        public string WaterTypeSpecialTags { get; set; }
-        public string UserName { get; set; }
-        public Nullable<int> NumFish { get; set; }
+        public int fk_TankWaterType { get; set; }
+        public int fk_TankType { get; set; }
         public string TankDisplayName { get; set; }
+        public bool IsActiveTank { get; set; }
     }
 }

@@ -214,7 +214,7 @@ namespace WFP_AquatiLife_Inventory_UI
 
         private void MenuItem_Click_PurchaseHistory(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-            PurchaseHistory history = new PurchaseHistory(_userSession);
+            PurchaseHistory history = new PurchaseHistory();
 
             purchaseHistoryWindow = history;
 

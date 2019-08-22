@@ -18,11 +18,13 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public FishTypes()
         {
             this.FishTypeDiseaseAffection = new HashSet<FishTypeDiseaseAffection>();
+            this.UserFishInventory = new HashSet<UserFishInventory>();
         }
     
         public int pk_FishTypeID { get; set; }
         public string TypeName { get; set; }
         public int fk_FishFamily { get; set; }
+        public double TankPopulationEncumbrance { get; set; }
         public string FishTypeImagePath { get; set; }
         public int fk_FishFeederType { get; set; }
         public int fk_BirthingType { get; set; }
@@ -41,5 +43,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual List_FishTerritorialLevels List_FishTerritorialLevels { get; set; }
         public virtual List_FishFamilyTypes List_FishFamilyTypes1 { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserFishInventory> UserFishInventory { get; set; }
     }
 }

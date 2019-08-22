@@ -93,11 +93,11 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
 
                 TankCheckGrid.Visibility = Visibility.Visible;
 
-                using (Entities conn = new Entities())
+                using (DatabaseEntities conn = new DatabaseEntities())
                 {
                     vw_UserTanks tank = conn.vw_UserTanks.Where(x => x.TankDisplayName == value).First();                    
 
-                    switch (UserTankExt.RunCompatabilityTest_WaterType(tank.Tank_ID, txtTypeName.Text).ToString())
+                    switch (UserTankExt.RunCompatabilityTest_WaterType(tank.pk_UserTankID, txtTypeName.Text).ToString())
                     {
                         case "P":
                             {

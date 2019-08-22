@@ -19,13 +19,13 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         {
             this.ContactInfo = new HashSet<ContactInfo>();
             this.UserActionLogs = new HashSet<UserActionLogs>();
-            this.UserFish = new HashSet<UserFish>();
-            this.UserFishMedicalRecords = new HashSet<UserFishMedicalRecords>();
+            this.UserFishInventory = new HashSet<UserFishInventory>();
             this.UserLivePlants = new HashSet<UserLivePlants>();
             this.UserLoginSessions = new HashSet<UserLoginSessions>();
             this.UserNotifications = new HashSet<UserNotifications>();
             this.Errorlogs = new HashSet<Errorlogs>();
             this.UserTanks = new HashSet<UserTanks>();
+            this.UserTankSupplyInventory = new HashSet<UserTankSupplyInventory>();
         }
     
         public int pk_UserID { get; set; }
@@ -40,9 +40,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserActionLogs> UserActionLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFishMedicalRecords> UserFishMedicalRecords { get; set; }
+        public virtual ICollection<UserFishInventory> UserFishInventory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLivePlants> UserLivePlants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -54,5 +52,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual ICollection<Errorlogs> Errorlogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTanks> UserTanks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserTankSupplyInventory> UserTankSupplyInventory { get; set; }
     }
 }

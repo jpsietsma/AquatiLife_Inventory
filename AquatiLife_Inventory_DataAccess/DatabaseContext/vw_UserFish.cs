@@ -14,29 +14,28 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class vw_UserFish
     {
-        public int Fish_ID { get; set; }
-        public Nullable<System.DateTime> PurchaseDate { get; set; }
-        public Nullable<double> PurchasePrice { get; set; }
-        public string IsAlive { get; set; }
-        public string FishNotes { get; set; }
-        public string ScientificName { get; set; }
-        public Nullable<double> SizeLength { get; set; }
+        public string AnimalType { get; set; }
+        public string FishType { get; set; }
         public string FriendlyName { get; set; }
-        public Nullable<double> FishMinPH { get; set; }
-        public Nullable<double> FishMaxPH { get; set; }
-        public Nullable<double> FishMinTemp { get; set; }
-        public Nullable<double> FishMaxTemp { get; set; }
-        public string CommonName { get; set; }
-        public string UserName { get; set; }
-        public string FishFamilyName { get; set; }
-        public string AnimalTypeName { get; set; }
-        public Nullable<int> TankSize { get; set; }
-        public string TankHeight { get; set; }
-        public string TankWidth { get; set; }
-        public string AgressionLevel { get; set; }
-        public string TerritorialLevel { get; set; }
-        public string FeedingType { get; set; }
+        public string Color { get; set; }
+        public Nullable<int> MinTankSize { get; set; }
+        public bool IsAlive { get; set; }
+        public string FishNotes { get; set; }
+        public Nullable<double> SizeLength { get; set; }
         public string BirthingType { get; set; }
         public string SpecialNotes { get; set; }
+        public string FeedingType { get; set; }
+        public string FishFamilyName { get; set; }
+        public string AgressionLevel { get; set; }
+        public string TerritorialLevel { get; set; }
+        public string ImagePath { get; set; }
+        public string PurchaseDate { get; set; }
+        public double PurchaseCost { get; set; }
+        public string Description { get; set; }
+        public int GallonSize { get; set; }
+        public string TankName { get; set; }
+        public string WaterType { get; set; }
+        public string AnimalOwner { get; set; }
+        public int fk_UserFishInventory { get; set; }
     }
 }

@@ -20,7 +20,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             this.FishTypes = new HashSet<FishTypes>();
             this.List_ErrorTypes = new HashSet<List_ErrorTypes>();
             this.List_FishFamilyTypes = new HashSet<List_FishFamilyTypes>();
-            this.UserFish = new HashSet<UserFish>();
             this.UserTanks = new HashSet<UserTanks>();
         }
     
@@ -34,8 +33,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual ICollection<List_ErrorTypes> List_ErrorTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<List_FishFamilyTypes> List_FishFamilyTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTanks> UserTanks { get; set; }
     }

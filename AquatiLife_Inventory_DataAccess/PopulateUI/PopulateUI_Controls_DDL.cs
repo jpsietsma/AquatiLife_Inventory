@@ -19,7 +19,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// <param name="_combo"></param>
         public static void PopulateUI_DDL_PlantTypes(this RadComboBox _combo)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.vw_PlantDictionary.Select(x => x.PlantType).ToList();
                 int idx = 0;
@@ -47,7 +47,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// <param name="_session"></param>
         public static void PopulateUI_DDL_UserTanks(this RadComboBox _combo, AuthenticatedUserSession _session)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.vw_UserTanks.Where(x => x.UserName == _session.UserName).ToList();
                 int idx = 0;
@@ -75,7 +75,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// <returns>string path to image of plant type</returns>
         public static string PopulateUI_Image_PlantTypes(this Image _image, int pkType)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 return conn.vw_PlantDictionary.Where(x => x.TypeID == pkType).Select(x => x.Image).First();
             }
@@ -89,7 +89,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         public static void PopulateUI_DDL_PurchaseCategories(this RadComboBox _combo, AuthenticatedUserSession _session)
         {
 
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.List_PurchaseCategories.ToList();
                 int idx = 0;
@@ -124,7 +124,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
                 _combo.SelectedIndex = 0;
             }
 
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {             
                 foreach (var store in conn.Stores.ToList())
                 {
@@ -142,7 +142,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// <param name="_session"></param>
         public static void PopulateUI_DDL_Users(this RadComboBox _combo, AuthenticatedUserSession _session)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.Users.Select(x => x.UserName).ToList();
                 int idx = 0;
@@ -174,7 +174,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
         /// <param name="_session"></param>
         public static void PopulateUI_DDL_TankWaterTypes (this RadComboBox _combo, AuthenticatedUserSession _session)
         {
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 var a = conn.List_WaterTypes.Select(x => x.WaterTypeName).ToList();
                 int idx = 0;

@@ -17,8 +17,9 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserTanks()
         {
-            this.UserFish = new HashSet<UserFish>();
+            this.UserFishInventory = new HashSet<UserFishInventory>();
             this.UserLivePlants = new HashSet<UserLivePlants>();
+            this.UserTankSupplyInventory = new HashSet<UserTankSupplyInventory>();
             this.UserTankTemperatureLogs = new HashSet<UserTankTemperatureLogs>();
             this.UserTankTests = new HashSet<UserTankTests>();
         }
@@ -31,14 +32,17 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public int fk_TankWaterType { get; set; }
         public int fk_TankType { get; set; }
         public string TankDisplayName { get; set; }
+        public bool IsActiveTank { get; set; }
     
         public virtual List_TankTypes List_TankTypes { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFish> UserFish { get; set; }
+        public virtual ICollection<UserFishInventory> UserFishInventory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLivePlants> UserLivePlants { get; set; }
         public virtual Users Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserTankSupplyInventory> UserTankSupplyInventory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTankTemperatureLogs> UserTankTemperatureLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

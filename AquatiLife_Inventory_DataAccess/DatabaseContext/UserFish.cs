@@ -17,42 +17,27 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserFish()
         {
-            this.UserFishMedicalRecords = new HashSet<UserFishMedicalRecords>();
+            this.CrustaceanMoltRecords = new HashSet<CrustaceanMoltRecords>();
+            this.UserFishInventory = new HashSet<UserFishInventory>();
         }
     
         public int pk_UserFishID { get; set; }
-        public int fk_FishTypeID { get; set; }
-        public int fk_OwnerID { get; set; }
-        public int fk_TankID { get; set; }
-        public Nullable<System.DateTime> PurchaseDate { get; set; }
-        public Nullable<double> PurchasePrice { get; set; }
-        public string IsAlive { get; set; }
-        public Nullable<int> fk_StoreID { get; set; }
+        public int IsAlive { get; set; }
         public string FishNotes { get; set; }
-        public string ScientificName { get; set; }
         public Nullable<double> SizeLength { get; set; }
         public string FriendlyName { get; set; }
-        public int fk_TerritorialLevel { get; set; }
-        public Nullable<double> FishMinPH { get; set; }
-        public Nullable<double> FishMaxPH { get; set; }
-        public Nullable<double> FishMinTemp { get; set; }
-        public Nullable<double> FishMaxTemp { get; set; }
-        public int fk_FeederType { get; set; }
-        public string CommonName { get; set; }
-        public int fk_BirthingMethod { get; set; }
-        public int fk_AgressionLevel { get; set; }
-        public int fk_FishFamily { get; set; }
+        public string Color { get; set; }
+        public Nullable<int> fk_fishColor { get; set; }
+        public Nullable<int> fk_fishColorSecondary { get; set; }
+        public Nullable<int> fk_fishSex { get; set; }
+        public Nullable<System.DateTime> LastTankMove { get; set; }
     
-        public virtual List_FishAgressionLevels List_FishAgressionLevels { get; set; }
-        public virtual List_FishBirthingTypes List_FishBirthingTypes { get; set; }
-        public virtual List_FishFamilyTypes List_FishFamilyTypes { get; set; }
-        public virtual List_FishFeedingTypes List_FishFeedingTypes { get; set; }
-        public virtual List_FishTerritorialLevels List_FishTerritorialLevels { get; set; }
-        public virtual List_WaterTypes List_WaterTypes { get; set; }
-        public virtual Stores Stores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFishMedicalRecords> UserFishMedicalRecords { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual UserTanks UserTanks { get; set; }
+        public virtual ICollection<CrustaceanMoltRecords> CrustaceanMoltRecords { get; set; }
+        public virtual List_FishColors List_FishColors { get; set; }
+        public virtual List_FishColors List_FishColors1 { get; set; }
+        public virtual List_FishSexes List_FishSexes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserFishInventory> UserFishInventory { get; set; }
     }
 }

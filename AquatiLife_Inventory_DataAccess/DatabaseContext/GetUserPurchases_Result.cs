@@ -18,7 +18,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public int Quantity { get; set; }
         public Nullable<int> fk_StoreID { get; set; }
         public Nullable<int> fk_PurchaseCategory { get; set; }
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
         public int fk_UserID { get; set; }
         public string Description { get; set; }
     }

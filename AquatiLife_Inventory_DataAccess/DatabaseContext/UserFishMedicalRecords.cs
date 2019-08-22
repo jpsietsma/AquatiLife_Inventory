@@ -18,9 +18,9 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public System.DateTime RecordDate { get; set; }
         public int fk_FishID { get; set; }
         public string Description { get; set; }
-        public int fk_UserID { get; set; }
+        public Nullable<int> fk_MedicalClassification { get; set; }
+        public Nullable<int> fk_MedicalSubClassification { get; set; }
     
-        public virtual UserFish UserFish { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual UserFishInventory UserFishInventory { get; set; }
     }
 }

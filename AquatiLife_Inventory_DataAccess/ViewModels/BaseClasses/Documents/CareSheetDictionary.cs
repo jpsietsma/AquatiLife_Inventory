@@ -91,7 +91,7 @@ namespace AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses.Documents
         {
             _final.Add(key, value);
 
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 try
                 {

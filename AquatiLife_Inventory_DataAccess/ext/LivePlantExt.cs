@@ -24,7 +24,7 @@ namespace AquatiLife_Inventory_DataAccess.ext
         {
             Dictionary<string, string> _final = new Dictionary<string, string>();
 
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 //var a = conn.vw_PlantDictionary.Where(x => x.TypeID =_plant.pk_PlantID).ToList();
 
@@ -57,7 +57,7 @@ namespace AquatiLife_Inventory_DataAccess.ext
 
             List<vw_PlantDictionary> plants = new List<vw_PlantDictionary>();
 
-            using (Entities conn = new Entities())
+            using (DatabaseEntities conn = new DatabaseEntities())
             {
                 List<vw_PlantDictionary> a = conn.vw_PlantDictionary.ToList();
 
