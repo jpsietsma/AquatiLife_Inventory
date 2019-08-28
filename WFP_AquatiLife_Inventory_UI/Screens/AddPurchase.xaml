@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
-        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="WFP_AquatiLife_Inventory_UI.Screens.AddPurchase"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        x:Class="WFP_AquatiLife_Inventory_UI.Screens.AddPurchase"
         mc:Ignorable="d"
         Title="New Purchase - Enter New Details" Height="450" Width="800">
     <Grid>

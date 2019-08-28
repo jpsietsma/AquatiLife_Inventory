@@ -69,7 +69,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Windows.Controls.Input, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2019.2.618.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Data, Version=2019.2.618.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -290,7 +293,9 @@
     <Compile Include="ext\UIControlExt.cs" />
     <Compile Include="ext\UserExt.cs" />
     <Compile Include="ext\UserLoginAccess.cs" />
+    <Compile Include="ext\UserPurchases.cs" />
     <Compile Include="ext\UserTankExt.cs" />
+    <Compile Include="GlobalMethods\UIConstruction.cs" />
     <Compile Include="Partials\UserFish.cs" />
     <Compile Include="Partials\UserPurchases.cs" />
     <Compile Include="PopulateUI\PopulateUI_Controls_DDL.cs" />

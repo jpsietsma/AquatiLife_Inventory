@@ -29,7 +29,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public decimal Cost { get; set; }
         public int fk_UserID { get; set; }
         public string Description { get; set; }
-    
+        public decimal ExtCost { get; set; }
+
         public virtual List_PurchaseCategories List_PurchaseCategories { get; set; }
         public virtual Stores Stores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
