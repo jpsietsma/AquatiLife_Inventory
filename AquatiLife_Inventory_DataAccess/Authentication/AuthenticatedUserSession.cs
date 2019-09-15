@@ -17,6 +17,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
     public class AuthenticatedUserSession : UserSession
     {
         public UserLoginSessions _UserSessionRecord { get; set; }
+        public UserPermissions Permissions { get; set; }
 
         public AuthenticatedUserSession(string user)
         {       
@@ -25,6 +26,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
                 try
                 {
                     Users _data = dbconn.Users.Where(x => x.UserName == user).First();
+                    Permissions = dbconn.UserPermissions.Where(x => x.fk_UserID == _data.pk_UserID).First();
 
                     SessionID = GenerateSessionID();
                     UserID = _data.pk_UserID;

@@ -4,13 +4,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
-        Height="750" Width="800" ResizeMode="NoResize">
-    
+        xmlns:my="clr-namespace:WFP_AquatiLife_Inventory_UI"
+        Height="900" Width="900" ResizeMode="NoResize">
+    <Window.Resources>
+        <my:FishViewModel x:Key="FishModel" />
+    </Window.Resources>
     <telerik:RadTabControl x:Name="historyTabs" Align="Justify">
 
         <!-- All Purchase History tab content -->
-        <telerik:RadTabItem Header="All Purchases" x:Name="AllPurchasesTab" GotFocus="AllPurchasesTab_Selected">
-            <telerik:RadGridView x:Name="AllPurchasesGrid"  AutoGenerateColumns="false" ShowGroupPanel="false" ShowSearchPanel="false" ColumnWidth="*">
+        <telerik:RadTabItem x:Name="AllPurchasesTab">
+            <telerik:RadTabItem.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="All Purchases" MouseLeftButtonDown="AllPurchasesTab_Selected" />
+                </DataTemplate>
+            </telerik:RadTabItem.HeaderTemplate>
+            <telerik:RadGridView x:Name="AllPurchasesGrid"  AutoGenerateColumns="False"  ShowGroupPanel="False" ShowSearchPanel="False" ColumnWidth="*">
                 <telerik:RadGridView.Columns>
                     <telerik:GridViewDataColumn DataMemberBinding="{Binding Date}" Header="Date Purchased" />
                     <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="Product Name" />
@@ -22,29 +30,80 @@
         </telerik:RadTabItem>
 
         <!--Live Animal Purchases tab content -->
-        <telerik:RadTabItem Header="Live Animals" x:Name="AnimalPurchasesTab" GotFocus="AnimalPurchasesTab_Selected">
-            <telerik:RadGridView x:Name="LiveAnimalsPurchaseGrid"  AutoGenerateColumns="false" ShowGroupPanel="false" ShowSearchPanel="false" ColumnWidth="*">
+        <telerik:RadTabItem x:Name="AnimalPurchasesTab">
+            <telerik:RadTabItem.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Live Animals" MouseLeftButtonDown="AnimalPurchasesTab_Selected" />
+                </DataTemplate>
+            </telerik:RadTabItem.HeaderTemplate>
+        <telerik:RadGridView x:Name="LiveAnimalsPurchaseGrid" RowDetailsVisibilityMode="VisibleWhenSelected" AutoGenerateColumns="False" ShowGroupPanel="False" ShowSearchPanel="False" ColumnWidth="*">
                 <telerik:RadGridView.RowDetailsTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10" >
-                            <TextBlock Text="Scientific Name: " />
-                            <TextBlock Text="{Binding FishDetails.ScientificName}" />
-                        </StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="1" Padding="0" CornerRadius="1">
+                            <Grid ShowGridLines="False">
+                                <Grid.Resources>
+                                    <DataTemplate x:Name="editFishFriendlyName" x:Key="editFishFriendlyName">
+                                        <TextBox x:Name="editNewTxtFriendlyName" Text="{Binding FriendlyName}" />
+                                    </DataTemplate>
+                                    <List x:Key="animalTypesList" x:Name="AnimalTypesList" />
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="125" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="125" />
+                                    <ColumnDefinition Width="75" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="75"/>
+                                    <ColumnDefinition Width="75" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image x:Name="FishImage" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="5" Source="{Binding FishTypeImagePath}" />
+                                <TextBlock Grid.Column="6" Grid.Row="1" Text="Name: " />
+                                <TextBlock Grid.Column="7" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding FriendlyName}" />
+                                <TextBlock Grid.Column="6" Grid.Row="2" Text="Fish Type: " />
+                                <TextBlock Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding TypeName}" />
+                                <TextBlock Grid.Column="6" Grid.Row="3" Text="Size: " />
+                                <TextBlock Grid.Column="7" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding SizeLength}" />
+                                <TextBlock Grid.Column="6" Grid.Row="4" Text="Alive? " />
+                                <CheckBox Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="2" IsChecked="{Binding IsAlive}" IsEnabled="False" />
+                                <Button Click="EditLivePurchaseRecord_Click" Content="Edit Details" Tag="{Binding fk_UserFish}" />
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </telerik:RadGridView.RowDetailsTemplate>
                 <telerik:RadGridView.Columns>
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding pk_PurchaseID}" Header="Purchase ID" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="Product Name" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Cost}" Header="Product Cost" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="Purchase Qty" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Date}" Header="Date Purchased" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding PurchaseDate}" Header="Date Purchased" >
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadDateTimePicker x:Name="editorPurchaseDateTime" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="Animal Type" />
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding TankDisplayName}" Header="Home Tank">
+                        
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding PurchaseCost}" Header="Product Cost" />
                 </telerik:RadGridView.Columns>
             </telerik:RadGridView>
         </telerik:RadTabItem>
 
         <!--Live Plant Purchases tab Content-->
-        <telerik:RadTabItem Header="Live Plants" x:Name="PlantPurchasesTab" GotFocus="LivePlantPurchasesTab_Selected">
-            <telerik:RadGridView x:Name="LivePlantsGrid"  AutoGenerateColumns="false" ShowGroupPanel="false" ShowSearchPanel="false" ColumnWidth="*">
+        <telerik:RadTabItem x:Name="PlantPurchasesTab">
+            <telerik:RadTabItem.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Live Plants" MouseLeftButtonDown="LivePlantPurchasesTab_Selected" />
+                </DataTemplate>
+            </telerik:RadTabItem.HeaderTemplate>
+            <telerik:RadGridView x:Name="LivePlantsGrid"  AutoGenerateColumns="False" ShowGroupPanel="False" ShowSearchPanel="false" ColumnWidth="*">
                 <telerik:RadGridView.Columns>
                     <telerik:GridViewDataColumn DataMemberBinding="{Binding pk_PurchaseID}" Header="Purchase ID" />
                     <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="Product Name" />
@@ -56,8 +115,13 @@
         </telerik:RadTabItem>
 
         <!--Decoration Purchases tab content -->
-        <telerik:RadTabItem Header="Decorations" x:Name="DecorationPurchasesTab" GotFocus="DecorationPurchasesTab_Selected">
-            <telerik:RadGridView x:Name="DecorationGrid" AutoGenerateColumns="false" ShowGroupPanel="false" ShowSearchPanel="false" ColumnWidth="*" >
+        <telerik:RadTabItem x:Name="DecorationPurchasesTab">
+            <telerik:RadTabItem.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Decorations" MouseLeftButtonDown="DecorationPurchasesTab_Selected" />
+                </DataTemplate>
+            </telerik:RadTabItem.HeaderTemplate>
+            <telerik:RadGridView x:Name="DecorationGrid" AutoGenerateColumns="False" ShowGroupPanel="False" ShowSearchPanel="False" ColumnWidth="*" >
                 <telerik:RadGridView.Columns>
                     <telerik:GridViewDataColumn DataMemberBinding="{Binding pk_PurchaseID}" Header="Purchase ID" />
                     <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="Product Name" />
@@ -69,21 +133,56 @@
         </telerik:RadTabItem>
 
         <!--Supply Purchases tab content -->
-        <telerik:RadTabItem Header="Supplies" x:Name="SupplyPurchasesTab" GotFocus="SupplyPurchasesTab_Selected">
-            <telerik:RadGridView x:Name="SupplyGrid" AutoGenerateColumns="false" ShowGroupPanel="false" ShowSearchPanel="false" ColumnWidth="*" >
-                <telerik:RadGridView.Columns>
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding pk_PurchaseID}" Header="Purchase ID" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Description}" Header="Product Name" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Cost}" Header="Product Cost" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Quantity}" Header="Purchase Qty" />
-                    <telerik:GridViewDataColumn DataMemberBinding="{Binding Date}" Header="Date Purchased" />
+        <telerik:RadTabItem x:Name="SupplyPurchasesTab">
+            <telerik:RadTabItem.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Supplies" MouseLeftButtonDown="SupplyPurchasesTab_Selected" />
+                </DataTemplate>
+            </telerik:RadTabItem.HeaderTemplate>
+            <telerik:RadGridView x:Name="SupplyGrid" ShowGroupPanel="False" AutoGenerateColumns="False" ShowSearchPanel="False" ColumnWidth="*" >
+                <telerik:RadGridView.Columns>                    
+                    <telerik:GridViewDataColumn IsFilterable="False" DataMemberBinding="{Binding PurchaseDescription}" Header="Product Name" />
+                    <telerik:GridViewDataColumn IsFilterable="False" DataMemberBinding="{Binding PurchaseCategory}" Header="Purchase Category" />
+                    <telerik:GridViewDataColumn IsFilterable="False" DataMemberBinding="{Binding Cost}" Header="Product Cost" />
+                    <telerik:GridViewDataColumn IsFilterable="False" DataMemberBinding="{Binding StoreName}" Header="Store Name" />
+                    <telerik:GridViewDataColumn IsFilterable="False" DataMemberBinding="{Binding SupplyTank}" Header="For Tank:" />
+                    <telerik:GridViewDataColumn IsFilterable="False" DataMemberBinding="{Binding OnHand}" Header="Qty Remaining" />
                 </telerik:RadGridView.Columns>
             </telerik:RadGridView>
         </telerik:RadTabItem>
         
         <!--Statistics Overview tab -->
-        <telerik:RadTabItem Header="Statistics" x:Name="PurchaseStatisticsTab">
+        <telerik:RadTabItem x:Name="PurchaseStatisticsTab">
+            <telerik:RadTabItem.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Statistics" MouseLeftButtonDown="StatisticsTab_Selected" />
+                </DataTemplate>
+            </telerik:RadTabItem.HeaderTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
+                <TextBlock Text="Purchase Statistic Reports" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22"  />
+                <telerik:RadComboBox x:Name="reportTypeCombo" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="175" Height="40" SelectedIndex="0">
+                    <telerik:RadComboBox.Items>
+                        <ComboBoxItem Content="-- Select a Report to hear --" />
+                    </telerik:RadComboBox.Items>
+                </telerik:RadComboBox>
+            </Grid>
         </telerik:RadTabItem>
     </telerik:RadTabControl>
 </Window>

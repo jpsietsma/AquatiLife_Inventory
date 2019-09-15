@@ -37,6 +37,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<List_ActionTypes> List_ActionTypes { get; set; }
         public virtual DbSet<List_AnimalTypes> List_AnimalTypes { get; set; }
         public virtual DbSet<List_CollectionLocations> List_CollectionLocations { get; set; }
+        public virtual DbSet<List_ContactTypes> List_ContactTypes { get; set; }
         public virtual DbSet<List_ErrorCategories> List_ErrorCategories { get; set; }
         public virtual DbSet<List_ErrorSeverityLevels> List_ErrorSeverityLevels { get; set; }
         public virtual DbSet<List_ErrorTypes> List_ErrorTypes { get; set; }
@@ -53,7 +54,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<List_MedicalSubClassifications> List_MedicalSubClassifications { get; set; }
         public virtual DbSet<List_PlantSizeClasses> List_PlantSizeClasses { get; set; }
         public virtual DbSet<List_PurchaseCategories> List_PurchaseCategories { get; set; }
-        public virtual DbSet<List_SupplyTypes> List_SupplyTypes { get; set; }
+        public virtual DbSet<List_SupplyCategories> List_SupplyCategories { get; set; }
         public virtual DbSet<List_TankLightingLevels> List_TankLightingLevels { get; set; }
         public virtual DbSet<List_TankTestTypes> List_TankTestTypes { get; set; }
         public virtual DbSet<List_TankTypes> List_TankTypes { get; set; }
@@ -70,6 +71,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<UserLivePlants> UserLivePlants { get; set; }
         public virtual DbSet<UserLoginSessions> UserLoginSessions { get; set; }
         public virtual DbSet<UserNotifications> UserNotifications { get; set; }
+        public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<UserProfiles> UserProfiles { get; set; }
         public virtual DbSet<UserPurchases> UserPurchases { get; set; }
         public virtual DbSet<Users> Users { get; set; }
@@ -79,11 +81,14 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual DbSet<UserTankTests> UserTankTests { get; set; }
         public virtual DbSet<Business_Vendors> Business_Vendors { get; set; }
         public virtual DbSet<Errorlogs> Errorlogs { get; set; }
-        public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<vw_FishDictionary> vw_FishDictionary { get; set; }
+        public virtual DbSet<vw_MasterFishDictionary> vw_MasterFishDictionary { get; set; }
+        public virtual DbSet<vw_MasterFishView> vw_MasterFishView { get; set; }
         public virtual DbSet<vw_PlantDictionary> vw_PlantDictionary { get; set; }
-        public virtual DbSet<vw_UserFish> vw_UserFish { get; set; }
+        public virtual DbSet<vw_UserOverview> vw_UserOverview { get; set; }
+        public virtual DbSet<vw_UserPurchases> vw_UserPurchases { get; set; }
         public virtual DbSet<vw_UserSessions> vw_UserSessions { get; set; }
+        public virtual DbSet<vw_UserSupplies> vw_UserSupplies { get; set; }
         public virtual DbSet<vw_UserTanks> vw_UserTanks { get; set; }
     
         public virtual int Add_PlantType(string plantName, Nullable<int> lightingLevel, Nullable<bool> needsFertilizer, Nullable<bool> canFloat, Nullable<int> minTemperature, Nullable<int> maxTemperature, Nullable<int> idealTemperature, Nullable<double> maxHeight, Nullable<int> plantSizeClass, Nullable<int> purchaseCategory, string plantImage)

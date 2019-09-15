@@ -37,5 +37,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string AgressionLevel { get; set; }
         public string FeedingType { get; set; }
         public string BirthingType { get; set; }
+        public int fk_UFI { get; set; }
+        public int fk_UserFish { get; set; }
+        public int fk_UserPurchase { get; set; }
     }
 }

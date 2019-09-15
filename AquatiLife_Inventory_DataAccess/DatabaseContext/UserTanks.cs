@@ -19,6 +19,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         {
             this.UserFishInventory = new HashSet<UserFishInventory>();
             this.UserLivePlants = new HashSet<UserLivePlants>();
+            this.UserPurchases = new HashSet<UserPurchases>();
             this.UserTankSupplyInventory = new HashSet<UserTankSupplyInventory>();
             this.UserTankTemperatureLogs = new HashSet<UserTankTemperatureLogs>();
             this.UserTankTests = new HashSet<UserTankTests>();
@@ -33,6 +34,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public int fk_TankType { get; set; }
         public string TankDisplayName { get; set; }
         public bool IsActiveTank { get; set; }
+        public Nullable<int> fk_UserPurchaseID { get; set; }
     
         public virtual List_TankTypes List_TankTypes { get; set; }
         public virtual List_WaterTypes List_WaterTypes { get; set; }
@@ -40,6 +42,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual ICollection<UserFishInventory> UserFishInventory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLivePlants> UserLivePlants { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPurchases> UserPurchases { get; set; }
         public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTankSupplyInventory> UserTankSupplyInventory { get; set; }

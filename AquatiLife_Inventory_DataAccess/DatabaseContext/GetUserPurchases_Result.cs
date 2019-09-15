@@ -21,5 +21,10 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public decimal Cost { get; set; }
         public int fk_UserID { get; set; }
         public string Description { get; set; }
+        public Nullable<decimal> ExtCost { get; set; }
+        public Nullable<int> fk_UserFish { get; set; }
+        public Nullable<int> fk_UserSupplyInventory { get; set; }
+        public Nullable<int> fk_UserTank { get; set; }
+        public Nullable<int> fk_UserPlant { get; set; }
     }
 }

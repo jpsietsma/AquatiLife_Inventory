@@ -34,6 +34,7 @@
             <telerik:RadMenuItem Header="My Fish" Padding="0 0 10 0">
                 <telerik:RadMenuItem Header="Manage All Fish" />
                 <telerik:RadMenuItem Header="Add New Fish" HorizontalAlignment="Left" Width="169" Click="MenuItem_Click_AddFish" />
+                <telerik:RadMenuItem Header="Edit Fish" Click="MenuItem_Click_EditFishDetails" />
             </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="Customers" Padding="0 0 10 0">
                 <telerik:RadMenuItem Header="Manage Customers"></telerik:RadMenuItem>
@@ -41,7 +42,7 @@
             </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="Purchases" Padding="0 0 10 0">
                 <telerik:RadMenuItem Header="Purchase History" Click="MenuItem_Click_PurchaseHistory" />
-                <telerik:RadMenuItem Header="New Purchase" Click="MenuItem_Click_AddPurchase"></telerik:RadMenuItem>
+                <telerik:RadMenuItem Header="New Purchase" Click="MenuItem_Click_AddPurchase" />
             </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="Accessories &amp; Supplies" Padding="0 0 10 0">
                 <telerik:RadMenuItem Header="Add New Plant" Click="MenuItem_Click_AddPlant"></telerik:RadMenuItem>

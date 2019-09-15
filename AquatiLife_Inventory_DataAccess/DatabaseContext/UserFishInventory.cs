@@ -22,14 +22,13 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
         public int pk_FishID { get; set; }
         public Nullable<int> fk_UserID { get; set; }
-        public Nullable<int> fk_UserFishID { get; set; }
+        public int fk_UserFishID { get; set; }
         public Nullable<int> fk_UserPurchaseID { get; set; }
         public Nullable<int> fk_FishType { get; set; }
         public Nullable<int> fk_UserTank { get; set; }
     
         public virtual FishTypes FishTypes { get; set; }
         public virtual UserFish UserFish { get; set; }
-        public virtual UserPurchases UserPurchases { get; set; }
         public virtual Users Users { get; set; }
         public virtual UserTanks UserTanks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

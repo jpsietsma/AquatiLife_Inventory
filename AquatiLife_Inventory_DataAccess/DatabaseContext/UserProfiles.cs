@@ -23,12 +23,13 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
         public int pk_ProfileID { get; set; }
         public int fk_userID { get; set; }
-        public Nullable<int> fk_ContactInfo { get; set; }
-        public string HasMobileAccess { get; set; }
+        public int fk_ContactInfo { get; set; }
+        public Nullable<int> fk_UserPermissions { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Business_Customers> Business_Customers { get; set; }
         public virtual ContactInfo ContactInfo { get; set; }
+        public virtual UserPermissions UserPermissions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
     }

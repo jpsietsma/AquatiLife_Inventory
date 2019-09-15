@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "AquatiLife_Test_Console\TestConsole.csproj", "{CD569509-9E63-429C-8429-47BA6684B2A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquatiLife_Inventory_DataAccess", "AquatiLife_Inventory_DataAccess\AquatiLife_Inventory_DataAccess.csproj", "{EE946CA7-007A-4FEE-8F82-29A7B005A24E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFP_AquatiLife_Inventory_UI", "WFP_AquatiLife_Inventory_UI\WFP_AquatiLife_Inventory_UI.csproj", "{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseTemplate", "DatabaseTemplate", "{F613A13F-229D-49F4-B408-4540DB88D1F1}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AquatiLife_Inventory_Database", "AquatiLife_Inventory_Database\AquatiLife_Inventory_Database.sqlproj", "{821F5881-9223-4AD2-9FC1-7E374F0D5E64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,18 @@ Global
 		{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{821F5881-9223-4AD2-9FC1-7E374F0D5E64} = {F613A13F-229D-49F4-B408-4540DB88D1F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8E78561-1DF5-4A44-B351-66BB7CF9B234}

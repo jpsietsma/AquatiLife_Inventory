@@ -19,6 +19,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         {
             this.CrustaceanMoltRecords = new HashSet<CrustaceanMoltRecords>();
             this.UserFishInventory = new HashSet<UserFishInventory>();
+            this.UserPurchases = new HashSet<UserPurchases>();
         }
     
         public int pk_UserFishID { get; set; }
@@ -39,5 +40,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual List_FishSexes List_FishSexes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFishInventory> UserFishInventory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPurchases> UserPurchases { get; set; }
     }
 }

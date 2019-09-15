@@ -21,19 +21,23 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             this.UserProfiles = new HashSet<UserProfiles>();
         }
     
-        public int pk_AddressID { get; set; }
+        public int pk_ContactID { get; set; }
         public Nullable<int> fk_StoreID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string PhoneNumber { get; set; }
-        public string EmailAddress { get; set; }
+        public string AltEmail { get; set; }
         public string Website { get; set; }
         public Nullable<int> fk_UserID { get; set; }
+        public int fk_ContactType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Business_Vendors> Business_Vendors { get; set; }
+        public virtual List_ContactTypes List_ContactTypes { get; set; }
         public virtual Stores Stores { get; set; }
         public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

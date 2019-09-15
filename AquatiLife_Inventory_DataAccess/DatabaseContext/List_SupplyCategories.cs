@@ -12,12 +12,9 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     using System;
     using System.Collections.Generic;
     
-    public partial class List_SupplyTypes
+    public partial class List_SupplyCategories
     {
-        public int pk_SupplyID { get; set; }
-        public string SupplyName { get; set; }
-        public int fk_PurchaseCategory { get; set; }
-    
-        public virtual List_PurchaseCategories List_PurchaseCategories { get; set; }
+        public int pk_SupplyCategory { get; set; }
+        public string CategoryName { get; set; }
     }
 }

@@ -191,5 +191,64 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
             }
         }
 
+
+        public static void PopulateUI_DDL_FishTypes(this RadComboBox _combo, AuthenticatedUserSession _session)
+        {
+            using (DatabaseEntities conn = new DatabaseEntities())
+            {
+                var a = conn.FishTypes.Select(x => x.TypeName).ToList();
+                int idx = 0;
+
+                _combo.Items.Insert(idx, "-- Select Fish Type --");
+
+                foreach (var _fishType in a)
+                {
+                    idx++;
+                    _combo.Items.Insert(idx, _fishType);
+                }
+
+                _combo.SelectedIndex = 0;
+            }
+        }
+
+
+        public static void PopulateUI_DDL_FeederTypes(this RadComboBox _combo, AuthenticatedUserSession _session)
+        {
+            using (DatabaseEntities conn = new DatabaseEntities())
+            {
+                var a = conn.List_FishFeedingTypes.Select(x => x.FeedingType).ToList();
+                int idx = 0;
+
+                _combo.Items.Insert(idx, "-- Select Feeder Type --");
+
+                foreach (var _feedType in a)
+                {
+                    idx++;
+                    _combo.Items.Insert(idx, _feedType);
+                }
+
+                _combo.SelectedIndex = 0;
+            }
+        }
+
+        public static void PopulateUI_DDL_BirthTypes(this RadComboBox _combo, AuthenticatedUserSession _session)
+        {
+            using (DatabaseEntities conn = new DatabaseEntities())
+            {
+                var a = conn.List_FishBirthingTypes.Select(x => x.BirthingType).ToList();
+                int idx = 0;
+
+                _combo.Items.Insert(idx, "-- Select Birth Type --");
+
+                foreach (var _fishType in a)
+                {
+                    idx++;
+                    _combo.Items.Insert(idx, _fishType);
+                }
+
+                _combo.SelectedIndex = 0;
+            }
+        }
+
     }
 }

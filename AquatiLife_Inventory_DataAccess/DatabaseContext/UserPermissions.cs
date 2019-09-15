@@ -14,7 +14,46 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class UserPermissions
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserPermissions()
+        {
+            this.UserProfiles = new HashSet<UserProfiles>();
+        }
+    
+        public int pk_PermissionID { get; set; }
         public int fk_UserID { get; set; }
-        public int fk_PermissionID { get; set; }
+        public bool AddProgramUsers { get; set; }
+        public bool AddPurchase { get; set; }
+        public bool AddSupply { get; set; }
+        public bool AddDecoration { get; set; }
+        public bool AddFish { get; set; }
+        public bool AddLivePlant { get; set; }
+        public bool AddTank { get; set; }
+        public bool EditProgramUsers { get; set; }
+        public bool EditPurchases { get; set; }
+        public bool EditSupply { get; set; }
+        public bool EditDecorations { get; set; }
+        public bool EditFish { get; set; }
+        public bool EditLivePlants { get; set; }
+        public bool EditTanks { get; set; }
+        public bool ViewGlobalPurchases { get; set; }
+        public bool DeleteProgramUsers { get; set; }
+        public bool DeletePurchases { get; set; }
+        public bool DeleteSupply { get; set; }
+        public bool DeleteDecoration { get; set; }
+        public bool DeleteFish { get; set; }
+        public bool DeletePlants { get; set; }
+        public bool DeleteTanks { get; set; }
+        public bool RecordDeath { get; set; }
+        public bool RecordGlobalDeath { get; set; }
+        public bool PerformMaintenance { get; set; }
+        public bool PerformGlobalMaintenance { get; set; }
+        public bool LoginWeb { get; set; }
+        public bool LoginMobile { get; set; }
+        public bool LoginAPI { get; set; }
+    
+        public virtual Users Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserProfiles> UserProfiles { get; set; }
     }
 }

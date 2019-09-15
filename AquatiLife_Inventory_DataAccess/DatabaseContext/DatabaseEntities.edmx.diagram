@@ -4,124 +4,133 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e701d68af5bb436d95abf27b947e60ae" Name="Diagram1">
-        <EntityTypeShape EntityType="Entities.Business_Customers" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.Business_List_VendorTypes" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.ContactInfo" Width="1.5" PointX="8.25" PointY="21" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.CrustaceanMoltRecords" Width="1.5" PointX="15" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.FishCareGuides" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.FishTypeDiseaseAffection" Width="1.5" PointX="15" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.FishTypes" Width="1.5" PointX="12.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_ActionTypes" Width="1.5" PointX="12.75" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_AnimalTypes" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_CollectionLocations" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_ErrorCategories" Width="1.5" PointX="13.5" PointY="36.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_ErrorSeverityLevels" Width="1.5" PointX="15.75" PointY="33.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_ErrorTypes" Width="1.5" PointX="15.75" PointY="35.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishAgressionLevels" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishBirthingTypes" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishColors" Width="1.5" PointX="10.5" PointY="26.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishFamilyTypes" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishFeedingTypes" Width="1.5" PointX="10.5" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishSexes" Width="1.5" PointX="10.5" PointY="29.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishSicknessTypes" Width="1.5" PointX="17.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_FishTerritorialLevels" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_LivePlantDiseases" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_MedicalClassifications" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_MedicalSubClassifications" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_PlantSizeClasses" Width="1.5" PointX="10.5" PointY="38.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_PurchaseCategories" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_SupplyTypes" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_TankLightingLevels" Width="1.5" PointX="10.5" PointY="41.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_TankTestTypes" Width="1.5" PointX="21" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_TankTypes" Width="1.5" PointX="15.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.List_WaterTypes" Width="1.5" PointX="15.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.LivePlantTypes" Width="1.5" PointX="12.75" PointY="38.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.StoreHolidaySchedules" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.Stores" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.StoreWeeklySchedules" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserActionLogs" Width="1.5" PointX="15" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserAuthenticationRoles" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserFish" Width="1.5" PointX="12.75" PointY="26.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserFishInventory" Width="1.5" PointX="15" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserFishMedicalRecords" Width="1.5" PointX="17.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserLivePlants" Width="1.5" PointX="15" PointY="24.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserLoginSessions" Width="1.5" PointX="15" PointY="29.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserNotifications" Width="1.5" PointX="18" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserProfiles" Width="1.5" PointX="10.5" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserPurchases" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.Users" Width="1.5" PointX="12.75" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserTanks" Width="1.5" PointX="18" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserTankSupplyInventory" Width="1.5" PointX="20.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserTankTemperatureLogs" Width="1.5" PointX="20.25" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserTankTests" Width="1.5" PointX="23.25" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.Business_Vendors" Width="1.5" PointX="10.5" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.Errorlogs" Width="1.5" PointX="15" PointY="41.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.UserPermissions" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.vw_FishDictionary" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.vw_PlantDictionary" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.vw_UserFish" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.vw_UserSessions" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entities.vw_UserTanks" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="Entities.FK_Business_Customers_Stores" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_Business_Customers_UserProfiles" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_Business_Vendors_Business_List_VendorTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_Business_Vendors_ContactInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_ContactInfo_Stores" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_ContactInfo_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserProfiles_ContactInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_CrustaceanMoltRecords_UserFish" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_AnimalTypes_FishCareGuides" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypes_FishCareGuides" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypeDiseaseAffection_FishTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_List_FishSicknessTypes_FishTypeDiseaseAffection" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypes_FishAgressionLevels" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypes_FishFamilyTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypes_FishFeederTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypes_FishTerritorialLevels" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypes_List_FishFamilyTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_FishTypes_WaterTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFishInventory_FishTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserActionLogs_List_ActionTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_List_FishFamilyTypes_List_AnimalTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_List_ErrorTypes_List_ErrorCategories" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserNotifications_List_ErrorSeverityLevels" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_List_ErrorTypes_List_WaterTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserNotifications_List_ErrorTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFish_List_FishColors" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFish_List_FishColorsSecondary" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_List_FishFamilies" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFish_List_FishSexes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_List_MedicalSubClassifications_List_MedicalClassifications" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_LivePlantTypes_List_PlantSizeClasses" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_List_SupplyTypes_List_PurchaseCategories" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserPurchases_PurchaseCategories" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_LivePlantTypes_List_TankLightingLevels" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTankTests_List_TankTestTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTanks_List_TankTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTanks_WaterType" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserLivePlants_LivePlantTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_Stores_StoreHolidaySchedules" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_Stores_StoreWeeklySchedules" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserPurchases_Stores" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserActionLogs_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFishInventory_UserFish" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFishInventory_UserPurchases" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFishInventory_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFishInventory_UserTanks" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserFishMedicalRecords_UserFishInventory" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserLivePlants_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserLivePlants_UserTanks" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserLoginSessions_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserNotifications_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_Users_UserProfiles" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTankSupplyInventory_UserPurchases" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_Errorlogs_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTanks_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTankSupplyInventory_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTankSupplyInventory_UserTanks" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTankTemperatureLogs_UserTanks" ManuallyRouted="false" />
-        <AssociationConnector Association="Entities.FK_UserTankTests_UserTanks" ManuallyRouted="false" />
+      <Diagram DiagramId="3b6ce41681a84125922243be0cbc4a5c" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseEntities.Business_Customers" Width="1.5" PointX="5.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Business_List_VendorTypes" Width="1.5" PointX="11.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.ContactInfo" Width="1.5" PointX="8.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.CrustaceanMoltRecords" Width="1.5" PointX="20.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.FishCareGuides" Width="1.5" PointX="13.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.FishTypeDiseaseAffection" Width="1.5" PointX="18" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.FishTypes" Width="1.5" PointX="15.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_ActionTypes" Width="1.5" PointX="12.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_AnimalTypes" Width="1.5" PointX="11.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_CollectionLocations" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_ContactTypes" Width="1.5" PointX="6" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_ErrorCategories" Width="1.5" PointX="13.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_ErrorSeverityLevels" Width="1.5" PointX="15.75" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_ErrorTypes" Width="1.5" PointX="15.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishAgressionLevels" Width="1.5" PointX="13.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishBirthingTypes" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishColors" Width="1.5" PointX="15.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishFamilyTypes" Width="1.5" PointX="13.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishFeedingTypes" Width="1.5" PointX="13.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishSexes" Width="1.5" PointX="15.75" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishSicknessTypes" Width="1.5" PointX="20.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_FishTerritorialLevels" Width="1.5" PointX="13.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_LivePlantDiseases" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_MedicalClassifications" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_MedicalSubClassifications" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_PlantSizeClasses" Width="1.5" PointX="10.5" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_PurchaseCategories" Width="1.5" PointX="18" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_SupplyCategories" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_TankLightingLevels" Width="1.5" PointX="10.5" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_TankTestTypes" Width="1.5" PointX="21" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_TankTypes" Width="1.5" PointX="15.75" PointY="42.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.List_WaterTypes" Width="1.5" PointX="15.75" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.LivePlantTypes" Width="1.5" PointX="12.75" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.StoreHolidaySchedules" Width="1.5" PointX="0.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Stores" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.StoreWeeklySchedules" Width="1.5" PointX="0.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserActionLogs" Width="1.5" PointX="15" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserAuthenticationRoles" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserFish" Width="1.5" PointX="18" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserFishInventory" Width="1.5" PointX="18" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserFishMedicalRecords" Width="1.5" PointX="20.25" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserLivePlants" Width="1.5" PointX="15" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserLoginSessions" Width="1.5" PointX="15" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserNotifications" Width="1.5" PointX="18" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserPermissions" Width="1.5" PointX="15" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserProfiles" Width="1.5" PointX="10.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserPurchases" Width="1.5" PointX="20.25" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Users" Width="1.5" PointX="12.75" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserTanks" Width="1.5" PointX="18" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserTankSupplyInventory" Width="1.5" PointX="20.25" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserTankTemperatureLogs" Width="1.5" PointX="20.25" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.UserTankTests" Width="1.5" PointX="23.25" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Business_Vendors" Width="1.5" PointX="13.5" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.Errorlogs" Width="1.5" PointX="15" PointY="59" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_FishDictionary" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_MasterFishDictionary" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_MasterFishView" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_PlantDictionary" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_UserOverview" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_UserPurchases" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_UserSessions" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_UserSupplies" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseEntities.vw_UserTanks" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseEntities.FK_Business_Customers_Stores" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Business_Customers_UserProfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Business_Vendors_Business_List_VendorTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Business_Vendors_ContactInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_ContactInfo_ContactType" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_ContactInfo_Stores" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_ContactInfo_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserProfiles_ContactInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_CrustaceanMoltRecords_UserFish" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_AnimalTypes_FishCareGuides" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_FishCareGuides" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypeDiseaseAffection_FishTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_List_FishSicknessTypes_FishTypeDiseaseAffection" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_FishAgressionLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_FishFamilyTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_FishFeederTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_FishTerritorialLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_List_FishFamilyTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_FishTypes_WaterTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFishInventory_FishTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserActionLogs_List_ActionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_List_FishFamilyTypes_List_AnimalTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_List_ErrorTypes_List_ErrorCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserNotifications_List_ErrorSeverityLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_List_ErrorTypes_List_WaterTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserNotifications_List_ErrorTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFish_List_FishColors" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFish_List_FishColorsSecondary" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_List_FishFamilies" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFish_List_FishSexes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_List_MedicalSubClassifications_List_MedicalClassifications" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_LivePlantTypes_List_PlantSizeClasses" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserPurchases_PurchaseCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_LivePlantTypes_List_TankLightingLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTankTests_List_TankTestTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTanks_List_TankTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTanks_WaterType" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserLivePlants_LivePlantTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Stores_StoreHolidaySchedules" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Stores_StoreWeeklySchedules" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserPurchases_Stores" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserActionLogs_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFishInventory_UserFish" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserPurchases_UserFish" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFishInventory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFishInventory_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserFishMedicalRecords_UserFishInventory" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserLivePlants_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserLivePlants_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserPurchases_UserLivePlants" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserLoginSessions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserNotifications_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserPermissions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserProfiles_UserPermissions" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Users_UserProfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserPurchases_UserTank" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserPurchases_UserTankSupplyInventory" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_Errorlogs_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTanks_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTankSupplyInventory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTankSupplyInventory_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTankTemperatureLogs_UserTanks" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseEntities.FK_UserTankTests_UserTanks" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

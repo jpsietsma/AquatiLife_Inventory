@@ -19,9 +19,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         {
             using (DatabaseEntities conn = new DatabaseEntities())
             {
-                var a = conn.UserPurchases.Where(x => x.fk_UserID == _session.UserID).ToList();
-
-                _grid.ItemsSource = a;
+                _grid.ItemsSource = conn.UserPurchases.Where(x => x.fk_UserID == _session.UserID).ToList();
             }
         }
 
@@ -33,12 +31,9 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         {
             using (DatabaseEntities conn = new DatabaseEntities())
             {
-                var a = conn.UserPurchases.Where(x => x.fk_PurchaseCategory == 1 
-                                                    || x.fk_PurchaseCategory == 6
-                                                    && x.fk_UserID == _session.UserID
-                                                ).ToList();
-
+                var a = conn.vw_MasterFishView.Where(y => y.UserName == _session.UserName).ToList();              
                 _grid.ItemsSource = a;
+                
             }            
         }
 
@@ -66,16 +61,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
         {
             using (DatabaseEntities conn = new DatabaseEntities())
             {
-                var a = conn.UserPurchases.Where(x => x.fk_PurchaseCategory == 4 
-                                                    || x.fk_PurchaseCategory == 8 
-                                                    || x.fk_PurchaseCategory == 9 
-                                                    || x.fk_PurchaseCategory == 10
-                                                    || x.fk_PurchaseCategory == 13
-                                                    || x.fk_PurchaseCategory == 15
-                                                    && x.fk_UserID == _session.UserID
-                                                    ).ToList();
-
-                _grid.ItemsSource = a;
+                _grid.ItemsSource = conn.vw_UserSupplies.Where(x => x.Owner == _session.UserName).ToList();
             }
         }
 

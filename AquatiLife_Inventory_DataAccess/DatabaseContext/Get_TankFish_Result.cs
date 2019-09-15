@@ -15,7 +15,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     {
         public int pk_FishID { get; set; }
         public Nullable<int> fk_UserID { get; set; }
-        public Nullable<int> fk_UserFishID { get; set; }
+        public int fk_UserFishID { get; set; }
         public Nullable<int> fk_UserPurchaseID { get; set; }
         public Nullable<int> fk_FishType { get; set; }
         public Nullable<int> fk_UserTank { get; set; }

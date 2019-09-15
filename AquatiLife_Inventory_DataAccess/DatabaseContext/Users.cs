@@ -23,6 +23,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             this.UserLivePlants = new HashSet<UserLivePlants>();
             this.UserLoginSessions = new HashSet<UserLoginSessions>();
             this.UserNotifications = new HashSet<UserNotifications>();
+            this.UserPermissions = new HashSet<UserPermissions>();
             this.Errorlogs = new HashSet<Errorlogs>();
             this.UserTanks = new HashSet<UserTanks>();
             this.UserTankSupplyInventory = new HashSet<UserTankSupplyInventory>();
@@ -33,7 +34,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string Password { get; set; }
         public string EmailAddress { get; set; }
         public string UserRole { get; set; }
-        public Nullable<int> fk_ProfileID { get; set; }
+        public int fk_ProfileID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContactInfo> ContactInfo { get; set; }
@@ -47,6 +48,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual ICollection<UserLoginSessions> UserLoginSessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserNotifications> UserNotifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPermissions> UserPermissions { get; set; }
         public virtual UserProfiles UserProfiles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Errorlogs> Errorlogs { get; set; }

@@ -25,6 +25,7 @@
         </Grid.ColumnDefinitions>
         <Image Source="C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\AquatiLife Inventory\images\LoginHeader.jpg" Height="100" Width="100" Grid.Column="1" Grid.ColumnSpan="2" />
         <telerik:RadToolTip Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="LawnGreen" Visibility="Visible" />
+        <Image Source="C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\WFP_AquatiLife_Inventory_UI\images\UI\Icons\Login\NoticeLoginIcon.png" Height="35" Width="30" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" Grid.ColumnSpan="1" Margin="10,7,0,8" />
         <TextBlock x:Name="_BannerMessage" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Center" Height="30" FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" />
         <TextBlock Text="AquatiLife Management" FontSize="24" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" />
         <TextBlock Text="Username: " FontWeight="DemiBold" FontSize="18" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="right" />

@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using AquatiLife_Inventory_DataAccess.Authentication;
 using Hardcodet.Wpf.TaskbarNotification;
 using Telerik.Windows.Controls;
+using WFP_AquatiLife_Inventory_UI.Screens.Edit;
 
 namespace WFP_AquatiLife_Inventory_UI
 {
@@ -28,6 +29,7 @@ namespace WFP_AquatiLife_Inventory_UI
         public AddPlant addPlantWindow { get; set; }
         public AddPurchase addPurchaseWindow { get; set; }
         public PurchaseHistory purchaseHistoryWindow { get; set; }
+        public EditFishDetails editFishWindow { get; set; }
 
         /// <summary>
         /// Open a new dashboard session with the current authenticated user
@@ -226,6 +228,17 @@ namespace WFP_AquatiLife_Inventory_UI
         private void RadMenuItem_Click_UserDashboard(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
 
+        }
+
+        private void MenuItem_Click_EditFishDetails(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            EditFishDetails detailsWindow = new EditFishDetails(13, _userSession);
+
+            editFishWindow = detailsWindow;
+
+            editFishWindow.ShowDialog();
+            editFishWindow.Topmost = true;
+            editFishWindow.Focus();
         }
     }
 }

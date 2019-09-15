@@ -137,6 +137,9 @@
     <Compile Include="DatabaseContext\List_CollectionLocations.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\List_ContactTypes.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\List_ErrorCategories.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -185,7 +188,7 @@
     <Compile Include="DatabaseContext\List_PurchaseCategories.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\List_SupplyTypes.cs">
+    <Compile Include="DatabaseContext\List_SupplyCategories.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\List_TankLightingLevels.cs">
@@ -263,13 +266,25 @@
     <Compile Include="DatabaseContext\vw_FishDictionary.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseContext\vw_MasterFishDictionary.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_MasterFishView.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseContext\vw_PlantDictionary.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseContext\vw_UserFish.cs">
+    <Compile Include="DatabaseContext\vw_UserOverview.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_UserPurchases.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\vw_UserSessions.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseContext\vw_UserSupplies.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseContext\vw_UserTanks.cs">
@@ -324,6 +339,7 @@
     <Compile Include="ViewModels\BaseClasses\Misc\TankTest.cs" />
     <Compile Include="ViewModels\BaseClasses\Tank\WaterTest.cs" />
     <Compile Include="ViewModels\DictionaryEntryViewModels\FreshwaterFish.cs" />
+    <Compile Include="ViewModels\UserFishViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

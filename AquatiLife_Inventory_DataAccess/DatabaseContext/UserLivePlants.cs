@@ -14,6 +14,12 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class UserLivePlants
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserLivePlants()
+        {
+            this.UserPurchases = new HashSet<UserPurchases>();
+        }
+    
         public int pk_UserPlantID { get; set; }
         public int fk_UserID { get; set; }
         public int fk_TankID { get; set; }
@@ -23,5 +29,7 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual LivePlantTypes LivePlantTypes { get; set; }
         public virtual Users Users { get; set; }
         public virtual UserTanks UserTanks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPurchases> UserPurchases { get; set; }
     }
 }
