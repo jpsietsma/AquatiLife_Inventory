@@ -11,6 +11,7 @@ using AquatiLife_Inventory_DataAccess.Authentication;
 using Hardcodet.Wpf.TaskbarNotification;
 using Telerik.Windows.Controls;
 using WFP_AquatiLife_Inventory_UI.Screens.Edit;
+using WFP_AquatiLife_Inventory_UI.Screens.Users;
 
 namespace WFP_AquatiLife_Inventory_UI
 {
@@ -230,15 +231,13 @@ namespace WFP_AquatiLife_Inventory_UI
 
         }
 
-        private void MenuItem_Click_EditFishDetails(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        private void RadMenuItem_Click_AdminAddUser(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-            EditFishDetails detailsWindow = new EditFishDetails(13, _userSession);
+            AddUser addUserWindow = new AddUser();
 
-            editFishWindow = detailsWindow;
-
-            editFishWindow.ShowDialog();
-            editFishWindow.Topmost = true;
-            editFishWindow.Focus();
+            addUserWindow.ShowDialog();
+            addUserWindow.IsTopmost = true;
+            addUserWindow.Focus();
         }
     }
 }

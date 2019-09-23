@@ -15,6 +15,7 @@ using Telerik.Windows.Controls.GridView;
 using Telerik.Windows.Data;
 using WFP_AquatiLife_Inventory_UI.PopulateUI;
 using WFP_AquatiLife_Inventory_UI.ViewModels;
+using ViewModelClasses.DictionaryEntries.Plants;
 
 namespace WFP_AquatiLife_Inventory_UI.Screens
 {

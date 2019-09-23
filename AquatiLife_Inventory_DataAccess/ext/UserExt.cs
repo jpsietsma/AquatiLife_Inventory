@@ -1,4 +1,4 @@
-﻿using AquatiLife_Inventory_DataAccess.ViewModels.Authentication;
+﻿using AquatiLife_Inventory_DataAccess.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;

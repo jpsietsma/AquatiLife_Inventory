@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AquatiLife_Inventory_DataAccess.Authentication;
+using AquatiLife_Inventory_DataAccess.DatabaseContext;
+using AquatiLife_Inventory_DataAccess.GlobalMethods;
+using System;
 using System.Windows;
 using Telerik.Windows.Controls;
 using WFP_AquatiLife_Inventory_UI.PopulateUI;
-using AquatiLife_Inventory_DataAccess.Authentication;
-using AquatiLife_Inventory_DataAccess.DatabaseContext;
+using static AquatiLife_Inventory_DataAccess.GlobalMethods.Authentication;
 
 namespace WFP_AquatiLife_Inventory_UI.Screens
 {
@@ -13,20 +15,19 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
     public partial class AddPurchase : Window
     {
         public AddPurchase(AuthenticatedUserSession _session)
-        {
-            InitializeComponent();
+        {          
+                InitializeComponent();
 
-            ddlPurchaseCategories.PopulateUI_DDL_PurchaseCategories(_session);
-            ddlStoreName.PopulateUI_DDL_Stores(_session);
+                ddlPurchaseCategories.PopulateUI_DDL_PurchaseCategories(_session);
+                ddlStoreName.PopulateUI_DDL_Stores(_session);
 
-            ddlPurchaseUser.PopulateUI_DDL_Users(_session);
-            ddlPurchaseUser.SelectedValue = _session.UserName;
+                ddlPurchaseUser.PopulateUI_DDL_Users(_session);
+                ddlPurchaseUser.SelectedValue = _session.UserName;
 
-            numQty.ValueFormat = ValueFormat.Numeric;
-            numQty.Value = 1;
-            numPrice.ValueFormat = ValueFormat.Currency;
-            numPrice.Value = 0.00;
-
+                numQty.ValueFormat = ValueFormat.Numeric;
+                numQty.Value = 1;
+                numPrice.ValueFormat = ValueFormat.Currency;
+                numPrice.Value = 0.00;            
         }
 
         /// <summary>

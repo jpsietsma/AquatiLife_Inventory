@@ -1,4 +1,4 @@
-﻿using AquatiLife_Inventory_DataAccess.ViewModels.BaseClasses.Documents;
+﻿using AquatiLife_Inventory_DataAccess.BaseClasses.Documents;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

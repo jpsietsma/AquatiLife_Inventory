@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "AquatiLife_Test_Console\TestConsole.csproj", "{CD569509-9E63-429C-8429-47BA6684B2A3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquatiLife_Inventory_DataAccess", "AquatiLife_Inventory_DataAccess\AquatiLife_Inventory_DataAccess.csproj", "{EE946CA7-007A-4FEE-8F82-29A7B005A24E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFP_AquatiLife_Inventory_UI", "WFP_AquatiLife_Inventory_UI\WFP_AquatiLife_Inventory_UI.csproj", "{7693E1B4-4E2E-47B1-AC63-0FF352F4AB66}"
@@ -13,16 +11,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseTemplate", "Databas
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AquatiLife_Inventory_Database", "AquatiLife_Inventory_Database\AquatiLife_Inventory_Database.sqlproj", "{821F5881-9223-4AD2-9FC1-7E374F0D5E64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCRDocumentProcessing", "OCRDocumentProcessing\OCRDocumentProcessing.csproj", "{930AC2D5-58F6-4753-9549-763DEB6716B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", "{9EB61582-45B0-49FE-9489-F783573450D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModelClasses", "ViewModelClasses\ViewModelClasses.csproj", "{8E21112F-8B40-48F3-AD38-C545605D3232}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD569509-9E63-429C-8429-47BA6684B2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD569509-9E63-429C-8429-47BA6684B2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD569509-9E63-429C-8429-47BA6684B2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD569509-9E63-429C-8429-47BA6684B2A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE946CA7-007A-4FEE-8F82-29A7B005A24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE946CA7-007A-4FEE-8F82-29A7B005A24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE946CA7-007A-4FEE-8F82-29A7B005A24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,12 +37,21 @@ Global
 		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{821F5881-9223-4AD2-9FC1-7E374F0D5E64}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{930AC2D5-58F6-4753-9549-763DEB6716B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{930AC2D5-58F6-4753-9549-763DEB6716B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{930AC2D5-58F6-4753-9549-763DEB6716B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{930AC2D5-58F6-4753-9549-763DEB6716B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E21112F-8B40-48F3-AD38-C545605D3232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E21112F-8B40-48F3-AD38-C545605D3232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E21112F-8B40-48F3-AD38-C545605D3232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E21112F-8B40-48F3-AD38-C545605D3232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{821F5881-9223-4AD2-9FC1-7E374F0D5E64} = {F613A13F-229D-49F4-B408-4540DB88D1F1}
+		{8E21112F-8B40-48F3-AD38-C545605D3232} = {9EB61582-45B0-49FE-9489-F783573450D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8E78561-1DF5-4A44-B351-66BB7CF9B234}

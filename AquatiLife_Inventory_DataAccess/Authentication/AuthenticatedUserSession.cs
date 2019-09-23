@@ -1,7 +1,6 @@
 ﻿using AquatiLife_Inventory_DataAccess.DatabaseContext;
 using AquatiLife_Inventory_DataAccess.enums;
 using AquatiLife_Inventory_DataAccess.ext;
-using AquatiLife_Inventory_DataAccess.ViewModels.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

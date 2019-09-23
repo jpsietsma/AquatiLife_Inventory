@@ -18,6 +18,5 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         int PlantMaxTemp { get; set; }
         int PlantMinTemp { get; set; }
         string PlantName { get; set; }
-        ICollection<UserLivePlants> UserLivePlants { get; set; }
     }
 }

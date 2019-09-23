@@ -1,5 +1,4 @@
 ﻿using AquatiLife_Inventory_DataAccess.DatabaseContext;
-using AquatiLife_Inventory_DataAccess.ViewModels.DictionaryEntryViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;

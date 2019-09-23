@@ -33,8 +33,7 @@
             </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="My Fish" Padding="0 0 10 0">
                 <telerik:RadMenuItem Header="Manage All Fish" />
-                <telerik:RadMenuItem Header="Add New Fish" HorizontalAlignment="Left" Width="169" Click="MenuItem_Click_AddFish" />
-                <telerik:RadMenuItem Header="Edit Fish" Click="MenuItem_Click_EditFishDetails" />
+                <telerik:RadMenuItem Header="Add New Fish" HorizontalAlignment="Left" Width="169" Click="MenuItem_Click_AddFish" />                
             </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="Customers" Padding="0 0 10 0">
                 <telerik:RadMenuItem Header="Manage Customers"></telerik:RadMenuItem>
@@ -59,9 +58,7 @@
             </telerik:RadMenuItem>
             <telerik:RadMenuItem x:Name="AdministratorMenu" Header="Administration" Margin="0 0 140 0" Visibility="Hidden">
                 <telerik:RadMenuItem Header="User Accounts">
-                    <telerik:RadMenuItem Header="Add User" />
-
-
+                    <telerik:RadMenuItem Header="Add User" Click="RadMenuItem_Click_AdminAddUser" />
                 </telerik:RadMenuItem>
             </telerik:RadMenuItem>
             <telerik:RadMenuItem x:Name="ErrorNotificationsMenu" Click="NotificationsMenu_Click_NotificationsDashboard" >
