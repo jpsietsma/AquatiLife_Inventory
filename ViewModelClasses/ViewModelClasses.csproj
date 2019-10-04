@@ -58,6 +58,7 @@
     <Compile Include="Fish\FishDetailsModel.cs" />
     <Compile Include="Purchases\FishPurchaseViewModel.cs" />
     <Compile Include="Fish\FishViewModel.cs" />
+    <Compile Include="Users\NewUserAccountContactInfoViewModel.cs" />
     <Compile Include="Users\NewUserAccountViewModel.cs" />
     <Compile Include="DictionaryEntries\Plants\PlantDictionaryEntryViewModel.cs" />
     <Compile Include="Fish\UserFishViewModel.cs" />
@@ -65,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plants\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AquatiLife_Inventory_DataAccess\AquatiLife_Inventory_DataAccess.csproj">
+      <Project>{EE946CA7-007A-4FEE-8F82-29A7B005A24E}</Project>
+      <Name>AquatiLife_Inventory_DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

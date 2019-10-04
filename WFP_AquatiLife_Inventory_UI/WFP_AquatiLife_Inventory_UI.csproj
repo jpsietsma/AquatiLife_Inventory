@@ -214,6 +214,9 @@
     <Compile Include="UserControls\ConfirmDialog.cs" />
     <Compile Include="UserControls\LiveAnimalPurchaseHistoryGrid.cs" />
     <Compile Include="UserControls\LivePlantPurchaseHistoryGrid.cs" />
+    <Compile Include="UserControls\StateComboBox.xaml.cs">
+      <DependentUpon>StateComboBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserPurchaseHistoryGrid.cs" />
     <Compile Include="ViewModels\UserPurchaseViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -269,6 +272,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AvailabilityCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\StateComboBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

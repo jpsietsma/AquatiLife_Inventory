@@ -155,9 +155,7 @@ namespace WFP_AquatiLife_Inventory_UI.PopulateUI
                     _combo.Items.Insert(idx, username);
                 }
 
-                List<string> permissons = _session.GetUserPermissions();
-
-                if (permissons.Contains("Administrator") || permissons.Contains("SuperAdmin"))
+                if (_session.UserPermissions.AddPurchase || _session.UserPermissions.ViewGlobalProgramUsers)
                 {
                     _combo.IsEnabled = true;
                 }

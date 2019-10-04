@@ -64,21 +64,7 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
 
         private void StatisticsTab_Selected(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            RadComboBox _combo = reportTypeCombo;
-            DateTime Now = DateTime.Now;
-            string FirstName;
-
-            using (DatabaseEntities conn = new DatabaseEntities())
-            {
-                FirstName = conn.ContactInfo.Where(x => x.fk_UserID == _UserSession.UserID).First().FirstName;
-            }
-
-            string GreetingText;
-
-            if (Convert.ToDateTime(Now.ToShortTimeString().ToString()) > Convert.ToDateTime("05:00:00.000")  && Convert.ToDateTime(Now.ToShortTimeString().ToString()) < Convert.ToDateTime("12:00:00.000"))
-            {
-                GreetingText = $@"Good Morning, { FirstName }.  I hope you're doing well";
-            }
+            //code here for stats
             
         }
     }

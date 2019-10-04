@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="WFP_AquatiLife_Inventory_UI.UserControls.StateComboBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.UserControls"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <telerik:RadComboBox x:Name="InnerStateComboBox" Height="35" Width="50">
+            <telerik:RadComboBox.Items>
+                <ComboBoxItem Content="AL" Tag="Alabama" IsSelected="True" />
+                <ComboBoxItem Content="AK" Tag="Alaska" />
+                <ComboBoxItem Content="AZ" Tag="Arizona" />
+                <ComboBoxItem Content="AR" Tag="Arkansas" />
+                <ComboBoxItem Content="CA" Tag="California" />
+                <ComboBoxItem Content="CO" Tag="Colorado" />
+                <ComboBoxItem Content="CT" Tag="Connecticut" />
+                <ComboBoxItem Content="DE" Tag="Delaware" />
+                <ComboBoxItem Content="FL" Tag="Florida" />
+                <ComboBoxItem Content="GA" Tag="Georgia" />
+                <ComboBoxItem Content="HI" Tag="Hawaii" />
+                <ComboBoxItem Content="ID" Tag="Idaho" />
+                <ComboBoxItem Content="IL" Tag="Illinois" />
+                <ComboBoxItem Content="IN" Tag="Indiana" />
+                <ComboBoxItem Content="IA" Tag="Iowa" />
+                <ComboBoxItem Content="KS" Tag="Kansas" />
+                <ComboBoxItem Content="KY" Tag="Kentucky" />
+                <ComboBoxItem Content="LA" Tag="Louisiana" />
+                <ComboBoxItem Content="ME" Tag="Maine" />
+                <ComboBoxItem Content="MD" Tag="Maryland" />
+                <ComboBoxItem Content="MA" Tag="Massachusetts" />
+                <ComboBoxItem Content="MI" Tag="Michigan" />
+                <ComboBoxItem Content="MN" Tag="Minnesota" />
+                <ComboBoxItem Content="MS" Tag="Mississippi" />
+                <ComboBoxItem Content="MO" Tag="Missouri" />
+                <ComboBoxItem Content="MT" Tag="Montana" />
+                <ComboBoxItem Content="NE" Tag="Nebraska" />
+                <ComboBoxItem Content="NV" Tag="Nevada" />
+                <ComboBoxItem Content="NH" Tag="New Hampshire" />
+                <ComboBoxItem Content="NJ" Tag="New Jersey" />
+                <ComboBoxItem Content="NM" Tag="New Mexico" />
+                <ComboBoxItem Content="NY" Tag="New York" />
+                <ComboBoxItem Content="NC" Tag="North Carolina" />
+                <ComboBoxItem Content="ND" Tag="North Dakota" />
+                <ComboBoxItem Content="OH" Tag="Ohio" />
+                <ComboBoxItem Content="OK" Tag="Oklahoma" />
+                <ComboBoxItem Content="OR" Tag="Oregon" />
+                <ComboBoxItem Content="PA" Tag="Pennsylvania" />
+                <ComboBoxItem Content="RI" Tag="Rhode Island" />
+                <ComboBoxItem Content="SC" Tag="South Carolina" />
+                <ComboBoxItem Content="SD" Tag="South Dakota" />
+                <ComboBoxItem Content="TN" Tag="Tennessee" />
+                <ComboBoxItem Content="TX" Tag="Texas" />
+                <ComboBoxItem Content="UT" Tag="Utah" />
+                <ComboBoxItem Content="VT" Tag="Vermont" />
+                <ComboBoxItem Content="VA" Tag="Virginia" />
+                <ComboBoxItem Content="WA" Tag="Washington" />
+                <ComboBoxItem Content="WV" Tag="West Virginia" />
+                <ComboBoxItem Content="WI" Tag="Wisconsin" />
+                <ComboBoxItem Content="WY" Tag="Wyoming" />
+            </telerik:RadComboBox.Items>
+        </telerik:RadComboBox>
+    </Grid>
+</UserControl>

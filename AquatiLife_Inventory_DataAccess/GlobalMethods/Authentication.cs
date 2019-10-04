@@ -21,7 +21,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
             {
                 case WPFActions.EDIT_PURCHASE:
                     {
-                        return _session.Permissions.EditPurchases;
+                        return _session.Permissions.EditPurchase;
                     }
                     
                 case WPFActions.ADD_PURCHASE:
@@ -30,7 +30,7 @@ namespace AquatiLife_Inventory_DataAccess.GlobalMethods
                     }
                 case WPFActions.DELETE_PURCHASE:
                     {
-                        return _session.Permissions.DeletePurchases;
+                        return _session.Permissions.DeletePurchase;
                     }
                 case WPFActions.EDIT_FISH:
                     {

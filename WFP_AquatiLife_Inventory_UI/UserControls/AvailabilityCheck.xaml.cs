@@ -25,12 +25,16 @@ namespace WFP_AquatiLife_Inventory_UI.UserControls
         public Image StatusImage { get; set; }
         public TextBox SearchTextBox { get; set; }
         private string TooltipText { get; set; }
+        public bool IsAvailable { get; set; }
+
+
         public AvailabilityCheck()
         {           
             InitializeComponent();
 
             StatusImage = AvailabilityStatusImage;
             SearchTextBox = InputTextbox;
+            IsAvailable = false;
 
         }
 
@@ -40,11 +44,13 @@ namespace WFP_AquatiLife_Inventory_UI.UserControls
             {
                 StatusImage.Source = new BitmapImage(new Uri(@"C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\WFP_AquatiLife_Inventory_UI\images\UI\UserControls\AvailabilityChecker\RedCross.png"));
                 TooltipText = "Username is taken";
+                IsAvailable = false;
             }
             else
             {
                 StatusImage.Source = new BitmapImage(new Uri(@"C:\Users\bobswat\OneDrive\GitHub\AquatiLife_Inventory\WFP_AquatiLife_Inventory_UI\images\UI\UserControls\AvailabilityChecker\GreenCheck.png"));
                 TooltipText = "Username is Available";
+                IsAvailable = true;
             }
         }
 

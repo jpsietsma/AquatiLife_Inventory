@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,8 +26,11 @@ namespace WFP_AquatiLife_Inventory_UI.Screens
             InitializeComponent();
 
             UserNameText.Text = _session.UserName;
-            UserPermissionText.Text = _session.PermissionLevels;
 
+            foreach (PropertyInfo _prop in _session.UserPermissions.GetType().GetProperties())
+            {
+               UserPermissionText.Text += _prop.Name + ": " + _prop.GetValue(_session.UserPermissions) + ";";
+            }
         }
     }
 }

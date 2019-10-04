@@ -50,7 +50,7 @@ namespace WFP_AquatiLife_Inventory_UI
             ErrorNotificationsMenuIcon.Source = new BitmapImage(new Uri("../images/UI/Icons/MenuIcon_NofiticationIcon.png", UriKind.Relative));
             WarningNotificationMenuIcon.Source = new BitmapImage(new Uri("../images/UI/Icons/MenuIcon_WarningIcon.png", UriKind.Relative));
 
-            if (_session.IsAdminUser)
+            if (_session.IsAdmin)
             {
                 AdministratorMenu.Visibility = Visibility.Visible;
                 ErrorNotificationsMenu.Visibility = Visibility.Visible;
@@ -233,7 +233,7 @@ namespace WFP_AquatiLife_Inventory_UI
 
         private void RadMenuItem_Click_AdminAddUser(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-            AddUser addUserWindow = new AddUser();
+            AddUser addUserWindow = new AddUser(_userSession);
 
             addUserWindow.ShowDialog();
             addUserWindow.IsTopmost = true;

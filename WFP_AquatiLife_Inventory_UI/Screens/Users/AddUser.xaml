@@ -5,10 +5,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="clr-namespace:WFP_AquatiLife_Inventory_UI.UserControls"
-        xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens.Users"
+        xmlns:controls="clr-namespace:WFP_AquatiLife_Inventory_UI.UserControls"
+        xmlns:local="clr-namespace:ViewModelClasses.Users.Permissions;assembly=ViewModelClasses"
         mc:Ignorable="d"
         Header="AquatiLife Inventory | New Program User" Height="650" Width="900">
+    <telerik:RadWindow.Resources>
+        <local:UserPermissionsViewModel x:Key="PermissionsViewModelContext" />
+    </telerik:RadWindow.Resources>
     <Grid>
 
         <telerik:RadTabControl>
@@ -47,15 +50,15 @@
                     <TextBlock Text="Username: " Grid.Row="1" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
                     <controls:AvailabilityCheck x:Name="checkerControl" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" />
                     <TextBlock Text="Email: " Grid.Row="2" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
-                    <telerik:RadWatermarkTextBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Height="30">
+                    <telerik:RadWatermarkTextBox x:Name="TextboxEmailAddress" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Height="30" SelectionOnFocus="SelectAll">
                         <telerik:RadWatermarkTextBox.WatermarkTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Enter login username" HorizontalAlignment="Center" />
+                                <TextBlock Text="Enter email address" HorizontalAlignment="Center" />
                             </DataTemplate>
                         </telerik:RadWatermarkTextBox.WatermarkTemplate>
                     </telerik:RadWatermarkTextBox>
                     <TextBlock Text="Password: " Grid.Row="3" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
-                    <telerik:RadPasswordBox Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Height="30">
+                    <telerik:RadPasswordBox x:Name="PasswordboxUserPassword" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Height="30" SelectionOnFocus="SelectAll">
                         <telerik:RadPasswordBox.WatermarkTemplate>
                             <DataTemplate>
                                 <TextBlock Text="Choose login password" HorizontalAlignment="Center" />
@@ -64,16 +67,17 @@
                     </telerik:RadPasswordBox>
 
                     <TextBlock Text="Confirm: " Grid.Row="4" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
-                    <telerik:RadPasswordBox Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Height="30">
+                    <telerik:RadPasswordBox x:Name="PasswordBoxUserPasswordConfirm" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Height="30" LostFocus="UpdateSignInNextButtonAvailability" SelectionOnFocus="SelectAll">
                         <telerik:RadPasswordBox.WatermarkTemplate>
                             <DataTemplate>
                                 <TextBlock Text="Confirm login password" HorizontalAlignment="Center" />
                             </DataTemplate>
                         </telerik:RadPasswordBox.WatermarkTemplate>
                     </telerik:RadPasswordBox>
-
+                    <CheckBox x:Name="acceptTOS" Grid.Row="6" Grid.Column="3" IsChecked="False" />
+                    <TextBlock Text=" - I Accept the Terms of Service." Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
                     <telerik:RadButton Grid.Row="8" Grid.Column="3" Content="Cancel" Height="40" Width="75" Click="CancelCreateUserButton_Click" />
-                    <telerik:RadButton x:Name="SignInNextStepCreateUserButton" Grid.Row="8" Grid.Column="4" Content="Next" Height="40" Width="75" Click="SignInNextStepCreateUserButton_Click" IsEnabled="False" />
+                    <telerik:RadButton  x:Name="SignInNextStepCreateUserButton" Grid.Row="8" Grid.Column="4" Content="_Next" Height="40" Width="75" Click="SignInNextStepCreateUserButton_Click" IsEnabled="False" />
                 </Grid>
             </telerik:RadTabItem>
 
@@ -109,21 +113,162 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="User Account Permissions" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" />
                     <TextBlock Text="Account Type: " Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
-                    <telerik:RadComboBox x:Name="PermissionsComboBox" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Height="34" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedIndex="0" HorizontalContentAlignment="Center" >
+                    <telerik:RadComboBox x:Name="PermissionsComboBox" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Height="34" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedIndex="0" HorizontalContentAlignment="Center" SelectionChanged="PermissionsComboBox_SelectionChanged" >
                         <telerik:RadComboBox.Items>
                             <ComboBoxItem>-- Choose Account Type --</ComboBoxItem>
                             <ComboBoxItem>User Account</ComboBoxItem>
                             <ComboBoxItem>Manager Account</ComboBoxItem>
                             <ComboBoxItem>Owner Account</ComboBoxItem>
                             <ComboBoxItem>SuperAdmin Account</ComboBoxItem>
-                            <ComboBoxItem>~ Custom ~</ComboBoxItem>
+                            <ComboBoxItem>Custom Permissions</ComboBoxItem>
                         </telerik:RadComboBox.Items>
                     </telerik:RadComboBox>
-                    <StackPanel x:Name="CustomPermissionsPanel" Visibility="Visible" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="4">
+                    <StackPanel x:Name="CustomPermissionsPanel" Orientation="Vertical" Visibility="Hidden" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan="6" Margin="0,10,0,0">
+                        <Border>
+                            <Grid DataContext="{StaticResource PermissionsViewModelContext}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />                                    
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Account Permissions" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="5" FontWeight="Bold" FontSize="18" />
+                                <TextBlock Text="Purchases" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold" />
+                                <TextBlock Text="Supplies" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" FontWeight="Bold" />
+                                <TextBlock Text="Fish" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" FontWeight="Bold" />
+                                <TextBlock Text="Decorations" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" FontWeight="Bold" />
+                                <TextBlock Text="Tanks" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" FontWeight="Bold" />
+                                <TextBlock Text="Plants" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" FontWeight="Bold" />
 
+                                <TextBlock Text="Add" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" />
+                                    <CheckBox x:Name="cbxAddPurchase" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxAddSupplies" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxAddFish" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxAddDecorations" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxAddTanks" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxAddPlants" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center" />
+
+                                <TextBlock Text="Edit/Change" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" />
+                                    <CheckBox x:Name="cbxEditPurchase" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxEditSupplies" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxEditFish" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxEditDecorations" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxEditTanks" Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxEditPlants" Grid.Row="3" Grid.Column="6" HorizontalAlignment="Center" />   
+
+                                <TextBlock Text="Remove" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" />
+                                    <CheckBox x:Name="cbxDeletePurchase" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxDeleteSupplies" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxDeleteFish" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxDeleteDecorations" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxDeleteTanks" Grid.Row="4" Grid.Column="5" HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="cbxDeletePlants" Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" />
+
+                                <TextBlock Grid.Row="5" />
+
+                                <TextBlock Text="Login Permissions" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Allow Web?" />
+                                    <CheckBox x:Name="cbxLoginWeb" Margin="0,0,40,0" />
+                                    <TextBlock Text="Allow Mobile?" />
+                                    <CheckBox x:Name="cbxLoginMobile" Margin="0,0,40,0" />
+                                    <TextBlock Text="Allow Api?" />
+                                    <CheckBox x:Name="cbxLoginApi" Margin="0,0,40,0" />
+                                    <TextBlock Text="Allow Desktop?" />
+                                    <CheckBox x:Name="cbxLoginDesktop" Margin="0,0,40,0" />
+                                    <TextBlock Text="Allow Global?" />
+                                    <CheckBox x:Name="cbxLoginGlobal" Margin="0,0,40,0" />
+                                </StackPanel>
+
+                                <TextBlock Grid.Row="8" />
+                                    <TextBlock Text="Global Permissions [View-Only]" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" />
+                                    <TextBlock Text="Users/Login" Grid.Row="10" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" />
+                                        <CheckBox x:Name="cbxViewGlobalProgramUsers" IsChecked="{Binding UserPermissions.UserPermissions.ViewGlobalProgramUsers}" Grid.Row="11" Grid.Column="0" HorizontalAlignment="Center" />
+                                    <TextBlock Text="Purchases" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold" />
+                                        <CheckBox x:Name="cbxViewGlobalPurchases" IsChecked="{Binding UserPermissions.ViewGlobalPurchases}" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" />
+                                    <TextBlock Text="Supplies" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Center" FontWeight="Bold" />
+                                        <CheckBox x:Name="cbxViewGlobalSupplies" IsChecked="{Binding UserPermissions.ViewGlobalSupplies}" Grid.Row="11" Grid.Column="2" HorizontalAlignment="Center" />        
+                                    <TextBlock Text="Fish" Grid.Row="10" Grid.Column="3" HorizontalAlignment="Center" FontWeight="Bold" />
+                                        <CheckBox x:Name="cbxViewGlobalFish" IsChecked="{Binding UserPermissions.UserPermissions.ViewGlobalFish}" Grid.Row="11" Grid.Column="3" HorizontalAlignment="Center" />
+                                    <TextBlock Text="Decorations" Grid.Row="10" Grid.Column="4" HorizontalAlignment="Center" FontWeight="Bold" />
+                                        <CheckBox x:Name="cbxViewGlobalDecorations" IsChecked="{Binding UserPermissions.UserPermissions.ViewGlobalDecorations}" Grid.Row="11" Grid.Column="4" HorizontalAlignment="Center" />
+                                    <TextBlock Text="Tanks" Grid.Row="10" Grid.Column="5" HorizontalAlignment="Center" FontWeight="Bold" />
+                                        <CheckBox x:Name="cbxViewGlobalTanks" IsChecked="{Binding UserPermissions.UserPermissions.ViewGlobalTanks}" Grid.Row="11" Grid.Column="5" HorizontalAlignment="Center" />
+                                    <TextBlock Text="Plants" Grid.Row="10" Grid.Column="6" HorizontalAlignment="Center" FontWeight="Bold" />
+                                        <CheckBox x:Name="cbxViewGlobalPlants" IsChecked="{Binding UserPermissions.UserPermissions.ViewGlobalPlants}" Grid.Row="11" Grid.Column="6" HorizontalAlignment="Center" />
+                                    
+                                <TextBlock Grid.Row="12" />
+                                <TextBlock Text="Miscellaneous/Other" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" />
+                                <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="7" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Record Death?" Margin="0,0,5,0" />
+                                            <CheckBox x:Name="cbxRecordDeath" IsChecked="{Binding UserPermissions.RecordDeath}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Record Death? [Global]" Margin="0,0,5,0" />
+                                            <CheckBox x:Name="cbxRecordDeathGlobal" IsChecked="{Binding UserPermissions.RecordGlobalDeath}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Maintenance?" Margin="0,0,5,0" />
+                                            <CheckBox x:Name="cbxPerformMaintenance" IsChecked="{Binding UserPermissions.PerformMaintenance}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Mainenance? [Global]" Margin="0,0,5,0" />
+                                            <CheckBox x:Name="cbxPerformMaintenanceGlobal" IsChecked="{Binding UserPermissions.PerformGlobalMaintenance}" />
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <TextBlock Grid.Row="15" />
+                                <TextBlock Text="Administrative Priviliges" Grid.Row="16" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" />
+                                <StackPanel Orientation="Horizontal" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="7" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Add Users" Margin="0,0,5,0" />
+                                            <CheckBox x:Name="cbxAddProgramUsers" IsChecked="{Binding UserPermissions.AddProgramUsers}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Edit Users" Margin="0,0,5,0" />
+                                        <CheckBox x:Name="cbxEditProgramUsers" IsChecked="{Binding UserPermissions.EditProgramUsers}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Delete Users" Margin="0,0,5,0" />
+                                            <CheckBox x:Name="cbxDeleteProgramUsers" IsChecked="{Binding UserPermissions.DeleteProgramUsers}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,20,0">
+                                        <TextBlock Text="Add SuperAdmin" Margin="0,0,5,0" />
+                                            <CheckBox x:Name="cbxAddSuperAdmin" IsChecked="{Binding UserPermissions.AddSuperAdminUser}" />
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
                     </StackPanel>
-                    <telerik:RadButton Grid.Row="8" Grid.Column="3" Content="Cancel" Height="40" Width="75" Click="CancelCreateUserButton_Click" />
-                    <telerik:RadButton x:Name="PermissionsNextStepCreateUserButton" Grid.Row="8" Grid.Column="4" Content="Next" Height="40" Width="75" Click="PermissionsNextStepCreateUserButton_Click" IsEnabled="False" />
+                    <telerik:RadButton Grid.Row="9" Grid.Column="3" Content="Cancel" Height="40" Width="75" Click="CancelCreateUserButton_Click" />
+                    <telerik:RadButton x:Name="PermissionsNextStepCreateUserButton" Grid.Row="9" Grid.Column="4" Content="_Next" Height="40" Width="75" Click="PermissionsNextStepCreateUserButton_Click" />
                 </Grid>
             </telerik:RadTabItem>
 
@@ -157,23 +302,43 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock Text="User Account Permissions" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" />
-                    <TextBlock Text="Account Type: " Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
-                    <telerik:RadComboBox Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Height="34" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedIndex="0" HorizontalContentAlignment="Center" >
-                        <telerik:RadComboBox.Items>
-                            <ComboBoxItem>-- Choose Account Type --</ComboBoxItem>
-                            <ComboBoxItem>User Account</ComboBoxItem>
-                            <ComboBoxItem>Manager Account</ComboBoxItem>
-                            <ComboBoxItem>Owner Account</ComboBoxItem>
-                            <ComboBoxItem>SuperAdmin Account</ComboBoxItem>
-                            <ComboBoxItem>~ Custom ~</ComboBoxItem>
-                        </telerik:RadComboBox.Items>
-                    </telerik:RadComboBox>
-                    <StackPanel Visibility="Visible" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="4">
+                    <TextBlock Text="User Profile Information" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" />
+                    
+                    <TextBlock Text="First Name: " Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                    <telerik:RadWatermarkTextBox Grid.Row="2" Grid.Column="3" WatermarkContent="Required" x:Name="UserFirstNameTextbox" Height="35" Margin="-20,0,0,0" />
+                    
+                    <TextBlock Text="Last Name: " Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="20,0,0,0"/>
+                    <telerik:RadWatermarkTextBox Grid.Row="2" Grid.Column="5" WatermarkContent="Required" x:Name="UserLastNameTextbox" Height="35" />
 
+                    <TextBlock Text="Email Address: " Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                    <telerik:RadWatermarkTextBox Grid.Row="3" Grid.Column="3" x:Name="UserAltEmailTextbox" Height="35" Grid.ColumnSpan="3" />
+
+                    <TextBlock Text="Street Address: " Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                    <telerik:RadWatermarkTextBox Grid.Row="4" Grid.Column="3" x:Name="UserStreetAddress" Height="35" Grid.ColumnSpan="3" />
+
+                    <StackPanel Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="4" x:Name="AddressDetailsStackPanel" Orientation="Horizontal">
+                        <TextBlock Text="City: " VerticalAlignment="Center" FontWeight="Bold" FontSize="16" />
+                        <telerik:RadWatermarkTextBox x:Name="UserCityAddressTextbox" Height="35" Width="125" Margin="0,0,20,0" />
+                        
+                        <TextBlock Text="State: " VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                        <controls:StateComboBox Margin="0,0,20,0" x:Name="AddressStateComboBox" />
+
+                        <TextBlock Text="Zip Code: " VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                        <telerik:RadWatermarkTextBox x:Name="UserZipAddressTextbox" Height="35" Width="60" />
                     </StackPanel>
-                    <telerik:RadButton Grid.Row="8" Grid.Column="3" Content="Cancel" Height="40" Width="75" Click="CancelCreateUserButton_Click" />
-                    <telerik:RadButton x:Name="ProfileNextStepCreateUserButton" Grid.Row="8" Grid.Column="4" Content="Create User" Height="40" Width="75" Click="ProfileNextStepCreateUserButton_Click" IsEnabled="False" />
+
+                    <TextBlock Text="Phone: " Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                    <telerik:RadWatermarkTextBox Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" WatermarkContent="(000) 000-0000" x:Name="PhoneNumberTextbox" Height="35" />
+
+                    <TextBlock Text="Website: " Grid.Row="7" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                    <telerik:RadWatermarkTextBox Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="3" WatermarkContent="http://www.example.com" x:Name="WebsiteAddressTextbox" Height="35" />
+
+                    <TextBlock Text="Profile Image: " Grid.Row="8" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                    <telerik:RadWatermarkTextBox Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="3" WatermarkContent="Select an image" x:Name="UserProfileImageUploadbox" Height="35" />
+
+                    <telerik:RadButton Grid.Row="9" Grid.Column="3" Content="_Cancel" Height="40" Width="75" Click="CancelCreateUserButton_Click" />
+                    <telerik:RadButton x:Name="ProfileNextStepCreateUserButton" Grid.Row="9" Grid.Column="4" Content="_Next" Height="40" Width="75" Click="ProfileNextStepCreateUserButton_Click" />
+                    
                 </Grid>
             </telerik:RadTabItem>
 
@@ -211,9 +376,11 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock Text="New User Account Summary" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0.459,0,35,0" />
-                    <TextBlock Text="User Name:" Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="finalized_UserName" Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+                    <TextBlock Text="New User Summary" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0.459,0,35,0" />
+                    <TextBlock Text="Full Name" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" />
+                    <TextBlock x:Name="finalized_FullName" Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+                    <TextBlock Text="User Name:" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="finalized_UserName" Grid.Column="7" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
                     <telerik:RadButton Grid.Row="8" Grid.Column="6" Content="Cancel" Height="40" Width="75" Click="CancelCreateUserButton_Click" Grid.ColumnSpan="2" Margin="18,9,17,9" />
                     <telerik:RadButton x:Name="FinalizeCreateUserButton" Grid.Row="8" Grid.Column="8" Content="Create User" Height="40" Width="75" Click="FinalizeCreateUserButton_Click" IsEnabled="False" Margin="18,9,17,9" />
                 </Grid>

@@ -27,7 +27,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string FishNotes { get; set; }
         public Nullable<double> SizeLength { get; set; }
         public string FriendlyName { get; set; }
-        public string Color { get; set; }
         public Nullable<int> fk_fishColor { get; set; }
         public Nullable<int> fk_fishColorSecondary { get; set; }
         public Nullable<int> fk_fishSex { get; set; }

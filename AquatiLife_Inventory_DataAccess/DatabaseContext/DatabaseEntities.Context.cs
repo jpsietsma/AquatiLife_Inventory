@@ -256,6 +256,51 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Add_UserTank", tankOwnerIDParameter, tankSizeParameter, tankHeightParameter, tankWidthParameter, waterTypeParameter, tankTypeParameter);
         }
     
+        public virtual int ContactInfo_Add(string firstName, string lastName, string streetAddress, string city, string state, string zip, string phone, string altEmail, string website, Nullable<int> contactType)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var streetAddressParameter = streetAddress != null ?
+                new ObjectParameter("StreetAddress", streetAddress) :
+                new ObjectParameter("StreetAddress", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var zipParameter = zip != null ?
+                new ObjectParameter("Zip", zip) :
+                new ObjectParameter("Zip", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("Phone", phone) :
+                new ObjectParameter("Phone", typeof(string));
+    
+            var altEmailParameter = altEmail != null ?
+                new ObjectParameter("AltEmail", altEmail) :
+                new ObjectParameter("AltEmail", typeof(string));
+    
+            var websiteParameter = website != null ?
+                new ObjectParameter("Website", website) :
+                new ObjectParameter("Website", typeof(string));
+    
+            var contactTypeParameter = contactType.HasValue ?
+                new ObjectParameter("ContactType", contactType) :
+                new ObjectParameter("ContactType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ContactInfo_Add", firstNameParameter, lastNameParameter, streetAddressParameter, cityParameter, stateParameter, zipParameter, phoneParameter, altEmailParameter, websiteParameter, contactTypeParameter);
+        }
+    
         public virtual ObjectResult<Get_TankFish_Result> Get_TankFish(Nullable<int> tankID)
         {
             var tankIDParameter = tankID.HasValue ?
@@ -301,6 +346,248 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
                 new ObjectParameter("SubClassification", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RecordFishDeath", fishIDParameter, timeOfDeathParameter, descriptionParameter, classificationParameter, subClassificationParameter);
+        }
+    
+        public virtual int UserLoginSession_Add(Nullable<int> sessionID, Nullable<int> userID, Nullable<System.DateTime> sessionBegin, Nullable<System.DateTime> sessionEnd, string sessionPermission, Nullable<int> isSessionActive)
+        {
+            var sessionIDParameter = sessionID.HasValue ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var sessionBeginParameter = sessionBegin.HasValue ?
+                new ObjectParameter("SessionBegin", sessionBegin) :
+                new ObjectParameter("SessionBegin", typeof(System.DateTime));
+    
+            var sessionEndParameter = sessionEnd.HasValue ?
+                new ObjectParameter("SessionEnd", sessionEnd) :
+                new ObjectParameter("SessionEnd", typeof(System.DateTime));
+    
+            var sessionPermissionParameter = sessionPermission != null ?
+                new ObjectParameter("SessionPermission", sessionPermission) :
+                new ObjectParameter("SessionPermission", typeof(string));
+    
+            var isSessionActiveParameter = isSessionActive.HasValue ?
+                new ObjectParameter("IsSessionActive", isSessionActive) :
+                new ObjectParameter("IsSessionActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserLoginSession_Add", sessionIDParameter, userIDParameter, sessionBeginParameter, sessionEndParameter, sessionPermissionParameter, isSessionActiveParameter);
+        }
+    
+        public virtual int UserPermissionsRecord_Add(Nullable<bool> addProgramUsers, Nullable<bool> addPurchase, Nullable<bool> addSupply, Nullable<bool> addDecoration, Nullable<bool> addFish, Nullable<bool> addLivePlant, Nullable<bool> addTank, Nullable<bool> editProgramUsers, Nullable<bool> editPurchases, Nullable<bool> editSupply, Nullable<bool> editDecorations, Nullable<bool> editFish, Nullable<bool> editLivePlants, Nullable<bool> editTanks, Nullable<bool> viewGlobalPurchases, Nullable<bool> deleteProgramUsers, Nullable<bool> deletePurchases, Nullable<bool> deleteSupply, Nullable<bool> deleteDecoration, Nullable<bool> deleteFish, Nullable<bool> deletePlants, Nullable<bool> deleteTanks, Nullable<bool> recordDeath, Nullable<bool> recordGlobalDeath, Nullable<bool> performMaintenance, Nullable<bool> performGlobalMaintenance, Nullable<bool> loginWeb, Nullable<bool> loginMobile, Nullable<bool> loginAPI)
+        {
+            var addProgramUsersParameter = addProgramUsers.HasValue ?
+                new ObjectParameter("AddProgramUsers", addProgramUsers) :
+                new ObjectParameter("AddProgramUsers", typeof(bool));
+    
+            var addPurchaseParameter = addPurchase.HasValue ?
+                new ObjectParameter("AddPurchase", addPurchase) :
+                new ObjectParameter("AddPurchase", typeof(bool));
+    
+            var addSupplyParameter = addSupply.HasValue ?
+                new ObjectParameter("AddSupply", addSupply) :
+                new ObjectParameter("AddSupply", typeof(bool));
+    
+            var addDecorationParameter = addDecoration.HasValue ?
+                new ObjectParameter("AddDecoration", addDecoration) :
+                new ObjectParameter("AddDecoration", typeof(bool));
+    
+            var addFishParameter = addFish.HasValue ?
+                new ObjectParameter("AddFish", addFish) :
+                new ObjectParameter("AddFish", typeof(bool));
+    
+            var addLivePlantParameter = addLivePlant.HasValue ?
+                new ObjectParameter("AddLivePlant", addLivePlant) :
+                new ObjectParameter("AddLivePlant", typeof(bool));
+    
+            var addTankParameter = addTank.HasValue ?
+                new ObjectParameter("AddTank", addTank) :
+                new ObjectParameter("AddTank", typeof(bool));
+    
+            var editProgramUsersParameter = editProgramUsers.HasValue ?
+                new ObjectParameter("EditProgramUsers", editProgramUsers) :
+                new ObjectParameter("EditProgramUsers", typeof(bool));
+    
+            var editPurchasesParameter = editPurchases.HasValue ?
+                new ObjectParameter("EditPurchases", editPurchases) :
+                new ObjectParameter("EditPurchases", typeof(bool));
+    
+            var editSupplyParameter = editSupply.HasValue ?
+                new ObjectParameter("EditSupply", editSupply) :
+                new ObjectParameter("EditSupply", typeof(bool));
+    
+            var editDecorationsParameter = editDecorations.HasValue ?
+                new ObjectParameter("EditDecorations", editDecorations) :
+                new ObjectParameter("EditDecorations", typeof(bool));
+    
+            var editFishParameter = editFish.HasValue ?
+                new ObjectParameter("EditFish", editFish) :
+                new ObjectParameter("EditFish", typeof(bool));
+    
+            var editLivePlantsParameter = editLivePlants.HasValue ?
+                new ObjectParameter("EditLivePlants", editLivePlants) :
+                new ObjectParameter("EditLivePlants", typeof(bool));
+    
+            var editTanksParameter = editTanks.HasValue ?
+                new ObjectParameter("EditTanks", editTanks) :
+                new ObjectParameter("EditTanks", typeof(bool));
+    
+            var viewGlobalPurchasesParameter = viewGlobalPurchases.HasValue ?
+                new ObjectParameter("ViewGlobalPurchases", viewGlobalPurchases) :
+                new ObjectParameter("ViewGlobalPurchases", typeof(bool));
+    
+            var deleteProgramUsersParameter = deleteProgramUsers.HasValue ?
+                new ObjectParameter("DeleteProgramUsers", deleteProgramUsers) :
+                new ObjectParameter("DeleteProgramUsers", typeof(bool));
+    
+            var deletePurchasesParameter = deletePurchases.HasValue ?
+                new ObjectParameter("DeletePurchases", deletePurchases) :
+                new ObjectParameter("DeletePurchases", typeof(bool));
+    
+            var deleteSupplyParameter = deleteSupply.HasValue ?
+                new ObjectParameter("DeleteSupply", deleteSupply) :
+                new ObjectParameter("DeleteSupply", typeof(bool));
+    
+            var deleteDecorationParameter = deleteDecoration.HasValue ?
+                new ObjectParameter("DeleteDecoration", deleteDecoration) :
+                new ObjectParameter("DeleteDecoration", typeof(bool));
+    
+            var deleteFishParameter = deleteFish.HasValue ?
+                new ObjectParameter("DeleteFish", deleteFish) :
+                new ObjectParameter("DeleteFish", typeof(bool));
+    
+            var deletePlantsParameter = deletePlants.HasValue ?
+                new ObjectParameter("DeletePlants", deletePlants) :
+                new ObjectParameter("DeletePlants", typeof(bool));
+    
+            var deleteTanksParameter = deleteTanks.HasValue ?
+                new ObjectParameter("DeleteTanks", deleteTanks) :
+                new ObjectParameter("DeleteTanks", typeof(bool));
+    
+            var recordDeathParameter = recordDeath.HasValue ?
+                new ObjectParameter("RecordDeath", recordDeath) :
+                new ObjectParameter("RecordDeath", typeof(bool));
+    
+            var recordGlobalDeathParameter = recordGlobalDeath.HasValue ?
+                new ObjectParameter("RecordGlobalDeath", recordGlobalDeath) :
+                new ObjectParameter("RecordGlobalDeath", typeof(bool));
+    
+            var performMaintenanceParameter = performMaintenance.HasValue ?
+                new ObjectParameter("PerformMaintenance", performMaintenance) :
+                new ObjectParameter("PerformMaintenance", typeof(bool));
+    
+            var performGlobalMaintenanceParameter = performGlobalMaintenance.HasValue ?
+                new ObjectParameter("PerformGlobalMaintenance", performGlobalMaintenance) :
+                new ObjectParameter("PerformGlobalMaintenance", typeof(bool));
+    
+            var loginWebParameter = loginWeb.HasValue ?
+                new ObjectParameter("LoginWeb", loginWeb) :
+                new ObjectParameter("LoginWeb", typeof(bool));
+    
+            var loginMobileParameter = loginMobile.HasValue ?
+                new ObjectParameter("LoginMobile", loginMobile) :
+                new ObjectParameter("LoginMobile", typeof(bool));
+    
+            var loginAPIParameter = loginAPI.HasValue ?
+                new ObjectParameter("LoginAPI", loginAPI) :
+                new ObjectParameter("LoginAPI", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserPermissionsRecord_Add", addProgramUsersParameter, addPurchaseParameter, addSupplyParameter, addDecorationParameter, addFishParameter, addLivePlantParameter, addTankParameter, editProgramUsersParameter, editPurchasesParameter, editSupplyParameter, editDecorationsParameter, editFishParameter, editLivePlantsParameter, editTanksParameter, viewGlobalPurchasesParameter, deleteProgramUsersParameter, deletePurchasesParameter, deleteSupplyParameter, deleteDecorationParameter, deleteFishParameter, deletePlantsParameter, deleteTanksParameter, recordDeathParameter, recordGlobalDeathParameter, performMaintenanceParameter, performGlobalMaintenanceParameter, loginWebParameter, loginMobileParameter, loginAPIParameter);
+        }
+    
+        public virtual int UserProfiles_Add(Nullable<int> fk_ContactInfo, Nullable<int> fk_Permissions)
+        {
+            var fk_ContactInfoParameter = fk_ContactInfo.HasValue ?
+                new ObjectParameter("fk_ContactInfo", fk_ContactInfo) :
+                new ObjectParameter("fk_ContactInfo", typeof(int));
+    
+            var fk_PermissionsParameter = fk_Permissions.HasValue ?
+                new ObjectParameter("fk_Permissions", fk_Permissions) :
+                new ObjectParameter("fk_Permissions", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserProfiles_Add", fk_ContactInfoParameter, fk_PermissionsParameter);
+        }
+    
+        public virtual int Users_Add(Nullable<int> fk_ProfileID, string emailAddress, string userName, string password)
+        {
+            var fk_ProfileIDParameter = fk_ProfileID.HasValue ?
+                new ObjectParameter("fk_ProfileID", fk_ProfileID) :
+                new ObjectParameter("fk_ProfileID", typeof(int));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Users_Add", fk_ProfileIDParameter, emailAddressParameter, userNameParameter, passwordParameter);
+        }
+    
+        public virtual int UserLoginSession_Add1(string sessionID, Nullable<int> userID, Nullable<System.DateTime> sessionBegin, Nullable<System.DateTime> sessionEnd, string sessionPermission, Nullable<int> isSessionActive)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var sessionBeginParameter = sessionBegin.HasValue ?
+                new ObjectParameter("SessionBegin", sessionBegin) :
+                new ObjectParameter("SessionBegin", typeof(System.DateTime));
+    
+            var sessionEndParameter = sessionEnd.HasValue ?
+                new ObjectParameter("SessionEnd", sessionEnd) :
+                new ObjectParameter("SessionEnd", typeof(System.DateTime));
+    
+            var sessionPermissionParameter = sessionPermission != null ?
+                new ObjectParameter("SessionPermission", sessionPermission) :
+                new ObjectParameter("SessionPermission", typeof(string));
+    
+            var isSessionActiveParameter = isSessionActive.HasValue ?
+                new ObjectParameter("IsSessionActive", isSessionActive) :
+                new ObjectParameter("IsSessionActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserLoginSession_Add1", sessionIDParameter, userIDParameter, sessionBeginParameter, sessionEndParameter, sessionPermissionParameter, isSessionActiveParameter);
+        }
+    
+        public virtual int UserLoginSessions_Add(string sessionID, Nullable<int> userID, Nullable<System.DateTime> sessionBegin, Nullable<System.DateTime> sessionEnd, string sessionPermission, Nullable<int> isSessionActive)
+        {
+            var sessionIDParameter = sessionID != null ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var sessionBeginParameter = sessionBegin.HasValue ?
+                new ObjectParameter("SessionBegin", sessionBegin) :
+                new ObjectParameter("SessionBegin", typeof(System.DateTime));
+    
+            var sessionEndParameter = sessionEnd.HasValue ?
+                new ObjectParameter("SessionEnd", sessionEnd) :
+                new ObjectParameter("SessionEnd", typeof(System.DateTime));
+    
+            var sessionPermissionParameter = sessionPermission != null ?
+                new ObjectParameter("SessionPermission", sessionPermission) :
+                new ObjectParameter("SessionPermission", typeof(string));
+    
+            var isSessionActiveParameter = isSessionActive.HasValue ?
+                new ObjectParameter("IsSessionActive", isSessionActive) :
+                new ObjectParameter("IsSessionActive", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserLoginSessions_Add", sessionIDParameter, userIDParameter, sessionBeginParameter, sessionEndParameter, sessionPermissionParameter, isSessionActiveParameter);
         }
     }
 }

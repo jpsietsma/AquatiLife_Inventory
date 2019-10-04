@@ -17,13 +17,11 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.ContactInfo = new HashSet<ContactInfo>();
             this.UserActionLogs = new HashSet<UserActionLogs>();
             this.UserFishInventory = new HashSet<UserFishInventory>();
             this.UserLivePlants = new HashSet<UserLivePlants>();
             this.UserLoginSessions = new HashSet<UserLoginSessions>();
             this.UserNotifications = new HashSet<UserNotifications>();
-            this.UserPermissions = new HashSet<UserPermissions>();
             this.Errorlogs = new HashSet<Errorlogs>();
             this.UserTanks = new HashSet<UserTanks>();
             this.UserTankSupplyInventory = new HashSet<UserTankSupplyInventory>();
@@ -35,9 +33,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public string EmailAddress { get; set; }
         public string UserRole { get; set; }
         public int fk_ProfileID { get; set; }
+        public int IsAdmin { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContactInfo> ContactInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserActionLogs> UserActionLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -48,9 +45,6 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public virtual ICollection<UserLoginSessions> UserLoginSessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserNotifications> UserNotifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserPermissions> UserPermissions { get; set; }
-        public virtual UserProfiles UserProfiles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Errorlogs> Errorlogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

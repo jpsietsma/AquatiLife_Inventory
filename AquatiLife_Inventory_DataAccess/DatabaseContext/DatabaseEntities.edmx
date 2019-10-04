@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Business_Customers">
           <Key>
             <PropertyRef Name="pk_CustomerID" />
@@ -39,17 +39,15 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Business_Vendors
             <PropertyRef Name="pk_ContactID" />
           </Key>
           <Property Name="pk_ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fk_StoreID" Type="int" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="25" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="StreetAddress" Type="nvarchar" MaxLength="100" />
-          <Property Name="City" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
           <Property Name="ZipCode" Type="nvarchar" MaxLength="5" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
           <Property Name="AltEmail" Type="nvarchar" MaxLength="150" />
           <Property Name="Website" Type="nvarchar" MaxLength="255" />
-          <Property Name="fk_UserID" Type="int" />
           <Property Name="fk_ContactType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CrustaceanMoltRecords">
@@ -414,7 +412,6 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Errorlogs' does 
           <Property Name="FishNotes" Type="text" />
           <Property Name="SizeLength" Type="float" />
           <Property Name="FriendlyName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Color" Type="nvarchar" MaxLength="100" />
           <Property Name="fk_fishColor" Type="int" />
           <Property Name="fk_fishColorSecondary" Type="int" />
           <Property Name="fk_fishSex" Type="int" />
@@ -478,7 +475,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Errorlogs' does 
             <PropertyRef Name="pk_PermissionID" />
           </Key>
           <Property Name="pk_PermissionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fk_UserID" Type="int" Nullable="false" />
+          <Property Name="AddSuperAdminUser" Type="bit" Nullable="false" />
           <Property Name="AddProgramUsers" Type="bit" Nullable="false" />
           <Property Name="AddPurchase" Type="bit" Nullable="false" />
           <Property Name="AddSupply" Type="bit" Nullable="false" />
@@ -487,35 +484,42 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Errorlogs' does 
           <Property Name="AddLivePlant" Type="bit" Nullable="false" />
           <Property Name="AddTank" Type="bit" Nullable="false" />
           <Property Name="EditProgramUsers" Type="bit" Nullable="false" />
-          <Property Name="EditPurchases" Type="bit" Nullable="false" />
+          <Property Name="EditPurchase" Type="bit" Nullable="false" />
           <Property Name="EditSupply" Type="bit" Nullable="false" />
-          <Property Name="EditDecorations" Type="bit" Nullable="false" />
+          <Property Name="EditDecoration" Type="bit" Nullable="false" />
           <Property Name="EditFish" Type="bit" Nullable="false" />
-          <Property Name="EditLivePlants" Type="bit" Nullable="false" />
-          <Property Name="EditTanks" Type="bit" Nullable="false" />
-          <Property Name="ViewGlobalPurchases" Type="bit" Nullable="false" />
+          <Property Name="EditLivePlant" Type="bit" Nullable="false" />
+          <Property Name="EditTank" Type="bit" Nullable="false" />
           <Property Name="DeleteProgramUsers" Type="bit" Nullable="false" />
-          <Property Name="DeletePurchases" Type="bit" Nullable="false" />
+          <Property Name="DeletePurchase" Type="bit" Nullable="false" />
           <Property Name="DeleteSupply" Type="bit" Nullable="false" />
           <Property Name="DeleteDecoration" Type="bit" Nullable="false" />
           <Property Name="DeleteFish" Type="bit" Nullable="false" />
-          <Property Name="DeletePlants" Type="bit" Nullable="false" />
-          <Property Name="DeleteTanks" Type="bit" Nullable="false" />
+          <Property Name="DeletePlant" Type="bit" Nullable="false" />
+          <Property Name="DeleteTank" Type="bit" Nullable="false" />
           <Property Name="RecordDeath" Type="bit" Nullable="false" />
-          <Property Name="RecordGlobalDeath" Type="bit" Nullable="false" />
           <Property Name="PerformMaintenance" Type="bit" Nullable="false" />
-          <Property Name="PerformGlobalMaintenance" Type="bit" Nullable="false" />
+          <Property Name="LoginGlobal" Type="bit" Nullable="false" />
           <Property Name="LoginWeb" Type="bit" Nullable="false" />
           <Property Name="LoginMobile" Type="bit" Nullable="false" />
+          <Property Name="LoginDesktop" Type="bit" Nullable="false" />
           <Property Name="LoginAPI" Type="bit" Nullable="false" />
+          <Property Name="ViewGlobalProgramUsers" Type="bit" Nullable="false" />
+          <Property Name="ViewGlobalFish" Type="bit" Nullable="false" />
+          <Property Name="ViewGlobalSupplies" Type="bit" Nullable="false" />
+          <Property Name="ViewGlobalDecorations" Type="bit" Nullable="false" />
+          <Property Name="ViewGlobalTanks" Type="bit" Nullable="false" />
+          <Property Name="ViewGlobalPlants" Type="bit" Nullable="false" />
+          <Property Name="ViewGlobalPurchases" Type="bit" Nullable="false" />
+          <Property Name="RecordGlobalDeath" Type="bit" Nullable="false" />
+          <Property Name="PerformGlobalMaintenance" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserProfiles">
           <Key>
             <PropertyRef Name="pk_ProfileID" />
           </Key>
           <Property Name="pk_ProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fk_userID" Type="int" Nullable="false" />
-          <Property Name="fk_ContactInfo" Type="int" Nullable="false" />
+          <Property Name="fk_ContactInfo" Type="int" />
           <Property Name="fk_UserPermissions" Type="int" />
         </EntityType>
         <EntityType Name="UserPurchases">
@@ -546,6 +550,7 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.Errorlogs' does 
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="UserRole" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fk_ProfileID" Type="int" Nullable="false" />
+          <Property Name="IsAdmin" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTanks">
           <Key>
@@ -973,30 +978,6 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
             </Principal>
             <Dependent Role="ContactInfo">
               <PropertyRef Name="fk_ContactType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ContactInfo_Stores">
-          <End Role="Stores" Type="Self.Stores" Multiplicity="0..1" />
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stores">
-              <PropertyRef Name="pk_StoreID" />
-            </Principal>
-            <Dependent Role="ContactInfo">
-              <PropertyRef Name="fk_StoreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ContactInfo_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="pk_UserID" />
-            </Principal>
-            <Dependent Role="ContactInfo">
-              <PropertyRef Name="fk_UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1450,42 +1431,6 @@ warning 6002: The table/view 'AquatiLife_Inventory_Database.dbo.vw_UserTanks' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserPermissions_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="pk_UserID" />
-            </Principal>
-            <Dependent Role="UserPermissions">
-              <PropertyRef Name="fk_UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProfiles_ContactInfo">
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContactInfo">
-              <PropertyRef Name="pk_ContactID" />
-            </Principal>
-            <Dependent Role="UserProfiles">
-              <PropertyRef Name="fk_ContactInfo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProfiles_UserPermissions">
-          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="0..1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserPermissions">
-              <PropertyRef Name="pk_PermissionID" />
-            </Principal>
-            <Dependent Role="UserProfiles">
-              <PropertyRef Name="fk_UserPermissions" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserPurchases_PurchaseCategories">
           <End Role="List_PurchaseCategories" Type="Self.List_PurchaseCategories" Multiplicity="0..1" />
           <End Role="UserPurchases" Type="Self.UserPurchases" Multiplicity="*" />
@@ -1558,18 +1503,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             </Principal>
             <Dependent Role="UserPurchases">
               <PropertyRef Name="fk_UserSupplyInventory" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_UserProfiles">
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserProfiles">
-              <PropertyRef Name="pk_ProfileID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="fk_ProfileID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1718,6 +1651,18 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <Parameter Name="WaterType" Type="int" Mode="In" />
           <Parameter Name="TankType" Type="int" Mode="In" />
         </Function>
+        <Function Name="ContactInfo_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="StreetAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="State" Type="nvarchar" Mode="In" />
+          <Parameter Name="Zip" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="AltEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="Website" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContactType" Type="int" Mode="In" />
+        </Function>
         <Function Name="Get_TankFish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TankID" Type="int" Mode="In" />
         </Function>
@@ -1731,6 +1676,55 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <Parameter Name="Description" Type="text" Mode="In" />
           <Parameter Name="Classification" Type="int" Mode="In" />
           <Parameter Name="SubClassification" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UserLoginSessions_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SessionID" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="SessionBegin" Type="datetime" Mode="In" />
+          <Parameter Name="SessionEnd" Type="datetime" Mode="In" />
+          <Parameter Name="SessionPermission" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsSessionActive" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UserPermissionsRecord_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AddProgramUsers" Type="bit" Mode="In" />
+          <Parameter Name="AddPurchase" Type="bit" Mode="In" />
+          <Parameter Name="AddSupply" Type="bit" Mode="In" />
+          <Parameter Name="AddDecoration" Type="bit" Mode="In" />
+          <Parameter Name="AddFish" Type="bit" Mode="In" />
+          <Parameter Name="AddLivePlant" Type="bit" Mode="In" />
+          <Parameter Name="AddTank" Type="bit" Mode="In" />
+          <Parameter Name="EditProgramUsers" Type="bit" Mode="In" />
+          <Parameter Name="EditPurchases" Type="bit" Mode="In" />
+          <Parameter Name="EditSupply" Type="bit" Mode="In" />
+          <Parameter Name="EditDecorations" Type="bit" Mode="In" />
+          <Parameter Name="EditFish" Type="bit" Mode="In" />
+          <Parameter Name="EditLivePlants" Type="bit" Mode="In" />
+          <Parameter Name="EditTanks" Type="bit" Mode="In" />
+          <Parameter Name="ViewGlobalPurchases" Type="bit" Mode="In" />
+          <Parameter Name="DeleteProgramUsers" Type="bit" Mode="In" />
+          <Parameter Name="DeletePurchases" Type="bit" Mode="In" />
+          <Parameter Name="DeleteSupply" Type="bit" Mode="In" />
+          <Parameter Name="DeleteDecoration" Type="bit" Mode="In" />
+          <Parameter Name="DeleteFish" Type="bit" Mode="In" />
+          <Parameter Name="DeletePlants" Type="bit" Mode="In" />
+          <Parameter Name="DeleteTanks" Type="bit" Mode="In" />
+          <Parameter Name="RecordDeath" Type="bit" Mode="In" />
+          <Parameter Name="RecordGlobalDeath" Type="bit" Mode="In" />
+          <Parameter Name="PerformMaintenance" Type="bit" Mode="In" />
+          <Parameter Name="PerformGlobalMaintenance" Type="bit" Mode="In" />
+          <Parameter Name="LoginWeb" Type="bit" Mode="In" />
+          <Parameter Name="LoginMobile" Type="bit" Mode="In" />
+          <Parameter Name="LoginAPI" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UserProfiles_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fk_ContactInfo" Type="int" Mode="In" />
+          <Parameter Name="fk_Permissions" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Users_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fk_ProfileID" Type="int" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="DatabaseEntitiesStoreContainer">
           <EntitySet Name="Business_Customers" EntityType="Self.Business_Customers" Schema="dbo" store:Type="Tables" />
@@ -2016,14 +2010,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <End Role="List_ContactTypes" EntitySet="List_ContactTypes" />
             <End Role="ContactInfo" EntitySet="ContactInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_ContactInfo_Stores" Association="Self.FK_ContactInfo_Stores">
-            <End Role="Stores" EntitySet="Stores" />
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ContactInfo_Users" Association="Self.FK_ContactInfo_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-          </AssociationSet>
           <AssociationSet Name="FK_CrustaceanMoltRecords_UserFish" Association="Self.FK_CrustaceanMoltRecords_UserFish">
             <End Role="UserFish" EntitySet="UserFish" />
             <End Role="CrustaceanMoltRecords" EntitySet="CrustaceanMoltRecords" />
@@ -2172,18 +2158,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <End Role="Users" EntitySet="Users" />
             <End Role="UserNotifications" EntitySet="UserNotifications" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserPermissions_Users" Association="Self.FK_UserPermissions_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserPermissions" EntitySet="UserPermissions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_ContactInfo" Association="Self.FK_UserProfiles_ContactInfo">
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_UserPermissions" Association="Self.FK_UserProfiles_UserPermissions">
-            <End Role="UserPermissions" EntitySet="UserPermissions" />
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserPurchases_PurchaseCategories" Association="Self.FK_UserPurchases_PurchaseCategories">
             <End Role="List_PurchaseCategories" EntitySet="List_PurchaseCategories" />
             <End Role="UserPurchases" EntitySet="UserPurchases" />
@@ -2207,10 +2181,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <AssociationSet Name="FK_UserPurchases_UserTankSupplyInventory" Association="Self.FK_UserPurchases_UserTankSupplyInventory">
             <End Role="UserTankSupplyInventory" EntitySet="UserTankSupplyInventory" />
             <End Role="UserPurchases" EntitySet="UserPurchases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_UserProfiles" Association="Self.FK_Users_UserProfiles">
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_UserTanks_List_TankTypes" Association="Self.FK_UserTanks_List_TankTypes">
             <End Role="List_TankTypes" EntitySet="List_TankTypes" />
@@ -2245,8 +2215,7 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <End Role="UserTankTests" EntitySet="UserTankTests" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2275,23 +2244,18 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <PropertyRef Name="pk_ContactID" />
           </Key>
           <Property Name="pk_ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fk_StoreID" Type="Int32" />
-          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StreetAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="AltEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="fk_UserID" Type="Int32" />
           <Property Name="fk_ContactType" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Business_Vendors" Relationship="Self.FK_Business_Vendors_ContactInfo" FromRole="ContactInfo" ToRole="Business_Vendors" />
           <NavigationProperty Name="List_ContactTypes" Relationship="Self.FK_ContactInfo_ContactType" FromRole="ContactInfo" ToRole="List_ContactTypes" />
-          <NavigationProperty Name="Stores" Relationship="Self.FK_ContactInfo_Stores" FromRole="ContactInfo" ToRole="Stores" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_ContactInfo_Users" FromRole="ContactInfo" ToRole="Users" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfiles_ContactInfo" FromRole="ContactInfo" ToRole="UserProfiles" />
         </EntityType>
         <EntityType Name="CrustaceanMoltRecords">
           <Key>
@@ -2636,7 +2600,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <Property Name="fk_StoreHolidaySchedule" Type="Int32" />
           <Property Name="CanOrderOnline" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Business_Customers" Relationship="Self.FK_Business_Customers_Stores" FromRole="Stores" ToRole="Business_Customers" />
-          <NavigationProperty Name="ContactInfo" Relationship="Self.FK_ContactInfo_Stores" FromRole="Stores" ToRole="ContactInfo" />
           <NavigationProperty Name="StoreHolidaySchedules" Relationship="Self.FK_Stores_StoreHolidaySchedules" FromRole="Stores" ToRole="StoreHolidaySchedules" />
           <NavigationProperty Name="StoreWeeklySchedules" Relationship="Self.FK_Stores_StoreWeeklySchedules" FromRole="Stores" ToRole="StoreWeeklySchedules" />
           <NavigationProperty Name="UserPurchases" Relationship="Self.FK_UserPurchases_Stores" FromRole="Stores" ToRole="UserPurchases" />
@@ -2692,7 +2655,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <Property Name="FishNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SizeLength" Type="Double" />
           <Property Name="FriendlyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="fk_fishColor" Type="Int32" />
           <Property Name="fk_fishColorSecondary" Type="Int32" />
           <Property Name="fk_fishSex" Type="Int32" />
@@ -2776,7 +2738,7 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <PropertyRef Name="pk_PermissionID" />
           </Key>
           <Property Name="pk_PermissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fk_UserID" Type="Int32" Nullable="false" />
+          <Property Name="AddSuperAdminUser" Type="Boolean" Nullable="false" />
           <Property Name="AddProgramUsers" Type="Boolean" Nullable="false" />
           <Property Name="AddPurchase" Type="Boolean" Nullable="false" />
           <Property Name="AddSupply" Type="Boolean" Nullable="false" />
@@ -2785,42 +2747,44 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <Property Name="AddLivePlant" Type="Boolean" Nullable="false" />
           <Property Name="AddTank" Type="Boolean" Nullable="false" />
           <Property Name="EditProgramUsers" Type="Boolean" Nullable="false" />
-          <Property Name="EditPurchases" Type="Boolean" Nullable="false" />
+          <Property Name="EditPurchase" Type="Boolean" Nullable="false" />
           <Property Name="EditSupply" Type="Boolean" Nullable="false" />
-          <Property Name="EditDecorations" Type="Boolean" Nullable="false" />
+          <Property Name="EditDecoration" Type="Boolean" Nullable="false" />
           <Property Name="EditFish" Type="Boolean" Nullable="false" />
-          <Property Name="EditLivePlants" Type="Boolean" Nullable="false" />
-          <Property Name="EditTanks" Type="Boolean" Nullable="false" />
-          <Property Name="ViewGlobalPurchases" Type="Boolean" Nullable="false" />
+          <Property Name="EditLivePlant" Type="Boolean" Nullable="false" />
+          <Property Name="EditTank" Type="Boolean" Nullable="false" />
           <Property Name="DeleteProgramUsers" Type="Boolean" Nullable="false" />
-          <Property Name="DeletePurchases" Type="Boolean" Nullable="false" />
+          <Property Name="DeletePurchase" Type="Boolean" Nullable="false" />
           <Property Name="DeleteSupply" Type="Boolean" Nullable="false" />
           <Property Name="DeleteDecoration" Type="Boolean" Nullable="false" />
           <Property Name="DeleteFish" Type="Boolean" Nullable="false" />
-          <Property Name="DeletePlants" Type="Boolean" Nullable="false" />
-          <Property Name="DeleteTanks" Type="Boolean" Nullable="false" />
+          <Property Name="DeletePlant" Type="Boolean" Nullable="false" />
+          <Property Name="DeleteTank" Type="Boolean" Nullable="false" />
           <Property Name="RecordDeath" Type="Boolean" Nullable="false" />
-          <Property Name="RecordGlobalDeath" Type="Boolean" Nullable="false" />
           <Property Name="PerformMaintenance" Type="Boolean" Nullable="false" />
-          <Property Name="PerformGlobalMaintenance" Type="Boolean" Nullable="false" />
+          <Property Name="LoginGlobal" Type="Boolean" Nullable="false" />
           <Property Name="LoginWeb" Type="Boolean" Nullable="false" />
           <Property Name="LoginMobile" Type="Boolean" Nullable="false" />
+          <Property Name="LoginDesktop" Type="Boolean" Nullable="false" />
           <Property Name="LoginAPI" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_UserPermissions_Users" FromRole="UserPermissions" ToRole="Users" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfiles_UserPermissions" FromRole="UserPermissions" ToRole="UserProfiles" />
+          <Property Name="ViewGlobalProgramUsers" Type="Boolean" Nullable="false" />
+          <Property Name="ViewGlobalFish" Type="Boolean" Nullable="false" />
+          <Property Name="ViewGlobalSupplies" Type="Boolean" Nullable="false" />
+          <Property Name="ViewGlobalDecorations" Type="Boolean" Nullable="false" />
+          <Property Name="ViewGlobalTanks" Type="Boolean" Nullable="false" />
+          <Property Name="ViewGlobalPlants" Type="Boolean" Nullable="false" />
+          <Property Name="ViewGlobalPurchases" Type="Boolean" Nullable="false" />
+          <Property Name="RecordGlobalDeath" Type="Boolean" Nullable="false" />
+          <Property Name="PerformGlobalMaintenance" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="UserProfiles">
           <Key>
             <PropertyRef Name="pk_ProfileID" />
           </Key>
           <Property Name="pk_ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fk_userID" Type="Int32" Nullable="false" />
-          <Property Name="fk_ContactInfo" Type="Int32" Nullable="false" />
+          <Property Name="fk_ContactInfo" Type="Int32" />
           <Property Name="fk_UserPermissions" Type="Int32" />
           <NavigationProperty Name="Business_Customers" Relationship="Self.FK_Business_Customers_UserProfiles" FromRole="UserProfiles" ToRole="Business_Customers" />
-          <NavigationProperty Name="ContactInfo" Relationship="Self.FK_UserProfiles_ContactInfo" FromRole="UserProfiles" ToRole="ContactInfo" />
-          <NavigationProperty Name="UserPermissions" Relationship="Self.FK_UserProfiles_UserPermissions" FromRole="UserProfiles" ToRole="UserPermissions" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserProfiles" FromRole="UserProfiles" ToRole="Users" />
         </EntityType>
         <EntityType Name="UserPurchases">
           <Key>
@@ -2856,14 +2820,12 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fk_ProfileID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ContactInfo" Relationship="Self.FK_ContactInfo_Users" FromRole="Users" ToRole="ContactInfo" />
+          <Property Name="IsAdmin" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserActionLogs" Relationship="Self.FK_UserActionLogs_Users" FromRole="Users" ToRole="UserActionLogs" />
           <NavigationProperty Name="UserFishInventory" Relationship="Self.FK_UserFishInventory_Users" FromRole="Users" ToRole="UserFishInventory" />
           <NavigationProperty Name="UserLivePlants" Relationship="Self.FK_UserLivePlants_Users" FromRole="Users" ToRole="UserLivePlants" />
           <NavigationProperty Name="UserLoginSessions" Relationship="Self.FK_UserLoginSessions_Users" FromRole="Users" ToRole="UserLoginSessions" />
           <NavigationProperty Name="UserNotifications" Relationship="Self.FK_UserNotifications_Users" FromRole="Users" ToRole="UserNotifications" />
-          <NavigationProperty Name="UserPermissions" Relationship="Self.FK_UserPermissions_Users" FromRole="Users" ToRole="UserPermissions" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_Users_UserProfiles" FromRole="Users" ToRole="UserProfiles" />
           <NavigationProperty Name="Errorlogs" Relationship="Self.FK_Errorlogs_Users" FromRole="Users" ToRole="Errorlogs" />
           <NavigationProperty Name="UserTanks" Relationship="Self.FK_UserTanks_Users" FromRole="Users" ToRole="UserTanks" />
           <NavigationProperty Name="UserTankSupplyInventory" Relationship="Self.FK_UserTankSupplyInventory_Users" FromRole="Users" ToRole="UserTankSupplyInventory" />
@@ -3313,42 +3275,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ContactInfo_Stores">
-          <End Role="Stores" Type="Self.Stores" Multiplicity="0..1" />
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stores">
-              <PropertyRef Name="pk_StoreID" />
-            </Principal>
-            <Dependent Role="ContactInfo">
-              <PropertyRef Name="fk_StoreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ContactInfo_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="pk_UserID" />
-            </Principal>
-            <Dependent Role="ContactInfo">
-              <PropertyRef Name="fk_UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProfiles_ContactInfo">
-          <End Role="ContactInfo" Type="Self.ContactInfo" Multiplicity="1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContactInfo">
-              <PropertyRef Name="pk_ContactID" />
-            </Principal>
-            <Dependent Role="UserProfiles">
-              <PropertyRef Name="fk_ContactInfo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CrustaceanMoltRecords_UserFish">
           <End Role="UserFish" Type="Self.UserFish" Multiplicity="1" />
           <End Role="CrustaceanMoltRecords" Type="Self.CrustaceanMoltRecords" Multiplicity="*" />
@@ -3883,42 +3809,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserPermissions_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="pk_UserID" />
-            </Principal>
-            <Dependent Role="UserPermissions">
-              <PropertyRef Name="fk_UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProfiles_UserPermissions">
-          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="0..1" />
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserPermissions">
-              <PropertyRef Name="pk_PermissionID" />
-            </Principal>
-            <Dependent Role="UserProfiles">
-              <PropertyRef Name="fk_UserPermissions" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_UserProfiles">
-          <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserProfiles">
-              <PropertyRef Name="pk_ProfileID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="fk_ProfileID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserPurchases_UserTank">
           <End Role="UserTanks" Type="Self.UserTanks" Multiplicity="0..1" />
           <End Role="UserPurchases" Type="Self.UserPurchases" Multiplicity="*" />
@@ -4103,18 +3993,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <End Role="List_ContactTypes" EntitySet="List_ContactTypes" />
             <End Role="ContactInfo" EntitySet="ContactInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_ContactInfo_Stores" Association="Self.FK_ContactInfo_Stores">
-            <End Role="Stores" EntitySet="Stores" />
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ContactInfo_Users" Association="Self.FK_ContactInfo_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_ContactInfo" Association="Self.FK_UserProfiles_ContactInfo">
-            <End Role="ContactInfo" EntitySet="ContactInfo" />
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-          </AssociationSet>
           <AssociationSet Name="FK_CrustaceanMoltRecords_UserFish" Association="Self.FK_CrustaceanMoltRecords_UserFish">
             <End Role="UserFish" EntitySet="UserFish" />
             <End Role="CrustaceanMoltRecords" EntitySet="CrustaceanMoltRecords" />
@@ -4291,18 +4169,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <End Role="Users" EntitySet="Users" />
             <End Role="UserNotifications" EntitySet="UserNotifications" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserPermissions_Users" Association="Self.FK_UserPermissions_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserPermissions" EntitySet="UserPermissions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProfiles_UserPermissions" Association="Self.FK_UserProfiles_UserPermissions">
-            <End Role="UserPermissions" EntitySet="UserPermissions" />
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_UserProfiles" Association="Self.FK_Users_UserProfiles">
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserPurchases_UserTank" Association="Self.FK_UserPurchases_UserTank">
             <End Role="UserTanks" EntitySet="UserTanks" />
             <End Role="UserPurchases" EntitySet="UserPurchases" />
@@ -4380,8 +4246,20 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <Parameter Name="WaterType" Mode="In" Type="Int32" />
             <Parameter Name="TankType" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ContactInfo_Add">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="StreetAddress" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="AltEmail" Mode="In" Type="String" />
+            <Parameter Name="Website" Mode="In" Type="String" />
+            <Parameter Name="ContactType" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Get_TankFish" ReturnType="Collection(DatabaseEntities.Get_TankFish_Result)">
-            <Parameter Name="TankID" Mode="In" Type="Int32" />
+          <Parameter Name="TankID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUserPurchases" ReturnType="Collection(DatabaseEntities.GetUserPurchases_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -4393,6 +4271,71 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="Classification" Mode="In" Type="Int32" />
             <Parameter Name="SubClassification" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserLoginSession_Add">
+            <Parameter Name="SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="SessionBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="SessionEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="SessionPermission" Mode="In" Type="String" />
+            <Parameter Name="IsSessionActive" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserPermissionsRecord_Add">
+            <Parameter Name="AddProgramUsers" Mode="In" Type="Boolean" />
+            <Parameter Name="AddPurchase" Mode="In" Type="Boolean" />
+            <Parameter Name="AddSupply" Mode="In" Type="Boolean" />
+            <Parameter Name="AddDecoration" Mode="In" Type="Boolean" />
+            <Parameter Name="AddFish" Mode="In" Type="Boolean" />
+            <Parameter Name="AddLivePlant" Mode="In" Type="Boolean" />
+            <Parameter Name="AddTank" Mode="In" Type="Boolean" />
+            <Parameter Name="EditProgramUsers" Mode="In" Type="Boolean" />
+            <Parameter Name="EditPurchases" Mode="In" Type="Boolean" />
+            <Parameter Name="EditSupply" Mode="In" Type="Boolean" />
+            <Parameter Name="EditDecorations" Mode="In" Type="Boolean" />
+            <Parameter Name="EditFish" Mode="In" Type="Boolean" />
+            <Parameter Name="EditLivePlants" Mode="In" Type="Boolean" />
+            <Parameter Name="EditTanks" Mode="In" Type="Boolean" />
+            <Parameter Name="ViewGlobalPurchases" Mode="In" Type="Boolean" />
+            <Parameter Name="DeleteProgramUsers" Mode="In" Type="Boolean" />
+            <Parameter Name="DeletePurchases" Mode="In" Type="Boolean" />
+            <Parameter Name="DeleteSupply" Mode="In" Type="Boolean" />
+            <Parameter Name="DeleteDecoration" Mode="In" Type="Boolean" />
+            <Parameter Name="DeleteFish" Mode="In" Type="Boolean" />
+            <Parameter Name="DeletePlants" Mode="In" Type="Boolean" />
+            <Parameter Name="DeleteTanks" Mode="In" Type="Boolean" />
+            <Parameter Name="RecordDeath" Mode="In" Type="Boolean" />
+            <Parameter Name="RecordGlobalDeath" Mode="In" Type="Boolean" />
+            <Parameter Name="PerformMaintenance" Mode="In" Type="Boolean" />
+            <Parameter Name="PerformGlobalMaintenance" Mode="In" Type="Boolean" />
+            <Parameter Name="LoginWeb" Mode="In" Type="Boolean" />
+            <Parameter Name="LoginMobile" Mode="In" Type="Boolean" />
+            <Parameter Name="LoginAPI" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UserProfiles_Add">
+            <Parameter Name="fk_ContactInfo" Mode="In" Type="Int32" />
+            <Parameter Name="fk_Permissions" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Users_Add">
+            <Parameter Name="fk_ProfileID" Mode="In" Type="Int32" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserLoginSession_Add1">
+            <Parameter Name="SessionID" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="SessionBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="SessionEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="SessionPermission" Mode="In" Type="String" />
+            <Parameter Name="IsSessionActive" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserLoginSessions_Add">
+            <Parameter Name="SessionID" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="SessionBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="SessionEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="SessionPermission" Mode="In" Type="String" />
+            <Parameter Name="IsSessionActive" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Get_TankFish_Result">
@@ -4447,7 +4390,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <EntityTypeMapping TypeName="DatabaseEntities.ContactInfo">
               <MappingFragment StoreEntitySet="ContactInfo">
                 <ScalarProperty Name="pk_ContactID" ColumnName="pk_ContactID" />
-                <ScalarProperty Name="fk_StoreID" ColumnName="fk_StoreID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
@@ -4457,7 +4399,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="AltEmail" ColumnName="AltEmail" />
                 <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
                 <ScalarProperty Name="fk_ContactType" ColumnName="fk_ContactType" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4838,7 +4779,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
                 <ScalarProperty Name="FishNotes" ColumnName="FishNotes" />
                 <ScalarProperty Name="SizeLength" ColumnName="SizeLength" />
                 <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
                 <ScalarProperty Name="fk_fishColor" ColumnName="fk_fishColor" />
                 <ScalarProperty Name="fk_fishColorSecondary" ColumnName="fk_fishColorSecondary" />
                 <ScalarProperty Name="fk_fishSex" ColumnName="fk_fishSex" />
@@ -4908,7 +4848,7 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <EntityTypeMapping TypeName="DatabaseEntities.UserPermissions">
               <MappingFragment StoreEntitySet="UserPermissions">
                 <ScalarProperty Name="pk_PermissionID" ColumnName="pk_PermissionID" />
-                <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
+                <ScalarProperty Name="AddSuperAdminUser" ColumnName="AddSuperAdminUser" />
                 <ScalarProperty Name="AddProgramUsers" ColumnName="AddProgramUsers" />
                 <ScalarProperty Name="AddPurchase" ColumnName="AddPurchase" />
                 <ScalarProperty Name="AddSupply" ColumnName="AddSupply" />
@@ -4917,27 +4857,35 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
                 <ScalarProperty Name="AddLivePlant" ColumnName="AddLivePlant" />
                 <ScalarProperty Name="AddTank" ColumnName="AddTank" />
                 <ScalarProperty Name="EditProgramUsers" ColumnName="EditProgramUsers" />
-                <ScalarProperty Name="EditPurchases" ColumnName="EditPurchases" />
+                <ScalarProperty Name="EditPurchase" ColumnName="EditPurchase" />
                 <ScalarProperty Name="EditSupply" ColumnName="EditSupply" />
-                <ScalarProperty Name="EditDecorations" ColumnName="EditDecorations" />
+                <ScalarProperty Name="EditDecoration" ColumnName="EditDecoration" />
                 <ScalarProperty Name="EditFish" ColumnName="EditFish" />
-                <ScalarProperty Name="EditLivePlants" ColumnName="EditLivePlants" />
-                <ScalarProperty Name="EditTanks" ColumnName="EditTanks" />
-                <ScalarProperty Name="ViewGlobalPurchases" ColumnName="ViewGlobalPurchases" />
+                <ScalarProperty Name="EditLivePlant" ColumnName="EditLivePlant" />
+                <ScalarProperty Name="EditTank" ColumnName="EditTank" />
                 <ScalarProperty Name="DeleteProgramUsers" ColumnName="DeleteProgramUsers" />
-                <ScalarProperty Name="DeletePurchases" ColumnName="DeletePurchases" />
+                <ScalarProperty Name="DeletePurchase" ColumnName="DeletePurchase" />
                 <ScalarProperty Name="DeleteSupply" ColumnName="DeleteSupply" />
                 <ScalarProperty Name="DeleteDecoration" ColumnName="DeleteDecoration" />
                 <ScalarProperty Name="DeleteFish" ColumnName="DeleteFish" />
-                <ScalarProperty Name="DeletePlants" ColumnName="DeletePlants" />
-                <ScalarProperty Name="DeleteTanks" ColumnName="DeleteTanks" />
+                <ScalarProperty Name="DeletePlant" ColumnName="DeletePlant" />
+                <ScalarProperty Name="DeleteTank" ColumnName="DeleteTank" />
                 <ScalarProperty Name="RecordDeath" ColumnName="RecordDeath" />
-                <ScalarProperty Name="RecordGlobalDeath" ColumnName="RecordGlobalDeath" />
                 <ScalarProperty Name="PerformMaintenance" ColumnName="PerformMaintenance" />
-                <ScalarProperty Name="PerformGlobalMaintenance" ColumnName="PerformGlobalMaintenance" />
+                <ScalarProperty Name="LoginGlobal" ColumnName="LoginGlobal" />
                 <ScalarProperty Name="LoginWeb" ColumnName="LoginWeb" />
                 <ScalarProperty Name="LoginMobile" ColumnName="LoginMobile" />
+                <ScalarProperty Name="LoginDesktop" ColumnName="LoginDesktop" />
                 <ScalarProperty Name="LoginAPI" ColumnName="LoginAPI" />
+                <ScalarProperty Name="ViewGlobalProgramUsers" ColumnName="ViewGlobalProgramUsers" />
+                <ScalarProperty Name="ViewGlobalFish" ColumnName="ViewGlobalFish" />
+                <ScalarProperty Name="ViewGlobalSupplies" ColumnName="ViewGlobalSupplies" />
+                <ScalarProperty Name="ViewGlobalDecorations" ColumnName="ViewGlobalDecorations" />
+                <ScalarProperty Name="ViewGlobalTanks" ColumnName="ViewGlobalTanks" />
+                <ScalarProperty Name="ViewGlobalPlants" ColumnName="ViewGlobalPlants" />
+                <ScalarProperty Name="ViewGlobalPurchases" ColumnName="ViewGlobalPurchases" />
+                <ScalarProperty Name="RecordGlobalDeath" ColumnName="RecordGlobalDeath" />
+                <ScalarProperty Name="PerformGlobalMaintenance" ColumnName="PerformGlobalMaintenance" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4945,7 +4893,6 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             <EntityTypeMapping TypeName="DatabaseEntities.UserProfiles">
               <MappingFragment StoreEntitySet="UserProfiles">
                 <ScalarProperty Name="pk_ProfileID" ColumnName="pk_ProfileID" />
-                <ScalarProperty Name="fk_userID" ColumnName="fk_userID" />
                 <ScalarProperty Name="fk_ContactInfo" ColumnName="fk_ContactInfo" />
                 <ScalarProperty Name="fk_UserPermissions" ColumnName="fk_UserPermissions" />
               </MappingFragment>
@@ -4979,6 +4926,7 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
                 <ScalarProperty Name="fk_ProfileID" ColumnName="fk_ProfileID" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5271,6 +5219,7 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
           <FunctionImportMapping FunctionImportName="Add_UserPlant" FunctionName="DatabaseEntities.Store.Add_UserPlant" />
           <FunctionImportMapping FunctionImportName="Add_UserPurchase" FunctionName="DatabaseEntities.Store.Add_UserPurchase" />
           <FunctionImportMapping FunctionImportName="Add_UserTank" FunctionName="DatabaseEntities.Store.Add_UserTank" />
+          <FunctionImportMapping FunctionImportName="ContactInfo_Add" FunctionName="DatabaseEntities.Store.ContactInfo_Add" />
           <FunctionImportMapping FunctionImportName="Get_TankFish" FunctionName="DatabaseEntities.Store.Get_TankFish">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DatabaseEntities.Get_TankFish_Result">
@@ -5303,6 +5252,10 @@ warning 6035: The relationship 'FK_UserPurchases_UserFishInventory' has columns 
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="RecordFishDeath" FunctionName="DatabaseEntities.Store.RecordFishDeath" />
+          <FunctionImportMapping FunctionImportName="UserPermissionsRecord_Add" FunctionName="DatabaseEntities.Store.UserPermissionsRecord_Add" />
+          <FunctionImportMapping FunctionImportName="UserProfiles_Add" FunctionName="DatabaseEntities.Store.UserProfiles_Add" />
+          <FunctionImportMapping FunctionImportName="Users_Add" FunctionName="DatabaseEntities.Store.Users_Add" />
+          <FunctionImportMapping FunctionImportName="UserLoginSessions_Add" FunctionName="DatabaseEntities.Store.UserLoginSessions_Add" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

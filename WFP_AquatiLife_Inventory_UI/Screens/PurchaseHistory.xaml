@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:local="clr-namespace:WFP_AquatiLife_Inventory_UI.Screens"
-        xmlns:my="clr-namespace:WFP_AquatiLife_Inventory_UI"
+        xmlns:my="clr-namespace:ViewModelClasses.Fish;assembly=ViewModelClasses"
         Height="900" Width="900" ResizeMode="NoResize">
     <Window.Resources>
         <my:FishViewModel x:Key="FishModel" />
@@ -184,5 +184,6 @@
                 </telerik:RadComboBox>
             </Grid>
         </telerik:RadTabItem>
+        
     </telerik:RadTabControl>
 </Window>

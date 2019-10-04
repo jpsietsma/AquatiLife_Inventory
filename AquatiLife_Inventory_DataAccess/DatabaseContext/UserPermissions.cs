@@ -14,14 +14,8 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
     
     public partial class UserPermissions
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserPermissions()
-        {
-            this.UserProfiles = new HashSet<UserProfiles>();
-        }
-    
         public int pk_PermissionID { get; set; }
-        public int fk_UserID { get; set; }
+        public bool AddSuperAdminUser { get; set; }
         public bool AddProgramUsers { get; set; }
         public bool AddPurchase { get; set; }
         public bool AddSupply { get; set; }
@@ -30,30 +24,34 @@ namespace AquatiLife_Inventory_DataAccess.DatabaseContext
         public bool AddLivePlant { get; set; }
         public bool AddTank { get; set; }
         public bool EditProgramUsers { get; set; }
-        public bool EditPurchases { get; set; }
+        public bool EditPurchase { get; set; }
         public bool EditSupply { get; set; }
-        public bool EditDecorations { get; set; }
+        public bool EditDecoration { get; set; }
         public bool EditFish { get; set; }
-        public bool EditLivePlants { get; set; }
-        public bool EditTanks { get; set; }
-        public bool ViewGlobalPurchases { get; set; }
+        public bool EditLivePlant { get; set; }
+        public bool EditTank { get; set; }
         public bool DeleteProgramUsers { get; set; }
-        public bool DeletePurchases { get; set; }
+        public bool DeletePurchase { get; set; }
         public bool DeleteSupply { get; set; }
         public bool DeleteDecoration { get; set; }
         public bool DeleteFish { get; set; }
-        public bool DeletePlants { get; set; }
-        public bool DeleteTanks { get; set; }
+        public bool DeletePlant { get; set; }
+        public bool DeleteTank { get; set; }
         public bool RecordDeath { get; set; }
-        public bool RecordGlobalDeath { get; set; }
         public bool PerformMaintenance { get; set; }
-        public bool PerformGlobalMaintenance { get; set; }
+        public bool LoginGlobal { get; set; }
         public bool LoginWeb { get; set; }
         public bool LoginMobile { get; set; }
+        public bool LoginDesktop { get; set; }
         public bool LoginAPI { get; set; }
-    
-        public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserProfiles> UserProfiles { get; set; }
+        public bool ViewGlobalProgramUsers { get; set; }
+        public bool ViewGlobalFish { get; set; }
+        public bool ViewGlobalSupplies { get; set; }
+        public bool ViewGlobalDecorations { get; set; }
+        public bool ViewGlobalTanks { get; set; }
+        public bool ViewGlobalPlants { get; set; }
+        public bool ViewGlobalPurchases { get; set; }
+        public bool RecordGlobalDeath { get; set; }
+        public bool PerformGlobalMaintenance { get; set; }
     }
 }

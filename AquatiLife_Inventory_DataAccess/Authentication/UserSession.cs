@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AquatiLife_Inventory_DataAccess.DatabaseContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,10 +28,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
         /// </summary>
         public string UserName { get; set; }
 
-        /// <summary>
-        /// UserAccessLevel permissions for the session
-        /// </summary>
-        public string PermissionLevels { get; set; }
+        public UserPermissions UserPermissions { get; set; } = new UserPermissions();
 
         /// <summary>
         /// Indicates if the session is active
@@ -55,23 +53,7 @@ namespace AquatiLife_Inventory_DataAccess.Authentication
         /// <summary>
         /// Does user have administrator permissions?
         /// </summary>
-        public bool IsAdminUser
-        {
-            get
-            {
-                bool final = false;
-
-                foreach (string permission in PermissionLevels.Split(';').ToList())
-                {
-                    if (permission.Contains("Admin"))
-                    {
-                        final = true;
-                    }
-                }
-
-                return final;
-            }
-        }
+        public bool IsAdmin { get; set; }
 
 
         /// <summary>
